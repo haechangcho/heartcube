@@ -25119,6 +25119,7 @@ var ResultSet = /*#__PURE__*/function () {
         segments: segments
       } : {}), {}, {
         timeDimensions: timeDimensions,
+        segments: segments,
         timezone: this.loadResponses[0].query.timezone
       });
     }
@@ -60682,7 +60683,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimationGroupPlayer", function() { return AnimationGroupPlayer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵPRE_STYLE", function() { return ɵPRE_STYLE; });
 /**
- * @license Angular v11.0.4
+ * @license Angular v11.0.5
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -61916,7 +61917,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations/browser */ "t9l1");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /**
- * @license Angular v11.0.4
+ * @license Angular v11.0.5
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -87785,7 +87786,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /**
- * @license Angular v11.0.4
+ * @license Angular v11.0.5
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -93858,6 +93859,42 @@ const NO_ERRORS_SCHEMA = {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+const END_COMMENT = /-->/g;
+const END_COMMENT_ESCAPED = '-\u200B-\u200B>';
+/**
+ * Escape the content of the strings so that it can be safely inserted into a comment node.
+ *
+ * The issue is that HTML does not specify any way to escape comment end text inside the comment.
+ * `<!-- The way you close a comment is with "-->". -->`. Above the `"-->"` is meant to be text not
+ * an end to the comment. This can be created programmatically through DOM APIs.
+ *
+ * ```
+ * div.innerHTML = div.innerHTML
+ * ```
+ *
+ * One would expect that the above code would be safe to do, but it turns out that because comment
+ * text is not escaped, the comment may contain text which will prematurely close the comment
+ * opening up the application for XSS attack. (In SSR we programmatically create comment nodes which
+ * may contain such text and expect them to be safe.)
+ *
+ * This function escapes the comment text by looking for the closing char sequence `-->` and replace
+ * it with `-_-_>` where the `_` is a zero width space `\u200B`. The result is that if a comment
+ * contains `-->` text it will render normally but it will not cause the HTML parser to close the
+ * comment.
+ *
+ * @param value text to make safe for comment node by escaping the comment close character sequence
+ */
+function escapeCommentText(value) {
+    return value.replace(END_COMMENT, END_COMMENT_ESCAPED);
+}
+
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 /**
  * THIS FILE CONTAINS CODE WHICH SHOULD BE TREE SHAKEN AND NEVER CALLED FROM PRODUCTION CODE!!!
  */
@@ -94535,7 +94572,7 @@ function createCommentNode(renderer, value) {
     ngDevMode && ngDevMode.rendererCreateComment++;
     // isProceduralRenderer check is not needed because both `Renderer2` and `Renderer3` have the same
     // method name.
-    return renderer.createComment(value);
+    return renderer.createComment(escapeCommentText(value));
 }
 /**
  * Creates a native element from a tag name, using a renderer.
@@ -97521,7 +97558,7 @@ function setNgReflectProperty(lView, element, type, attrName, value) {
         }
     }
     else {
-        const textContent = `bindings=${JSON.stringify({ [attrName]: debugValue }, null, 2)}`;
+        const textContent = escapeCommentText(`bindings=${JSON.stringify({ [attrName]: debugValue }, null, 2)}`);
         if (isProceduralRenderer(renderer)) {
             renderer.setValue(element, textContent);
         }
@@ -108898,7 +108935,7 @@ class Version {
 /**
  * @publicApi
  */
-const VERSION = new Version('11.0.4');
+const VERSION = new Version('11.0.5');
 
 /**
  * @license
@@ -116402,6 +116439,11 @@ function enableProdMode() {
     if (_runModeLocked) {
         throw new Error('Cannot enable prod mode after platform setup.');
     }
+    // The below check is there so when ngDevMode is set via terser
+    // `global['ngDevMode'] = false;` is also dropped.
+    if (typeof ngDevMode === undefined || !!ngDevMode) {
+        _global['ngDevMode'] = false;
+    }
     _devMode = false;
 }
 
@@ -119913,7 +119955,7 @@ function debugCheckAndUpdateNode(view, nodeDef, argStyle, givenValues) {
             const el = asElementData(view, elDef.nodeIndex).renderElement;
             if (!elDef.element.name) {
                 // a comment.
-                view.renderer.setValue(el, `bindings=${JSON.stringify(bindingValues, null, 2)}`);
+                view.renderer.setValue(el, escapeCommentText(`bindings=${JSON.stringify(bindingValues, null, 2)}`));
             }
             else {
                 // a regular element.
@@ -120163,7 +120205,7 @@ class DebugRenderer2 {
         return el;
     }
     createComment(value) {
-        const comment = this.delegate.createComment(value);
+        const comment = this.delegate.createComment(escapeCommentText(value));
         const debugCtx = this.createDebugContext(comment);
         if (debugCtx) {
             indexDebugNode(new DebugNode__PRE_R3__(comment, null, debugCtx));
@@ -126097,7 +126139,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ɵgetDOM", function() { return _angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵgetDOM"]; });
 
 /**
- * @license Angular v11.0.4
+ * @license Angular v11.0.5
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -128238,7 +128280,7 @@ function elementMatches(n, selector) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('11.0.4');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('11.0.5');
 
 /**
  * @license
@@ -138308,7 +138350,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵsetRootDomAdapter", function() { return setRootDomAdapter; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /**
- * @license Angular v11.0.4
+ * @license Angular v11.0.5
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -143539,7 +143581,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.0.4');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.0.5');
 
 /**
  * @license
@@ -149729,7 +149771,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "R0Ic");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /**
- * @license Angular v11.0.4
+ * @license Angular v11.0.5
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
