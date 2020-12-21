@@ -5259,15 +5259,15 @@ __webpack_require__.r(__webpack_exports__);
  * var users = [
  *   { 'user': 'fred',   'age': 48 },
  *   { 'user': 'barney', 'age': 36 },
- *   { 'user': 'fred',   'age': 40 },
+ *   { 'user': 'fred',   'age': 30 },
  *   { 'user': 'barney', 'age': 34 }
  * ];
  *
  * _.sortBy(users, [function(o) { return o.user; }]);
- * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+ * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 30]]
  *
  * _.sortBy(users, ['user', 'age']);
- * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+ * // => objects for [['barney', 34], ['barney', 36], ['fred', 30], ['fred', 48]]
  */
 var sortBy = Object(_baseRest_js__WEBPACK_IMPORTED_MODULE_2__["default"])(function(collection, iteratees) {
   if (collection == null) {
@@ -6190,11 +6190,14 @@ var nativeFloor = Math.floor,
  *  into `array`.
  */
 function baseSortedIndexBy(array, value, iteratee, retHighest) {
-  value = iteratee(value);
-
   var low = 0,
-      high = array == null ? 0 : array.length,
-      valIsNaN = value !== value,
+      high = array == null ? 0 : array.length;
+  if (high === 0) {
+    return 0;
+  }
+
+  value = iteratee(value);
+  var valIsNaN = value !== value,
       valIsNull = value === null,
       valIsSymbol = Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value),
       valIsUndefined = value === undefined;
@@ -7842,6 +7845,10 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Creates a function that checks if **all** of the `predicates` return
  * truthy when invoked with the arguments it receives.
+ *
+ * Following shorthands are possible for providing predicates.
+ * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+ * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
  *
  * @static
  * @memberOf _
@@ -12174,6 +12181,10 @@ __webpack_require__.r(__webpack_exports__);
  * Creates a function that checks if **any** of the `predicates` return
  * truthy when invoked with the arguments it receives.
  *
+ * Following shorthands are possible for providing predicates.
+ * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+ * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+ *
  * @static
  * @memberOf _
  * @since 4.0.0
@@ -12193,6 +12204,9 @@ __webpack_require__.r(__webpack_exports__);
  *
  * func(NaN);
  * // => false
+ *
+ * var matchesFunc = _.overSome([{ 'a': 1 }, { 'a': 2 }])
+ * var matchesPropertyFunc = _.overSome([['a', 1], ['a', 2]])
  */
 var overSome = Object(_createOver_js__WEBPACK_IMPORTED_MODULE_1__["default"])(_arraySome_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
@@ -17789,6 +17803,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./isObject.js */ "IzLi");
 /* harmony import */ var _isSet_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./isSet.js */ "O894");
 /* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./keys.js */ "mkut");
+/* harmony import */ var _keysIn_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./keysIn.js */ "4/q3");
+
 
 
 
@@ -17939,7 +17955,7 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
 
   var keysFunc = isFull
     ? (isFlat ? _getAllKeysIn_js__WEBPACK_IMPORTED_MODULE_10__["default"] : _getAllKeys_js__WEBPACK_IMPORTED_MODULE_9__["default"])
-    : (isFlat ? keysIn : _keys_js__WEBPACK_IMPORTED_MODULE_20__["default"]);
+    : (isFlat ? _keysIn_js__WEBPACK_IMPORTED_MODULE_21__["default"] : _keys_js__WEBPACK_IMPORTED_MODULE_20__["default"]);
 
   var props = isArr ? undefined : keysFunc(value);
   Object(_arrayEach_js__WEBPACK_IMPORTED_MODULE_1__["default"])(props || value, function(subValue, key) {
@@ -24131,7 +24147,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /** Used as the semantic version number. */
-var VERSION = '4.17.15';
+var VERSION = '4.17.20';
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_BIND_KEY_FLAG = 2;
@@ -25974,6 +25990,7 @@ var HttpTransport = /*#__PURE__*/function () {
   function HttpTransport(_ref) {
     var authorization = _ref.authorization,
         apiUrl = _ref.apiUrl,
+        method = _ref.method,
         _ref$headers = _ref.headers,
         headers = _ref$headers === void 0 ? {} : _ref$headers,
         credentials = _ref.credentials;
@@ -25982,6 +25999,7 @@ var HttpTransport = /*#__PURE__*/function () {
 
     this.authorization = authorization;
     this.apiUrl = apiUrl;
+    this.method = method;
     this.headers = headers;
     this.credentials = credentials;
   }
@@ -25994,21 +26012,31 @@ var HttpTransport = /*#__PURE__*/function () {
       var baseRequestId = _ref2.baseRequestId,
           params = _objectWithoutProperties__default['default'](_ref2, ["baseRequestId"]);
 
+      var spanCounter = 1;
       var searchParams = new URLSearchParams(params && Object.keys(params).map(function (k) {
         return _defineProperty__default['default']({}, k, _typeof__default['default'](params[k]) === 'object' ? JSON.stringify(params[k]) : params[k]);
       }).reduce(function (a, b) {
         return _objectSpread$1(_objectSpread$1({}, a), b);
       }, {}));
-      var spanCounter = 1; // Currently, all methods make GET requests. If a method makes a request with a body payload,
-      // remember to add a 'Content-Type' header.
+      var url = "".concat(this.apiUrl, "/").concat(method).concat(searchParams.toString().length ? "?".concat(searchParams) : '');
+      this.method = this.method || (url.length < 2000 ? 'GET' : 'POST');
+
+      if (this.method === 'POST') {
+        url = "".concat(this.apiUrl, "/").concat(method);
+        this.headers['Content-Type'] = 'application/json';
+      } // Currently, all methods make GET requests. If a method makes a request with a body payload,
+      // remember to add {'Content-Type': 'application/json'} to the header.
+
 
       var runRequest = function runRequest() {
-        return fetch__default['default']("".concat(_this.apiUrl, "/").concat(method).concat(searchParams.toString().length ? "?".concat(searchParams) : ''), {
+        return fetch__default['default'](url, {
+          method: _this.method,
           headers: _objectSpread$1({
             Authorization: _this.authorization,
             'x-request-id': baseRequestId && "".concat(baseRequestId, "-span-").concat(spanCounter++)
           }, _this.headers),
-          credentials: _this.credentials
+          credentials: _this.credentials,
+          body: _this.method === 'POST' ? JSON.stringify(params) : null
         });
       };
 
@@ -26280,11 +26308,13 @@ var CubejsApi = /*#__PURE__*/function () {
     options = options || {};
     this.apiToken = apiToken;
     this.apiUrl = options.apiUrl || API_URL;
+    this.method = options.method;
     this.headers = options.headers || {};
     this.credentials = options.credentials;
     this.transport = options.transport || new HttpTransport({
       authorization: typeof apiToken === 'function' ? undefined : apiToken,
       apiUrl: this.apiUrl,
+      method: this.method,
       headers: this.headers,
       credentials: this.credentials
     });
@@ -27359,12 +27389,16 @@ function baseFill(array, value, start, end) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _arrayMap_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_arrayMap.js */ "twO/");
-/* harmony import */ var _baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseIteratee.js */ "fywt");
-/* harmony import */ var _baseMap_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseMap.js */ "Ws7a");
-/* harmony import */ var _baseSortBy_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_baseSortBy.js */ "TuZV");
-/* harmony import */ var _baseUnary_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_baseUnary.js */ "ovuK");
-/* harmony import */ var _compareMultiple_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_compareMultiple.js */ "BmuW");
-/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./identity.js */ "+Xah");
+/* harmony import */ var _baseGet_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseGet.js */ "UTJH");
+/* harmony import */ var _baseIteratee_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseIteratee.js */ "fywt");
+/* harmony import */ var _baseMap_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_baseMap.js */ "Ws7a");
+/* harmony import */ var _baseSortBy_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_baseSortBy.js */ "TuZV");
+/* harmony import */ var _baseUnary_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_baseUnary.js */ "ovuK");
+/* harmony import */ var _compareMultiple_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_compareMultiple.js */ "BmuW");
+/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./identity.js */ "+Xah");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./isArray.js */ "/1FC");
+
+
 
 
 
@@ -27383,18 +27417,31 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {Array} Returns the new sorted array.
  */
 function baseOrderBy(collection, iteratees, orders) {
-  var index = -1;
-  iteratees = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees.length ? iteratees : [_identity_js__WEBPACK_IMPORTED_MODULE_6__["default"]], Object(_baseUnary_js__WEBPACK_IMPORTED_MODULE_4__["default"])(_baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+  if (iteratees.length) {
+    iteratees = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees, function(iteratee) {
+      if (Object(_isArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(iteratee)) {
+        return function(value) {
+          return Object(_baseGet_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value, iteratee.length === 1 ? iteratee[0] : iteratee);
+        }
+      }
+      return iteratee;
+    });
+  } else {
+    iteratees = [_identity_js__WEBPACK_IMPORTED_MODULE_7__["default"]];
+  }
 
-  var result = Object(_baseMap_js__WEBPACK_IMPORTED_MODULE_2__["default"])(collection, function(value, key, collection) {
+  var index = -1;
+  iteratees = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees, Object(_baseUnary_js__WEBPACK_IMPORTED_MODULE_5__["default"])(_baseIteratee_js__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+  var result = Object(_baseMap_js__WEBPACK_IMPORTED_MODULE_3__["default"])(collection, function(value, key, collection) {
     var criteria = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees, function(iteratee) {
       return iteratee(value);
     });
     return { 'criteria': criteria, 'index': ++index, 'value': value };
   });
 
-  return Object(_baseSortBy_js__WEBPACK_IMPORTED_MODULE_3__["default"])(result, function(object, other) {
-    return Object(_compareMultiple_js__WEBPACK_IMPORTED_MODULE_5__["default"])(object, other, orders);
+  return Object(_baseSortBy_js__WEBPACK_IMPORTED_MODULE_4__["default"])(result, function(object, other) {
+    return Object(_compareMultiple_js__WEBPACK_IMPORTED_MODULE_6__["default"])(object, other, orders);
   });
 }
 
@@ -54741,6 +54788,9 @@ var CLONE_DEEP_FLAG = 1;
  * values against any array or object value, respectively. See `_.isEqual`
  * for a list of supported value comparisons.
  *
+ * **Note:** Multiple values can be checked by combining several matchers
+ * using `_.overSome`
+ *
  * @static
  * @memberOf _
  * @since 3.0.0
@@ -54756,6 +54806,10 @@ var CLONE_DEEP_FLAG = 1;
  *
  * _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
  * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
+ *
+ * // Checking for several possible values
+ * _.filter(objects, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
+ * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
  */
 function matches(source) {
   return Object(_baseMatches_js__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(_baseClone_js__WEBPACK_IMPORTED_MODULE_0__["default"])(source, CLONE_DEEP_FLAG));
@@ -62990,11 +63044,11 @@ function template(string, options, guard) {
 
   // Use a sourceURL for easier debugging.
   // The sourceURL gets injected into the source that's eval-ed, so be careful
-  // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
-  // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
+  // to normalize all kinds of whitespace, so e.g. newlines (and unicode versions of it) can't sneak in
+  // and escape the comment, thus injecting code that gets evaled.
   var sourceURL = hasOwnProperty.call(options, 'sourceURL')
     ? ('//# sourceURL=' +
-       (options.sourceURL + '').replace(/[\r\n]/g, ' ') +
+       (options.sourceURL + '').replace(/\s/g, ' ') +
        '\n')
     : '';
 
@@ -63027,8 +63081,6 @@ function template(string, options, guard) {
 
   // If `variable` is not specified wrap a with-statement around the generated
   // code to add the data object to the top of the scope chain.
-  // Like with sourceURL, we take care to not check the option's prototype,
-  // as this configuration is a code injection vector.
   var variable = hasOwnProperty.call(options, 'variable') && options.variable;
   if (!variable) {
     source = 'with (obj) {\n' + source + '\n}\n';
@@ -75137,6 +75189,10 @@ __webpack_require__.r(__webpack_exports__);
  * // The `_.property` iteratee shorthand.
  * _.filter(users, 'active');
  * // => objects for ['barney']
+ *
+ * // Combining several predicates using `_.overEvery` or `_.overSome`.
+ * _.filter(users, _.overSome([{ 'age': 36 }, ['age', 40]]));
+ * // => objects for ['fred', 'barney']
  */
 function filter(collection, predicate) {
   var func = Object(_isArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(collection) ? _arrayFilter_js__WEBPACK_IMPORTED_MODULE_0__["default"] : _baseFilter_js__WEBPACK_IMPORTED_MODULE_1__["default"];
@@ -75438,6 +75494,9 @@ var CLONE_DEEP_FLAG = 1;
  * `srcValue` values against any array or object value, respectively. See
  * `_.isEqual` for a list of supported value comparisons.
  *
+ * **Note:** Multiple values can be checked by combining several matchers
+ * using `_.overSome`
+ *
  * @static
  * @memberOf _
  * @since 3.2.0
@@ -75454,6 +75513,10 @@ var CLONE_DEEP_FLAG = 1;
  *
  * _.find(objects, _.matchesProperty('a', 4));
  * // => { 'a': 4, 'b': 5, 'c': 6 }
+ *
+ * // Checking for several possible values
+ * _.filter(objects, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
+ * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
  */
 function matchesProperty(path, srcValue) {
   return Object(_baseMatchesProperty_js__WEBPACK_IMPORTED_MODULE_1__["default"])(path, Object(_baseClone_js__WEBPACK_IMPORTED_MODULE_0__["default"])(srcValue, CLONE_DEEP_FLAG));
@@ -78269,10 +78332,11 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
   if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
     return false;
   }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(array);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
+  // Check that cyclic values are equal.
+  var arrStacked = stack.get(array);
+  var othStacked = stack.get(other);
+  if (arrStacked && othStacked) {
+    return arrStacked == other && othStacked == array;
   }
   var index = -1,
       result = true,
@@ -134719,6 +134783,10 @@ function baseSet(object, path, value, customizer) {
     var key = Object(_toKey_js__WEBPACK_IMPORTED_MODULE_4__["default"])(path[index]),
         newValue = value;
 
+    if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+      return object;
+    }
+
     if (index != lastIndex) {
       var objValue = nested[key];
       newValue = customizer ? customizer(objValue, key, nested) : undefined;
@@ -168898,10 +168966,11 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
       return false;
     }
   }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(object);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
+  // Check that cyclic values are equal.
+  var objStacked = stack.get(object);
+  var othStacked = stack.get(other);
+  if (objStacked && othStacked) {
+    return objStacked == other && othStacked == object;
   }
   var result = true;
   stack.set(object, other);
