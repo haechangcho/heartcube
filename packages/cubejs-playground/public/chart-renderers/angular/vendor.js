@@ -60737,7 +60737,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimationGroupPlayer", function() { return AnimationGroupPlayer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵPRE_STYLE", function() { return ɵPRE_STYLE; });
 /**
- * @license Angular v11.0.5
+ * @license Angular v11.0.9
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -61971,7 +61971,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations/browser */ "t9l1");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /**
- * @license Angular v11.0.5
+ * @license Angular v11.0.9
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -87850,7 +87850,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /**
- * @license Angular v11.0.5
+ * @license Angular v11.0.9
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -90290,8 +90290,9 @@ function callHooks(currentView, arr, initPhase, currentNodeIndex) {
         (currentView[PREORDER_HOOK_FLAGS] & 65535 /* IndexOfTheNextPreOrderHookMaskMask */) :
         0;
     const nodeIndexLimit = currentNodeIndex != null ? currentNodeIndex : -1;
+    const max = arr.length - 1; // Stop the loop at length - 1, because we look for the hook at i + 1
     let lastNodeIndexFound = 0;
-    for (let i = startIndex; i < arr.length; i++) {
+    for (let i = startIndex; i < max; i++) {
         const hook = arr[i + 1];
         if (typeof hook === 'number') {
             lastNodeIndexFound = arr[i];
@@ -90328,8 +90329,7 @@ function callHook(currentView, initPhase, arr, i) {
     const directive = currentView[directiveIndex];
     if (isInitHook) {
         const indexWithintInitPhase = currentView[FLAGS] >> 11 /* IndexWithinInitPhaseShift */;
-        // The init phase state must be always checked here as it may have been recursively
-        // updated
+        // The init phase state must be always checked here as it may have been recursively updated.
         if (indexWithintInitPhase <
             (currentView[PREORDER_HOOK_FLAGS] >> 16 /* NumberOfInitHooksCalledShift */) &&
             (currentView[FLAGS] & 3 /* InitPhaseStateMask */) === initPhase) {
@@ -92828,6 +92828,9 @@ function injectArgs(types) {
                 else if (meta instanceof Self || meta.ngMetadataName === 'Self' || meta === Self) {
                     flags |= InjectFlags.Self;
                 }
+                else if (meta instanceof Host || meta.ngMetadataName === 'Host' || meta === Host) {
+                    flags |= InjectFlags.Host;
+                }
                 else if (meta instanceof Inject || meta === Inject) {
                     type = meta.token;
                 }
@@ -93122,13 +93125,17 @@ function bypassSanitizationTrustResourceUrl(trustedResourceUrl) {
  * Fallback: InertDocument strategy
  */
 function getInertBodyHelper(defaultDoc) {
-    return isDOMParserAvailable() ? new DOMParserHelper() : new InertDocumentHelper(defaultDoc);
+    const inertDocumentHelper = new InertDocumentHelper(defaultDoc);
+    return isDOMParserAvailable() ? new DOMParserHelper(inertDocumentHelper) : inertDocumentHelper;
 }
 /**
  * Uses DOMParser to create and fill an inert body element.
  * This is the default strategy used in browsers that support it.
  */
 class DOMParserHelper {
+    constructor(inertDocumentHelper) {
+        this.inertDocumentHelper = inertDocumentHelper;
+    }
     getInertBodyElement(html) {
         // We add these extra elements to ensure that the rest of the content is parsed as expected
         // e.g. leading whitespace is maintained and tags like `<meta>` do not get hoisted to the
@@ -93139,6 +93146,12 @@ class DOMParserHelper {
             const body = new window.DOMParser()
                 .parseFromString(trustedHTMLFromString(html), 'text/html')
                 .body;
+            if (body === null) {
+                // In some browsers (e.g. Mozilla/5.0 iPad AppleWebKit Mobile) the `body` property only
+                // becomes available in the following tick of the JS engine. In that case we fall back to
+                // the `inertDocumentHelper` instead.
+                return this.inertDocumentHelper.getInertBodyElement(html);
+            }
             body.removeChild(body.firstChild);
             return body;
         }
@@ -94972,12 +94985,12 @@ function processCleanups(tView, lView) {
                 tCleanup[i].call(context);
             }
         }
-        if (lCleanup !== null) {
-            for (let i = lastLCleanupIndex + 1; i < lCleanup.length; i++) {
-                const instanceCleanupFn = lCleanup[i];
-                ngDevMode && assertFunction(instanceCleanupFn, 'Expecting instance cleanup function.');
-                instanceCleanupFn();
-            }
+    }
+    if (lCleanup !== null) {
+        for (let i = lastLCleanupIndex + 1; i < lCleanup.length; i++) {
+            const instanceCleanupFn = lCleanup[i];
+            ngDevMode && assertFunction(instanceCleanupFn, 'Expecting instance cleanup function.');
+            instanceCleanupFn();
         }
         lView[CLEANUP] = null;
     }
@@ -97378,19 +97391,19 @@ function locateHostElement(renderer, elementOrSelector, encapsulation) {
  * is `null` and the function is store in `LView` (rather than it `TView`).
  */
 function storeCleanupWithContext(tView, lView, context, cleanupFn) {
-    const lCleanup = getLCleanup(lView);
+    const lCleanup = getOrCreateLViewCleanup(lView);
     if (context === null) {
         // If context is null that this is instance specific callback. These callbacks can only be
         // inserted after template shared instances. For this reason in ngDevMode we freeze the TView.
         if (ngDevMode) {
-            Object.freeze(getTViewCleanup(tView));
+            Object.freeze(getOrCreateTViewCleanup(tView));
         }
         lCleanup.push(cleanupFn);
     }
     else {
         lCleanup.push(context);
         if (tView.firstCreatePass) {
-            getTViewCleanup(tView).push(cleanupFn, lCleanup.length - 1);
+            getOrCreateTViewCleanup(tView).push(cleanupFn, lCleanup.length - 1);
         }
     }
 }
@@ -98468,11 +98481,11 @@ function storePropertyBindingMetadata(tData, tNode, propertyName, bindingIndex, 
     }
 }
 const CLEAN_PROMISE = _CLEAN_PROMISE;
-function getLCleanup(view) {
+function getOrCreateLViewCleanup(view) {
     // top level variables should not be exported for performance reasons (PERF_NOTES.md)
     return view[CLEANUP] || (view[CLEANUP] = ngDevMode ? new LCleanup() : []);
 }
-function getTViewCleanup(tView) {
+function getOrCreateTViewCleanup(tView) {
     return tView.cleanup || (tView.cleanup = ngDevMode ? new TCleanup() : []);
 }
 /**
@@ -102730,11 +102743,11 @@ function findExistingListener(tView, lView, eventName, tNodeIdx) {
 function listenerInternal(tView, lView, renderer, tNode, eventName, listenerFn, useCapture = false, eventTargetResolver) {
     const isTNodeDirectiveHost = isDirectiveHost(tNode);
     const firstCreatePass = tView.firstCreatePass;
-    const tCleanup = firstCreatePass && getTViewCleanup(tView);
+    const tCleanup = firstCreatePass && getOrCreateTViewCleanup(tView);
     // When the ɵɵlistener instruction was generated and is executed we know that there is either a
     // native listener or a directive output on this element. As such we we know that we will have to
     // register a listener and store its cleanup function on LView.
-    const lCleanup = getLCleanup(lView);
+    const lCleanup = getOrCreateLViewCleanup(lView);
     ngDevMode && assertTNodeType(tNode, 3 /* AnyRNode */ | 12 /* AnyContainer */);
     let processOutputs = true;
     // add native event listener - applicable to elements only
@@ -108999,7 +109012,7 @@ class Version {
 /**
  * @publicApi
  */
-const VERSION = new Version('11.0.5');
+const VERSION = new Version('11.0.9');
 
 /**
  * @license
@@ -110159,7 +110172,7 @@ class ViewRef {
         this._lView = _lView;
         this._cdRefInjectingView = _cdRefInjectingView;
         this._appRef = null;
-        this._viewContainerRef = null;
+        this._attachedToViewContainer = false;
     }
     get rootNodes() {
         const lView = this._lView;
@@ -110176,12 +110189,19 @@ class ViewRef {
         if (this._appRef) {
             this._appRef.detachView(this);
         }
-        else if (this._viewContainerRef) {
-            const index = this._viewContainerRef.indexOf(this);
-            if (index > -1) {
-                this._viewContainerRef.detach(index);
+        else if (this._attachedToViewContainer) {
+            const parent = this._lView[PARENT];
+            if (isLContainer(parent)) {
+                const viewRefs = parent[VIEW_REFS];
+                const index = viewRefs ? viewRefs.indexOf(this) : -1;
+                if (index > -1) {
+                    ngDevMode &&
+                        assertEqual(index, parent.indexOf(this._lView) - CONTAINER_HEADER_OFFSET, 'An attached view should be in the same position within its container as its ViewRef in the VIEW_REFS array.');
+                    detachView(parent, index);
+                    removeFromArray(viewRefs, index);
+                }
             }
-            this._viewContainerRef = null;
+            this._attachedToViewContainer = false;
         }
         destroyLView(this._lView[TVIEW], this._lView);
     }
@@ -110373,18 +110393,18 @@ class ViewRef {
     checkNoChanges() {
         checkNoChangesInternal(this._lView[TVIEW], this._lView, this.context);
     }
-    attachToViewContainerRef(vcRef) {
+    attachToViewContainerRef() {
         if (this._appRef) {
             throw new Error('This view is already attached directly to the ApplicationRef!');
         }
-        this._viewContainerRef = vcRef;
+        this._attachedToViewContainer = true;
     }
     detachFromAppRef() {
         this._appRef = null;
         renderDetachView(this._lView[TVIEW], this._lView);
     }
     attachToAppRef(appRef) {
-        if (this._viewContainerRef) {
+        if (this._attachedToViewContainer) {
             throw new Error('This view is already attached to a ViewContainer!');
         }
         this._appRef = appRef;
@@ -110765,7 +110785,7 @@ const R3ViewContainerRef = class ViewContainerRef extends VE_ViewContainerRef {
         if (parentRNode !== null) {
             addViewToContainer(tView, lContainer[T_HOST], renderer, lView, parentRNode, beforeNode);
         }
-        viewRef.attachToViewContainerRef(this);
+        viewRef.attachToViewContainerRef();
         addToArray(getOrCreateViewRefs(lContainer), adjustedIdx, viewRef);
         return viewRef;
     }
@@ -116606,7 +116626,7 @@ function createPlatform(injector) {
 }
 /**
  * Creates a factory for a platform. Can be used to provide or override `Providers` specific to
- * your applciation's runtime needs, such as `PLATFORM_INITIALIZER` and `PLATFORM_ID`.
+ * your application's runtime needs, such as `PLATFORM_INITIALIZER` and `PLATFORM_ID`.
  * @param parentPlatformFactory Another platform factory to modify. Allows you to compose factories
  * to build up configurations that might be required by different libraries or parts of the
  * application.
@@ -126203,7 +126223,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ɵgetDOM", function() { return _angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵgetDOM"]; });
 
 /**
- * @license Angular v11.0.5
+ * @license Angular v11.0.9
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -128344,7 +128364,7 @@ function elementMatches(n, selector) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('11.0.5');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('11.0.9');
 
 /**
  * @license
@@ -135839,7 +135859,7 @@ function isElement(value) {
 /*!*****************************************!*\
   !*** ./node_modules/tslib/tslib.es6.js ***!
   \*****************************************/
-/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __spreadArray, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -135858,6 +135878,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArray", function() { return __spreadArray; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
@@ -135891,6 +135912,8 @@ var extendStatics = function(d, b) {
 };
 
 function __extends(d, b) {
+    if (typeof b !== "function" && b !== null)
+        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
     extendStatics(d, b);
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -136013,19 +136036,27 @@ function __read(o, n) {
     return ar;
 }
 
+/** @deprecated */
 function __spread() {
     for (var ar = [], i = 0; i < arguments.length; i++)
         ar = ar.concat(__read(arguments[i]));
     return ar;
 }
 
+/** @deprecated */
 function __spreadArrays() {
     for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
     for (var r = Array(s), k = 0, i = 0; i < il; i++)
         for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
             r[k] = a[j];
     return r;
-};
+}
+
+function __spreadArray(to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+}
 
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -138418,7 +138449,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵsetRootDomAdapter", function() { return setRootDomAdapter; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /**
- * @license Angular v11.0.5
+ * @license Angular v11.0.9
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -143649,7 +143680,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.0.5');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.0.9');
 
 /**
  * @license
@@ -143671,16 +143702,15 @@ class ViewportScroller {
 ViewportScroller.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
     token: ViewportScroller,
     providedIn: 'root',
-    factory: () => new BrowserViewportScroller(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(DOCUMENT), window, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ErrorHandler"]))
+    factory: () => new BrowserViewportScroller(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(DOCUMENT), window)
 });
 /**
  * Manages the scroll position for a browser window.
  */
 class BrowserViewportScroller {
-    constructor(document, window, errorHandler) {
+    constructor(document, window) {
         this.document = document;
         this.window = window;
-        this.errorHandler = errorHandler;
         this.offset = () => [0, 0];
     }
     /**
@@ -143719,16 +143749,32 @@ class BrowserViewportScroller {
         }
     }
     /**
-     * Scrolls to an anchor element.
-     * @param anchor The ID of the anchor element.
+     * Scrolls to an element and attempts to focus the element.
+     *
+     * Note that the function name here is misleading in that the target string may be an ID for a
+     * non-anchor element.
+     *
+     * @param target The ID of an element or name of the anchor.
+     *
+     * @see https://html.spec.whatwg.org/#the-indicated-part-of-the-document
+     * @see https://html.spec.whatwg.org/#scroll-to-fragid
      */
-    scrollToAnchor(anchor) {
-        if (this.supportsScrolling()) {
-            const elSelected = this.document.getElementById(anchor) || this.document.getElementsByName(anchor)[0];
-            if (elSelected) {
-                this.scrollToElement(elSelected);
-            }
+    scrollToAnchor(target) {
+        var _a;
+        if (!this.supportsScrolling()) {
+            return;
         }
+        // TODO(atscott): The correct behavior for `getElementsByName` would be to also verify that the
+        // element is an anchor. However, this could be considered a breaking change and should be
+        // done in a major version.
+        const elSelected = (_a = this.document.getElementById(target)) !== null && _a !== void 0 ? _a : this.document.getElementsByName(target)[0];
+        if (elSelected === undefined) {
+            return;
+        }
+        this.scrollToElement(elSelected);
+        // After scrolling to the element, the spec dictates that we follow the focus steps for the
+        // target. Rather than following the robust steps, simply attempt focus.
+        this.attemptFocus(elSelected);
     }
     /**
      * Disables automatic scroll restoration provided by the browser.
@@ -143741,12 +143787,32 @@ class BrowserViewportScroller {
             }
         }
     }
+    /**
+     * Scrolls to an element using the native offset and the specified offset set on this scroller.
+     *
+     * The offset can be used when we know that there is a floating header and scrolling naively to an
+     * element (ex: `scrollIntoView`) leaves the element hidden behind the floating header.
+     */
     scrollToElement(el) {
         const rect = el.getBoundingClientRect();
         const left = rect.left + this.window.pageXOffset;
         const top = rect.top + this.window.pageYOffset;
         const offset = this.offset();
         this.window.scrollTo(left - offset[0], top - offset[1]);
+    }
+    /**
+     * Calls `focus` on the `focusTarget` and returns `true` if the element was focused successfully.
+     *
+     * If `false`, further steps may be necessary to determine a valid substitute to be focused
+     * instead.
+     *
+     * @see https://html.spec.whatwg.org/#get-the-focusable-area
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus
+     * @see https://html.spec.whatwg.org/#focusable-area
+     */
+    attemptFocus(focusTarget) {
+        focusTarget.focus();
+        return this.document.activeElement === focusTarget;
     }
     /**
      * We only support scroll restoration when we can get a hold of window.
@@ -149839,7 +149905,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "R0Ic");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /**
- * @license Angular v11.0.5
+ * @license Angular v11.0.9
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
