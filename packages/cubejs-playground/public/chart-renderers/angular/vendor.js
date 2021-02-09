@@ -4,7 +4,7 @@
 /*!***********************************************************************!*\
   !*** ./node_modules/@angular/material/__ivy_ngcc__/fesm2015/table.js ***!
   \***********************************************************************/
-/*! exports provided: MatCell, MatCellDef, MatColumnDef, MatFooterCell, MatFooterCellDef, MatFooterRow, MatFooterRowDef, MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatNoDataRow, MatRow, MatRowDef, MatTable, MatTableDataSource, MatTableModule, MatTextColumn */
+/*! exports provided: MatCell, MatCellDef, MatColumnDef, MatFooterCell, MatFooterCellDef, MatFooterRow, MatFooterRowDef, MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatNoDataRow, MatRow, MatRowDef, MatTable, MatTableDataSource, MatTableModule, MatTextColumn, _MatTableDataSource */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27,6 +27,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTableDataSource", function() { return MatTableDataSource; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTableModule", function() { return MatTableModule; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTextColumn", function() { return MatTextColumn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_MatTableDataSource", function() { return _MatTableDataSource; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/table */ "f6nW");
 /* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/collections */ "0EQZ");
@@ -105,9 +106,9 @@ MatTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](3, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](4, 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](5, 3);
-    } }, directives: [_angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["HeaderRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["DataRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["NoDataRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["FooterRowOutlet"]], styles: ["mat-table{display:block}mat-header-row{min-height:56px}mat-row,mat-footer-row{min-height:48px}mat-row,mat-header-row,mat-footer-row{display:flex;border-width:0;border-bottom-width:1px;border-style:solid;align-items:center;box-sizing:border-box}mat-row::after,mat-header-row::after,mat-footer-row::after{display:inline-block;min-height:inherit;content:\"\"}mat-cell:first-of-type,mat-header-cell:first-of-type,mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] mat-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}mat-cell:last-of-type,mat-header-cell:last-of-type,mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] mat-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}mat-cell,mat-header-cell,mat-footer-cell{flex:1;display:flex;align-items:center;overflow:hidden;word-wrap:break-word;min-height:inherit}table.mat-table{border-spacing:0}tr.mat-header-row{height:56px}tr.mat-row,tr.mat-footer-row{height:48px}th.mat-header-cell{text-align:left}[dir=rtl] th.mat-header-cell{text-align:right}th.mat-header-cell,td.mat-cell,td.mat-footer-cell{padding:0;border-bottom-width:1px;border-bottom-style:solid}th.mat-header-cell:first-of-type,td.mat-cell:first-of-type,td.mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] th.mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}th.mat-header-cell:last-of-type,td.mat-cell:last-of-type,td.mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] th.mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}.mat-table-sticky{position:-webkit-sticky;position:sticky}.mat-table-fixed-layout{table-layout:fixed}\n"], encapsulation: 2 });
+    } }, directives: [_angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["HeaderRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["DataRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["NoDataRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["FooterRowOutlet"]], styles: ["mat-table{display:block}mat-header-row{min-height:56px}mat-row,mat-footer-row{min-height:48px}mat-row,mat-header-row,mat-footer-row{display:flex;border-width:0;border-bottom-width:1px;border-style:solid;align-items:center;box-sizing:border-box}mat-row::after,mat-header-row::after,mat-footer-row::after{display:inline-block;min-height:inherit;content:\"\"}mat-cell:first-of-type,mat-header-cell:first-of-type,mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] mat-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}mat-cell:last-of-type,mat-header-cell:last-of-type,mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] mat-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}mat-cell,mat-header-cell,mat-footer-cell{flex:1;display:flex;align-items:center;overflow:hidden;word-wrap:break-word;min-height:inherit}table.mat-table{border-spacing:0}tr.mat-header-row{height:56px}tr.mat-row,tr.mat-footer-row{height:48px}th.mat-header-cell{text-align:left}[dir=rtl] th.mat-header-cell{text-align:right}th.mat-header-cell,td.mat-cell,td.mat-footer-cell{padding:0;border-bottom-width:1px;border-bottom-style:solid}th.mat-header-cell:first-of-type,td.mat-cell:first-of-type,td.mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] th.mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}th.mat-header-cell:last-of-type,td.mat-cell:last-of-type,td.mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] th.mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}.mat-table-sticky{position:-webkit-sticky !important;position:sticky !important}.mat-table-fixed-layout{table-layout:fixed}\n"], encapsulation: 2 });
 const ɵMatTable_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatTable);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTable, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTable, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'mat-table, table[mat-table]',
@@ -129,7 +130,7 @@ const ɵMatTable_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MOD
                 // See note on CdkTable for explanation on why this uses the default change detection strategy.
                 // tslint:disable-next-line:validate-decorators
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].Default,
-                styles: ["mat-table{display:block}mat-header-row{min-height:56px}mat-row,mat-footer-row{min-height:48px}mat-row,mat-header-row,mat-footer-row{display:flex;border-width:0;border-bottom-width:1px;border-style:solid;align-items:center;box-sizing:border-box}mat-row::after,mat-header-row::after,mat-footer-row::after{display:inline-block;min-height:inherit;content:\"\"}mat-cell:first-of-type,mat-header-cell:first-of-type,mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] mat-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}mat-cell:last-of-type,mat-header-cell:last-of-type,mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] mat-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}mat-cell,mat-header-cell,mat-footer-cell{flex:1;display:flex;align-items:center;overflow:hidden;word-wrap:break-word;min-height:inherit}table.mat-table{border-spacing:0}tr.mat-header-row{height:56px}tr.mat-row,tr.mat-footer-row{height:48px}th.mat-header-cell{text-align:left}[dir=rtl] th.mat-header-cell{text-align:right}th.mat-header-cell,td.mat-cell,td.mat-footer-cell{padding:0;border-bottom-width:1px;border-bottom-style:solid}th.mat-header-cell:first-of-type,td.mat-cell:first-of-type,td.mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] th.mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}th.mat-header-cell:last-of-type,td.mat-cell:last-of-type,td.mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] th.mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}.mat-table-sticky{position:-webkit-sticky;position:sticky}.mat-table-fixed-layout{table-layout:fixed}\n"]
+                styles: ["mat-table{display:block}mat-header-row{min-height:56px}mat-row,mat-footer-row{min-height:48px}mat-row,mat-header-row,mat-footer-row{display:flex;border-width:0;border-bottom-width:1px;border-style:solid;align-items:center;box-sizing:border-box}mat-row::after,mat-header-row::after,mat-footer-row::after{display:inline-block;min-height:inherit;content:\"\"}mat-cell:first-of-type,mat-header-cell:first-of-type,mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] mat-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}mat-cell:last-of-type,mat-header-cell:last-of-type,mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] mat-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}mat-cell,mat-header-cell,mat-footer-cell{flex:1;display:flex;align-items:center;overflow:hidden;word-wrap:break-word;min-height:inherit}table.mat-table{border-spacing:0}tr.mat-header-row{height:56px}tr.mat-row,tr.mat-footer-row{height:48px}th.mat-header-cell{text-align:left}[dir=rtl] th.mat-header-cell{text-align:right}th.mat-header-cell,td.mat-cell,td.mat-footer-cell{padding:0;border-bottom-width:1px;border-bottom-style:solid}th.mat-header-cell:first-of-type,td.mat-cell:first-of-type,td.mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] th.mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}th.mat-header-cell:last-of-type,td.mat-cell:last-of-type,td.mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] th.mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}.mat-table-sticky{position:-webkit-sticky !important;position:sticky !important}.mat-table-fixed-layout{table-layout:fixed}\n"]
             }]
     }], null, null); })();
 
@@ -149,7 +150,7 @@ class MatCellDef extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkCel
 MatCellDef.ɵfac = function MatCellDef_Factory(t) { return ɵMatCellDef_BaseFactory(t || MatCellDef); };
 MatCellDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatCellDef, selectors: [["", "matCellDef", ""]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkCellDef"], useExisting: MatCellDef }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatCellDef_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatCellDef);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatCellDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatCellDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[matCellDef]',
@@ -165,7 +166,7 @@ class MatHeaderCellDef extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["
 MatHeaderCellDef.ɵfac = function MatHeaderCellDef_Factory(t) { return ɵMatHeaderCellDef_BaseFactory(t || MatHeaderCellDef); };
 MatHeaderCellDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatHeaderCellDef, selectors: [["", "matHeaderCellDef", ""]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkHeaderCellDef"], useExisting: MatHeaderCellDef }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatHeaderCellDef_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatHeaderCellDef);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatHeaderCellDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatHeaderCellDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[matHeaderCellDef]',
@@ -181,7 +182,7 @@ class MatFooterCellDef extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["
 MatFooterCellDef.ɵfac = function MatFooterCellDef_Factory(t) { return ɵMatFooterCellDef_BaseFactory(t || MatFooterCellDef); };
 MatFooterCellDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatFooterCellDef, selectors: [["", "matFooterCellDef", ""]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkFooterCellDef"], useExisting: MatFooterCellDef }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatFooterCellDef_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatFooterCellDef);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatFooterCellDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatFooterCellDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[matFooterCellDef]',
@@ -216,7 +217,7 @@ MatColumnDef.propDecorators = {
     name: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matColumnDef',] }]
 };
 const ɵMatColumnDef_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatColumnDef);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatColumnDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatColumnDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[matColumnDef]',
@@ -236,7 +237,7 @@ class MatHeaderCell extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["Cdk
 MatHeaderCell.ɵfac = function MatHeaderCell_Factory(t) { return ɵMatHeaderCell_BaseFactory(t || MatHeaderCell); };
 MatHeaderCell.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatHeaderCell, selectors: [["mat-header-cell"], ["th", "mat-header-cell", ""]], hostAttrs: ["role", "columnheader", 1, "mat-header-cell"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatHeaderCell_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatHeaderCell);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatHeaderCell, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatHeaderCell, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: 'mat-header-cell, th[mat-header-cell]',
@@ -252,7 +253,7 @@ class MatFooterCell extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["Cdk
 MatFooterCell.ɵfac = function MatFooterCell_Factory(t) { return ɵMatFooterCell_BaseFactory(t || MatFooterCell); };
 MatFooterCell.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatFooterCell, selectors: [["mat-footer-cell"], ["td", "mat-footer-cell", ""]], hostAttrs: ["role", "gridcell", 1, "mat-footer-cell"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatFooterCell_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatFooterCell);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatFooterCell, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatFooterCell, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: 'mat-footer-cell, td[mat-footer-cell]',
@@ -268,7 +269,7 @@ class MatCell extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkCell"]
 MatCell.ɵfac = function MatCell_Factory(t) { return ɵMatCell_BaseFactory(t || MatCell); };
 MatCell.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatCell, selectors: [["mat-cell"], ["td", "mat-cell", ""]], hostAttrs: ["role", "gridcell", 1, "mat-cell"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatCell_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatCell);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatCell, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatCell, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: 'mat-cell, td[mat-cell]',
@@ -295,7 +296,7 @@ class MatHeaderRowDef extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["C
 MatHeaderRowDef.ɵfac = function MatHeaderRowDef_Factory(t) { return ɵMatHeaderRowDef_BaseFactory(t || MatHeaderRowDef); };
 MatHeaderRowDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatHeaderRowDef, selectors: [["", "matHeaderRowDef", ""]], inputs: { columns: ["matHeaderRowDef", "columns"], sticky: ["matHeaderRowDefSticky", "sticky"] }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkHeaderRowDef"], useExisting: MatHeaderRowDef }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatHeaderRowDef_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatHeaderRowDef);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatHeaderRowDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatHeaderRowDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[matHeaderRowDef]',
@@ -312,7 +313,7 @@ class MatFooterRowDef extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["C
 MatFooterRowDef.ɵfac = function MatFooterRowDef_Factory(t) { return ɵMatFooterRowDef_BaseFactory(t || MatFooterRowDef); };
 MatFooterRowDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatFooterRowDef, selectors: [["", "matFooterRowDef", ""]], inputs: { columns: ["matFooterRowDef", "columns"], sticky: ["matFooterRowDefSticky", "sticky"] }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkFooterRowDef"], useExisting: MatFooterRowDef }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatFooterRowDef_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatFooterRowDef);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatFooterRowDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatFooterRowDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[matFooterRowDef]',
@@ -330,7 +331,7 @@ class MatRowDef extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkRowD
 MatRowDef.ɵfac = function MatRowDef_Factory(t) { return ɵMatRowDef_BaseFactory(t || MatRowDef); };
 MatRowDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatRowDef, selectors: [["", "matRowDef", ""]], inputs: { columns: ["matRowDefColumns", "columns"], when: ["matRowDefWhen", "when"] }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkRowDef"], useExisting: MatRowDef }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatRowDef_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatRowDef);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRowDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRowDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[matRowDef]',
@@ -346,7 +347,7 @@ MatHeaderRow.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](0, 0);
     } }, directives: [_angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkCellOutlet"]], encapsulation: 2 });
 const ɵMatHeaderRow_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatHeaderRow);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatHeaderRow, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatHeaderRow, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'mat-header-row, tr[mat-header-row]',
@@ -371,7 +372,7 @@ MatFooterRow.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](0, 0);
     } }, directives: [_angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkCellOutlet"]], encapsulation: 2 });
 const ɵMatFooterRow_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatFooterRow);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatFooterRow, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatFooterRow, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'mat-footer-row, tr[mat-footer-row]',
@@ -396,7 +397,7 @@ MatRow.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](0, 0);
     } }, directives: [_angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkCellOutlet"]], encapsulation: 2 });
 const ɵMatRow_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatRow);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRow, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRow, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'mat-row, tr[mat-row]',
@@ -419,7 +420,7 @@ class MatNoDataRow extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkN
 MatNoDataRow.ɵfac = function MatNoDataRow_Factory(t) { return ɵMatNoDataRow_BaseFactory(t || MatNoDataRow); };
 MatNoDataRow.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatNoDataRow, selectors: [["ng-template", "matNoDataRow", ""]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkNoDataRow"], useExisting: MatNoDataRow }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
 const ɵMatNoDataRow_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatNoDataRow);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatNoDataRow, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatNoDataRow, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: 'ng-template[matNoDataRow]',
@@ -453,7 +454,7 @@ MatTextColumn.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
     } }, directives: [MatColumnDef, MatHeaderCellDef, MatCellDef, MatHeaderCell, MatCell], encapsulation: 2 });
 const ɵMatTextColumn_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatTextColumn);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTextColumn, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTextColumn, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'mat-text-column',
@@ -516,7 +517,7 @@ MatTableModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInj
         ], _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatTableModule, { declarations: function () { return [MatTable, MatHeaderCellDef, MatHeaderRowDef, MatColumnDef, MatCellDef, MatRowDef, MatFooterCellDef, MatFooterRowDef, MatHeaderCell, MatCell, MatFooterCell, MatHeaderRow, MatRow, MatFooterRow, MatNoDataRow, MatTextColumn]; }, imports: function () { return [_angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkTableModule"],
         _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"]]; }, exports: function () { return [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], MatTable, MatHeaderCellDef, MatHeaderRowDef, MatColumnDef, MatCellDef, MatRowDef, MatFooterCellDef, MatFooterRowDef, MatHeaderCell, MatCell, MatFooterCell, MatHeaderRow, MatRow, MatFooterRow, MatNoDataRow, MatTextColumn]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTableModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTableModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 imports: [
@@ -540,20 +541,8 @@ MatTableModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInj
  * flaky browser support and the value not being defined in Closure's typings.
  */
 const MAX_SAFE_INTEGER = 9007199254740991;
-/**
- * Data source that accepts a client-side data array and includes native support of filtering,
- * sorting (using MatSort), and pagination (using MatPaginator).
- *
- * Allows for sort customization by overriding sortingDataAccessor, which defines how data
- * properties are accessed. Also allows for filter customization by overriding filterTermAccessor,
- * which defines how row data is converted to a string for filter matching.
- *
- * **Note:** This class is meant to be a simple data source to help you get started. As such
- * it isn't equipped to handle some more advanced cases like robust i18n support or server-side
- * interactions. If your app needs to support more advanced use cases, consider implementing your
- * own `DataSource`.
- */
-class MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["DataSource"] {
+/** Shared base class with MDC-based implementation. */
+class _MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["DataSource"] {
     constructor(initialData = []) {
         super();
         /** Stream emitting render data to the table (depends on ordered data changes). */
@@ -566,7 +555,7 @@ class MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__
          * Subscription to the changes that should trigger an update to the table's rendered rows, such
          * as filtering, sorting, pagination, or base data changes.
          */
-        this._renderChangesSubscription = rxjs__WEBPACK_IMPORTED_MODULE_5__["Subscription"].EMPTY;
+        this._renderChangesSubscription = null;
         /**
          * Data accessor function that is used for accessing data properties for sorting through
          * the default sortData function.
@@ -707,6 +696,7 @@ class MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__
      * the provided base data and send it to the table for rendering.
      */
     _updateChangeSubscription() {
+        var _a;
         // Sorting and/or pagination should be watched if MatSort and/or MatPaginator are provided.
         // The events should emit whenever the component emits a change or initializes, or if no
         // component is provided, a stream with just a null event should be provided.
@@ -730,7 +720,7 @@ class MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__
         const paginatedData = Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["combineLatest"])([orderedData, pageChange])
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(([data]) => this._pageData(data)));
         // Watched for paged data changes and send the result to the table to render.
-        this._renderChangesSubscription.unsubscribe();
+        (_a = this._renderChangesSubscription) === null || _a === void 0 ? void 0 : _a.unsubscribe();
         this._renderChangesSubscription = paginatedData.subscribe(data => this._renderData.next(data));
     }
     /**
@@ -801,12 +791,36 @@ class MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__
      * Used by the MatTable. Called when it connects to the data source.
      * @docs-private
      */
-    connect() { return this._renderData; }
+    connect() {
+        if (!this._renderChangesSubscription) {
+            this._updateChangeSubscription();
+        }
+        return this._renderData;
+    }
     /**
-     * Used by the MatTable. Called when it is destroyed. No-op.
+     * Used by the MatTable. Called when it disconnects from the data source.
      * @docs-private
      */
-    disconnect() { }
+    disconnect() {
+        var _a;
+        (_a = this._renderChangesSubscription) === null || _a === void 0 ? void 0 : _a.unsubscribe();
+        this._renderChangesSubscription = null;
+    }
+}
+/**
+ * Data source that accepts a client-side data array and includes native support of filtering,
+ * sorting (using MatSort), and pagination (using MatPaginator).
+ *
+ * Allows for sort customization by overriding sortingDataAccessor, which defines how data
+ * properties are accessed. Also allows for filter customization by overriding filterTermAccessor,
+ * which defines how row data is converted to a string for filter matching.
+ *
+ * **Note:** This class is meant to be a simple data source to help you get started. As such
+ * it isn't equipped to handle some more advanced cases like robust i18n support or server-side
+ * interactions. If your app needs to support more advanced use cases, consider implementing your
+ * own `DataSource`.
+ */
+class MatTableDataSource extends _MatTableDataSource {
 }
 
 /**
@@ -3200,7 +3214,7 @@ var redefine = __webpack_require__(/*! ../internals/redefine */ "busE");
 var toString = __webpack_require__(/*! ../internals/object-to-string */ "sEFX");
 
 // `Object.prototype.toString` method
-// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+// https://tc39.es/ecma262/#sec-object.prototype.tostring
 if (!TO_STRING_TAG_SUPPORT) {
   redefine(Object.prototype, 'toString', toString, { unsafe: true });
 }
@@ -3499,13 +3513,14 @@ class _RecycleViewRepeaterStrategy {
         for (const view of this._viewCache) {
             view.destroy();
         }
+        this._viewCache = [];
     }
     /**
      * Inserts a view for a new item, either from the cache or by creating a new
      * one. Returns `undefined` if the item was inserted into a cached view.
      */
     _insertView(viewArgsFactory, currentIndex, viewContainerRef, value) {
-        let cachedView = this._insertViewFromCache(currentIndex, viewContainerRef);
+        const cachedView = this._insertViewFromCache(currentIndex, viewContainerRef);
         if (cachedView) {
             cachedView.context.$implicit = value;
             return undefined;
@@ -3515,7 +3530,7 @@ class _RecycleViewRepeaterStrategy {
     }
     /** Detaches the view at the given index and inserts into the view cache. */
     _detachAndCacheView(index, viewContainerRef) {
-        const detachedView = this._detachView(index, viewContainerRef);
+        const detachedView = viewContainerRef.detach(index);
         this._maybeCacheView(detachedView, viewContainerRef);
     }
     /** Moves view at the previous index to the current index. */
@@ -3554,10 +3569,6 @@ class _RecycleViewRepeaterStrategy {
             viewContainerRef.insert(cachedView, index);
         }
         return cachedView || null;
-    }
-    /** Detaches the embedded view at the given index. */
-    _detachView(index, viewContainerRef) {
-        return viewContainerRef.detach(index);
     }
 }
 
@@ -3770,7 +3781,7 @@ class UniqueSelectionDispatcher {
 }
 UniqueSelectionDispatcher.ɵfac = function UniqueSelectionDispatcher_Factory(t) { return new (t || UniqueSelectionDispatcher)(); };
 UniqueSelectionDispatcher.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function UniqueSelectionDispatcher_Factory() { return new UniqueSelectionDispatcher(); }, token: UniqueSelectionDispatcher, providedIn: "root" });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](UniqueSelectionDispatcher, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](UniqueSelectionDispatcher, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return []; }, null); })();
@@ -4102,7 +4113,7 @@ var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 var NASHORN_BUG = getOwnPropertyDescriptor && !nativePropertyIsEnumerable.call({ 1: 2 }, 1);
 
 // `Object.prototype.propertyIsEnumerable` method implementation
-// https://tc39.github.io/ecma262/#sec-object.prototype.propertyisenumerable
+// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
 exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
   var descriptor = getOwnPropertyDescriptor(this, V);
   return !!descriptor && descriptor.enumerable;
@@ -4264,7 +4275,7 @@ var anObject = __webpack_require__(/*! ../internals/an-object */ "glrk");
 var aPossiblePrototype = __webpack_require__(/*! ../internals/a-possible-prototype */ "O741");
 
 // `Object.setPrototypeOf` method
-// https://tc39.github.io/ecma262/#sec-object.setprototypeof
+// https://tc39.es/ecma262/#sec-object.setprototypeof
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
@@ -5032,10 +5043,10 @@ var createMethod = function (IS_RIGHT) {
 
 module.exports = {
   // `Array.prototype.reduce` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.reduce
+  // https://tc39.es/ecma262/#sec-array.prototype.reduce
   left: createMethod(false),
   // `Array.prototype.reduceRight` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.reduceright
+  // https://tc39.es/ecma262/#sec-array.prototype.reduceright
   right: createMethod(true)
 };
 
@@ -6359,7 +6370,7 @@ var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('map');
 var USES_TO_LENGTH = arrayMethodUsesToLength('map');
 
 // `Array.prototype.map` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.map
+// https://tc39.es/ecma262/#sec-array.prototype.map
 // with adding support of @@species
 $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
   map: function map(callbackfn /* , thisArg */) {
@@ -7017,7 +7028,7 @@ module.exports =
   check(typeof self == 'object' && self) ||
   check(typeof global == 'object' && global) ||
   // eslint-disable-next-line no-new-func
-  Function('return this')();
+  (function () { return this; })() || Function('return this')();
 
 
 /***/ }),
@@ -7466,7 +7477,7 @@ var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-intern
 var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "eDl+");
 
 // `Object.keys` method
-// https://tc39.github.io/ecma262/#sec-object.keys
+// https://tc39.es/ecma262/#sec-object.keys
 module.exports = Object.keys || function keys(O) {
   return internalObjectKeys(O, enumBugKeys);
 };
@@ -9123,7 +9134,7 @@ var IE_PROTO = sharedKey('IE_PROTO');
 var ObjectPrototype = Object.prototype;
 
 // `Object.getPrototypeOf` method
-// https://tc39.github.io/ecma262/#sec-object.getprototypeof
+// https://tc39.es/ecma262/#sec-object.getprototypeof
 module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
   O = toObject(O);
   if (has(O, IE_PROTO)) return O[IE_PROTO];
@@ -9808,15 +9819,15 @@ var setInternalState = InternalStateModule.set;
 var getInternalState = InternalStateModule.getterFor(ARRAY_ITERATOR);
 
 // `Array.prototype.entries` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.entries
+// https://tc39.es/ecma262/#sec-array.prototype.entries
 // `Array.prototype.keys` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.keys
+// https://tc39.es/ecma262/#sec-array.prototype.keys
 // `Array.prototype.values` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.values
+// https://tc39.es/ecma262/#sec-array.prototype.values
 // `Array.prototype[@@iterator]` method
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@iterator
+// https://tc39.es/ecma262/#sec-array.prototype-@@iterator
 // `CreateArrayIterator` internal method
-// https://tc39.github.io/ecma262/#sec-createarrayiterator
+// https://tc39.es/ecma262/#sec-createarrayiterator
 module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
   setInternalState(this, {
     type: ARRAY_ITERATOR,
@@ -9825,7 +9836,7 @@ module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
     kind: kind                         // kind
   });
 // `%ArrayIteratorPrototype%.next` method
-// https://tc39.github.io/ecma262/#sec-%arrayiteratorprototype%.next
+// https://tc39.es/ecma262/#sec-%arrayiteratorprototype%.next
 }, function () {
   var state = getInternalState(this);
   var target = state.target;
@@ -9841,11 +9852,11 @@ module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
 }, 'values');
 
 // argumentsList[@@iterator] is %ArrayProto_values%
-// https://tc39.github.io/ecma262/#sec-createunmappedargumentsobject
-// https://tc39.github.io/ecma262/#sec-createmappedargumentsobject
+// https://tc39.es/ecma262/#sec-createunmappedargumentsobject
+// https://tc39.es/ecma262/#sec-createmappedargumentsobject
 Iterators.Arguments = Iterators.Array;
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
@@ -10955,7 +10966,6 @@ var setSpecies = __webpack_require__(/*! ../internals/set-species */ "JiZb");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "hh1v");
 var aFunction = __webpack_require__(/*! ../internals/a-function */ "HAuM");
 var anInstance = __webpack_require__(/*! ../internals/an-instance */ "GarU");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "xrYK");
 var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "iSVu");
 var iterate = __webpack_require__(/*! ../internals/iterate */ "ImZN");
 var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "HH4o");
@@ -10969,6 +10979,7 @@ var perform = __webpack_require__(/*! ../internals/perform */ "5mdu");
 var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "afO8");
 var isForced = __webpack_require__(/*! ../internals/is-forced */ "lMq5");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "tiKp");
+var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "YF1G");
 var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "LQDL");
 
 var SPECIES = wellKnownSymbol('species');
@@ -10983,8 +10994,8 @@ var process = global.process;
 var $fetch = getBuiltIn('fetch');
 var newPromiseCapability = newPromiseCapabilityModule.f;
 var newGenericPromiseCapability = newPromiseCapability;
-var IS_NODE = classof(process) == 'process';
 var DISPATCH_EVENT = !!(document && document.createEvent && global.dispatchEvent);
+var NATIVE_REJECTION_EVENT = typeof PromiseRejectionEvent == 'function';
 var UNHANDLED_REJECTION = 'unhandledrejection';
 var REJECTION_HANDLED = 'rejectionhandled';
 var PENDING = 0;
@@ -11002,7 +11013,7 @@ var FORCED = isForced(PROMISE, function () {
     // We can't detect it synchronously, so just check versions
     if (V8_VERSION === 66) return true;
     // Unhandled rejections tracking support, NodeJS Promise without it fails @@species test
-    if (!IS_NODE && typeof PromiseRejectionEvent != 'function') return true;
+    if (!IS_NODE && !NATIVE_REJECTION_EVENT) return true;
   }
   // We need Promise#finally in the pure version for preventing prototype pollution
   if (IS_PURE && !PromiseConstructor.prototype['finally']) return true;
@@ -11030,7 +11041,7 @@ var isThenable = function (it) {
   return isObject(it) && typeof (then = it.then) == 'function' ? then : false;
 };
 
-var notify = function (promise, state, isReject) {
+var notify = function (state, isReject) {
   if (state.notified) return;
   state.notified = true;
   var chain = state.reactions;
@@ -11049,7 +11060,7 @@ var notify = function (promise, state, isReject) {
       try {
         if (handler) {
           if (!ok) {
-            if (state.rejection === UNHANDLED) onHandleUnhandled(promise, state);
+            if (state.rejection === UNHANDLED) onHandleUnhandled(state);
             state.rejection = HANDLED;
           }
           if (handler === true) result = value;
@@ -11074,7 +11085,7 @@ var notify = function (promise, state, isReject) {
     }
     state.reactions = [];
     state.notified = false;
-    if (isReject && !state.rejection) onUnhandled(promise, state);
+    if (isReject && !state.rejection) onUnhandled(state);
   });
 };
 
@@ -11087,12 +11098,13 @@ var dispatchEvent = function (name, promise, reason) {
     event.initEvent(name, false, true);
     global.dispatchEvent(event);
   } else event = { promise: promise, reason: reason };
-  if (handler = global['on' + name]) handler(event);
+  if (!NATIVE_REJECTION_EVENT && (handler = global['on' + name])) handler(event);
   else if (name === UNHANDLED_REJECTION) hostReportErrors('Unhandled promise rejection', reason);
 };
 
-var onUnhandled = function (promise, state) {
+var onUnhandled = function (state) {
   task.call(global, function () {
+    var promise = state.facade;
     var value = state.value;
     var IS_UNHANDLED = isUnhandled(state);
     var result;
@@ -11113,55 +11125,56 @@ var isUnhandled = function (state) {
   return state.rejection !== HANDLED && !state.parent;
 };
 
-var onHandleUnhandled = function (promise, state) {
+var onHandleUnhandled = function (state) {
   task.call(global, function () {
+    var promise = state.facade;
     if (IS_NODE) {
       process.emit('rejectionHandled', promise);
     } else dispatchEvent(REJECTION_HANDLED, promise, state.value);
   });
 };
 
-var bind = function (fn, promise, state, unwrap) {
+var bind = function (fn, state, unwrap) {
   return function (value) {
-    fn(promise, state, value, unwrap);
+    fn(state, value, unwrap);
   };
 };
 
-var internalReject = function (promise, state, value, unwrap) {
+var internalReject = function (state, value, unwrap) {
   if (state.done) return;
   state.done = true;
   if (unwrap) state = unwrap;
   state.value = value;
   state.state = REJECTED;
-  notify(promise, state, true);
+  notify(state, true);
 };
 
-var internalResolve = function (promise, state, value, unwrap) {
+var internalResolve = function (state, value, unwrap) {
   if (state.done) return;
   state.done = true;
   if (unwrap) state = unwrap;
   try {
-    if (promise === value) throw TypeError("Promise can't be resolved itself");
+    if (state.facade === value) throw TypeError("Promise can't be resolved itself");
     var then = isThenable(value);
     if (then) {
       microtask(function () {
         var wrapper = { done: false };
         try {
           then.call(value,
-            bind(internalResolve, promise, wrapper, state),
-            bind(internalReject, promise, wrapper, state)
+            bind(internalResolve, wrapper, state),
+            bind(internalReject, wrapper, state)
           );
         } catch (error) {
-          internalReject(promise, wrapper, error, state);
+          internalReject(wrapper, error, state);
         }
       });
     } else {
       state.value = value;
       state.state = FULFILLED;
-      notify(promise, state, false);
+      notify(state, false);
     }
   } catch (error) {
-    internalReject(promise, { done: false }, error, state);
+    internalReject({ done: false }, error, state);
   }
 };
 
@@ -11174,9 +11187,9 @@ if (FORCED) {
     Internal.call(this);
     var state = getInternalState(this);
     try {
-      executor(bind(internalResolve, this, state), bind(internalReject, this, state));
+      executor(bind(internalResolve, state), bind(internalReject, state));
     } catch (error) {
-      internalReject(this, state, error);
+      internalReject(state, error);
     }
   };
   // eslint-disable-next-line no-unused-vars
@@ -11194,7 +11207,7 @@ if (FORCED) {
   };
   Internal.prototype = redefineAll(PromiseConstructor.prototype, {
     // `Promise.prototype.then` method
-    // https://tc39.github.io/ecma262/#sec-promise.prototype.then
+    // https://tc39.es/ecma262/#sec-promise.prototype.then
     then: function then(onFulfilled, onRejected) {
       var state = getInternalPromiseState(this);
       var reaction = newPromiseCapability(speciesConstructor(this, PromiseConstructor));
@@ -11203,11 +11216,11 @@ if (FORCED) {
       reaction.domain = IS_NODE ? process.domain : undefined;
       state.parent = true;
       state.reactions.push(reaction);
-      if (state.state != PENDING) notify(this, state, false);
+      if (state.state != PENDING) notify(state, false);
       return reaction.promise;
     },
     // `Promise.prototype.catch` method
-    // https://tc39.github.io/ecma262/#sec-promise.prototype.catch
+    // https://tc39.es/ecma262/#sec-promise.prototype.catch
     'catch': function (onRejected) {
       return this.then(undefined, onRejected);
     }
@@ -11216,8 +11229,8 @@ if (FORCED) {
     var promise = new Internal();
     var state = getInternalState(promise);
     this.promise = promise;
-    this.resolve = bind(internalResolve, promise, state);
-    this.reject = bind(internalReject, promise, state);
+    this.resolve = bind(internalResolve, state);
+    this.reject = bind(internalReject, state);
   };
   newPromiseCapabilityModule.f = newPromiseCapability = function (C) {
     return C === PromiseConstructor || C === PromiseWrapper
@@ -11259,7 +11272,7 @@ PromiseWrapper = getBuiltIn(PROMISE);
 // statics
 $({ target: PROMISE, stat: true, forced: FORCED }, {
   // `Promise.reject` method
-  // https://tc39.github.io/ecma262/#sec-promise.reject
+  // https://tc39.es/ecma262/#sec-promise.reject
   reject: function reject(r) {
     var capability = newPromiseCapability(this);
     capability.reject.call(undefined, r);
@@ -11269,7 +11282,7 @@ $({ target: PROMISE, stat: true, forced: FORCED }, {
 
 $({ target: PROMISE, stat: true, forced: IS_PURE || FORCED }, {
   // `Promise.resolve` method
-  // https://tc39.github.io/ecma262/#sec-promise.resolve
+  // https://tc39.es/ecma262/#sec-promise.resolve
   resolve: function resolve(x) {
     return promiseResolve(IS_PURE && this === PromiseWrapper ? PromiseConstructor : this, x);
   }
@@ -11277,7 +11290,7 @@ $({ target: PROMISE, stat: true, forced: IS_PURE || FORCED }, {
 
 $({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
   // `Promise.all` method
-  // https://tc39.github.io/ecma262/#sec-promise.all
+  // https://tc39.es/ecma262/#sec-promise.all
   all: function all(iterable) {
     var C = this;
     var capability = newPromiseCapability(C);
@@ -11306,7 +11319,7 @@ $({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
     return capability.promise;
   },
   // `Promise.race` method
-  // https://tc39.github.io/ecma262/#sec-promise.race
+  // https://tc39.es/ecma262/#sec-promise.race
   race: function race(iterable) {
     var C = this;
     var capability = newPromiseCapability(C);
@@ -11762,7 +11775,7 @@ function zipObject(props, values) {
 var classof = __webpack_require__(/*! ../internals/classof-raw */ "xrYK");
 
 // `IsArray` abstract operation
-// https://tc39.github.io/ecma262/#sec-isarray
+// https://tc39.es/ecma262/#sec-isarray
 module.exports = Array.isArray || function isArray(arg) {
   return classof(arg) == 'Array';
 };
@@ -16466,7 +16479,7 @@ var $ = __webpack_require__(/*! ../internals/export */ "I+eb");
 var $values = __webpack_require__(/*! ../internals/object-to-array */ "b1O7").values;
 
 // `Object.values` method
-// https://tc39.github.io/ecma262/#sec-object.values
+// https://tc39.es/ecma262/#sec-object.values
 $({ target: 'Object', stat: true }, {
   values: function values(O) {
     return $values(O);
@@ -17204,7 +17217,7 @@ var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "DPs
 var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 
 // `Object.getOwnPropertyDescriptor` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
 exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
   O = toIndexedObject(O);
   P = toPrimitive(P, true);
@@ -19133,7 +19146,7 @@ var nativeDateToString = DatePrototype[TO_STRING];
 var getTime = DatePrototype.getTime;
 
 // `Date.prototype.toString` method
-// https://tc39.github.io/ecma262/#sec-date.prototype.tostring
+// https://tc39.es/ecma262/#sec-date.prototype.tostring
 if (new Date(NaN) + '' != INVALID_DATE) {
   redefine(DatePrototype, TO_STRING, function toString() {
     var value = getTime.call(this);
@@ -20270,13 +20283,18 @@ var $ = __webpack_require__(/*! ../internals/export */ "I+eb");
 var $reduce = __webpack_require__(/*! ../internals/array-reduce */ "1Y/n").left;
 var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "pkCn");
 var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "rkAj");
+var CHROME_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "LQDL");
+var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "YF1G");
 
 var STRICT_METHOD = arrayMethodIsStrict('reduce');
 var USES_TO_LENGTH = arrayMethodUsesToLength('reduce', { 1: 0 });
+// Chrome 80-82 has a critical bug
+// https://bugs.chromium.org/p/chromium/issues/detail?id=1049982
+var CHROME_BUG = !IS_NODE && CHROME_VERSION > 79 && CHROME_VERSION < 83;
 
 // `Array.prototype.reduce` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.reduce
-$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
+// https://tc39.es/ecma262/#sec-array.prototype.reduce
+$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH || CHROME_BUG }, {
   reduce: function reduce(callbackfn /* , initialValue */) {
     return $reduce(this, callbackfn, arguments.length, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -20893,7 +20911,7 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
 
   return [
     // `String.prototype.split` method
-    // https://tc39.github.io/ecma262/#sec-string.prototype.split
+    // https://tc39.es/ecma262/#sec-string.prototype.split
     function split(separator, limit) {
       var O = requireObjectCoercible(this);
       var splitter = separator == undefined ? undefined : separator[SPLIT];
@@ -20902,7 +20920,7 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
         : internalSplit.call(String(O), separator, limit);
     },
     // `RegExp.prototype[@@split]` method
-    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@split
+    // https://tc39.es/ecma262/#sec-regexp.prototype-@@split
     //
     // NOTE: This cannot be properly polyfilled in engines that don't support
     // the 'y' flag.
@@ -21259,7 +21277,7 @@ var STRICT_METHOD = arrayMethodIsStrict('forEach');
 var USES_TO_LENGTH = arrayMethodUsesToLength('forEach');
 
 // `Array.prototype.forEach` method implementation
-// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+// https://tc39.es/ecma262/#sec-array.prototype.foreach
 module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callbackfn /* , thisArg */) {
   return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
 } : [].forEach;
@@ -21655,13 +21673,22 @@ __webpack_require__.r(__webpack_exports__);
 const _c0 = ["*", [["mat-option"], ["ng-container"]]];
 const _c1 = ["*", "mat-option, ng-container"];
 function MatOption_mat_pseudo_checkbox_0_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-pseudo-checkbox", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-pseudo-checkbox", 4);
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("state", ctx_r0.selected ? "checked" : "unchecked")("disabled", ctx_r0.disabled);
 } }
+function MatOption_span_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("(", ctx_r1.group.label, ")");
+} }
 const _c2 = ["*"];
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.0.3');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.1.2');
 
 /**
  * @license
@@ -21695,7 +21722,7 @@ AnimationDurations.EXITING = '195ms';
 // i.e. avoid core to depend on the @angular/material primary entry-point
 // Can be removed once the Material primary entry-point no longer
 // re-exports all secondary entry-points
-const VERSION$1 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.0.3');
+const VERSION$1 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.1.2');
 /** @docs-private */
 function MATERIAL_SANITY_CHECKS_FACTORY() {
     return true;
@@ -21796,7 +21823,7 @@ MatCommonModule.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"],] }] }
 ];
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatCommonModule, { imports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]]; }, exports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatCommonModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatCommonModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 imports: [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]],
@@ -22411,7 +22438,7 @@ NativeDateAdapter.ctorParameters = () => [
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_DATE_LOCALE,] }] },
     { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["Platform"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NativeDateAdapter, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NativeDateAdapter, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: String, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
@@ -22453,7 +22480,7 @@ NativeDateModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineI
         { provide: DateAdapter, useClass: NativeDateAdapter },
     ], imports: [[_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"]]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](NativeDateModule, { imports: function () { return [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"]]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NativeDateModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NativeDateModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 imports: [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"]],
@@ -22468,7 +22495,7 @@ class MatNativeDateModule {
 MatNativeDateModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatNativeDateModule });
 MatNativeDateModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatNativeDateModule_Factory(t) { return new (t || MatNativeDateModule)(); }, providers: [{ provide: MAT_DATE_FORMATS, useValue: ɵ0$1 }], imports: [[NativeDateModule]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatNativeDateModule, { imports: [NativeDateModule] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatNativeDateModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatNativeDateModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 imports: [NativeDateModule],
@@ -22491,7 +22518,7 @@ class ShowOnDirtyErrorStateMatcher {
 }
 ShowOnDirtyErrorStateMatcher.ɵfac = function ShowOnDirtyErrorStateMatcher_Factory(t) { return new (t || ShowOnDirtyErrorStateMatcher)(); };
 ShowOnDirtyErrorStateMatcher.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: ShowOnDirtyErrorStateMatcher, factory: ShowOnDirtyErrorStateMatcher.ɵfac });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ShowOnDirtyErrorStateMatcher, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ShowOnDirtyErrorStateMatcher, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], null, null); })();
 /** Provider that defines how form controls behave with regards to displaying error messages. */
@@ -22502,7 +22529,7 @@ class ErrorStateMatcher {
 }
 ErrorStateMatcher.ɵfac = function ErrorStateMatcher_Factory(t) { return new (t || ErrorStateMatcher)(); };
 ErrorStateMatcher.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function ErrorStateMatcher_Factory() { return new ErrorStateMatcher(); }, token: ErrorStateMatcher, providedIn: "root" });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ErrorStateMatcher, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ErrorStateMatcher, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], null, null); })();
@@ -22523,7 +22550,7 @@ class MatLine {
 }
 MatLine.ɵfac = function MatLine_Factory(t) { return new (t || MatLine)(); };
 MatLine.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatLine, selectors: [["", "mat-line", ""], ["", "matLine", ""]], hostAttrs: [1, "mat-line"] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatLine, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatLine, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[mat-line], [matLine]',
@@ -22559,7 +22586,7 @@ class MatLineModule {
 MatLineModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatLineModule });
 MatLineModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatLineModule_Factory(t) { return new (t || MatLineModule)(); }, imports: [[MatCommonModule], MatCommonModule] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatLineModule, { declarations: [MatLine], imports: [MatCommonModule], exports: [MatLine, MatCommonModule] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatLineModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatLineModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 imports: [MatCommonModule],
@@ -22954,7 +22981,7 @@ MatRipple.propDecorators = {
     disabled: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleDisabled',] }],
     trigger: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleTrigger',] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRipple, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRipple, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[mat-ripple], [matRipple]',
@@ -23009,7 +23036,7 @@ class MatRippleModule {
 MatRippleModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatRippleModule });
 MatRippleModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatRippleModule_Factory(t) { return new (t || MatRippleModule)(); }, imports: [[MatCommonModule, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"]], MatCommonModule] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatRippleModule, { declarations: function () { return [MatRipple]; }, imports: function () { return [MatCommonModule, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"]]; }, exports: function () { return [MatRipple, MatCommonModule]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRippleModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRippleModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 imports: [MatCommonModule, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"]],
@@ -23058,7 +23085,7 @@ MatPseudoCheckbox.propDecorators = {
     state: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
     disabled: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatPseudoCheckbox, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatPseudoCheckbox, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
@@ -23097,7 +23124,7 @@ class MatPseudoCheckboxModule {
 MatPseudoCheckboxModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatPseudoCheckboxModule });
 MatPseudoCheckboxModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatPseudoCheckboxModule_Factory(t) { return new (t || MatPseudoCheckboxModule)(); }, imports: [[MatCommonModule]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatPseudoCheckboxModule, { declarations: [MatPseudoCheckbox], imports: [MatCommonModule], exports: [MatPseudoCheckbox] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatPseudoCheckboxModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatPseudoCheckboxModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 imports: [MatCommonModule],
@@ -23113,6 +23140,37 @@ MatPseudoCheckboxModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+/**
+ * Injection token used to provide the parent component to options.
+ */
+const MAT_OPTION_PARENT_COMPONENT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_OPTION_PARENT_COMPONENT');
+
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+// Notes on the accessibility pattern used for `mat-optgroup`.
+// The option group has two different "modes": regular and inert. The regular mode uses the
+// recommended a11y pattern which has `role="group"` on the group element with `aria-labelledby`
+// pointing to the label. This works for `mat-select`, but it seems to hit a bug for autocomplete
+// under VoiceOver where the group doesn't get read out at all. The bug appears to be that if
+// there's __any__ a11y-related attribute on the group (e.g. `role` or `aria-labelledby`),
+// VoiceOver on Safari won't read it out.
+// We've introduced the `inert` mode as a workaround. Under this mode, all a11y attributes are
+// removed from the group, and we get the screen reader to read out the group label by mirroring it
+// inside an invisible element in the option. This is sub-optimal, because the screen reader will
+// repeat the group label on each navigation, whereas the default pattern only reads the group when
+// the user enters a new group. The following alternate approaches were considered:
+// 1. Reading out the group label using the `LiveAnnouncer` solves the problem, but we can't control
+//    when the text will be read out so sometimes it comes in too late or never if the user
+//    navigates quickly.
+// 2. `<mat-option aria-describedby="groupLabel"` - This works on Safari, but VoiceOver in Chrome
+//    won't read out the description at all.
+// 3. `<mat-option aria-labelledby="optionLabel groupLabel"` - This works on Chrome, but Safari
+//     doesn't read out the text at all. Furthermore, on
 // Boilerplate for applying mixins to MatOptgroup.
 /** @docs-private */
 class MatOptgroupBase {
@@ -23121,21 +23179,30 @@ const _MatOptgroupMixinBase = mixinDisabled(MatOptgroupBase);
 // Counter for unique group ids.
 let _uniqueOptgroupIdCounter = 0;
 class _MatOptgroupBase extends _MatOptgroupMixinBase {
-    constructor() {
-        super(...arguments);
+    constructor(parent) {
+        var _a;
+        super();
         /** Unique id for the underlying label. */
         this._labelId = `mat-optgroup-label-${_uniqueOptgroupIdCounter++}`;
+        this._inert = (_a = parent === null || parent === void 0 ? void 0 : parent.inertGroups) !== null && _a !== void 0 ? _a : false;
     }
 }
-_MatOptgroupBase.ɵfac = function _MatOptgroupBase_Factory(t) { return ɵ_MatOptgroupBase_BaseFactory(t || _MatOptgroupBase); };
+_MatOptgroupBase.ɵfac = function _MatOptgroupBase_Factory(t) { return new (t || _MatOptgroupBase)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](MAT_OPTION_PARENT_COMPONENT, 8)); };
 _MatOptgroupBase.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: _MatOptgroupBase, inputs: { label: "label" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
+_MatOptgroupBase.ctorParameters = () => [
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_OPTION_PARENT_COMPONENT,] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] }
+];
 _MatOptgroupBase.propDecorators = {
     label: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-const ɵ_MatOptgroupBase_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](_MatOptgroupBase);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](_MatOptgroupBase, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](_MatOptgroupBase, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"]
-    }], null, { label: [{
+    }], function () { return [{ type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [MAT_OPTION_PARENT_COMPONENT]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+            }] }]; }, { label: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }] }); })();
 /**
@@ -23150,8 +23217,8 @@ const MAT_OPTGROUP = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionTo
 class MatOptgroup extends _MatOptgroupBase {
 }
 MatOptgroup.ɵfac = function MatOptgroup_Factory(t) { return ɵMatOptgroup_BaseFactory(t || MatOptgroup); };
-MatOptgroup.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatOptgroup, selectors: [["mat-optgroup"]], hostAttrs: ["role", "group", 1, "mat-optgroup"], hostVars: 4, hostBindings: function MatOptgroup_HostBindings(rf, ctx) { if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("aria-disabled", ctx.disabled.toString())("aria-labelledby", ctx._labelId);
+MatOptgroup.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatOptgroup, selectors: [["mat-optgroup"]], hostAttrs: [1, "mat-optgroup"], hostVars: 5, hostBindings: function MatOptgroup_HostBindings(rf, ctx) { if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("role", ctx._inert ? null : "group")("aria-disabled", ctx._inert ? null : ctx.disabled.toString())("aria-labelledby", ctx._inert ? null : ctx._labelId);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-optgroup-disabled", ctx.disabled);
     } }, inputs: { disabled: "disabled" }, exportAs: ["matOptgroup"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: MAT_OPTGROUP, useExisting: MatOptgroup }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c1, decls: 4, vars: 2, consts: [[1, "mat-optgroup-label", 3, "id"]], template: function MatOptgroup_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"](_c0);
@@ -23166,7 +23233,7 @@ MatOptgroup.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompon
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx.label, " ");
     } }, styles: [".mat-optgroup-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup-label[disabled]{cursor:default}[dir=rtl] .mat-optgroup-label{text-align:right}.mat-optgroup-label .mat-icon{margin-right:16px;vertical-align:middle}.mat-optgroup-label .mat-icon svg{vertical-align:top}[dir=rtl] .mat-optgroup-label .mat-icon{margin-left:16px;margin-right:0}\n"], encapsulation: 2, changeDetection: 0 });
 const ɵMatOptgroup_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatOptgroup);
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOptgroup, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOptgroup, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'mat-optgroup',
@@ -23177,10 +23244,10 @@ const ɵMatOptgroup_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_
                 inputs: ['disabled'],
                 host: {
                     'class': 'mat-optgroup',
-                    'role': 'group',
-                    '[class.mat-optgroup-disabled]': 'disabled',
-                    '[attr.aria-disabled]': 'disabled.toString()',
-                    '[attr.aria-labelledby]': '_labelId'
+                    '[attr.role]': '_inert ? null : "group"',
+                    '[attr.aria-disabled]': '_inert ? null : disabled.toString()',
+                    '[attr.aria-labelledby]': '_inert ? null : _labelId',
+                    '[class.mat-optgroup-disabled]': 'disabled'
                 },
                 providers: [{ provide: MAT_OPTGROUP, useExisting: MatOptgroup }],
                 styles: [".mat-optgroup-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup-label[disabled]{cursor:default}[dir=rtl] .mat-optgroup-label{text-align:right}.mat-optgroup-label .mat-icon{margin-right:16px;vertical-align:middle}.mat-optgroup-label .mat-icon svg{vertical-align:top}[dir=rtl] .mat-optgroup-label .mat-icon{margin-left:16px;margin-right:0}\n"]
@@ -23210,10 +23277,6 @@ class MatOptionSelectionChange {
         this.isUserInput = isUserInput;
     }
 }
-/**
- * Injection token used to provide the parent component to options.
- */
-const MAT_OPTION_PARENT_COMPONENT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_OPTION_PARENT_COMPONENT');
 class _MatOptionBase {
     constructor(_element, _changeDetectorRef, _parent, group) {
         this._element = _element;
@@ -23381,7 +23444,7 @@ _MatOptionBase.propDecorators = {
     disabled: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
     onSelectionChange: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](_MatOptionBase, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](_MatOptionBase, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }, { type: undefined }, { type: _MatOptgroupBase }]; }, { id: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
@@ -23407,25 +23470,28 @@ MatOption.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponen
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵhostProperty"]("id", ctx.id);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("tabindex", ctx._getTabIndex())("aria-selected", ctx._getAriaSelected())("aria-disabled", ctx.disabled.toString());
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-selected", ctx.selected)("mat-option-multiple", ctx.multiple)("mat-active", ctx.active)("mat-option-disabled", ctx.disabled);
-    } }, exportAs: ["matOption"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c2, decls: 4, vars: 3, consts: [["class", "mat-option-pseudo-checkbox", 3, "state", "disabled", 4, "ngIf"], [1, "mat-option-text"], ["mat-ripple", "", 1, "mat-option-ripple", 3, "matRippleTrigger", "matRippleDisabled"], [1, "mat-option-pseudo-checkbox", 3, "state", "disabled"]], template: function MatOption_Template(rf, ctx) { if (rf & 1) {
+    } }, exportAs: ["matOption"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c2, decls: 5, vars: 4, consts: [["class", "mat-option-pseudo-checkbox", 3, "state", "disabled", 4, "ngIf"], [1, "mat-option-text"], ["class", "cdk-visually-hidden", 4, "ngIf"], ["mat-ripple", "", 1, "mat-option-ripple", 3, "matRippleTrigger", "matRippleDisabled"], [1, "mat-option-pseudo-checkbox", 3, "state", "disabled"], [1, "cdk-visually-hidden"]], template: function MatOption_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, MatOption_mat_pseudo_checkbox_0_Template, 1, 2, "mat-pseudo-checkbox", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, MatOption_span_3_Template, 2, 1, "span", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "div", 3);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.multiple);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.group && ctx.group._inert);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matRippleTrigger", ctx._getHostElement())("matRippleDisabled", ctx.disabled || ctx.disableRipple);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], MatRipple, MatPseudoCheckbox], styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.cdk-high-contrast-active .mat-option .mat-option-ripple{opacity:.5}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"], encapsulation: 2, changeDetection: 0 });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], MatRipple, MatPseudoCheckbox], styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.cdk-high-contrast-active .mat-option[aria-disabled=true]{opacity:.5}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"], encapsulation: 2, changeDetection: 0 });
 MatOption.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_OPTION_PARENT_COMPONENT,] }] },
     { type: MatOptgroup, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_OPTGROUP,] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOption, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOption, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'mat-option',
@@ -23444,10 +23510,10 @@ MatOption.ctorParameters = () => [
                     '(keydown)': '_handleKeydown($event)',
                     'class': 'mat-option mat-focus-indicator'
                 },
-                template: "<mat-pseudo-checkbox *ngIf=\"multiple\" class=\"mat-option-pseudo-checkbox\"\n    [state]=\"selected ? 'checked' : 'unchecked'\" [disabled]=\"disabled\"></mat-pseudo-checkbox>\n\n<span class=\"mat-option-text\"><ng-content></ng-content></span>\n\n<div class=\"mat-option-ripple\" mat-ripple\n     [matRippleTrigger]=\"_getHostElement()\"\n     [matRippleDisabled]=\"disabled || disableRipple\">\n</div>\n",
+                template: "<mat-pseudo-checkbox *ngIf=\"multiple\" class=\"mat-option-pseudo-checkbox\"\n    [state]=\"selected ? 'checked' : 'unchecked'\" [disabled]=\"disabled\"></mat-pseudo-checkbox>\n\n<span class=\"mat-option-text\"><ng-content></ng-content></span>\n\n<!-- See a11y notes inside optgroup.ts for context behind this element. -->\n<span class=\"cdk-visually-hidden\" *ngIf=\"group && group._inert\">({{ group.label }})</span>\n\n<div class=\"mat-option-ripple\" mat-ripple\n     [matRippleTrigger]=\"_getHostElement()\"\n     [matRippleDisabled]=\"disabled || disableRipple\">\n</div>\n",
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
-                styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.cdk-high-contrast-active .mat-option .mat-option-ripple{opacity:.5}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"]
+                styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.cdk-high-contrast-active .mat-option[aria-disabled=true]{opacity:.5}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"]
             }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
@@ -23511,7 +23577,7 @@ class MatOptionModule {
 MatOptionModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatOptionModule });
 MatOptionModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatOptionModule_Factory(t) { return new (t || MatOptionModule)(); }, imports: [[MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], MatCommonModule, MatPseudoCheckboxModule]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatOptionModule, { declarations: function () { return [MatOption, MatOptgroup]; }, imports: function () { return [MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], MatCommonModule, MatPseudoCheckboxModule]; }, exports: function () { return [MatOption, MatOptgroup]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOptionModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOptionModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 imports: [MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], MatCommonModule, MatPseudoCheckboxModule],
@@ -23611,7 +23677,7 @@ var classof = __webpack_require__(/*! ./classof-raw */ "xrYK");
 var regexpExec = __webpack_require__(/*! ./regexp-exec */ "kmMV");
 
 // `RegExpExec` abstract operation
-// https://tc39.github.io/ecma262/#sec-regexpexec
+// https://tc39.es/ecma262/#sec-regexpexec
 module.exports = function (R, S) {
   var exec = R.exec;
   if (typeof exec === 'function') {
@@ -24844,63 +24910,63 @@ function baseEvery(collection, predicate) {
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-__webpack_require__(/*! core-js/modules/es.array.is-array */ "J30X");
-__webpack_require__(/*! core-js/modules/es.array.map */ "2B1R");
-__webpack_require__(/*! core-js/modules/es.object.to-string */ "07d7");
-__webpack_require__(/*! core-js/modules/es.promise */ "5s+n");
-__webpack_require__(/*! core-js/modules/web.timers */ "R5XZ");
+__webpack_require__(/*! core-js/modules/es.array.is-array.js */ "J30X");
+__webpack_require__(/*! core-js/modules/es.array.map.js */ "2B1R");
+__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "07d7");
+__webpack_require__(/*! core-js/modules/es.promise.js */ "5s+n");
+__webpack_require__(/*! core-js/modules/web.timers.js */ "R5XZ");
 var _regeneratorRuntime = __webpack_require__(/*! @babel/runtime/regenerator */ "o0o1");
-__webpack_require__(/*! regenerator-runtime/runtime */ "ls82");
+__webpack_require__(/*! regenerator-runtime/runtime.js */ "ls82");
 var _asyncToGenerator = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "yXPU");
 var _defineProperty = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "lSNA");
 var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "cDf5");
 var _classCallCheck = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "lwsE");
 var _createClass = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "W8MJ");
 var uuid = __webpack_require__(/*! uuid/v4 */ "xk4V");
-__webpack_require__(/*! core-js/modules/es.array.concat */ "ma9I");
-__webpack_require__(/*! core-js/modules/es.array.filter */ "TeQF");
-__webpack_require__(/*! core-js/modules/es.array.find */ "fbCW");
-__webpack_require__(/*! core-js/modules/es.array.for-each */ "QWBl");
-__webpack_require__(/*! core-js/modules/es.array.from */ "pjDv");
-__webpack_require__(/*! core-js/modules/es.array.includes */ "yq1k");
-__webpack_require__(/*! core-js/modules/es.array.index-of */ "yXV3");
-__webpack_require__(/*! core-js/modules/es.array.iterator */ "4mDm");
-__webpack_require__(/*! core-js/modules/es.array.join */ "oVuX");
-__webpack_require__(/*! core-js/modules/es.array.reduce */ "E9XD");
-__webpack_require__(/*! core-js/modules/es.date.to-string */ "DQNa");
-__webpack_require__(/*! core-js/modules/es.map */ "Tskq");
-__webpack_require__(/*! core-js/modules/es.number.constructor */ "qePV");
-__webpack_require__(/*! core-js/modules/es.number.is-nan */ "kSko");
-__webpack_require__(/*! core-js/modules/es.number.parse-float */ "w1rZ");
-__webpack_require__(/*! core-js/modules/es.object.assign */ "zKZe");
-__webpack_require__(/*! core-js/modules/es.object.keys */ "tkto");
-__webpack_require__(/*! core-js/modules/es.object.values */ "B6y2");
-__webpack_require__(/*! core-js/modules/es.regexp.exec */ "rB9j");
-__webpack_require__(/*! core-js/modules/es.regexp.to-string */ "JfAA");
-__webpack_require__(/*! core-js/modules/es.set */ "YGK4");
-__webpack_require__(/*! core-js/modules/es.string.includes */ "JTJg");
-__webpack_require__(/*! core-js/modules/es.string.iterator */ "PKPk");
-__webpack_require__(/*! core-js/modules/es.string.match */ "Rm1S");
-__webpack_require__(/*! core-js/modules/es.string.split */ "EnZy");
-__webpack_require__(/*! core-js/modules/es.string.trim */ "SYor");
-__webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "FZtP");
-__webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "3bBZ");
+__webpack_require__(/*! core-js/modules/es.array.concat.js */ "ma9I");
+__webpack_require__(/*! core-js/modules/es.array.filter.js */ "TeQF");
+__webpack_require__(/*! core-js/modules/es.array.find.js */ "fbCW");
+__webpack_require__(/*! core-js/modules/es.array.for-each.js */ "QWBl");
+__webpack_require__(/*! core-js/modules/es.array.from.js */ "pjDv");
+__webpack_require__(/*! core-js/modules/es.array.includes.js */ "yq1k");
+__webpack_require__(/*! core-js/modules/es.array.index-of.js */ "yXV3");
+__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "4mDm");
+__webpack_require__(/*! core-js/modules/es.array.join.js */ "oVuX");
+__webpack_require__(/*! core-js/modules/es.array.reduce.js */ "E9XD");
+__webpack_require__(/*! core-js/modules/es.date.to-string.js */ "DQNa");
+__webpack_require__(/*! core-js/modules/es.map.js */ "Tskq");
+__webpack_require__(/*! core-js/modules/es.number.constructor.js */ "qePV");
+__webpack_require__(/*! core-js/modules/es.number.is-nan.js */ "kSko");
+__webpack_require__(/*! core-js/modules/es.number.parse-float.js */ "w1rZ");
+__webpack_require__(/*! core-js/modules/es.object.assign.js */ "zKZe");
+__webpack_require__(/*! core-js/modules/es.object.keys.js */ "tkto");
+__webpack_require__(/*! core-js/modules/es.object.values.js */ "B6y2");
+__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "rB9j");
+__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "JfAA");
+__webpack_require__(/*! core-js/modules/es.set.js */ "YGK4");
+__webpack_require__(/*! core-js/modules/es.string.includes.js */ "JTJg");
+__webpack_require__(/*! core-js/modules/es.string.iterator.js */ "PKPk");
+__webpack_require__(/*! core-js/modules/es.string.match.js */ "Rm1S");
+__webpack_require__(/*! core-js/modules/es.string.split.js */ "EnZy");
+__webpack_require__(/*! core-js/modules/es.string.trim.js */ "SYor");
+__webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "FZtP");
+__webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "3bBZ");
 var _objectWithoutProperties = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "QILm");
 var _toConsumableArray = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "RIqP");
 var _slicedToArray = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "J4zp");
 var ramda = __webpack_require__(/*! ramda */ "sX7g");
 var Moment = __webpack_require__(/*! moment */ "wd/R");
 var momentRange = __webpack_require__(/*! moment-range */ "1TFm");
-__webpack_require__(/*! core-js/modules/es.function.name */ "sMBO");
-__webpack_require__(/*! core-js/modules/web.url */ "Kz25");
+__webpack_require__(/*! core-js/modules/es.function.name.js */ "sMBO");
+__webpack_require__(/*! core-js/modules/web.url.js */ "Kz25");
 var fetch = __webpack_require__(/*! cross-fetch */ "XWHH");
 __webpack_require__(/*! url-search-params-polyfill */ "dasq");
 var _inherits = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "7W2i");
 var _possibleConstructorReturn = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "a1gu");
 var _getPrototypeOf = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "Nsbk");
 var _wrapNativeSuper = __webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ "oShl");
-__webpack_require__(/*! core-js/modules/es.array.every */ "piMb");
-__webpack_require__(/*! core-js/modules/es.array.splice */ "pDQq");
+__webpack_require__(/*! core-js/modules/es.array.every.js */ "piMb");
+__webpack_require__(/*! core-js/modules/es.array.splice.js */ "pDQq");
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -25129,6 +25195,12 @@ var ResultSet = /*#__PURE__*/function () {
           });
         }
       });
+      var query = this.loadResponses[0].query;
+
+      if (timeDimensions.length === 0 && query.timeDimensions.length > 0 && query.timeDimensions[0].granularity == null) {
+        timeDimensions.push(query.timeDimensions[0]);
+      }
+
       return _objectSpread(_objectSpread(_objectSpread({}, measures[measureName].drillMembersGrouped), {}, {
         filters: filters
       }, segments.length > 0 ? {
@@ -25136,7 +25208,7 @@ var ResultSet = /*#__PURE__*/function () {
       } : {}), {}, {
         timeDimensions: timeDimensions,
         segments: segments,
-        timezone: this.loadResponses[0].query.timezone
+        timezone: query.timezone
       });
     }
   }, {
@@ -28015,7 +28087,7 @@ class MutationObserverFactory {
 }
 MutationObserverFactory.ɵfac = function MutationObserverFactory_Factory(t) { return new (t || MutationObserverFactory)(); };
 MutationObserverFactory.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function MutationObserverFactory_Factory() { return new MutationObserverFactory(); }, token: MutationObserverFactory, providedIn: "root" });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MutationObserverFactory, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MutationObserverFactory, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], null, null); })();
@@ -28091,7 +28163,7 @@ ContentObserver.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵ
 ContentObserver.ctorParameters = () => [
     { type: MutationObserverFactory }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ContentObserver, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ContentObserver, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return [{ type: MutationObserverFactory }]; }, null); })();
@@ -28161,7 +28233,7 @@ CdkObserveContent.propDecorators = {
     disabled: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['cdkObserveContentDisabled',] }],
     debounce: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkObserveContent, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkObserveContent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
         args: [{
                 selector: '[cdkObserveContent]',
@@ -28181,7 +28253,7 @@ class ObserversModule {
 ObserversModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: ObserversModule });
 ObserversModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function ObserversModule_Factory(t) { return new (t || ObserversModule)(); }, providers: [MutationObserverFactory] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](ObserversModule, { declarations: [CdkObserveContent], exports: [CdkObserveContent] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ObserversModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ObserversModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
                 exports: [CdkObserveContent],
@@ -29956,7 +30028,7 @@ function baseAt(object, paths) {
 /***/ (function(module, exports) {
 
 // `RequireObjectCoercible` abstract operation
-// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+// https://tc39.es/ecma262/#sec-requireobjectcoercible
 module.exports = function (it) {
   if (it == undefined) throw TypeError("Can't call method on " + it);
   return it;
@@ -31242,16 +31314,32 @@ var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterat
 var toLength = __webpack_require__(/*! ../internals/to-length */ "UMSQ");
 var bind = __webpack_require__(/*! ../internals/function-bind-context */ "A2ZE");
 var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "NaFW");
-var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "m92n");
+var iteratorClose = __webpack_require__(/*! ../internals/iterator-close */ "KmKo");
 
 var Result = function (stopped, result) {
   this.stopped = stopped;
   this.result = result;
 };
 
-var iterate = module.exports = function (iterable, fn, that, AS_ENTRIES, IS_ITERATOR) {
-  var boundFunction = bind(fn, that, AS_ENTRIES ? 2 : 1);
+module.exports = function (iterable, unboundFunction, options) {
+  var that = options && options.that;
+  var AS_ENTRIES = !!(options && options.AS_ENTRIES);
+  var IS_ITERATOR = !!(options && options.IS_ITERATOR);
+  var INTERRUPTED = !!(options && options.INTERRUPTED);
+  var fn = bind(unboundFunction, that, 1 + AS_ENTRIES + INTERRUPTED);
   var iterator, iterFn, index, length, result, next, step;
+
+  var stop = function (condition) {
+    if (iterator) iteratorClose(iterator);
+    return new Result(true, condition);
+  };
+
+  var callFn = function (value) {
+    if (AS_ENTRIES) {
+      anObject(value);
+      return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
+    } return INTERRUPTED ? fn(value, stop) : fn(value);
+  };
 
   if (IS_ITERATOR) {
     iterator = iterable;
@@ -31261,9 +31349,7 @@ var iterate = module.exports = function (iterable, fn, that, AS_ENTRIES, IS_ITER
     // optimisation for array iterators
     if (isArrayIteratorMethod(iterFn)) {
       for (index = 0, length = toLength(iterable.length); length > index; index++) {
-        result = AS_ENTRIES
-          ? boundFunction(anObject(step = iterable[index])[0], step[1])
-          : boundFunction(iterable[index]);
+        result = callFn(iterable[index]);
         if (result && result instanceof Result) return result;
       } return new Result(false);
     }
@@ -31272,13 +31358,14 @@ var iterate = module.exports = function (iterable, fn, that, AS_ENTRIES, IS_ITER
 
   next = iterator.next;
   while (!(step = next.call(iterator)).done) {
-    result = callWithSafeIterationClosing(iterator, boundFunction, step.value, AS_ENTRIES);
+    try {
+      result = callFn(step.value);
+    } catch (error) {
+      iteratorClose(iterator);
+      throw error;
+    }
     if (typeof result == 'object' && result && result instanceof Result) return result;
   } return new Result(false);
-};
-
-iterate.stop = function (result) {
-  return new Result(true, result);
 };
 
 
@@ -31743,7 +31830,7 @@ var $ = __webpack_require__(/*! ../internals/export */ "I+eb");
 var isArray = __webpack_require__(/*! ../internals/is-array */ "6LWA");
 
 // `Array.isArray` method
-// https://tc39.github.io/ecma262/#sec-array.isarray
+// https://tc39.es/ecma262/#sec-array.isarray
 $({ target: 'Array', stat: true }, {
   isArray: isArray
 });
@@ -31819,7 +31906,7 @@ var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "eDl+");
 var hiddenKeys = enumBugKeys.concat('length', 'prototype');
 
 // `Object.getOwnPropertyNames` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+// https://tc39.es/ecma262/#sec-object.getownpropertynames
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return internalObjectKeys(O, hiddenKeys);
 };
@@ -32126,7 +32213,7 @@ var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object
 var correctIsRegExpLogic = __webpack_require__(/*! ../internals/correct-is-regexp-logic */ "qxPZ");
 
 // `String.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.includes
+// https://tc39.es/ecma262/#sec-string.prototype.includes
 $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {
   includes: function includes(searchString /* , position = 0 */) {
     return !!~String(requireObjectCoercible(this))
@@ -32550,7 +32637,7 @@ var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', 
 var INCORRECT_NAME = nativeToString.name != TO_STRING;
 
 // `RegExp.prototype.toString` method
-// https://tc39.github.io/ecma262/#sec-regexp.prototype.tostring
+// https://tc39.es/ecma262/#sec-regexp.prototype.tostring
 if (NOT_GENERIC || INCORRECT_NAME) {
   redefine(RegExp.prototype, TO_STRING, function toString() {
     var R = anObject(this);
@@ -33014,7 +33101,7 @@ class NgxSpinnerService {
 NgxSpinnerService.ɵfac = function NgxSpinnerService_Factory(t) { return new (t || NgxSpinnerService)(); };
 NgxSpinnerService.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function NgxSpinnerService_Factory() { return new NgxSpinnerService(); }, token: NgxSpinnerService, providedIn: "root" });
 NgxSpinnerService.ctorParameters = () => [];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxSpinnerService, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxSpinnerService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
@@ -33184,7 +33271,7 @@ NgxSpinnerComponent.propDecorators = {
     zIndex: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
     template: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxSpinnerComponent, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxSpinnerComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'ngx-spinner',
@@ -33235,7 +33322,7 @@ SafeHtmlPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe
 SafeHtmlPipe.ctorParameters = () => [
     { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SafeHtmlPipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SafeHtmlPipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{
                 name: 'safeHtml'
@@ -33249,7 +33336,7 @@ NgxSpinnerModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineI
             _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"]
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](NgxSpinnerModule, { declarations: function () { return [NgxSpinnerComponent, SafeHtmlPipe]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"]]; }, exports: function () { return [NgxSpinnerComponent]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxSpinnerModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxSpinnerModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 imports: [
@@ -34416,6 +34503,25 @@ __webpack_require__.r(__webpack_exports__);
 function _isRegExp(x) {
   return Object.prototype.toString.call(x) === '[object RegExp]';
 }
+
+/***/ }),
+
+/***/ "KmKo":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/iterator-close.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__(/*! ../internals/an-object */ "glrk");
+
+module.exports = function (iterator) {
+  var returnMethod = iterator['return'];
+  if (returnMethod !== undefined) {
+    return anObject(returnMethod.call(iterator)).value;
+  }
+};
+
 
 /***/ }),
 
@@ -35784,11 +35890,11 @@ function baseToString(value) {
 
 var global = __webpack_require__(/*! ../internals/global */ "2oRo");
 var fails = __webpack_require__(/*! ../internals/fails */ "0Dky");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "xrYK");
 var bind = __webpack_require__(/*! ../internals/function-bind-context */ "A2ZE");
 var html = __webpack_require__(/*! ../internals/html */ "G+Rx");
 var createElement = __webpack_require__(/*! ../internals/document-create-element */ "zBJ4");
 var IS_IOS = __webpack_require__(/*! ../internals/engine-is-ios */ "HNyW");
+var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "YF1G");
 
 var location = global.location;
 var set = global.setImmediate;
@@ -35842,7 +35948,7 @@ if (!set || !clear) {
     delete queue[id];
   };
   // Node.js 0.8-
-  if (classof(process) == 'process') {
+  if (IS_NODE) {
     defer = function (id) {
       process.nextTick(runner(id));
     };
@@ -35864,8 +35970,8 @@ if (!set || !clear) {
     global.addEventListener &&
     typeof postMessage == 'function' &&
     !global.importScripts &&
-    !fails(post) &&
-    location.protocol !== 'file:'
+    location && location.protocol !== 'file:' &&
+    !fails(post)
   ) {
     defer = post;
     global.addEventListener('message', listener, false);
@@ -36136,7 +36242,7 @@ ThemeService.ɵfac = function ThemeService_Factory(t) { return new (t || ThemeSe
 /** @nocollapse */
 ThemeService.ctorParameters = () => [];
 /** @nocollapse */ ThemeService.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function ThemeService_Factory() { return new ThemeService(); }, token: ThemeService, providedIn: "root" });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ThemeService, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ThemeService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
@@ -36791,7 +36897,7 @@ BaseChartDirective.propDecorators = {
     chartClick: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }],
     chartHover: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BaseChartDirective, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BaseChartDirective, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 // tslint:disable-next-line:directive-selector
@@ -36831,7 +36937,7 @@ class ChartsModule {
 ChartsModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: ChartsModule });
 ChartsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function ChartsModule_Factory(t) { return new (t || ChartsModule)(); }, imports: [[]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](ChartsModule, { declarations: [BaseChartDirective], exports: [BaseChartDirective] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ChartsModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ChartsModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 declarations: [
@@ -54868,7 +54974,7 @@ var anObject = __webpack_require__(/*! ../internals/an-object */ "glrk");
 var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "33Wh");
 
 // `Object.defineProperties` method
-// https://tc39.github.io/ecma262/#sec-object.defineproperties
+// https://tc39.es/ecma262/#sec-object.defineproperties
 module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = objectKeys(Properties);
@@ -58568,7 +58674,7 @@ var setInternalState = InternalStateModule.set;
 var getInternalState = InternalStateModule.getterFor(STRING_ITERATOR);
 
 // `String.prototype[@@iterator]` method
-// https://tc39.github.io/ecma262/#sec-string.prototype-@@iterator
+// https://tc39.es/ecma262/#sec-string.prototype-@@iterator
 defineIterator(String, 'String', function (iterated) {
   setInternalState(this, {
     type: STRING_ITERATOR,
@@ -58576,7 +58682,7 @@ defineIterator(String, 'String', function (iterated) {
     index: 0
   });
 // `%StringIteratorPrototype%.next` method
-// https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%.next
+// https://tc39.es/ecma262/#sec-%stringiteratorprototype%.next
 }, function next() {
   var state = getInternalState(this);
   var string = state.string;
@@ -60138,7 +60244,7 @@ var $ = __webpack_require__(/*! ../internals/export */ "I+eb");
 var forEach = __webpack_require__(/*! ../internals/array-for-each */ "F8JR");
 
 // `Array.prototype.forEach` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+// https://tc39.es/ecma262/#sec-array.prototype.foreach
 $({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
   forEach: forEach
 });
@@ -60737,7 +60843,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimationGroupPlayer", function() { return AnimationGroupPlayer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵPRE_STYLE", function() { return ɵPRE_STYLE; });
 /**
- * @license Angular v11.0.9
+ * @license Angular v11.1.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -61971,7 +62077,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations/browser */ "t9l1");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /**
- * @license Angular v11.0.9
+ * @license Angular v11.1.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -62012,7 +62118,7 @@ BrowserAnimationBuilder.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BrowserAnimationBuilder, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BrowserAnimationBuilder, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
@@ -62199,7 +62305,7 @@ AnimationRendererFactory.ctorParameters = () => [
     { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationEngine"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AnimationRendererFactory, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AnimationRendererFactory, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"] }, { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationEngine"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }]; }, null); })();
 class BaseAnimationRenderer {
@@ -62358,7 +62464,7 @@ InjectableAnimationEngine.ctorParameters = () => [
     { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["AnimationDriver"] },
     { type: _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationStyleNormalizer"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](InjectableAnimationEngine, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](InjectableAnimationEngine, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
@@ -62420,7 +62526,7 @@ class BrowserAnimationsModule {
 BrowserAnimationsModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: BrowserAnimationsModule });
 BrowserAnimationsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function BrowserAnimationsModule_Factory(t) { return new (t || BrowserAnimationsModule)(); }, providers: BROWSER_ANIMATIONS_PROVIDERS, imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](BrowserAnimationsModule, { exports: function () { return [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BrowserAnimationsModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BrowserAnimationsModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 exports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]],
@@ -62436,7 +62542,7 @@ class NoopAnimationsModule {
 NoopAnimationsModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: NoopAnimationsModule });
 NoopAnimationsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function NoopAnimationsModule_Factory(t) { return new (t || NoopAnimationsModule)(); }, providers: BROWSER_NOOP_ANIMATIONS_PROVIDERS, imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](NoopAnimationsModule, { exports: function () { return [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NoopAnimationsModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NoopAnimationsModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 exports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]],
@@ -63162,7 +63268,7 @@ var UNSCOPABLES = wellKnownSymbol('unscopables');
 var ArrayPrototype = Array.prototype;
 
 // Array.prototype[@@unscopables]
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 if (ArrayPrototype[UNSCOPABLES] == undefined) {
   definePropertyModule.f(ArrayPrototype, UNSCOPABLES, {
     configurable: true,
@@ -63192,7 +63298,7 @@ var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ 
 var MATCH = wellKnownSymbol('match');
 
 // `IsRegExp` abstract operation
-// https://tc39.github.io/ecma262/#sec-isregexp
+// https://tc39.es/ecma262/#sec-isregexp
 module.exports = function (it) {
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
@@ -63477,14 +63583,14 @@ var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "F
 fixRegExpWellKnownSymbolLogic('match', 1, function (MATCH, nativeMatch, maybeCallNative) {
   return [
     // `String.prototype.match` method
-    // https://tc39.github.io/ecma262/#sec-string.prototype.match
+    // https://tc39.es/ecma262/#sec-string.prototype.match
     function match(regexp) {
       var O = requireObjectCoercible(this);
       var matcher = regexp == undefined ? undefined : regexp[MATCH];
       return matcher !== undefined ? matcher.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
     },
     // `RegExp.prototype[@@match]` method
-    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@match
+    // https://tc39.es/ecma262/#sec-regexp.prototype-@@match
     function (regexp) {
       var res = maybeCallNative(nativeMatch, regexp, this);
       if (res.done) return res.value;
@@ -63948,7 +64054,7 @@ var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ 
 var SPECIES = wellKnownSymbol('species');
 
 // `SpeciesConstructor` abstract operation
-// https://tc39.github.io/ecma262/#sec-speciesconstructor
+// https://tc39.es/ecma262/#sec-speciesconstructor
 module.exports = function (O, defaultConstructor) {
   var C = anObject(O).constructor;
   var S;
@@ -64179,7 +64285,7 @@ var $trim = __webpack_require__(/*! ../internals/string-trim */ "WKiH").trim;
 var forcedStringTrimMethod = __webpack_require__(/*! ../internals/string-trim-forced */ "yNLB");
 
 // `String.prototype.trim` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.trim
+// https://tc39.es/ecma262/#sec-string.prototype.trim
 $({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
   trim: function trim() {
     return $trim(this);
@@ -66619,10 +66725,10 @@ var createMethod = function (IS_INCLUDES) {
 
 module.exports = {
   // `Array.prototype.includes` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.includes
+  // https://tc39.es/ecma262/#sec-array.prototype.includes
   includes: createMethod(true),
   // `Array.prototype.indexOf` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+  // https://tc39.es/ecma262/#sec-array.prototype.indexof
   indexOf: createMethod(false)
 };
 
@@ -66850,7 +66956,7 @@ var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter');
 var USES_TO_LENGTH = arrayMethodUsesToLength('filter');
 
 // `Array.prototype.filter` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.filter
+// https://tc39.es/ecma262/#sec-array.prototype.filter
 // with adding support of @@species
 $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
   filter: function filter(callbackfn /* , thisArg */) {
@@ -66879,7 +66985,7 @@ var createProperty = __webpack_require__(/*! ../internals/create-property */ "hB
 var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "NaFW");
 
 // `Array.from` method implementation
-// https://tc39.github.io/ecma262/#sec-array.from
+// https://tc39.es/ecma262/#sec-array.from
 module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
   var O = toObject(arrayLike);
   var C = typeof this == 'function' ? this : Array;
@@ -67081,7 +67187,7 @@ var collection = __webpack_require__(/*! ../internals/collection */ "bWFh");
 var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "ZWaQ");
 
 // `Map` constructor
-// https://tc39.github.io/ecma262/#sec-map-objects
+// https://tc39.es/ecma262/#sec-map-objects
 module.exports = collection('Map', function (init) {
   return function Map() { return init(this, arguments.length ? arguments[0] : undefined); };
 }, collectionStrong);
@@ -68026,7 +68132,7 @@ var toInteger = __webpack_require__(/*! ../internals/to-integer */ "ppGB");
 var min = Math.min;
 
 // `ToLength` abstract operation
-// https://tc39.github.io/ecma262/#sec-tolength
+// https://tc39.es/ecma262/#sec-tolength
 module.exports = function (argument) {
   return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
 };
@@ -69819,9 +69925,9 @@ var store = __webpack_require__(/*! ../internals/shared-store */ "xs3f");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.6.5',
+  version: '3.8.2',
   mode: IS_PURE ? 'pure' : 'global',
-  copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -70147,13 +70253,13 @@ var createMethod = function (TYPE) {
 
 module.exports = {
   // `String.prototype.{ trimLeft, trimStart }` methods
-  // https://tc39.github.io/ecma262/#sec-string.prototype.trimstart
+  // https://tc39.es/ecma262/#sec-string.prototype.trimstart
   start: createMethod(1),
   // `String.prototype.{ trimRight, trimEnd }` methods
-  // https://tc39.github.io/ecma262/#sec-string.prototype.trimend
+  // https://tc39.es/ecma262/#sec-string.prototype.trimend
   end: createMethod(2),
   // `String.prototype.trim` method
-  // https://tc39.github.io/ecma262/#sec-string.prototype.trim
+  // https://tc39.es/ecma262/#sec-string.prototype.trim
   trim: createMethod(3)
 };
 
@@ -73710,6 +73816,21 @@ function baseExtremum(array, iteratee, comparator) {
 
 /***/ }),
 
+/***/ "YF1G":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/engine-is-node.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "xrYK");
+var global = __webpack_require__(/*! ../internals/global */ "2oRo");
+
+module.exports = classof(global.process) == 'process';
+
+
+/***/ }),
+
 /***/ "YGK4":
 /*!************************************************!*\
   !*** ./node_modules/core-js/modules/es.set.js ***!
@@ -73723,7 +73844,7 @@ var collection = __webpack_require__(/*! ../internals/collection */ "bWFh");
 var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "ZWaQ");
 
 // `Set` constructor
-// https://tc39.github.io/ecma262/#sec-set-objects
+// https://tc39.es/ecma262/#sec-set-objects
 module.exports = collection('Set', function (init) {
   return function Set() { return init(this, arguments.length ? arguments[0] : undefined); };
 }, collectionStrong);
@@ -73880,7 +74001,7 @@ var nativeAssign = Object.assign;
 var defineProperty = Object.defineProperty;
 
 // `Object.assign` method
-// https://tc39.github.io/ecma262/#sec-object.assign
+// https://tc39.es/ecma262/#sec-object.assign
 module.exports = !nativeAssign || fails(function () {
   // should have correct order of operations (Edge bug)
   if (DESCRIPTORS && nativeAssign({ b: 1 }, nativeAssign(defineProperty({}, 'a', {
@@ -76032,7 +76153,7 @@ var createMethod = function (CONVERT_TO_STRING) {
 
 module.exports = {
   // `String.prototype.codePointAt` method
-  // https://tc39.github.io/ecma262/#sec-string.prototype.codepointat
+  // https://tc39.es/ecma262/#sec-string.prototype.codepointat
   codeAt: createMethod(false),
   // `String.prototype.at` method
   // https://github.com/mathiasbynens/String.prototype.at
@@ -76141,7 +76262,7 @@ module.exports = {
         size: 0
       });
       if (!DESCRIPTORS) that.size = 0;
-      if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
+      if (iterable != undefined) iterate(iterable, that[ADDER], { that: that, AS_ENTRIES: IS_MAP });
     });
 
     var getInternalState = internalStateGetterFor(CONSTRUCTOR_NAME);
@@ -76466,7 +76587,7 @@ var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ 
 var SPECIES = wellKnownSymbol('species');
 
 // `ArraySpeciesCreate` abstract operation
-// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
+// https://tc39.es/ecma262/#sec-arrayspeciescreate
 module.exports = function (originalArray, length) {
   var C;
   if (isArray(originalArray)) {
@@ -78150,6 +78271,7 @@ var global = __webpack_require__(/*! ../internals/global */ "2oRo");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "hh1v");
 var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "kRJp");
 var objectHas = __webpack_require__(/*! ../internals/has */ "UTVS");
+var shared = __webpack_require__(/*! ../internals/shared-store */ "xs3f");
 var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "93I0");
 var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "0BK2");
 
@@ -78170,11 +78292,12 @@ var getterFor = function (TYPE) {
 };
 
 if (NATIVE_WEAK_MAP) {
-  var store = new WeakMap();
+  var store = shared.state || (shared.state = new WeakMap());
   var wmget = store.get;
   var wmhas = store.has;
   var wmset = store.set;
   set = function (it, metadata) {
+    metadata.facade = it;
     wmset.call(store, it, metadata);
     return metadata;
   };
@@ -78188,6 +78311,7 @@ if (NATIVE_WEAK_MAP) {
   var STATE = sharedKey('state');
   hiddenKeys[STATE] = true;
   set = function (it, metadata) {
+    metadata.facade = it;
     createNonEnumerableProperty(it, STATE, metadata);
     return metadata;
   };
@@ -78679,10 +78803,10 @@ var createMethod = function (TO_ENTRIES) {
 
 module.exports = {
   // `Object.entries` method
-  // https://tc39.github.io/ecma262/#sec-object.entries
+  // https://tc39.es/ecma262/#sec-object.entries
   entries: createMethod(true),
   // `Object.values` method
-  // https://tc39.github.io/ecma262/#sec-object.values
+  // https://tc39.es/ecma262/#sec-object.values
   values: createMethod(false)
 };
 
@@ -79080,7 +79204,7 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
       Constructor = wrapper(function (dummy, iterable) {
         anInstance(dummy, Constructor, CONSTRUCTOR_NAME);
         var that = inheritIfRequired(new NativeConstructor(), dummy, Constructor);
-        if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
+        if (iterable != undefined) iterate(iterable, that[ADDER], { that: that, AS_ENTRIES: IS_MAP });
         return that;
       });
       Constructor.prototype = NativePrototype;
@@ -79475,9 +79599,15 @@ var TEMPLATE = String(String).split('String');
   var unsafe = options ? !!options.unsafe : false;
   var simple = options ? !!options.enumerable : false;
   var noTargetGet = options ? !!options.noTargetGet : false;
+  var state;
   if (typeof value == 'function') {
-    if (typeof key == 'string' && !has(value, 'name')) createNonEnumerableProperty(value, 'name', key);
-    enforceInternalState(value).source = TEMPLATE.join(typeof key == 'string' ? key : '');
+    if (typeof key == 'string' && !has(value, 'name')) {
+      createNonEnumerableProperty(value, 'name', key);
+    }
+    state = enforceInternalState(value);
+    if (!state.source) {
+      state.source = TEMPLATE.join(typeof key == 'string' ? key : '');
+    }
   }
   if (O === global) {
     if (simple) O[key] = value;
@@ -80319,7 +80449,7 @@ Directionality.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵd
 Directionality.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [DIR_DOCUMENT,] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Directionality, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Directionality, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return [{ type: undefined, decorators: [{
@@ -80380,7 +80510,7 @@ Dir.propDecorators = {
     change: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"], args: ['dirChange',] }],
     dir: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Dir, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Dir, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{
                 selector: '[dir]',
@@ -80407,7 +80537,7 @@ class BidiModule {
 BidiModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: BidiModule });
 BidiModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function BidiModule_Factory(t) { return new (t || BidiModule)(); } });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](BidiModule, { declarations: [Dir], exports: [Dir] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BidiModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BidiModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 exports: [Dir],
@@ -84384,7 +84514,7 @@ function functions(object) {
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "HYAF");
 
 // `ToObject` abstract operation
-// https://tc39.github.io/ecma262/#sec-toobject
+// https://tc39.es/ecma262/#sec-toobject
 module.exports = function (argument) {
   return Object(requireObjectCoercible(argument));
 };
@@ -84484,7 +84614,7 @@ function createPadding(length, chars) {
 /*!******************************************************************!*\
   !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/table.js ***!
   \******************************************************************/
-/*! exports provided: DataSource, BaseCdkCell, BaseRowDef, CDK_ROW_TEMPLATE, CDK_TABLE, CDK_TABLE_TEMPLATE, CdkCell, CdkCellDef, CdkCellOutlet, CdkColumnDef, CdkFooterCell, CdkFooterCellDef, CdkFooterRow, CdkFooterRowDef, CdkHeaderCell, CdkHeaderCellDef, CdkHeaderRow, CdkHeaderRowDef, CdkNoDataRow, CdkRow, CdkRowDef, CdkTable, CdkTableModule, CdkTextColumn, DataRowOutlet, FooterRowOutlet, HeaderRowOutlet, NoDataRowOutlet, STICKY_DIRECTIONS, StickyStyler, TEXT_COLUMN_OPTIONS, _COALESCED_STYLE_SCHEDULER, _CoalescedStyleScheduler, _Schedule, mixinHasStickyInput */
+/*! exports provided: DataSource, BaseCdkCell, BaseRowDef, CDK_ROW_TEMPLATE, CDK_TABLE, CDK_TABLE_TEMPLATE, CdkCell, CdkCellDef, CdkCellOutlet, CdkColumnDef, CdkFooterCell, CdkFooterCellDef, CdkFooterRow, CdkFooterRowDef, CdkHeaderCell, CdkHeaderCellDef, CdkHeaderRow, CdkHeaderRowDef, CdkNoDataRow, CdkRow, CdkRowDef, CdkTable, CdkTableModule, CdkTextColumn, DataRowOutlet, FooterRowOutlet, HeaderRowOutlet, NoDataRowOutlet, STICKY_DIRECTIONS, STICKY_POSITIONING_LISTENER, StickyStyler, TEXT_COLUMN_OPTIONS, _COALESCED_STYLE_SCHEDULER, _CoalescedStyleScheduler, _Schedule, mixinHasStickyInput */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84517,6 +84647,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderRowOutlet", function() { return HeaderRowOutlet; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoDataRowOutlet", function() { return NoDataRowOutlet; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STICKY_DIRECTIONS", function() { return STICKY_DIRECTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STICKY_POSITIONING_LISTENER", function() { return STICKY_POSITIONING_LISTENER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StickyStyler", function() { return StickyStyler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TEXT_COLUMN_OPTIONS", function() { return TEXT_COLUMN_OPTIONS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_COALESCED_STYLE_SCHEDULER", function() { return _COALESCED_STYLE_SCHEDULER; });
@@ -84650,7 +84781,7 @@ CdkCellDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineDirecti
 CdkCellDef.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkCellDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkCellDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{ selector: '[cdkCellDef]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"] }]; }, null); })();
@@ -84668,7 +84799,7 @@ CdkHeaderCellDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineD
 CdkHeaderCellDef.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkHeaderCellDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkHeaderCellDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{ selector: '[cdkHeaderCellDef]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"] }]; }, null); })();
@@ -84686,7 +84817,7 @@ CdkFooterCellDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineD
 CdkFooterCellDef.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkFooterCellDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkFooterCellDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{ selector: '[cdkFooterCellDef]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"] }]; }, null); })();
@@ -84749,9 +84880,9 @@ class CdkColumnDef extends _CdkColumnDefBase {
 }
 CdkColumnDef.ɵfac = function CdkColumnDef_Factory(t) { return new (t || CdkColumnDef)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](CDK_TABLE, 8)); };
 CdkColumnDef.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineDirective"]({ type: CdkColumnDef, selectors: [["", "cdkColumnDef", ""]], contentQueries: function CdkColumnDef_ContentQueries(rf, ctx, dirIndex) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkCellDef, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkHeaderCellDef, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkFooterCellDef, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkCellDef, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkHeaderCellDef, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkFooterCellDef, 1);
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.cell = _t.first);
@@ -84768,7 +84899,7 @@ CdkColumnDef.propDecorators = {
     headerCell: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ContentChild"], args: [CdkHeaderCellDef,] }],
     footerCell: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ContentChild"], args: [CdkFooterCellDef,] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkColumnDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkColumnDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{
                 selector: '[cdkColumnDef]',
@@ -84819,7 +84950,7 @@ CdkHeaderCell.ctorParameters = () => [
     { type: CdkColumnDef },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkHeaderCell, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkHeaderCell, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{
                 selector: 'cdk-header-cell, th[cdk-header-cell]',
@@ -84841,7 +84972,7 @@ CdkFooterCell.ctorParameters = () => [
     { type: CdkColumnDef },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkFooterCell, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkFooterCell, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{
                 selector: 'cdk-footer-cell, td[cdk-footer-cell]',
@@ -84863,7 +84994,7 @@ CdkCell.ctorParameters = () => [
     { type: CdkColumnDef },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkCell, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkCell, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{
                 selector: 'cdk-cell, td[cdk-cell]',
@@ -84958,7 +85089,7 @@ _CoalescedStyleScheduler.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵ
 _CoalescedStyleScheduler.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgZone"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](_CoalescedStyleScheduler, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](_CoalescedStyleScheduler, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Injectable"]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgZone"] }]; }, null); })();
 
@@ -85019,7 +85150,7 @@ BaseRowDef.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](BaseRowDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](BaseRowDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"] }]; }, null); })();
 // Boilerplate for applying mixins to CdkHeaderRowDef.
@@ -85049,7 +85180,7 @@ CdkHeaderRowDef.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [CDK_TABLE,] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkHeaderRowDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkHeaderRowDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{
                 selector: '[cdkHeaderRowDef]',
@@ -85088,7 +85219,7 @@ CdkFooterRowDef.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [CDK_TABLE,] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkFooterRowDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkFooterRowDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{
                 selector: '[cdkFooterRowDef]',
@@ -85120,7 +85251,7 @@ CdkRowDef.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [CDK_TABLE,] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkRowDef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkRowDef, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{
                 selector: '[cdkRowDef]',
@@ -85162,7 +85293,7 @@ CdkCellOutlet.mostRecentCellOutlet = null;
 CdkCellOutlet.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkCellOutlet, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkCellOutlet, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{ selector: '[cdkCellOutlet]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] }]; }, null); })();
@@ -85173,7 +85304,7 @@ CdkHeaderRow.ɵfac = function CdkHeaderRow_Factory(t) { return new (t || CdkHead
 CdkHeaderRow.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: CdkHeaderRow, selectors: [["cdk-header-row"], ["tr", "cdk-header-row", ""]], hostAttrs: ["role", "row", 1, "cdk-header-row"], decls: 1, vars: 0, consts: [["cdkCellOutlet", ""]], template: function CdkHeaderRow_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainer"](0, 0);
     } }, directives: [CdkCellOutlet], encapsulation: 2 });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkHeaderRow, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkHeaderRow, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
         args: [{
                 selector: 'cdk-header-row, tr[cdk-header-row]',
@@ -85195,7 +85326,7 @@ CdkFooterRow.ɵfac = function CdkFooterRow_Factory(t) { return new (t || CdkFoot
 CdkFooterRow.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: CdkFooterRow, selectors: [["cdk-footer-row"], ["tr", "cdk-footer-row", ""]], hostAttrs: ["role", "row", 1, "cdk-footer-row"], decls: 1, vars: 0, consts: [["cdkCellOutlet", ""]], template: function CdkFooterRow_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainer"](0, 0);
     } }, directives: [CdkCellOutlet], encapsulation: 2 });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkFooterRow, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkFooterRow, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
         args: [{
                 selector: 'cdk-footer-row, tr[cdk-footer-row]',
@@ -85217,7 +85348,7 @@ CdkRow.ɵfac = function CdkRow_Factory(t) { return new (t || CdkRow)(); };
 CdkRow.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: CdkRow, selectors: [["cdk-row"], ["tr", "cdk-row", ""]], hostAttrs: ["role", "row", 1, "cdk-row"], decls: 1, vars: 0, consts: [["cdkCellOutlet", ""]], template: function CdkRow_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainer"](0, 0);
     } }, directives: [CdkCellOutlet], encapsulation: 2 });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkRow, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkRow, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
         args: [{
                 selector: 'cdk-row, tr[cdk-row]',
@@ -85243,7 +85374,7 @@ CdkNoDataRow.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineDirec
 CdkNoDataRow.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkNoDataRow, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkNoDataRow, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{
                 selector: 'ng-template[cdkNoDataRow]'
@@ -85278,20 +85409,29 @@ class StickyStyler {
      * @param _needsPositionStickyOnElement Whether we need to specify position: sticky on cells
      *     using inline styles. If false, it is assumed that position: sticky is included in
      *     the component stylesheet for _stickCellCss.
+     * @param _positionListener A listener that is notified of changes to sticky rows/columns
+     *     and their dimensions.
      */
     constructor(_isNativeHtmlTable, _stickCellCss, direction, 
     /**
      * @deprecated `_coalescedStyleScheduler` parameter to become required.
      * @breaking-change 11.0.0
      */
-    _coalescedStyleScheduler, _isBrowser = true, _needsPositionStickyOnElement = true) {
+    _coalescedStyleScheduler, _isBrowser = true, _needsPositionStickyOnElement = true, _positionListener) {
         this._isNativeHtmlTable = _isNativeHtmlTable;
         this._stickCellCss = _stickCellCss;
         this.direction = direction;
         this._coalescedStyleScheduler = _coalescedStyleScheduler;
         this._isBrowser = _isBrowser;
         this._needsPositionStickyOnElement = _needsPositionStickyOnElement;
+        this._positionListener = _positionListener;
         this._cachedCellWidths = [];
+        this._borderCellCss = {
+            'top': `${_stickCellCss}-border-elem-top`,
+            'bottom': `${_stickCellCss}-border-elem-bottom`,
+            'left': `${_stickCellCss}-border-elem-left`,
+            'right': `${_stickCellCss}-border-elem-right`,
+        };
     }
     /**
      * Clears the sticky positioning styles from the row and its cells by resetting the `position`
@@ -85333,6 +85473,10 @@ class StickyStyler {
     updateStickyColumns(rows, stickyStartStates, stickyEndStates, recalculateCellWidths = true) {
         if (!rows.length || !this._isBrowser || !(stickyStartStates.some(state => state) ||
             stickyEndStates.some(state => state))) {
+            if (this._positionListener) {
+                this._positionListener.stickyColumnsUpdated({ sizes: [] });
+                this._positionListener.stickyEndColumnsUpdated({ sizes: [] });
+            }
             return;
         }
         const firstRow = rows[0];
@@ -85340,6 +85484,8 @@ class StickyStyler {
         const cellWidths = this._getCellWidths(firstRow, recalculateCellWidths);
         const startPositions = this._getStickyStartColumnPositions(cellWidths, stickyStartStates);
         const endPositions = this._getStickyEndColumnPositions(cellWidths, stickyEndStates);
+        const lastStickyStart = stickyStartStates.lastIndexOf(true);
+        const firstStickyEnd = stickyEndStates.indexOf(true);
         // Coalesce with sticky row updates (and potentially other changes like column resize).
         this._scheduleStyleChanges(() => {
             const isRtl = this.direction === 'rtl';
@@ -85349,12 +85495,29 @@ class StickyStyler {
                 for (let i = 0; i < numCells; i++) {
                     const cell = row.children[i];
                     if (stickyStartStates[i]) {
-                        this._addStickyStyle(cell, start, startPositions[i]);
+                        this._addStickyStyle(cell, start, startPositions[i], i === lastStickyStart);
                     }
                     if (stickyEndStates[i]) {
-                        this._addStickyStyle(cell, end, endPositions[i]);
+                        this._addStickyStyle(cell, end, endPositions[i], i === firstStickyEnd);
                     }
                 }
+            }
+            if (this._positionListener) {
+                this._positionListener.stickyColumnsUpdated({
+                    sizes: lastStickyStart === -1 ?
+                        [] :
+                        cellWidths
+                            .slice(0, lastStickyStart + 1)
+                            .map((width, index) => stickyStartStates[index] ? width : null)
+                });
+                this._positionListener.stickyEndColumnsUpdated({
+                    sizes: firstStickyEnd === -1 ?
+                        [] :
+                        cellWidths
+                            .slice(firstStickyEnd)
+                            .map((width, index) => stickyEndStates[index + firstStickyEnd] ? width : null)
+                            .reverse()
+                });
             }
         });
     }
@@ -85380,31 +85543,41 @@ class StickyStyler {
         const rows = position === 'bottom' ? rowsToStick.slice().reverse() : rowsToStick;
         const states = position === 'bottom' ? stickyStates.slice().reverse() : stickyStates;
         // Measure row heights all at once before adding sticky styles to reduce layout thrashing.
-        const stickyHeights = [];
+        const stickyOffsets = [];
+        const stickyCellHeights = [];
         const elementsToStick = [];
-        for (let rowIndex = 0, stickyHeight = 0; rowIndex < rows.length; rowIndex++) {
-            stickyHeights[rowIndex] = stickyHeight;
+        for (let rowIndex = 0, stickyOffset = 0; rowIndex < rows.length; rowIndex++) {
+            stickyOffsets[rowIndex] = stickyOffset;
             if (!states[rowIndex]) {
                 continue;
             }
             const row = rows[rowIndex];
             elementsToStick[rowIndex] = this._isNativeHtmlTable ?
                 Array.from(row.children) : [row];
-            if (rowIndex !== rows.length - 1) {
-                stickyHeight += row.getBoundingClientRect().height;
-            }
+            const height = row.getBoundingClientRect().height;
+            stickyOffset += height;
+            stickyCellHeights[rowIndex] = height;
         }
+        const borderedRowIndex = states.lastIndexOf(true);
         // Coalesce with other sticky row updates (top/bottom), sticky columns updates
         // (and potentially other changes like column resize).
         this._scheduleStyleChanges(() => {
+            var _a, _b;
             for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
                 if (!states[rowIndex]) {
                     continue;
                 }
-                const height = stickyHeights[rowIndex];
+                const offset = stickyOffsets[rowIndex];
+                const isBorderedRowIndex = rowIndex === borderedRowIndex;
                 for (const element of elementsToStick[rowIndex]) {
-                    this._addStickyStyle(element, position, height);
+                    this._addStickyStyle(element, position, offset, isBorderedRowIndex);
                 }
+            }
+            if (position === 'top') {
+                (_a = this._positionListener) === null || _a === void 0 ? void 0 : _a.stickyHeaderRowsUpdated({ sizes: stickyCellHeights, elements: elementsToStick });
+            }
+            else {
+                (_b = this._positionListener) === null || _b === void 0 ? void 0 : _b.stickyFooterRowsUpdated({ sizes: stickyCellHeights, elements: elementsToStick });
             }
         });
     }
@@ -85425,7 +85598,7 @@ class StickyStyler {
                 this._removeStickyStyle(tfoot, ['bottom']);
             }
             else {
-                this._addStickyStyle(tfoot, 'bottom', 0);
+                this._addStickyStyle(tfoot, 'bottom', 0, false);
             }
         });
     }
@@ -85437,6 +85610,7 @@ class StickyStyler {
     _removeStickyStyle(element, stickyDirections) {
         for (const dir of stickyDirections) {
             element.style[dir] = '';
+            element.classList.remove(this._borderCellCss[dir]);
         }
         // If the element no longer has any more sticky directions, remove sticky positioning and
         // the sticky CSS class.
@@ -85460,8 +85634,11 @@ class StickyStyler {
      * to be sticky (and -webkit-sticky), setting the appropriate zIndex, and adding a sticky
      * direction and value.
      */
-    _addStickyStyle(element, dir, dirValue) {
+    _addStickyStyle(element, dir, dirValue, isBorderElement) {
         element.classList.add(this._stickCellCss);
+        if (isBorderElement) {
+            element.classList.add(this._borderCellCss[dir]);
+        }
         element.style[dir] = `${dirValue}px`;
         element.style.zIndex = this._getCalculatedZIndex(element);
         if (this._needsPositionStickyOnElement) {
@@ -85632,6 +85809,16 @@ function getTableTextColumnMissingNameError() {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+/** The injection token used to specify the StickyPositioningListener. */
+const STICKY_POSITIONING_LISTENER = new _angular_core__WEBPACK_IMPORTED_MODULE_3__["InjectionToken"]('CDK_SPL');
+
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 /**
  * Provides a handle for the table to grab the view container's ng-container to insert data rows.
  * @docs-private
@@ -85648,7 +85835,7 @@ DataRowOutlet.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](DataRowOutlet, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](DataRowOutlet, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{ selector: '[rowOutlet]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }]; }, null); })();
@@ -85668,7 +85855,7 @@ HeaderRowOutlet.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](HeaderRowOutlet, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](HeaderRowOutlet, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{ selector: '[headerRowOutlet]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }]; }, null); })();
@@ -85688,7 +85875,7 @@ FooterRowOutlet.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](FooterRowOutlet, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](FooterRowOutlet, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{ selector: '[footerRowOutlet]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }]; }, null); })();
@@ -85709,7 +85896,7 @@ NoDataRowOutlet.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](NoDataRowOutlet, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](NoDataRowOutlet, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
         args: [{ selector: '[noDataRowOutlet]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }]; }, null); })();
@@ -85748,7 +85935,7 @@ class CdkTable {
      *    parameters to become required.
      * @breaking-change 11.0.0
      */
-    _viewRepeater, _coalescedStyleScheduler, 
+    _viewRepeater, _coalescedStyleScheduler, _stickyPositioningListener, 
     // Optional for backwards compatibility. The viewport ruler is provided in root. Therefore,
     // this property will never be null.
     // tslint:disable-next-line: lightweight-tokens
@@ -85760,6 +85947,7 @@ class CdkTable {
         this._platform = _platform;
         this._viewRepeater = _viewRepeater;
         this._coalescedStyleScheduler = _coalescedStyleScheduler;
+        this._stickyPositioningListener = _stickyPositioningListener;
         this._viewportRuler = _viewportRuler;
         /** Subject that emits when the component has been destroyed. */
         this._onDestroy = new rxjs__WEBPACK_IMPORTED_MODULE_7__["Subject"]();
@@ -86529,7 +86717,7 @@ class CdkTable {
      */
     _setupStickyStyler() {
         const direction = this._dir ? this._dir.value : 'ltr';
-        this._stickyStyler = new StickyStyler(this._isNativeHtmlTable, this.stickyCssClass, direction, this._coalescedStyleScheduler, this._platform.isBrowser, this.needsPositionStickyOnElement);
+        this._stickyStyler = new StickyStyler(this._isNativeHtmlTable, this.stickyCssClass, direction, this._coalescedStyleScheduler, this._platform.isBrowser, this.needsPositionStickyOnElement, this._stickyPositioningListener);
         (this._dir ? this._dir.change : Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["of"])())
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this._onDestroy))
             .subscribe(value => {
@@ -86554,13 +86742,13 @@ class CdkTable {
         }
     }
 }
-CdkTable.ɵfac = function CdkTable_Factory(t) { return new (t || CdkTable)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinjectAttribute"]('role'), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_0__["Directionality"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_COALESCED_STYLE_SCHEDULER, 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ViewportRuler"], 8)); };
+CdkTable.ɵfac = function CdkTable_Factory(t) { return new (t || CdkTable)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinjectAttribute"]('role'), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_0__["Directionality"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_COALESCED_STYLE_SCHEDULER, 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](STICKY_POSITIONING_LISTENER, 12), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ViewportRuler"], 8)); };
 CdkTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: CdkTable, selectors: [["cdk-table"], ["table", "cdk-table", ""]], contentQueries: function CdkTable_ContentQueries(rf, ctx, dirIndex) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkNoDataRow, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkColumnDef, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkRowDef, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkHeaderRowDef, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkFooterRowDef, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkNoDataRow, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkColumnDef, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkRowDef, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkHeaderRowDef, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkFooterRowDef, 1);
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx._noDataRow = _t.first);
@@ -86569,10 +86757,10 @@ CdkTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx._contentHeaderRowDefs = _t);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx._contentFooterRowDefs = _t);
     } }, viewQuery: function CdkTable_Query(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵstaticViewQuery"](DataRowOutlet, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵstaticViewQuery"](HeaderRowOutlet, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵstaticViewQuery"](FooterRowOutlet, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵstaticViewQuery"](NoDataRowOutlet, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](DataRowOutlet, 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](HeaderRowOutlet, 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](FooterRowOutlet, 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](NoDataRowOutlet, 3);
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx._rowOutlet = _t.first);
@@ -86585,6 +86773,8 @@ CdkTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent
             { provide: CDK_TABLE, useExisting: CdkTable },
             { provide: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"], useClass: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_DisposeViewRepeaterStrategy"] },
             { provide: _COALESCED_STYLE_SCHEDULER, useClass: _CoalescedStyleScheduler },
+            // Prevent nested tables from seeing this table's StickyPositioningListener.
+            { provide: STICKY_POSITIONING_LISTENER, useValue: null },
         ])], ngContentSelectors: _c1, decls: 6, vars: 0, consts: [["headerRowOutlet", ""], ["rowOutlet", ""], ["noDataRowOutlet", ""], ["footerRowOutlet", ""]], template: function CdkTable_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵprojectionDef"](_c0);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵprojection"](0);
@@ -86604,6 +86794,7 @@ CdkTable.ctorParameters = () => [
     { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"],] }] },
     { type: _CoalescedStyleScheduler, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_COALESCED_STYLE_SCHEDULER,] }] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["SkipSelf"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [STICKY_POSITIONING_LISTENER,] }] },
     { type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ViewportRuler"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }] }
 ];
 CdkTable.propDecorators = {
@@ -86625,7 +86816,7 @@ CdkTable.propDecorators = {
                 },] }],
     _noDataRow: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ContentChild"], args: [CdkNoDataRow,] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkTable, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkTable, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
         args: [{
                 selector: 'cdk-table, table[cdk-table]',
@@ -86645,6 +86836,8 @@ CdkTable.propDecorators = {
                     { provide: CDK_TABLE, useExisting: CdkTable },
                     { provide: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"], useClass: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_DisposeViewRepeaterStrategy"] },
                     { provide: _COALESCED_STYLE_SCHEDULER, useClass: _CoalescedStyleScheduler },
+                    // Prevent nested tables from seeing this table's StickyPositioningListener.
+                    { provide: STICKY_POSITIONING_LISTENER, useValue: null },
                 ],
                 styles: [".cdk-table-fixed-layout{table-layout:fixed}\n"]
             }]
@@ -86666,6 +86859,13 @@ CdkTable.propDecorators = {
             }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
                 args: [_COALESCED_STYLE_SCHEDULER]
+            }] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["SkipSelf"]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+                args: [STICKY_POSITIONING_LISTENER]
             }] }, { type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ViewportRuler"], decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
             }] }]; }, { trackBy: [{
@@ -86800,9 +87000,9 @@ class CdkTextColumn {
 }
 CdkTextColumn.ɵfac = function CdkTextColumn_Factory(t) { return new (t || CdkTextColumn)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](CdkTable, 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](TEXT_COLUMN_OPTIONS, 8)); };
 CdkTextColumn.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: CdkTextColumn, selectors: [["cdk-text-column"]], viewQuery: function CdkTextColumn_Query(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵstaticViewQuery"](CdkColumnDef, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵstaticViewQuery"](CdkCellDef, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵstaticViewQuery"](CdkHeaderCellDef, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](CdkColumnDef, 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](CdkCellDef, 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](CdkHeaderCellDef, 3);
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.columnDef = _t.first);
@@ -86827,7 +87027,7 @@ CdkTextColumn.propDecorators = {
     cell: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: [CdkCellDef, { static: true },] }],
     headerCell: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: [CdkHeaderCellDef, { static: true },] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkTextColumn, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkTextColumn, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
         args: [{
                 selector: 'cdk-text-column',
@@ -86911,7 +87111,7 @@ class CdkTableModule {
 CdkTableModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineNgModule"]({ type: CdkTableModule });
 CdkTableModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ factory: function CdkTableModule_Factory(t) { return new (t || CdkTableModule)(); }, imports: [[_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ScrollingModule"]]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](CdkTableModule, { declarations: function () { return [CdkTable, CdkRowDef, CdkCellDef, CdkCellOutlet, CdkHeaderCellDef, CdkFooterCellDef, CdkColumnDef, CdkCell, CdkRow, CdkHeaderCell, CdkFooterCell, CdkHeaderRow, CdkHeaderRowDef, CdkFooterRow, CdkFooterRowDef, DataRowOutlet, HeaderRowOutlet, FooterRowOutlet, CdkTextColumn, CdkNoDataRow, NoDataRowOutlet]; }, imports: function () { return [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ScrollingModule"]]; }, exports: function () { return [CdkTable, CdkRowDef, CdkCellDef, CdkCellOutlet, CdkHeaderCellDef, CdkFooterCellDef, CdkColumnDef, CdkCell, CdkRow, CdkHeaderCell, CdkFooterCell, CdkHeaderRow, CdkHeaderRowDef, CdkFooterRow, CdkFooterRowDef, DataRowOutlet, HeaderRowOutlet, FooterRowOutlet, CdkTextColumn, CdkNoDataRow, NoDataRowOutlet]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkTableModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkTableModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"],
         args: [{
                 exports: EXPORTED_DECLARATIONS,
@@ -87215,7 +87415,7 @@ var NullProtoObject = function () {
 hiddenKeys[IE_PROTO] = true;
 
 // `Object.create` method
-// https://tc39.github.io/ecma262/#sec-object.create
+// https://tc39.es/ecma262/#sec-object.create
 module.exports = Object.create || function create(O, Properties) {
   var result;
   if (O !== null) {
@@ -87407,7 +87607,7 @@ Object(_internal_curry2_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function ran
 /*!******************************************************************!*\
   !*** ./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js ***!
   \******************************************************************/
-/*! exports provided: ANALYZE_FOR_ENTRY_COMPONENTS, APP_BOOTSTRAP_LISTENER, APP_ID, APP_INITIALIZER, ApplicationInitStatus, ApplicationModule, ApplicationRef, Attribute, COMPILER_OPTIONS, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, ChangeDetectorRef, Compiler, CompilerFactory, Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, ContentChild, ContentChildren, DEFAULT_CURRENCY_CODE, DebugElement, DebugEventListener, DebugNode, DefaultIterableDiffer, Directive, ElementRef, EmbeddedViewRef, ErrorHandler, EventEmitter, Host, HostBinding, HostListener, INJECTOR, Inject, InjectFlags, Injectable, InjectionToken, Injector, Input, IterableDiffers, KeyValueDiffers, LOCALE_ID, MissingTranslationStrategy, ModuleWithComponentFactories, NO_ERRORS_SCHEMA, NgModule, NgModuleFactory, NgModuleFactoryLoader, NgModuleRef, NgProbeToken, NgZone, Optional, Output, PACKAGE_ROOT_URL, PLATFORM_ID, PLATFORM_INITIALIZER, Pipe, PlatformRef, Query, QueryList, ReflectiveInjector, ReflectiveKey, Renderer2, RendererFactory2, RendererStyleFlags2, ResolvedReflectiveFactory, Sanitizer, SecurityContext, Self, SimpleChange, SkipSelf, SystemJsNgModuleLoader, SystemJsNgModuleLoaderConfig, TRANSLATIONS, TRANSLATIONS_FORMAT, TemplateRef, Testability, TestabilityRegistry, Type, VERSION, Version, ViewChild, ViewChildren, ViewContainerRef, ViewEncapsulation, ViewRef, WrappedValue, asNativeElements, assertPlatform, createPlatform, createPlatformFactory, defineInjectable, destroyPlatform, enableProdMode, forwardRef, getDebugNode, getModuleFactory, getPlatform, inject, isDevMode, platformCore, resolveForwardRef, setTestabilityGetter, ɵ0, ɵALLOW_MULTIPLE_PLATFORMS, ɵAPP_ID_RANDOM_PROVIDER, ɵCREATE_ATTRIBUTE_DECORATOR__POST_R3__, ɵChangeDetectorStatus, ɵCodegenComponentFactoryResolver, ɵCompiler_compileModuleAndAllComponentsAsync__POST_R3__, ɵCompiler_compileModuleAndAllComponentsSync__POST_R3__, ɵCompiler_compileModuleAsync__POST_R3__, ɵCompiler_compileModuleSync__POST_R3__, ɵComponentFactory, ɵConsole, ɵDEFAULT_LOCALE_ID, ɵEMPTY_ARRAY, ɵEMPTY_MAP, ɵINJECTOR_IMPL__POST_R3__, ɵINJECTOR_SCOPE, ɵLifecycleHooksFeature, ɵLocaleDataIndex, ɵNG_COMP_DEF, ɵNG_DIR_DEF, ɵNG_ELEMENT_ID, ɵNG_INJ_DEF, ɵNG_MOD_DEF, ɵNG_PIPE_DEF, ɵNG_PROV_DEF, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR, ɵNO_CHANGE, ɵNgModuleFactory, ɵNoopNgZone, ɵReflectionCapabilities, ɵRender3ComponentFactory, ɵRender3ComponentRef, ɵRender3NgModuleRef, ɵSWITCH_CHANGE_DETECTOR_REF_FACTORY__POST_R3__, ɵSWITCH_COMPILE_COMPONENT__POST_R3__, ɵSWITCH_COMPILE_DIRECTIVE__POST_R3__, ɵSWITCH_COMPILE_INJECTABLE__POST_R3__, ɵSWITCH_COMPILE_NGMODULE__POST_R3__, ɵSWITCH_COMPILE_PIPE__POST_R3__, ɵSWITCH_ELEMENT_REF_FACTORY__POST_R3__, ɵSWITCH_IVY_ENABLED__POST_R3__, ɵSWITCH_RENDERER2_FACTORY__POST_R3__, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__, ɵSWITCH_VIEW_CONTAINER_REF_FACTORY__POST_R3__, ɵ_sanitizeHtml, ɵ_sanitizeUrl, ɵallowSanitizationBypassAndThrow, ɵand, ɵangular_packages_core_core_a, ɵangular_packages_core_core_b, ɵangular_packages_core_core_ba, ɵangular_packages_core_core_bb, ɵangular_packages_core_core_bc, ɵangular_packages_core_core_bd, ɵangular_packages_core_core_be, ɵangular_packages_core_core_bf, ɵangular_packages_core_core_bg, ɵangular_packages_core_core_bi, ɵangular_packages_core_core_bj, ɵangular_packages_core_core_bk, ɵangular_packages_core_core_bl, ɵangular_packages_core_core_bm, ɵangular_packages_core_core_bn, ɵangular_packages_core_core_bo, ɵangular_packages_core_core_bp, ɵangular_packages_core_core_bq, ɵangular_packages_core_core_br, ɵangular_packages_core_core_bs, ɵangular_packages_core_core_bu, ɵangular_packages_core_core_bw, ɵangular_packages_core_core_bx, ɵangular_packages_core_core_by, ɵangular_packages_core_core_bz, ɵangular_packages_core_core_c, ɵangular_packages_core_core_ca, ɵangular_packages_core_core_d, ɵangular_packages_core_core_e, ɵangular_packages_core_core_f, ɵangular_packages_core_core_g, ɵangular_packages_core_core_h, ɵangular_packages_core_core_i, ɵangular_packages_core_core_j, ɵangular_packages_core_core_k, ɵangular_packages_core_core_l, ɵangular_packages_core_core_m, ɵangular_packages_core_core_n, ɵangular_packages_core_core_o, ɵangular_packages_core_core_p, ɵangular_packages_core_core_q, ɵangular_packages_core_core_r, ɵangular_packages_core_core_s, ɵangular_packages_core_core_t, ɵangular_packages_core_core_u, ɵangular_packages_core_core_v, ɵangular_packages_core_core_w, ɵangular_packages_core_core_x, ɵangular_packages_core_core_y, ɵangular_packages_core_core_z, ɵbypassSanitizationTrustHtml, ɵbypassSanitizationTrustResourceUrl, ɵbypassSanitizationTrustScript, ɵbypassSanitizationTrustStyle, ɵbypassSanitizationTrustUrl, ɵccf, ɵclearOverrides, ɵclearResolutionOfComponentResourcesQueue, ɵcmf, ɵcompileComponent, ɵcompileDirective, ɵcompileNgModule, ɵcompileNgModuleDefs, ɵcompileNgModuleFactory__POST_R3__, ɵcompilePipe, ɵcreateInjector, ɵcrt, ɵdefaultIterableDiffers, ɵdefaultKeyValueDiffers, ɵdetectChanges, ɵdevModeEqual, ɵdid, ɵeld, ɵfindLocaleData, ɵflushModuleScopingQueueAsMuchAsPossible, ɵgetComponentViewDefinitionFactory, ɵgetDebugNodeR2, ɵgetDebugNode__POST_R3__, ɵgetDirectives, ɵgetHostElement, ɵgetInjectableDef, ɵgetLContext, ɵgetLocaleCurrencyCode, ɵgetLocalePluralCase, ɵgetModuleFactory__POST_R3__, ɵgetSanitizationBypassType, ɵglobal, ɵinitServicesIfNeeded, ɵinlineInterpolate, ɵinterpolate, ɵisBoundToModule__POST_R3__, ɵisDefaultChangeDetectionStrategy, ɵisListLikeIterable, ɵisObservable, ɵisPromise, ɵivyEnabled, ɵmakeDecorator, ɵmarkDirty, ɵmod, ɵmpd, ɵncd, ɵnoSideEffects, ɵnov, ɵoverrideComponentView, ɵoverrideProvider, ɵpad, ɵpatchComponentDefWithScope, ɵpid, ɵpod, ɵppd, ɵprd, ɵpublishDefaultGlobalUtils, ɵpublishGlobalUtil, ɵqud, ɵregisterLocaleData, ɵregisterModuleFactory, ɵregisterNgModuleType, ɵrenderComponent, ɵresetCompiledComponents, ɵresetJitOptions, ɵresolveComponentResources, ɵsetClassMetadata, ɵsetCurrentInjector, ɵsetDocument, ɵsetLocaleId, ɵstore, ɵstringify, ɵted, ɵtransitiveScopesFor, ɵunregisterLocaleData, ɵunv, ɵunwrapSafeValue, ɵvid, ɵwhenRendered, ɵɵCopyDefinitionFeature, ɵɵInheritDefinitionFeature, ɵɵNgOnChangesFeature, ɵɵProvidersFeature, ɵɵadvance, ɵɵattribute, ɵɵattributeInterpolate1, ɵɵattributeInterpolate2, ɵɵattributeInterpolate3, ɵɵattributeInterpolate4, ɵɵattributeInterpolate5, ɵɵattributeInterpolate6, ɵɵattributeInterpolate7, ɵɵattributeInterpolate8, ɵɵattributeInterpolateV, ɵɵclassMap, ɵɵclassMapInterpolate1, ɵɵclassMapInterpolate2, ɵɵclassMapInterpolate3, ɵɵclassMapInterpolate4, ɵɵclassMapInterpolate5, ɵɵclassMapInterpolate6, ɵɵclassMapInterpolate7, ɵɵclassMapInterpolate8, ɵɵclassMapInterpolateV, ɵɵclassProp, ɵɵcontentQuery, ɵɵdefineComponent, ɵɵdefineDirective, ɵɵdefineInjectable, ɵɵdefineInjector, ɵɵdefineNgModule, ɵɵdefinePipe, ɵɵdirectiveInject, ɵɵdisableBindings, ɵɵelement, ɵɵelementContainer, ɵɵelementContainerEnd, ɵɵelementContainerStart, ɵɵelementEnd, ɵɵelementStart, ɵɵenableBindings, ɵɵgetCurrentView, ɵɵgetFactoryOf, ɵɵgetInheritedFactory, ɵɵhostProperty, ɵɵi18n, ɵɵi18nApply, ɵɵi18nAttributes, ɵɵi18nEnd, ɵɵi18nExp, ɵɵi18nPostprocess, ɵɵi18nStart, ɵɵinject, ɵɵinjectAttribute, ɵɵinjectPipeChangeDetectorRef, ɵɵinvalidFactory, ɵɵinvalidFactoryDep, ɵɵlistener, ɵɵloadQuery, ɵɵnamespaceHTML, ɵɵnamespaceMathML, ɵɵnamespaceSVG, ɵɵnextContext, ɵɵpipe, ɵɵpipeBind1, ɵɵpipeBind2, ɵɵpipeBind3, ɵɵpipeBind4, ɵɵpipeBindV, ɵɵprojection, ɵɵprojectionDef, ɵɵproperty, ɵɵpropertyInterpolate, ɵɵpropertyInterpolate1, ɵɵpropertyInterpolate2, ɵɵpropertyInterpolate3, ɵɵpropertyInterpolate4, ɵɵpropertyInterpolate5, ɵɵpropertyInterpolate6, ɵɵpropertyInterpolate7, ɵɵpropertyInterpolate8, ɵɵpropertyInterpolateV, ɵɵpureFunction0, ɵɵpureFunction1, ɵɵpureFunction2, ɵɵpureFunction3, ɵɵpureFunction4, ɵɵpureFunction5, ɵɵpureFunction6, ɵɵpureFunction7, ɵɵpureFunction8, ɵɵpureFunctionV, ɵɵqueryRefresh, ɵɵreference, ɵɵresolveBody, ɵɵresolveDocument, ɵɵresolveWindow, ɵɵrestoreView, ɵɵsanitizeHtml, ɵɵsanitizeResourceUrl, ɵɵsanitizeScript, ɵɵsanitizeStyle, ɵɵsanitizeUrl, ɵɵsanitizeUrlOrResourceUrl, ɵɵsetComponentScope, ɵɵsetNgModuleScope, ɵɵstaticContentQuery, ɵɵstaticViewQuery, ɵɵstyleMap, ɵɵstyleMapInterpolate1, ɵɵstyleMapInterpolate2, ɵɵstyleMapInterpolate3, ɵɵstyleMapInterpolate4, ɵɵstyleMapInterpolate5, ɵɵstyleMapInterpolate6, ɵɵstyleMapInterpolate7, ɵɵstyleMapInterpolate8, ɵɵstyleMapInterpolateV, ɵɵstyleProp, ɵɵstylePropInterpolate1, ɵɵstylePropInterpolate2, ɵɵstylePropInterpolate3, ɵɵstylePropInterpolate4, ɵɵstylePropInterpolate5, ɵɵstylePropInterpolate6, ɵɵstylePropInterpolate7, ɵɵstylePropInterpolate8, ɵɵstylePropInterpolateV, ɵɵsyntheticHostListener, ɵɵsyntheticHostProperty, ɵɵtemplate, ɵɵtemplateRefExtractor, ɵɵtext, ɵɵtextInterpolate, ɵɵtextInterpolate1, ɵɵtextInterpolate2, ɵɵtextInterpolate3, ɵɵtextInterpolate4, ɵɵtextInterpolate5, ɵɵtextInterpolate6, ɵɵtextInterpolate7, ɵɵtextInterpolate8, ɵɵtextInterpolateV, ɵɵtrustConstantHtml, ɵɵtrustConstantResourceUrl, ɵɵtrustConstantScript, ɵɵviewQuery */
+/*! exports provided: ANALYZE_FOR_ENTRY_COMPONENTS, APP_BOOTSTRAP_LISTENER, APP_ID, APP_INITIALIZER, ApplicationInitStatus, ApplicationModule, ApplicationRef, Attribute, COMPILER_OPTIONS, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, ChangeDetectorRef, Compiler, CompilerFactory, Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, ContentChild, ContentChildren, DEFAULT_CURRENCY_CODE, DebugElement, DebugEventListener, DebugNode, DefaultIterableDiffer, Directive, ElementRef, EmbeddedViewRef, ErrorHandler, EventEmitter, Host, HostBinding, HostListener, INJECTOR, Inject, InjectFlags, Injectable, InjectionToken, Injector, Input, IterableDiffers, KeyValueDiffers, LOCALE_ID, MissingTranslationStrategy, ModuleWithComponentFactories, NO_ERRORS_SCHEMA, NgModule, NgModuleFactory, NgModuleFactoryLoader, NgModuleRef, NgProbeToken, NgZone, Optional, Output, PACKAGE_ROOT_URL, PLATFORM_ID, PLATFORM_INITIALIZER, Pipe, PlatformRef, Query, QueryList, ReflectiveInjector, ReflectiveKey, Renderer2, RendererFactory2, RendererStyleFlags2, ResolvedReflectiveFactory, Sanitizer, SecurityContext, Self, SimpleChange, SkipSelf, SystemJsNgModuleLoader, SystemJsNgModuleLoaderConfig, TRANSLATIONS, TRANSLATIONS_FORMAT, TemplateRef, Testability, TestabilityRegistry, Type, VERSION, Version, ViewChild, ViewChildren, ViewContainerRef, ViewEncapsulation, ViewRef, WrappedValue, asNativeElements, assertPlatform, createPlatform, createPlatformFactory, defineInjectable, destroyPlatform, enableProdMode, forwardRef, getDebugNode, getModuleFactory, getPlatform, inject, isDevMode, platformCore, resolveForwardRef, setTestabilityGetter, ɵ0, ɵALLOW_MULTIPLE_PLATFORMS, ɵAPP_ID_RANDOM_PROVIDER, ɵCREATE_ATTRIBUTE_DECORATOR__POST_R3__, ɵChangeDetectorStatus, ɵCodegenComponentFactoryResolver, ɵCompiler_compileModuleAndAllComponentsAsync__POST_R3__, ɵCompiler_compileModuleAndAllComponentsSync__POST_R3__, ɵCompiler_compileModuleAsync__POST_R3__, ɵCompiler_compileModuleSync__POST_R3__, ɵComponentFactory, ɵConsole, ɵDEFAULT_LOCALE_ID, ɵEMPTY_ARRAY, ɵEMPTY_MAP, ɵINJECTOR_IMPL__POST_R3__, ɵINJECTOR_SCOPE, ɵLifecycleHooksFeature, ɵLocaleDataIndex, ɵNG_COMP_DEF, ɵNG_DIR_DEF, ɵNG_ELEMENT_ID, ɵNG_INJ_DEF, ɵNG_MOD_DEF, ɵNG_PIPE_DEF, ɵNG_PROV_DEF, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR, ɵNO_CHANGE, ɵNgModuleFactory, ɵNoopNgZone, ɵReflectionCapabilities, ɵRender3ComponentFactory, ɵRender3ComponentRef, ɵRender3NgModuleRef, ɵSWITCH_CHANGE_DETECTOR_REF_FACTORY__POST_R3__, ɵSWITCH_COMPILE_COMPONENT__POST_R3__, ɵSWITCH_COMPILE_DIRECTIVE__POST_R3__, ɵSWITCH_COMPILE_INJECTABLE__POST_R3__, ɵSWITCH_COMPILE_NGMODULE__POST_R3__, ɵSWITCH_COMPILE_PIPE__POST_R3__, ɵSWITCH_ELEMENT_REF_FACTORY__POST_R3__, ɵSWITCH_IVY_ENABLED__POST_R3__, ɵSWITCH_RENDERER2_FACTORY__POST_R3__, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__, ɵSWITCH_VIEW_CONTAINER_REF_FACTORY__POST_R3__, ɵ_sanitizeHtml, ɵ_sanitizeUrl, ɵallowSanitizationBypassAndThrow, ɵand, ɵangular_packages_core_core_a, ɵangular_packages_core_core_b, ɵangular_packages_core_core_ba, ɵangular_packages_core_core_bb, ɵangular_packages_core_core_bc, ɵangular_packages_core_core_bd, ɵangular_packages_core_core_be, ɵangular_packages_core_core_bf, ɵangular_packages_core_core_bg, ɵangular_packages_core_core_bh, ɵangular_packages_core_core_bi, ɵangular_packages_core_core_bj, ɵangular_packages_core_core_bl, ɵangular_packages_core_core_bm, ɵangular_packages_core_core_bn, ɵangular_packages_core_core_bo, ɵangular_packages_core_core_bp, ɵangular_packages_core_core_bq, ɵangular_packages_core_core_br, ɵangular_packages_core_core_bs, ɵangular_packages_core_core_bv, ɵangular_packages_core_core_bw, ɵangular_packages_core_core_bx, ɵangular_packages_core_core_bz, ɵangular_packages_core_core_c, ɵangular_packages_core_core_cb, ɵangular_packages_core_core_cc, ɵangular_packages_core_core_d, ɵangular_packages_core_core_e, ɵangular_packages_core_core_f, ɵangular_packages_core_core_g, ɵangular_packages_core_core_h, ɵangular_packages_core_core_i, ɵangular_packages_core_core_j, ɵangular_packages_core_core_k, ɵangular_packages_core_core_l, ɵangular_packages_core_core_m, ɵangular_packages_core_core_n, ɵangular_packages_core_core_o, ɵangular_packages_core_core_p, ɵangular_packages_core_core_q, ɵangular_packages_core_core_r, ɵangular_packages_core_core_s, ɵangular_packages_core_core_t, ɵangular_packages_core_core_u, ɵangular_packages_core_core_v, ɵangular_packages_core_core_w, ɵangular_packages_core_core_x, ɵangular_packages_core_core_y, ɵangular_packages_core_core_z, ɵbypassSanitizationTrustHtml, ɵbypassSanitizationTrustResourceUrl, ɵbypassSanitizationTrustScript, ɵbypassSanitizationTrustStyle, ɵbypassSanitizationTrustUrl, ɵccf, ɵclearOverrides, ɵclearResolutionOfComponentResourcesQueue, ɵcmf, ɵcompileComponent, ɵcompileDirective, ɵcompileNgModule, ɵcompileNgModuleDefs, ɵcompileNgModuleFactory__POST_R3__, ɵcompilePipe, ɵcreateInjector, ɵcrt, ɵdefaultIterableDiffers, ɵdefaultKeyValueDiffers, ɵdetectChanges, ɵdevModeEqual, ɵdid, ɵeld, ɵfindLocaleData, ɵflushModuleScopingQueueAsMuchAsPossible, ɵgetComponentViewDefinitionFactory, ɵgetDebugNodeR2, ɵgetDebugNode__POST_R3__, ɵgetDirectives, ɵgetHostElement, ɵgetInjectableDef, ɵgetLContext, ɵgetLocaleCurrencyCode, ɵgetLocalePluralCase, ɵgetModuleFactory__POST_R3__, ɵgetSanitizationBypassType, ɵglobal, ɵinitServicesIfNeeded, ɵinlineInterpolate, ɵinterpolate, ɵisBoundToModule__POST_R3__, ɵisDefaultChangeDetectionStrategy, ɵisListLikeIterable, ɵisObservable, ɵisPromise, ɵisSubscribable, ɵivyEnabled, ɵmakeDecorator, ɵmarkDirty, ɵmod, ɵmpd, ɵncd, ɵnoSideEffects, ɵnov, ɵoverrideComponentView, ɵoverrideProvider, ɵpad, ɵpatchComponentDefWithScope, ɵpid, ɵpod, ɵppd, ɵprd, ɵpublishDefaultGlobalUtils, ɵpublishGlobalUtil, ɵqud, ɵregisterLocaleData, ɵregisterModuleFactory, ɵregisterNgModuleType, ɵrenderComponent, ɵresetCompiledComponents, ɵresetJitOptions, ɵresolveComponentResources, ɵsetClassMetadata, ɵsetCurrentInjector, ɵsetDocument, ɵsetLocaleId, ɵstore, ɵstringify, ɵted, ɵtransitiveScopesFor, ɵunregisterLocaleData, ɵunv, ɵunwrapSafeValue, ɵvid, ɵwhenRendered, ɵɵCopyDefinitionFeature, ɵɵInheritDefinitionFeature, ɵɵNgOnChangesFeature, ɵɵProvidersFeature, ɵɵadvance, ɵɵattribute, ɵɵattributeInterpolate1, ɵɵattributeInterpolate2, ɵɵattributeInterpolate3, ɵɵattributeInterpolate4, ɵɵattributeInterpolate5, ɵɵattributeInterpolate6, ɵɵattributeInterpolate7, ɵɵattributeInterpolate8, ɵɵattributeInterpolateV, ɵɵclassMap, ɵɵclassMapInterpolate1, ɵɵclassMapInterpolate2, ɵɵclassMapInterpolate3, ɵɵclassMapInterpolate4, ɵɵclassMapInterpolate5, ɵɵclassMapInterpolate6, ɵɵclassMapInterpolate7, ɵɵclassMapInterpolate8, ɵɵclassMapInterpolateV, ɵɵclassProp, ɵɵcontentQuery, ɵɵdefineComponent, ɵɵdefineDirective, ɵɵdefineInjectable, ɵɵdefineInjector, ɵɵdefineNgModule, ɵɵdefinePipe, ɵɵdirectiveInject, ɵɵdisableBindings, ɵɵelement, ɵɵelementContainer, ɵɵelementContainerEnd, ɵɵelementContainerStart, ɵɵelementEnd, ɵɵelementStart, ɵɵenableBindings, ɵɵgetCurrentView, ɵɵgetFactoryOf, ɵɵgetInheritedFactory, ɵɵhostProperty, ɵɵi18n, ɵɵi18nApply, ɵɵi18nAttributes, ɵɵi18nEnd, ɵɵi18nExp, ɵɵi18nPostprocess, ɵɵi18nStart, ɵɵinject, ɵɵinjectAttribute, ɵɵinjectPipeChangeDetectorRef, ɵɵinvalidFactory, ɵɵinvalidFactoryDep, ɵɵlistener, ɵɵloadQuery, ɵɵnamespaceHTML, ɵɵnamespaceMathML, ɵɵnamespaceSVG, ɵɵnextContext, ɵɵngDeclareComponent, ɵɵngDeclareDirective, ɵɵpipe, ɵɵpipeBind1, ɵɵpipeBind2, ɵɵpipeBind3, ɵɵpipeBind4, ɵɵpipeBindV, ɵɵprojection, ɵɵprojectionDef, ɵɵproperty, ɵɵpropertyInterpolate, ɵɵpropertyInterpolate1, ɵɵpropertyInterpolate2, ɵɵpropertyInterpolate3, ɵɵpropertyInterpolate4, ɵɵpropertyInterpolate5, ɵɵpropertyInterpolate6, ɵɵpropertyInterpolate7, ɵɵpropertyInterpolate8, ɵɵpropertyInterpolateV, ɵɵpureFunction0, ɵɵpureFunction1, ɵɵpureFunction2, ɵɵpureFunction3, ɵɵpureFunction4, ɵɵpureFunction5, ɵɵpureFunction6, ɵɵpureFunction7, ɵɵpureFunction8, ɵɵpureFunctionV, ɵɵqueryRefresh, ɵɵreference, ɵɵresolveBody, ɵɵresolveDocument, ɵɵresolveWindow, ɵɵrestoreView, ɵɵsanitizeHtml, ɵɵsanitizeResourceUrl, ɵɵsanitizeScript, ɵɵsanitizeStyle, ɵɵsanitizeUrl, ɵɵsanitizeUrlOrResourceUrl, ɵɵsetComponentScope, ɵɵsetNgModuleScope, ɵɵstyleMap, ɵɵstyleMapInterpolate1, ɵɵstyleMapInterpolate2, ɵɵstyleMapInterpolate3, ɵɵstyleMapInterpolate4, ɵɵstyleMapInterpolate5, ɵɵstyleMapInterpolate6, ɵɵstyleMapInterpolate7, ɵɵstyleMapInterpolate8, ɵɵstyleMapInterpolateV, ɵɵstyleProp, ɵɵstylePropInterpolate1, ɵɵstylePropInterpolate2, ɵɵstylePropInterpolate3, ɵɵstylePropInterpolate4, ɵɵstylePropInterpolate5, ɵɵstylePropInterpolate6, ɵɵstylePropInterpolate7, ɵɵstylePropInterpolate8, ɵɵstylePropInterpolateV, ɵɵsyntheticHostListener, ɵɵsyntheticHostProperty, ɵɵtemplate, ɵɵtemplateRefExtractor, ɵɵtext, ɵɵtextInterpolate, ɵɵtextInterpolate1, ɵɵtextInterpolate2, ɵɵtextInterpolate3, ɵɵtextInterpolate4, ɵɵtextInterpolate5, ɵɵtextInterpolate6, ɵɵtextInterpolate7, ɵɵtextInterpolate8, ɵɵtextInterpolateV, ɵɵtrustConstantHtml, ɵɵtrustConstantResourceUrl, ɵɵviewQuery */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87516,7 +87716,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "platformCore", function() { return platformCore; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resolveForwardRef", function() { return resolveForwardRef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setTestabilityGetter", function() { return setTestabilityGetter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵ0", function() { return ɵ0$2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵ0", function() { return ɵ0$3; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵALLOW_MULTIPLE_PLATFORMS", function() { return ALLOW_MULTIPLE_PLATFORMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAPP_ID_RANDOM_PROVIDER", function() { return APP_ID_RANDOM_PROVIDER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵCREATE_ATTRIBUTE_DECORATOR__POST_R3__", function() { return CREATE_ATTRIBUTE_DECORATOR__POST_R3__; });
@@ -87567,54 +87767,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵand", function() { return anchorDef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_a", function() { return isForwardRef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_b", function() { return injectInjectorOnly; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_ba", function() { return DebugContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bb", function() { return NgOnChangesFeatureImpl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bc", function() { return SCHEDULER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bd", function() { return injectAttributeImpl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_be", function() { return getLView; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bf", function() { return getBindingRoot; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bg", function() { return nextContextImpl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bi", function() { return pureFunction1Internal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bj", function() { return pureFunction2Internal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bk", function() { return pureFunction3Internal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bl", function() { return pureFunction4Internal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bm", function() { return pureFunctionVInternal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bn", function() { return getUrlSanitizer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bo", function() { return makePropDecorator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bp", function() { return makeParamDecorator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bq", function() { return getClosureSafeProperty; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_br", function() { return NullInjector; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bs", function() { return getInjectImplementation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bu", function() { return getNativeByTNode; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bw", function() { return getRootContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bx", function() { return i18nPostprocess; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_by", function() { return trustedHTMLFromString; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bz", function() { return trustedScriptURLFromString; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_c", function() { return ReflectiveInjector_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_ca", function() { return trustedScriptFromString; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_d", function() { return ReflectiveDependency; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_e", function() { return resolveReflectiveProviders; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_f", function() { return _appIdRandomProviderFactory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_g", function() { return injectRenderer2; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_h", function() { return injectElementRef; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_i", function() { return createElementRef; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_j", function() { return getModuleFactory__PRE_R3__; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_k", function() { return injectTemplateRef; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_l", function() { return createTemplateRef; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_m", function() { return injectViewContainerRef; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_n", function() { return DebugNode__PRE_R3__; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_o", function() { return DebugElement__PRE_R3__; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_p", function() { return getDebugNodeR2__PRE_R3__; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_q", function() { return injectChangeDetectorRef; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_r", function() { return DefaultIterableDifferFactory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_s", function() { return DefaultKeyValueDifferFactory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_t", function() { return _iterableDiffersFactory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_u", function() { return _keyValueDiffersFactory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_v", function() { return _localeFactory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_w", function() { return APPLICATION_MODULE_PROVIDERS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_x", function() { return zoneSchedulerFactory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_y", function() { return USD_CURRENCY_CODE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_z", function() { return _def; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_ba", function() { return zoneSchedulerFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bb", function() { return USD_CURRENCY_CODE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bc", function() { return _def; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bd", function() { return DebugContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_be", function() { return NgOnChangesFeatureImpl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bf", function() { return SCHEDULER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bg", function() { return injectAttributeImpl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bh", function() { return getLView; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bi", function() { return getBindingRoot; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bj", function() { return nextContextImpl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bl", function() { return pureFunction1Internal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bm", function() { return pureFunction2Internal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bn", function() { return pureFunction3Internal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bo", function() { return pureFunction4Internal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bp", function() { return pureFunctionVInternal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bq", function() { return getUrlSanitizer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_br", function() { return makePropDecorator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bs", function() { return makeParamDecorator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bv", function() { return getClosureSafeProperty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bw", function() { return NullInjector; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bx", function() { return getInjectImplementation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_bz", function() { return getNativeByTNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_c", function() { return attachInjectFlag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_cb", function() { return getRootContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_cc", function() { return i18nPostprocess; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_d", function() { return ReflectiveInjector_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_e", function() { return ReflectiveDependency; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_f", function() { return resolveReflectiveProviders; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_g", function() { return _appIdRandomProviderFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_h", function() { return injectRenderer2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_i", function() { return injectElementRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_j", function() { return createElementRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_k", function() { return getModuleFactory__PRE_R3__; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_l", function() { return injectTemplateRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_m", function() { return createTemplateRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_n", function() { return injectViewContainerRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_o", function() { return DebugNode__PRE_R3__; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_p", function() { return DebugElement__PRE_R3__; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_q", function() { return getDebugNodeR2__PRE_R3__; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_r", function() { return injectChangeDetectorRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_s", function() { return DefaultIterableDifferFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_t", function() { return DefaultKeyValueDifferFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_u", function() { return defaultIterableDiffersFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_v", function() { return defaultKeyValueDiffersFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_w", function() { return _iterableDiffersFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_x", function() { return _keyValueDiffersFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_y", function() { return _localeFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_packages_core_core_z", function() { return APPLICATION_MODULE_PROVIDERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵbypassSanitizationTrustHtml", function() { return bypassSanitizationTrustHtml; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵbypassSanitizationTrustResourceUrl", function() { return bypassSanitizationTrustResourceUrl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵbypassSanitizationTrustScript", function() { return bypassSanitizationTrustScript; });
@@ -87660,6 +87860,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵisListLikeIterable", function() { return isListLikeIterable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵisObservable", function() { return isObservable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵisPromise", function() { return isPromise; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵisSubscribable", function() { return isSubscribable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵivyEnabled", function() { return ivyEnabled; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵmakeDecorator", function() { return makeDecorator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵmarkDirty", function() { return markDirty; });
@@ -87763,6 +87964,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵnamespaceMathML", function() { return ɵɵnamespaceMathML; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵnamespaceSVG", function() { return ɵɵnamespaceSVG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵnextContext", function() { return ɵɵnextContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵngDeclareComponent", function() { return ɵɵngDeclareComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵngDeclareDirective", function() { return ɵɵngDeclareDirective; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵpipe", function() { return ɵɵpipe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵpipeBind1", function() { return ɵɵpipeBind1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵpipeBind2", function() { return ɵɵpipeBind2; });
@@ -87806,8 +88009,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵsanitizeUrlOrResourceUrl", function() { return ɵɵsanitizeUrlOrResourceUrl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵsetComponentScope", function() { return ɵɵsetComponentScope; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵsetNgModuleScope", function() { return ɵɵsetNgModuleScope; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵstaticContentQuery", function() { return ɵɵstaticContentQuery; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵstaticViewQuery", function() { return ɵɵstaticViewQuery; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵstyleMap", function() { return ɵɵstyleMap; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵstyleMapInterpolate1", function() { return ɵɵstyleMapInterpolate1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵstyleMapInterpolate2", function() { return ɵɵstyleMapInterpolate2; });
@@ -87845,12 +88046,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵtextInterpolateV", function() { return ɵɵtextInterpolateV; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵtrustConstantHtml", function() { return ɵɵtrustConstantHtml; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵtrustConstantResourceUrl", function() { return ɵɵtrustConstantResourceUrl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵtrustConstantScript", function() { return ɵɵtrustConstantScript; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵɵviewQuery", function() { return ɵɵviewQuery; });
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /**
- * @license Angular v11.0.9
+ * @license Angular v11.1.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -88229,7 +88429,8 @@ const NG_INJECTOR_DEF = getClosureSafeProperty({ ngInjectorDef: getClosureSafePr
  */
 var InjectFlags;
 (function (InjectFlags) {
-    // TODO(alxhub): make this 'const' when ngc no longer writes exports of it into ngfactory files.
+    // TODO(alxhub): make this 'const' (and remove `InternalInjectFlags` enum) when ngc no longer
+    // writes exports of it into ngfactory files.
     /** Check self and check parent injector if needed */
     InjectFlags[InjectFlags["Default"] = 0] = "Default";
     /**
@@ -88442,7 +88643,7 @@ var ViewEncapsulation;
      * Use Shadow DOM to encapsulate styles.
      *
      * For the DOM this means using modern [Shadow
-     * DOM](https://w3c.github.io/webcomponents/spec/shadow/) and
+     * DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) and
      * creating a ShadowRoot for Component's Host Element.
      */
     ViewEncapsulation[ViewEncapsulation["ShadowDom"] = 3] = "ShadowDom";
@@ -89149,16 +89350,42 @@ function getFactoryDef(type, throwNotFound) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+// Base URL for the error details page.
+// Keep this value in sync with a similar const in
+// `packages/compiler-cli/src/ngtsc/diagnostics/src/error_code.ts`.
+const ERROR_DETAILS_PAGE_BASE_URL = 'https://angular.io/errors';
 class RuntimeError extends Error {
     constructor(code, message) {
         super(formatRuntimeError(code, message));
         this.code = code;
     }
 }
+// Contains a set of error messages that have details guides at angular.io.
+// Full list of available error guides can be found at https://angular.io/errors
+/* tslint:disable:no-toplevel-property-access */
+const RUNTIME_ERRORS_WITH_GUIDES = new Set([
+    "100" /* EXPRESSION_CHANGED_AFTER_CHECKED */,
+    "200" /* CYCLIC_DI_DEPENDENCY */,
+    "201" /* PROVIDER_NOT_FOUND */,
+    "300" /* MULTIPLE_COMPONENTS_MATCH */,
+    "301" /* EXPORT_NOT_FOUND */,
+    "302" /* PIPE_NOT_FOUND */,
+]);
+/* tslint:enable:no-toplevel-property-access */
 /** Called to format a runtime error */
 function formatRuntimeError(code, message) {
     const fullCode = code ? `NG0${code}: ` : '';
-    return `${fullCode}${message}`;
+    let errorMessage = `${fullCode}${message}`;
+    // Some runtime errors are still thrown without `ngDevMode` (for example
+    // `throwProviderNotFoundError`), so we add `ngDevMode` check here to avoid pulling
+    // `RUNTIME_ERRORS_WITH_GUIDES` symbol into prod bundles.
+    // TODO: revisit all instances where `RuntimeError` is thrown and see if `ngDevMode` can be added
+    // there instead to tree-shake more devmode-only code (and eventually remove `ngDevMode` check
+    // from this code).
+    if (ngDevMode && RUNTIME_ERRORS_WITH_GUIDES.has(code)) {
+        errorMessage = `${errorMessage}. Find more at ${ERROR_DETAILS_PAGE_BASE_URL}/NG0${code}`;
+    }
+    return errorMessage;
 }
 
 /**
@@ -90874,6 +91101,12 @@ function setIncludeViewProviders(v) {
  */
 const BLOOM_SIZE = 256;
 const BLOOM_MASK = BLOOM_SIZE - 1;
+/**
+ * The number of bits that is represented by a single bloom bucket. JS bit operations are 32 bits,
+ * so each bucket represents 32 distinct tokens which accounts for log2(32) = 5 bits of a bloom hash
+ * number.
+ */
+const BLOOM_BUCKET_BITS = 5;
 /** Counter used to generate unique IDs for directives. */
 let nextNgElementId = 0;
 /**
@@ -90900,25 +91133,15 @@ function bloomAdd(injectorIndex, tView, type) {
     }
     // We only have BLOOM_SIZE (256) slots in our bloom filter (8 buckets * 32 bits each),
     // so all unique IDs must be modulo-ed into a number from 0 - 255 to fit into the filter.
-    const bloomBit = id & BLOOM_MASK;
+    const bloomHash = id & BLOOM_MASK;
     // Create a mask that targets the specific bit associated with the directive.
     // JS bit operations are 32 bits, so this will be a number between 2^0 and 2^31, corresponding
     // to bit positions 0 - 31 in a 32 bit integer.
-    const mask = 1 << bloomBit;
-    // Use the raw bloomBit number to determine which bloom filter bucket we should check
-    // e.g: bf0 = [0 - 31], bf1 = [32 - 63], bf2 = [64 - 95], bf3 = [96 - 127], etc
-    const b7 = bloomBit & 0x80;
-    const b6 = bloomBit & 0x40;
-    const b5 = bloomBit & 0x20;
-    const tData = tView.data;
-    if (b7) {
-        b6 ? (b5 ? (tData[injectorIndex + 7] |= mask) : (tData[injectorIndex + 6] |= mask)) :
-            (b5 ? (tData[injectorIndex + 5] |= mask) : (tData[injectorIndex + 4] |= mask));
-    }
-    else {
-        b6 ? (b5 ? (tData[injectorIndex + 3] |= mask) : (tData[injectorIndex + 2] |= mask)) :
-            (b5 ? (tData[injectorIndex + 1] |= mask) : (tData[injectorIndex] |= mask));
-    }
+    const mask = 1 << bloomHash;
+    // Each bloom bucket in `tData` represents `BLOOM_BUCKET_BITS` number of bits of `bloomHash`.
+    // Any bits in `bloomHash` beyond `BLOOM_BUCKET_BITS` indicate the bucket offset that the mask
+    // should be written to.
+    tView.data[injectorIndex + (bloomHash >> BLOOM_BUCKET_BITS)] |= mask;
 }
 /**
  * Creates (or gets an existing) injector for a given element or container.
@@ -91413,21 +91636,10 @@ function bloomHasToken(bloomHash, injectorIndex, injectorView) {
     // JS bit operations are 32 bits, so this will be a number between 2^0 and 2^31, corresponding
     // to bit positions 0 - 31 in a 32 bit integer.
     const mask = 1 << bloomHash;
-    const b7 = bloomHash & 0x80;
-    const b6 = bloomHash & 0x40;
-    const b5 = bloomHash & 0x20;
-    // Our bloom filter size is 256 bits, which is eight 32-bit bloom filter buckets:
-    // bf0 = [0 - 31], bf1 = [32 - 63], bf2 = [64 - 95], bf3 = [96 - 127], etc.
-    // Get the bloom filter value from the appropriate bucket based on the directive's bloomBit.
-    let value;
-    if (b7) {
-        value = b6 ? (b5 ? injectorView[injectorIndex + 7] : injectorView[injectorIndex + 6]) :
-            (b5 ? injectorView[injectorIndex + 5] : injectorView[injectorIndex + 4]);
-    }
-    else {
-        value = b6 ? (b5 ? injectorView[injectorIndex + 3] : injectorView[injectorIndex + 2]) :
-            (b5 ? injectorView[injectorIndex + 1] : injectorView[injectorIndex]);
-    }
+    // Each bloom bucket in `injectorView` represents `BLOOM_BUCKET_BITS` number of bits of
+    // `bloomHash`. Any bits in `bloomHash` beyond `BLOOM_BUCKET_BITS` indicate the bucket offset
+    // that should be used.
+    const value = injectorView[injectorIndex + (bloomHash >> BLOOM_BUCKET_BITS)];
     // If the bloom filter value has the bit corresponding to the directive's bloomBit flipped on,
     // this injector is a potential match.
     return !!(value & mask);
@@ -91769,6 +91981,10 @@ class InjectionToken {
  * @deprecated Since 9.0.0. With Ivy, this property is no longer necessary.
  */
 const ANALYZE_FOR_ENTRY_COMPONENTS = new InjectionToken('AnalyzeForEntryComponents');
+// Stores the default value of `emitDistinctChangesOnly` when the `emitDistinctChangesOnly` is not
+// explicitly set. This value will be changed to `true` in v12.
+// TODO(misko): switch the default in v12 to `true`. See: packages/compiler/src/core.ts
+const emitDistinctChangesOnlyDefaultValue = false;
 /**
  * Base class for query metadata.
  *
@@ -91781,7 +91997,7 @@ const ANALYZE_FOR_ENTRY_COMPONENTS = new InjectionToken('AnalyzeForEntryComponen
  */
 class Query {
 }
-const ɵ0$1 = (selector, data = {}) => (Object.assign({ selector, first: false, isViewQuery: false, descendants: false }, data));
+const ɵ0$1 = (selector, data = {}) => (Object.assign({ selector, first: false, isViewQuery: false, descendants: false, emitDistinctChangesOnly: emitDistinctChangesOnlyDefaultValue }, data));
 /**
  * ContentChildren decorator and metadata.
  *
@@ -91800,7 +92016,7 @@ const ɵ1 = (selector, data = {}) => (Object.assign({ selector, first: true, isV
  * @publicApi
  */
 const ContentChild = makePropDecorator('ContentChild', ɵ1, Query);
-const ɵ2 = (selector, data = {}) => (Object.assign({ selector, first: false, isViewQuery: true, descendants: true }, data));
+const ɵ2 = (selector, data = {}) => (Object.assign({ selector, first: false, isViewQuery: true, descendants: true, emitDistinctChangesOnly: emitDistinctChangesOnlyDefaultValue }, data));
 /**
  * ViewChildren decorator and metadata.
  *
@@ -91904,6 +92120,30 @@ function addAllToArray(items, arr) {
     for (let i = 0; i < items.length; i++) {
         arr.push(items[i]);
     }
+}
+/**
+ * Determines if the contents of two arrays is identical
+ *
+ * @param a first array
+ * @param b second array
+ * @param identityAccessor Optional function for extracting stable object identity from a value in
+ *     the array.
+ */
+function arrayEquals(a, b, identityAccessor) {
+    if (a.length !== b.length)
+        return false;
+    for (let i = 0; i < a.length; i++) {
+        let valueA = a[i];
+        let valueB = b[i];
+        if (identityAccessor) {
+            valueA = identityAccessor(valueA);
+            valueB = identityAccessor(valueB);
+        }
+        if (valueB !== valueA) {
+            return false;
+        }
+    }
+    return true;
 }
 /**
  * Flattens an array.
@@ -92488,42 +92728,237 @@ function getParentCtor(ctor) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-const ɵ0$2 = (token) => ({ token });
+const _THROW_IF_NOT_FOUND = {};
+const THROW_IF_NOT_FOUND = _THROW_IF_NOT_FOUND;
+/*
+ * Name of a property (that we patch onto DI decorator), which is used as an annotation of which
+ * InjectFlag this decorator represents. This allows to avoid direct references to the DI decorators
+ * in the code, thus making them tree-shakable.
+ */
+const DI_DECORATOR_FLAG = '__NG_DI_FLAG__';
+const NG_TEMP_TOKEN_PATH = 'ngTempTokenPath';
+const NG_TOKEN_PATH = 'ngTokenPath';
+const NEW_LINE = /\n/gm;
+const NO_NEW_LINE = 'ɵ';
+const SOURCE = '__source';
+const ɵ0$2 = getClosureSafeProperty;
+const USE_VALUE = getClosureSafeProperty({ provide: String, useValue: ɵ0$2 });
+/**
+ * Current injector value used by `inject`.
+ * - `undefined`: it is an error to call `inject`
+ * - `null`: `inject` can be called but there is no injector (limp-mode).
+ * - Injector instance: Use the injector for resolution.
+ */
+let _currentInjector = undefined;
+function setCurrentInjector(injector) {
+    const former = _currentInjector;
+    _currentInjector = injector;
+    return former;
+}
+function injectInjectorOnly(token, flags = InjectFlags.Default) {
+    if (_currentInjector === undefined) {
+        throw new Error(`inject() must be called from an injection context`);
+    }
+    else if (_currentInjector === null) {
+        return injectRootLimpMode(token, undefined, flags);
+    }
+    else {
+        return _currentInjector.get(token, flags & InjectFlags.Optional ? null : undefined, flags);
+    }
+}
+function ɵɵinject(token, flags = InjectFlags.Default) {
+    return (getInjectImplementation() || injectInjectorOnly)(resolveForwardRef(token), flags);
+}
+/**
+ * Throws an error indicating that a factory function could not be generated by the compiler for a
+ * particular class.
+ *
+ * This instruction allows the actual error message to be optimized away when ngDevMode is turned
+ * off, saving bytes of generated code while still providing a good experience in dev mode.
+ *
+ * The name of the class is not mentioned here, but will be in the generated factory function name
+ * and thus in the stack trace.
+ *
+ * @codeGenApi
+ */
+function ɵɵinvalidFactoryDep(index) {
+    const msg = ngDevMode ?
+        `This constructor is not compatible with Angular Dependency Injection because its dependency at index ${index} of the parameter list is invalid.
+This can happen if the dependency type is a primitive like a string or if an ancestor of this class is missing an Angular decorator.
+
+Please check that 1) the type for the parameter at index ${index} is correct and 2) the correct Angular decorators are defined for this class and its ancestors.` :
+        'invalid';
+    throw new Error(msg);
+}
+/**
+ * Injects a token from the currently active injector.
+ *
+ * Must be used in the context of a factory function such as one defined for an
+ * `InjectionToken`. Throws an error if not called from such a context.
+ *
+ * Within such a factory function, using this function to request injection of a dependency
+ * is faster and more type-safe than providing an additional array of dependencies
+ * (as has been common with `useFactory` providers).
+ *
+ * @param token The injection token for the dependency to be injected.
+ * @param flags Optional flags that control how injection is executed.
+ * The flags correspond to injection strategies that can be specified with
+ * parameter decorators `@Host`, `@Self`, `@SkipSef`, and `@Optional`.
+ * @returns True if injection is successful, null otherwise.
+ *
+ * @usageNotes
+ *
+ * ### Example
+ *
+ * {@example core/di/ts/injector_spec.ts region='ShakableInjectionToken'}
+ *
+ * @publicApi
+ */
+const inject = ɵɵinject;
+function injectArgs(types) {
+    const args = [];
+    for (let i = 0; i < types.length; i++) {
+        const arg = resolveForwardRef(types[i]);
+        if (Array.isArray(arg)) {
+            if (arg.length === 0) {
+                throw new Error('Arguments array must have arguments.');
+            }
+            let type = undefined;
+            let flags = InjectFlags.Default;
+            for (let j = 0; j < arg.length; j++) {
+                const meta = arg[j];
+                const flag = getInjectFlag(meta);
+                if (typeof flag === 'number') {
+                    // Special case when we handle @Inject decorator.
+                    if (flag === -1 /* Inject */) {
+                        type = meta.token;
+                    }
+                    else {
+                        flags |= flag;
+                    }
+                }
+                else {
+                    type = meta;
+                }
+            }
+            args.push(ɵɵinject(type, flags));
+        }
+        else {
+            args.push(ɵɵinject(arg));
+        }
+    }
+    return args;
+}
+/**
+ * Attaches a given InjectFlag to a given decorator using monkey-patching.
+ * Since DI decorators can be used in providers `deps` array (when provider is configured using
+ * `useFactory`) without initialization (e.g. `Host`) and as an instance (e.g. `new Host()`), we
+ * attach the flag to make it available both as a static property and as a field on decorator
+ * instance.
+ *
+ * @param decorator Provided DI decorator.
+ * @param flag InjectFlag that should be applied.
+ */
+function attachInjectFlag(decorator, flag) {
+    decorator[DI_DECORATOR_FLAG] = flag;
+    decorator.prototype[DI_DECORATOR_FLAG] = flag;
+    return decorator;
+}
+/**
+ * Reads monkey-patched property that contains InjectFlag attached to a decorator.
+ *
+ * @param token Token that may contain monkey-patched DI flags property.
+ */
+function getInjectFlag(token) {
+    return token[DI_DECORATOR_FLAG];
+}
+function catchInjectorError(e, token, injectorErrorName, source) {
+    const tokenPath = e[NG_TEMP_TOKEN_PATH];
+    if (token[SOURCE]) {
+        tokenPath.unshift(token[SOURCE]);
+    }
+    e.message = formatError('\n' + e.message, tokenPath, injectorErrorName, source);
+    e[NG_TOKEN_PATH] = tokenPath;
+    e[NG_TEMP_TOKEN_PATH] = null;
+    throw e;
+}
+function formatError(text, obj, injectorErrorName, source = null) {
+    text = text && text.charAt(0) === '\n' && text.charAt(1) == NO_NEW_LINE ? text.substr(2) : text;
+    let context = stringify(obj);
+    if (Array.isArray(obj)) {
+        context = obj.map(stringify).join(' -> ');
+    }
+    else if (typeof obj === 'object') {
+        let parts = [];
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                let value = obj[key];
+                parts.push(key + ':' + (typeof value === 'string' ? JSON.stringify(value) : stringify(value)));
+            }
+        }
+        context = `{${parts.join(', ')}}`;
+    }
+    return `${injectorErrorName}${source ? '(' + source + ')' : ''}[${context}]: ${text.replace(NEW_LINE, '\n  ')}`;
+}
+
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+const ɵ0$3 = (token) => ({ token });
 /**
  * Inject decorator and metadata.
  *
  * @Annotation
  * @publicApi
  */
-const Inject = makeParamDecorator('Inject', ɵ0$2);
+const Inject = attachInjectFlag(
+// Disable tslint because `DecoratorFlags` is a const enum which gets inlined.
+// tslint:disable-next-line: no-toplevel-property-access
+makeParamDecorator('Inject', ɵ0$3), -1 /* Inject */);
 /**
  * Optional decorator and metadata.
  *
  * @Annotation
  * @publicApi
  */
-const Optional = makeParamDecorator('Optional');
+const Optional = 
+// Disable tslint because `InternalInjectFlags` is a const enum which gets inlined.
+// tslint:disable-next-line: no-toplevel-property-access
+attachInjectFlag(makeParamDecorator('Optional'), 8 /* Optional */);
 /**
  * Self decorator and metadata.
  *
  * @Annotation
  * @publicApi
  */
-const Self = makeParamDecorator('Self');
+const Self = 
+// Disable tslint because `InternalInjectFlags` is a const enum which gets inlined.
+// tslint:disable-next-line: no-toplevel-property-access
+attachInjectFlag(makeParamDecorator('Self'), 2 /* Self */);
 /**
  * `SkipSelf` decorator and metadata.
  *
  * @Annotation
  * @publicApi
  */
-const SkipSelf = makeParamDecorator('SkipSelf');
+const SkipSelf = 
+// Disable tslint because `InternalInjectFlags` is a const enum which gets inlined.
+// tslint:disable-next-line: no-toplevel-property-access
+attachInjectFlag(makeParamDecorator('SkipSelf'), 4 /* SkipSelf */);
 /**
  * Host decorator and metadata.
  *
  * @Annotation
  * @publicApi
  */
-const Host = makeParamDecorator('Host');
+const Host = 
+// Disable tslint because `InternalInjectFlags` is a const enum which gets inlined.
+// tslint:disable-next-line: no-toplevel-property-access
+attachInjectFlag(makeParamDecorator('Host'), 1 /* Host */);
 
 /**
  * @license
@@ -92726,162 +93161,6 @@ function componentDefResolved(type) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-const _THROW_IF_NOT_FOUND = {};
-const THROW_IF_NOT_FOUND = _THROW_IF_NOT_FOUND;
-const NG_TEMP_TOKEN_PATH = 'ngTempTokenPath';
-const NG_TOKEN_PATH = 'ngTokenPath';
-const NEW_LINE = /\n/gm;
-const NO_NEW_LINE = 'ɵ';
-const SOURCE = '__source';
-const ɵ0$3 = getClosureSafeProperty;
-const USE_VALUE = getClosureSafeProperty({ provide: String, useValue: ɵ0$3 });
-/**
- * Current injector value used by `inject`.
- * - `undefined`: it is an error to call `inject`
- * - `null`: `inject` can be called but there is no injector (limp-mode).
- * - Injector instance: Use the injector for resolution.
- */
-let _currentInjector = undefined;
-function setCurrentInjector(injector) {
-    const former = _currentInjector;
-    _currentInjector = injector;
-    return former;
-}
-function injectInjectorOnly(token, flags = InjectFlags.Default) {
-    if (_currentInjector === undefined) {
-        throw new Error(`inject() must be called from an injection context`);
-    }
-    else if (_currentInjector === null) {
-        return injectRootLimpMode(token, undefined, flags);
-    }
-    else {
-        return _currentInjector.get(token, flags & InjectFlags.Optional ? null : undefined, flags);
-    }
-}
-function ɵɵinject(token, flags = InjectFlags.Default) {
-    return (getInjectImplementation() || injectInjectorOnly)(resolveForwardRef(token), flags);
-}
-/**
- * Throws an error indicating that a factory function could not be generated by the compiler for a
- * particular class.
- *
- * This instruction allows the actual error message to be optimized away when ngDevMode is turned
- * off, saving bytes of generated code while still providing a good experience in dev mode.
- *
- * The name of the class is not mentioned here, but will be in the generated factory function name
- * and thus in the stack trace.
- *
- * @codeGenApi
- */
-function ɵɵinvalidFactoryDep(index) {
-    const msg = ngDevMode ?
-        `This constructor is not compatible with Angular Dependency Injection because its dependency at index ${index} of the parameter list is invalid.
-This can happen if the dependency type is a primitive like a string or if an ancestor of this class is missing an Angular decorator.
-
-Please check that 1) the type for the parameter at index ${index} is correct and 2) the correct Angular decorators are defined for this class and its ancestors.` :
-        'invalid';
-    throw new Error(msg);
-}
-/**
- * Injects a token from the currently active injector.
- *
- * Must be used in the context of a factory function such as one defined for an
- * `InjectionToken`. Throws an error if not called from such a context.
- *
- * Within such a factory function, using this function to request injection of a dependency
- * is faster and more type-safe than providing an additional array of dependencies
- * (as has been common with `useFactory` providers).
- *
- * @param token The injection token for the dependency to be injected.
- * @param flags Optional flags that control how injection is executed.
- * The flags correspond to injection strategies that can be specified with
- * parameter decorators `@Host`, `@Self`, `@SkipSef`, and `@Optional`.
- * @returns True if injection is successful, null otherwise.
- *
- * @usageNotes
- *
- * ### Example
- *
- * {@example core/di/ts/injector_spec.ts region='ShakableInjectionToken'}
- *
- * @publicApi
- */
-const inject = ɵɵinject;
-function injectArgs(types) {
-    const args = [];
-    for (let i = 0; i < types.length; i++) {
-        const arg = resolveForwardRef(types[i]);
-        if (Array.isArray(arg)) {
-            if (arg.length === 0) {
-                throw new Error('Arguments array must have arguments.');
-            }
-            let type = undefined;
-            let flags = InjectFlags.Default;
-            for (let j = 0; j < arg.length; j++) {
-                const meta = arg[j];
-                if (meta instanceof Optional || meta.ngMetadataName === 'Optional' || meta === Optional) {
-                    flags |= InjectFlags.Optional;
-                }
-                else if (meta instanceof SkipSelf || meta.ngMetadataName === 'SkipSelf' || meta === SkipSelf) {
-                    flags |= InjectFlags.SkipSelf;
-                }
-                else if (meta instanceof Self || meta.ngMetadataName === 'Self' || meta === Self) {
-                    flags |= InjectFlags.Self;
-                }
-                else if (meta instanceof Host || meta.ngMetadataName === 'Host' || meta === Host) {
-                    flags |= InjectFlags.Host;
-                }
-                else if (meta instanceof Inject || meta === Inject) {
-                    type = meta.token;
-                }
-                else {
-                    type = meta;
-                }
-            }
-            args.push(ɵɵinject(type, flags));
-        }
-        else {
-            args.push(ɵɵinject(arg));
-        }
-    }
-    return args;
-}
-function catchInjectorError(e, token, injectorErrorName, source) {
-    const tokenPath = e[NG_TEMP_TOKEN_PATH];
-    if (token[SOURCE]) {
-        tokenPath.unshift(token[SOURCE]);
-    }
-    e.message = formatError('\n' + e.message, tokenPath, injectorErrorName, source);
-    e[NG_TOKEN_PATH] = tokenPath;
-    e[NG_TEMP_TOKEN_PATH] = null;
-    throw e;
-}
-function formatError(text, obj, injectorErrorName, source = null) {
-    text = text && text.charAt(0) === '\n' && text.charAt(1) == NO_NEW_LINE ? text.substr(2) : text;
-    let context = stringify(obj);
-    if (Array.isArray(obj)) {
-        context = obj.map(stringify).join(' -> ');
-    }
-    else if (typeof obj === 'object') {
-        let parts = [];
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                let value = obj[key];
-                parts.push(key + ':' + (typeof value === 'string' ? JSON.stringify(value) : stringify(value)));
-            }
-        }
-        context = `{${parts.join(', ')}}`;
-    }
-    return `${injectorErrorName}${source ? '(' + source + ')' : ''}[${context}]: ${text.replace(NEW_LINE, '\n  ')}`;
-}
-
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 /**
  * The Trusted Types policy, or null if Trusted Types are not
  * enabled/supported, or undefined if the policy has not been created yet.
@@ -92989,6 +93268,81 @@ function newTrustedFunctionForDev(...args) {
     // When Trusted Types support in Function constructors is widely available,
     // the implementation of this function can be simplified to:
     // return new Function(...args.map(a => trustedScriptFromString(a)));
+}
+
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * The Trusted Types policy, or null if Trusted Types are not
+ * enabled/supported, or undefined if the policy has not been created yet.
+ */
+let policy$1;
+/**
+ * Returns the Trusted Types policy, or null if Trusted Types are not
+ * enabled/supported. The first call to this function will create the policy.
+ */
+function getPolicy$1() {
+    if (policy$1 === undefined) {
+        policy$1 = null;
+        if (_global.trustedTypes) {
+            try {
+                policy$1 = _global.trustedTypes
+                    .createPolicy('angular#unsafe-bypass', {
+                    createHTML: (s) => s,
+                    createScript: (s) => s,
+                    createScriptURL: (s) => s,
+                });
+            }
+            catch (_a) {
+                // trustedTypes.createPolicy throws if called with a name that is
+                // already registered, even in report-only mode. Until the API changes,
+                // catch the error not to break the applications functionally. In such
+                // cases, the code will fall back to using strings.
+            }
+        }
+    }
+    return policy$1;
+}
+/**
+ * Unsafely promote a string to a TrustedHTML, falling back to strings when
+ * Trusted Types are not available.
+ * @security This is a security-sensitive function; any use of this function
+ * must go through security review. In particular, it must be assured that it
+ * is only passed strings that come directly from custom sanitizers or the
+ * bypassSecurityTrust* functions.
+ */
+function trustedHTMLFromStringBypass(html) {
+    var _a;
+    return ((_a = getPolicy$1()) === null || _a === void 0 ? void 0 : _a.createHTML(html)) || html;
+}
+/**
+ * Unsafely promote a string to a TrustedScript, falling back to strings when
+ * Trusted Types are not available.
+ * @security This is a security-sensitive function; any use of this function
+ * must go through security review. In particular, it must be assured that it
+ * is only passed strings that come directly from custom sanitizers or the
+ * bypassSecurityTrust* functions.
+ */
+function trustedScriptFromStringBypass(script) {
+    var _a;
+    return ((_a = getPolicy$1()) === null || _a === void 0 ? void 0 : _a.createScript(script)) || script;
+}
+/**
+ * Unsafely promote a string to a TrustedScriptURL, falling back to strings
+ * when Trusted Types are not available.
+ * @security This is a security-sensitive function; any use of this function
+ * must go through security review. In particular, it must be assured that it
+ * is only passed strings that come directly from custom sanitizers or the
+ * bypassSecurityTrust* functions.
+ */
+function trustedScriptURLFromStringBypass(url) {
+    var _a;
+    return ((_a = getPolicy$1()) === null || _a === void 0 ? void 0 : _a.createScriptURL(url)) || url;
 }
 
 /**
@@ -93524,7 +93878,7 @@ function _sanitizeHtml(defaultDoc, unsafeHtmlInput) {
         if ((typeof ngDevMode === 'undefined' || ngDevMode) && sanitizer.sanitizedSomething) {
             console.warn('WARNING: sanitizing HTML stripped some content, see https://g.co/ng/security#xss');
         }
-        return safeHtml;
+        return trustedHTMLFromString(safeHtml);
     }
     finally {
         // In case anything goes wrong, clear out inertElement to reset the entire DOM structure.
@@ -93596,10 +93950,10 @@ var SecurityContext;
 function ɵɵsanitizeHtml(unsafeHtml) {
     const sanitizer = getSanitizer();
     if (sanitizer) {
-        return sanitizer.sanitize(SecurityContext.HTML, unsafeHtml) || '';
+        return trustedHTMLFromStringBypass(sanitizer.sanitize(SecurityContext.HTML, unsafeHtml) || '');
     }
     if (allowSanitizationBypassAndThrow(unsafeHtml, "HTML" /* Html */)) {
-        return unwrapSafeValue(unsafeHtml);
+        return trustedHTMLFromStringBypass(unwrapSafeValue(unsafeHtml));
     }
     return _sanitizeHtml(getDocument(), renderStringify(unsafeHtml));
 }
@@ -93664,10 +94018,10 @@ function ɵɵsanitizeUrl(unsafeUrl) {
 function ɵɵsanitizeResourceUrl(unsafeResourceUrl) {
     const sanitizer = getSanitizer();
     if (sanitizer) {
-        return sanitizer.sanitize(SecurityContext.RESOURCE_URL, unsafeResourceUrl) || '';
+        return trustedScriptURLFromStringBypass(sanitizer.sanitize(SecurityContext.RESOURCE_URL, unsafeResourceUrl) || '');
     }
     if (allowSanitizationBypassAndThrow(unsafeResourceUrl, "ResourceURL" /* ResourceUrl */)) {
-        return unwrapSafeValue(unsafeResourceUrl);
+        return trustedScriptURLFromStringBypass(unwrapSafeValue(unsafeResourceUrl));
     }
     throw new Error('unsafe value used in a resource URL context (see https://g.co/ng/security#xss)');
 }
@@ -93686,16 +94040,18 @@ function ɵɵsanitizeResourceUrl(unsafeResourceUrl) {
 function ɵɵsanitizeScript(unsafeScript) {
     const sanitizer = getSanitizer();
     if (sanitizer) {
-        return sanitizer.sanitize(SecurityContext.SCRIPT, unsafeScript) || '';
+        return trustedScriptFromStringBypass(sanitizer.sanitize(SecurityContext.SCRIPT, unsafeScript) || '');
     }
     if (allowSanitizationBypassAndThrow(unsafeScript, "Script" /* Script */)) {
-        return unwrapSafeValue(unsafeScript);
+        return trustedScriptFromStringBypass(unwrapSafeValue(unsafeScript));
     }
     throw new Error('unsafe value used in a script context');
 }
 /**
- * Promotes the given constant string to a TrustedHTML.
- * @param html constant string containing trusted HTML.
+ * A template tag function for promoting the associated constant literal to a
+ * TrustedHTML. Interpolation is explicitly not allowed.
+ *
+ * @param html constant template literal containing trusted HTML.
  * @returns TrustedHTML wrapping `html`.
  *
  * @security This is a security-sensitive function and should only be used to
@@ -93705,25 +94061,22 @@ function ɵɵsanitizeScript(unsafeScript) {
  * @codeGenApi
  */
 function ɵɵtrustConstantHtml(html) {
-    return trustedHTMLFromString(html);
+    // The following runtime check ensures that the function was called as a
+    // template tag (e.g. ɵɵtrustConstantHtml`content`), without any interpolation
+    // (e.g. not ɵɵtrustConstantHtml`content ${variable}`). A TemplateStringsArray
+    // is an array with a `raw` property that is also an array. The associated
+    // template literal has no interpolation if and only if the length of the
+    // TemplateStringsArray is 1.
+    if (ngDevMode && (!Array.isArray(html) || !Array.isArray(html.raw) || html.length !== 1)) {
+        throw new Error(`Unexpected interpolation in trusted HTML constant: ${html.join('?')}`);
+    }
+    return trustedHTMLFromString(html[0]);
 }
 /**
- * Promotes the given constant string to a TrustedScript.
- * @param script constant string containing a trusted script.
- * @returns TrustedScript wrapping `script`.
+ * A template tag function for promoting the associated constant literal to a
+ * TrustedScriptURL. Interpolation is explicitly not allowed.
  *
- * @security This is a security-sensitive function and should only be used to
- * convert constant values of attributes and properties found in
- * application-provided Angular templates to TrustedScript.
- *
- * @codeGenApi
- */
-function ɵɵtrustConstantScript(script) {
-    return trustedScriptFromString(script);
-}
-/**
- * Promotes the given constant string to a TrustedScriptURL.
- * @param url constant string containing a trusted script URL.
+ * @param url constant template literal containing a trusted script URL.
  * @returns TrustedScriptURL wrapping `url`.
  *
  * @security This is a security-sensitive function and should only be used to
@@ -93733,7 +94086,16 @@ function ɵɵtrustConstantScript(script) {
  * @codeGenApi
  */
 function ɵɵtrustConstantResourceUrl(url) {
-    return trustedScriptURLFromString(url);
+    // The following runtime check ensures that the function was called as a
+    // template tag (e.g. ɵɵtrustConstantResourceUrl`content`), without any
+    // interpolation (e.g. not ɵɵtrustConstantResourceUrl`content ${variable}`). A
+    // TemplateStringsArray is an array with a `raw` property that is also an
+    // array. The associated template literal has no interpolation if and only if
+    // the length of the TemplateStringsArray is 1.
+    if (ngDevMode && (!Array.isArray(url) || !Array.isArray(url.raw) || url.length !== 1)) {
+        throw new Error(`Unexpected interpolation in trusted URL constant: ${url.join('?')}`);
+    }
+    return trustedScriptURLFromString(url[0]);
 }
 /**
  * Detects which sanitizer to use for URL property, based on tag name and prop name.
@@ -93936,14 +94298,26 @@ const NO_ERRORS_SCHEMA = {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-const END_COMMENT = /-->/g;
-const END_COMMENT_ESCAPED = '-\u200B-\u200B>';
 /**
- * Escape the content of the strings so that it can be safely inserted into a comment node.
+ * Disallowed strings in the comment.
+ *
+ * see: https://html.spec.whatwg.org/multipage/syntax.html#comments
+ */
+const COMMENT_DISALLOWED = /^>|^->|<!--|-->|--!>|<!-$/g;
+/**
+ * Delimiter in the disallowed strings which needs to be wrapped with zero with character.
+ */
+const COMMENT_DELIMITER = /(<|>)/;
+const COMMENT_DELIMITER_ESCAPED = '\u200B$1\u200B';
+/**
+ * Escape the content of comment strings so that it can be safely inserted into a comment node.
  *
  * The issue is that HTML does not specify any way to escape comment end text inside the comment.
- * `<!-- The way you close a comment is with "-->". -->`. Above the `"-->"` is meant to be text not
- * an end to the comment. This can be created programmatically through DOM APIs.
+ * Consider: `<!-- The way you close a comment is with ">", and "->" at the beginning or by "-->" or
+ * "--!>" at the end. -->`. Above the `"-->"` is meant to be text not an end to the comment. This
+ * can be created programmatically through DOM APIs. (`<!--` are also disallowed.)
+ *
+ * see: https://html.spec.whatwg.org/multipage/syntax.html#comments
  *
  * ```
  * div.innerHTML = div.innerHTML
@@ -93954,15 +94328,16 @@ const END_COMMENT_ESCAPED = '-\u200B-\u200B>';
  * opening up the application for XSS attack. (In SSR we programmatically create comment nodes which
  * may contain such text and expect them to be safe.)
  *
- * This function escapes the comment text by looking for the closing char sequence `-->` and replace
- * it with `-_-_>` where the `_` is a zero width space `\u200B`. The result is that if a comment
- * contains `-->` text it will render normally but it will not cause the HTML parser to close the
- * comment.
+ * This function escapes the comment text by looking for comment delimiters (`<` and `>`) and
+ * surrounding them with `_>_` where the `_` is a zero width space `\u200B`. The result is that if a
+ * comment contains any of the comment start/end delimiters (such as `<!--`, `-->` or `--!>`) the
+ * text it will render normally but it will not cause the HTML parser to close/open the comment.
  *
- * @param value text to make safe for comment node by escaping the comment close character sequence
+ * @param value text to make safe for comment node by escaping the comment open/close character
+ *     sequence.
  */
 function escapeCommentText(value) {
-    return value.replace(END_COMMENT, END_COMMENT_ESCAPED);
+    return value.replace(COMMENT_DISALLOWED, (text) => text.replace(COMMENT_DELIMITER, COMMENT_DELIMITER_ESCAPED));
 }
 
 /**
@@ -96362,8 +96737,21 @@ class TNode {
     debugNodeInjectorPath(lView) {
         const path = [];
         let injectorIndex = getInjectorIndex(this, lView);
-        ngDevMode && assertNodeInjector(lView, injectorIndex);
+        if (injectorIndex === -1) {
+            // Looks like the current `TNode` does not have `NodeInjector` associated with it => look for
+            // parent NodeInjector.
+            const parentLocation = getParentInjectorLocation(this, lView);
+            if (parentLocation !== NO_PARENT_INJECTOR) {
+                // We found a parent, so start searching from the parent location.
+                injectorIndex = getParentInjectorIndex(parentLocation);
+                lView = getParentInjectorView(parentLocation, lView);
+            }
+            else {
+                // No parents have been found, so there are no `NodeInjector`s to consult.
+            }
+        }
         while (injectorIndex !== -1) {
+            ngDevMode && assertNodeInjector(lView, injectorIndex);
             const tNode = lView[TVIEW].data[injectorIndex + 8 /* TNODE */];
             path.push(buildDebugNode(tNode, lView));
             const parentLocation = lView[injectorIndex + 8 /* PARENT */];
@@ -96697,11 +97085,15 @@ function buildDebugNode(tNode, lView) {
     return {
         html: toHtml(native),
         type: toTNodeTypeAsString(tNode.type),
+        tNode,
         native: native,
         children: toDebugNodes(tNode.child, lView),
         factories,
         instances,
-        injector: buildNodeInjectorDebug(tNode, tView, lView)
+        injector: buildNodeInjectorDebug(tNode, tView, lView),
+        get injectorResolutionPath() {
+            return tNode.debugNodeInjectorPath(lView);
+        },
     };
 }
 function buildNodeInjectorDebug(tNode, tView, lView) {
@@ -96745,6 +97137,9 @@ function binary(array, idx) {
  * @param idx
  */
 function toBloom(array, idx) {
+    if (idx < 0) {
+        return 'NO_NODE_INJECTOR';
+    }
     return `${binary(array, idx + 7)}_${binary(array, idx + 6)}_${binary(array, idx + 5)}_${binary(array, idx + 4)}_${binary(array, idx + 3)}_${binary(array, idx + 2)}_${binary(array, idx + 1)}_${binary(array, idx + 0)}`;
 }
 class LContainerDebug {
@@ -99988,7 +100383,7 @@ function createRootComponentView(rNode, def, rootView, rendererFactory, hostRend
     ngDevMode && assertIndexInRange(rootView, index);
     rootView[index] = rNode;
     // '#host' is added here as we don't know the real host DOM name (we don't want to read it) and at
-    // the same time we want to communicate the the debug `TNode` that this is a special `TNode`
+    // the same time we want to communicate the debug `TNode` that this is a special `TNode`
     // representing a host element.
     const tNode = getOrCreateTNode(tView, index, 2 /* Element */, '#host', null);
     const mergedAttrs = tNode.mergedAttrs = def.hostAttrs;
@@ -102640,6 +103035,12 @@ function isPromise(obj) {
     return !!obj && typeof obj.then === 'function';
 }
 /**
+ * Determine if the argument is a Subscribable
+ */
+function isSubscribable(obj) {
+    return !!obj && typeof obj.subscribe === 'function';
+}
+/**
  * Determine if the argument is an Observable
  *
  * Strictly this tests that the `obj` is `Subscribable`, since `Observable`
@@ -102648,9 +103049,7 @@ function isPromise(obj) {
  * `subscribe()` method, and RxJS has mechanisms to wrap `Subscribable` objects
  * into `Observable` as needed.
  */
-function isObservable(obj) {
-    return !!obj && typeof obj.subscribe === 'function';
-}
+const isObservable = isSubscribable;
 
 /**
  * @license
@@ -108909,6 +109308,15 @@ class ElementRef {
  * @nocollapse
  */
 ElementRef.__NG_ELEMENT_ID__ = SWITCH_ELEMENT_REF_FACTORY;
+/**
+ * Unwraps `ElementRef` and return the `nativeElement`.
+ *
+ * @param value value to unwrap
+ * @returns `nativeElement` if `ElementRef` otherwise returns value as is.
+ */
+function unwrapElementRef(value) {
+    return value instanceof ElementRef ? value.nativeElement : value;
+}
 
 /**
  * @license
@@ -109012,7 +109420,7 @@ class Version {
 /**
  * @publicApi
  */
-const VERSION = new Version('11.0.9');
+const VERSION = new Version('11.1.2');
 
 /**
  * @license
@@ -109936,6 +110344,9 @@ class KeyValueChangeRecord_ {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+function defaultIterableDiffersFactory() {
+    return new IterableDiffers([new DefaultIterableDifferFactory()]);
+}
 /**
  * A repository of different iterable diffing strategies used by NgFor, NgClass, and others.
  *
@@ -109976,13 +110387,10 @@ class IterableDiffers {
         return {
             provide: IterableDiffers,
             useFactory: (parent) => {
-                if (!parent) {
-                    // Typically would occur when calling IterableDiffers.extend inside of dependencies passed
-                    // to
-                    // bootstrap(), which would override default pipes instead of extending them.
-                    throw new Error('Cannot extend IterableDiffers without a parent injector');
-                }
-                return IterableDiffers.create(factories, parent);
+                // if parent is null, it means that we are in the root injector and we have just overridden
+                // the default injection mechanism for IterableDiffers, in such a case just assume
+                // `defaultIterableDiffersFactory`.
+                return IterableDiffers.create(factories, parent || defaultIterableDiffersFactory());
             },
             // Dependency technically isn't optional, but we can provide a better error message this way.
             deps: [[IterableDiffers, new SkipSelf(), new Optional()]]
@@ -109999,11 +110407,7 @@ class IterableDiffers {
     }
 }
 /** @nocollapse */
-IterableDiffers.ɵprov = ɵɵdefineInjectable({
-    token: IterableDiffers,
-    providedIn: 'root',
-    factory: () => new IterableDiffers([new DefaultIterableDifferFactory()])
-});
+IterableDiffers.ɵprov = ɵɵdefineInjectable({ token: IterableDiffers, providedIn: 'root', factory: defaultIterableDiffersFactory });
 function getTypeNameForDebugging(type) {
     return type['name'] || typeof type;
 }
@@ -110015,6 +110419,9 @@ function getTypeNameForDebugging(type) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+function defaultKeyValueDiffersFactory() {
+    return new KeyValueDiffers([new DefaultKeyValueDifferFactory()]);
+}
 /**
  * A repository of different Map diffing strategies used by NgClass, NgStyle, and others.
  *
@@ -110055,12 +110462,10 @@ class KeyValueDiffers {
         return {
             provide: KeyValueDiffers,
             useFactory: (parent) => {
-                if (!parent) {
-                    // Typically would occur when calling KeyValueDiffers.extend inside of dependencies passed
-                    // to bootstrap(), which would override default pipes instead of extending them.
-                    throw new Error('Cannot extend KeyValueDiffers without a parent injector');
-                }
-                return KeyValueDiffers.create(factories, parent);
+                // if parent is null, it means that we are in the root injector and we have just overridden
+                // the default injection mechanism for KeyValueDiffers, in such a case just assume
+                // `defaultKeyValueDiffersFactory`.
+                return KeyValueDiffers.create(factories, parent || defaultKeyValueDiffersFactory());
             },
             // Dependency technically isn't optional, but we can provide a better error message this way.
             deps: [[KeyValueDiffers, new SkipSelf(), new Optional()]]
@@ -110075,11 +110480,7 @@ class KeyValueDiffers {
     }
 }
 /** @nocollapse */
-KeyValueDiffers.ɵprov = ɵɵdefineInjectable({
-    token: KeyValueDiffers,
-    providedIn: 'root',
-    factory: () => new KeyValueDiffers([new DefaultKeyValueDifferFactory()])
-});
+KeyValueDiffers.ɵprov = ɵɵdefineInjectable({ token: KeyValueDiffers, providedIn: 'root', factory: defaultKeyValueDiffersFactory });
 
 /**
  * @license
@@ -112766,8 +113167,8 @@ class ComponentRef$1 extends ComponentRef {
  *
  * These metadata fields can later be read with Angular's `ReflectionCapabilities` API.
  *
- * Calls to `setClassMetadata` can be marked as pure, resulting in the metadata assignments being
- * tree-shaken away during production builds.
+ * Calls to `setClassMetadata` can be guarded by ngDevMode, resulting in the metadata assignments
+ * being tree-shaken away during production builds.
  */
 function setClassMetadata(type, decorators, ctorParameters, propDecorators) {
     return noSideEffects(() => {
@@ -113506,36 +113907,36 @@ class EventEmitter_ extends rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"] {
     emit(value) {
         super.next(value);
     }
-    subscribe(generatorOrNext, error, complete) {
+    subscribe(observerOrNext, error, complete) {
         let schedulerFn;
         let errorFn = (err) => null;
         let completeFn = () => null;
-        if (generatorOrNext && typeof generatorOrNext === 'object') {
+        if (observerOrNext && typeof observerOrNext === 'object') {
             schedulerFn = this.__isAsync ? (value) => {
-                setTimeout(() => generatorOrNext.next(value));
+                setTimeout(() => observerOrNext.next(value));
             } : (value) => {
-                generatorOrNext.next(value);
+                observerOrNext.next(value);
             };
-            if (generatorOrNext.error) {
+            if (observerOrNext.error) {
                 errorFn = this.__isAsync ? (err) => {
-                    setTimeout(() => generatorOrNext.error(err));
+                    setTimeout(() => observerOrNext.error(err));
                 } : (err) => {
-                    generatorOrNext.error(err);
+                    observerOrNext.error(err);
                 };
             }
-            if (generatorOrNext.complete) {
+            if (observerOrNext.complete) {
                 completeFn = this.__isAsync ? () => {
-                    setTimeout(() => generatorOrNext.complete());
+                    setTimeout(() => observerOrNext.complete());
                 } : () => {
-                    generatorOrNext.complete();
+                    observerOrNext.complete();
                 };
             }
         }
         else {
             schedulerFn = this.__isAsync ? (value) => {
-                setTimeout(() => generatorOrNext(value));
+                setTimeout(() => observerOrNext(value));
             } : (value) => {
-                generatorOrNext(value);
+                observerOrNext(value);
             };
             if (error) {
                 errorFn = this.__isAsync ? (err) => {
@@ -113553,8 +113954,8 @@ class EventEmitter_ extends rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"] {
             }
         }
         const sink = super.subscribe(schedulerFn, errorFn, completeFn);
-        if (generatorOrNext instanceof rxjs__WEBPACK_IMPORTED_MODULE_0__["Subscription"]) {
-            generatorOrNext.add(sink);
+        if (observerOrNext instanceof rxjs__WEBPACK_IMPORTED_MODULE_0__["Subscription"]) {
+            observerOrNext.add(sink);
         }
         return sink;
     }
@@ -113601,11 +114002,21 @@ function symbolIterator() {
  * @publicApi
  */
 class QueryList {
-    constructor() {
+    /**
+     * @param emitDistinctChangesOnly Whether `QueryList.changes` should fire only when actual change
+     *     has occurred. Or if it should fire when query is recomputed. (recomputing could resolve in
+     *     the same result) This is set to `false` for backwards compatibility but will be changed to
+     *     true in v12.
+     */
+    constructor(_emitDistinctChangesOnly = false) {
+        this._emitDistinctChangesOnly = _emitDistinctChangesOnly;
         this.dirty = true;
         this._results = [];
-        this.changes = new EventEmitter();
+        this._changesDetected = false;
+        this._changes = null;
         this.length = 0;
+        this.first = undefined;
+        this.last = undefined;
         // This function should be declared on the prototype, but doing so there will cause the class
         // declaration to have side-effects and become not tree-shakable. For this reason we do it in
         // the constructor.
@@ -113614,6 +114025,18 @@ class QueryList {
         const proto = QueryList.prototype;
         if (!proto[symbol])
             proto[symbol] = symbolIterator;
+    }
+    /**
+     * Returns `Observable` of `QueryList` notifying the subscriber of changes.
+     */
+    get changes() {
+        return this._changes || (this._changes = new EventEmitter());
+    }
+    /**
+     * Returns the QueryList entry at `index`.
+     */
+    get(index) {
+        return this._results[index];
     }
     /**
      * See
@@ -113672,19 +114095,31 @@ class QueryList {
      * occurs.
      *
      * @param resultsTree The query results to store
+     * @param identityAccessor Optional function for extracting stable object identity from a value
+     *    in the array. This function is executed for each element of the query result list while
+     *    comparing current query list with the new one (provided as a first argument of the `reset`
+     *    function) to detect if the lists are different. If the function is not provided, elements
+     *    are compared as is (without any pre-processing).
      */
-    reset(resultsTree) {
-        this._results = flatten(resultsTree);
-        this.dirty = false;
-        this.length = this._results.length;
-        this.last = this._results[this.length - 1];
-        this.first = this._results[0];
+    reset(resultsTree, identityAccessor) {
+        // Cast to `QueryListInternal` so that we can mutate fields which are readonly for the usage of
+        // QueryList (but not for QueryList itself.)
+        const self = this;
+        self.dirty = false;
+        const newResultFlat = flatten(resultsTree);
+        if (this._changesDetected = !arrayEquals(self._results, newResultFlat, identityAccessor)) {
+            self._results = newResultFlat;
+            self.length = newResultFlat.length;
+            self.last = newResultFlat[this.length - 1];
+            self.first = newResultFlat[0];
+        }
     }
     /**
      * Triggers a change event by emitting on the `changes` {@link EventEmitter}.
      */
     notifyOnChanges() {
-        this.changes.emit(this);
+        if (this._changes && (this._changesDetected || !this._emitDistinctChangesOnly))
+            this._changes.emit(this);
     }
     /** internal */
     setDirty() {
@@ -113776,10 +114211,9 @@ class LQueries_ {
     }
 }
 class TQueryMetadata_ {
-    constructor(predicate, descendants, isStatic, read = null) {
+    constructor(predicate, flags, read = null) {
         this.predicate = predicate;
-        this.descendants = descendants;
-        this.isStatic = isStatic;
+        this.flags = flags;
         this.read = read;
     }
 }
@@ -113872,7 +114306,8 @@ class TQuery_ {
         return null;
     }
     isApplyingToNode(tNode) {
-        if (this._appliesToNextNode && this.metadata.descendants === false) {
+        if (this._appliesToNextNode &&
+            (this.metadata.flags & 1 /* descendants */) !== 1 /* descendants */) {
             const declarationNodeIdx = this._declarationNodeIndex;
             let parent = tNode.parent;
             // Determine if a given TNode is a "direct" child of a node on which a content query was
@@ -114084,7 +114519,9 @@ function ɵɵqueryRefresh(queryList) {
     const queryIndex = getCurrentQueryIndex();
     setCurrentQueryIndex(queryIndex + 1);
     const tQuery = getTQuery(tView, queryIndex);
-    if (queryList.dirty && (isCreationMode(lView) === tQuery.metadata.isStatic)) {
+    if (queryList.dirty &&
+        (isCreationMode(lView) ===
+            ((tQuery.metadata.flags & 2 /* isStatic */) === 2 /* isStatic */))) {
         if (tQuery.matches === null) {
             queryList.reset([]);
         }
@@ -114092,7 +114529,7 @@ function ɵɵqueryRefresh(queryList) {
             const result = tQuery.crossesNgTemplate ?
                 collectQueryResults(tView, lView, queryIndex, []) :
                 materializeViewResults(tView, lView, tQuery, queryIndex);
-            queryList.reset(result);
+            queryList.reset(result, unwrapElementRef);
             queryList.notifyOnChanges();
         }
         return true;
@@ -114100,37 +114537,24 @@ function ɵɵqueryRefresh(queryList) {
     return false;
 }
 /**
- * Creates new QueryList for a static view query.
- *
- * @param predicate The type for which the query will search
- * @param descend Whether or not to descend into children
- * @param read What to save in the query
- *
- * @codeGenApi
- */
-function ɵɵstaticViewQuery(predicate, descend, read) {
-    viewQueryInternal(getTView(), getLView(), predicate, descend, read, true);
-}
-/**
  * Creates new QueryList, stores the reference in LView and returns QueryList.
  *
  * @param predicate The type for which the query will search
- * @param descend Whether or not to descend into children
+ * @param flags Flags associated with the query
  * @param read What to save in the query
  *
  * @codeGenApi
  */
-function ɵɵviewQuery(predicate, descend, read) {
-    viewQueryInternal(getTView(), getLView(), predicate, descend, read, false);
-}
-function viewQueryInternal(tView, lView, predicate, descend, read, isStatic) {
+function ɵɵviewQuery(predicate, flags, read) {
+    ngDevMode && assertNumber(flags, 'Expecting flags');
+    const tView = getTView();
     if (tView.firstCreatePass) {
-        createTQuery(tView, new TQueryMetadata_(predicate, descend, isStatic, read), -1);
-        if (isStatic) {
+        createTQuery(tView, new TQueryMetadata_(predicate, flags, read), -1);
+        if ((flags & 2 /* isStatic */) === 2 /* isStatic */) {
             tView.staticViewQueries = true;
         }
     }
-    createLQuery(tView, lView);
+    createLQuery(tView, getLView(), flags);
 }
 /**
  * Registers a QueryList, associated with a content query, for later refresh (part of a view
@@ -114138,39 +114562,24 @@ function viewQueryInternal(tView, lView, predicate, descend, read, isStatic) {
  *
  * @param directiveIndex Current directive index
  * @param predicate The type for which the query will search
- * @param descend Whether or not to descend into children
+ * @param flags Flags associated with the query
  * @param read What to save in the query
  * @returns QueryList<T>
  *
  * @codeGenApi
  */
-function ɵɵcontentQuery(directiveIndex, predicate, descend, read) {
-    contentQueryInternal(getTView(), getLView(), predicate, descend, read, false, getCurrentTNode(), directiveIndex);
-}
-/**
- * Registers a QueryList, associated with a static content query, for later refresh
- * (part of a view refresh).
- *
- * @param directiveIndex Current directive index
- * @param predicate The type for which the query will search
- * @param descend Whether or not to descend into children
- * @param read What to save in the query
- * @returns QueryList<T>
- *
- * @codeGenApi
- */
-function ɵɵstaticContentQuery(directiveIndex, predicate, descend, read) {
-    contentQueryInternal(getTView(), getLView(), predicate, descend, read, true, getCurrentTNode(), directiveIndex);
-}
-function contentQueryInternal(tView, lView, predicate, descend, read, isStatic, tNode, directiveIndex) {
+function ɵɵcontentQuery(directiveIndex, predicate, flags, read) {
+    ngDevMode && assertNumber(flags, 'Expecting flags');
+    const tView = getTView();
     if (tView.firstCreatePass) {
-        createTQuery(tView, new TQueryMetadata_(predicate, descend, isStatic, read), tNode.index);
+        const tNode = getCurrentTNode();
+        createTQuery(tView, new TQueryMetadata_(predicate, flags, read), tNode.index);
         saveContentQueryAndDirectiveIndex(tView, directiveIndex);
-        if (isStatic) {
+        if ((flags & 2 /* isStatic */) === 2 /* isStatic */) {
             tView.staticContentQueries = true;
         }
     }
-    createLQuery(tView, lView);
+    createLQuery(tView, getLView(), flags);
 }
 /**
  * Loads a QueryList corresponding to the current view or content query.
@@ -114186,8 +114595,8 @@ function loadQueryInternal(lView, queryIndex) {
     ngDevMode && assertIndexInRange(lView[QUERIES].queries, queryIndex);
     return lView[QUERIES].queries[queryIndex].queryList;
 }
-function createLQuery(tView, lView) {
-    const queryList = new QueryList();
+function createLQuery(tView, lView, flags) {
+    const queryList = new QueryList((flags & 4 /* emitDistinctChangesOnly */) === 4 /* emitDistinctChangesOnly */);
     storeCleanupWithContext(tView, lView, queryList, queryList.destroy);
     if (lView[QUERIES] === null)
         lView[QUERIES] = new LQueries_();
@@ -114335,8 +114744,6 @@ const ɵ0$c = () => ({
     'ɵɵpipe': ɵɵpipe,
     'ɵɵqueryRefresh': ɵɵqueryRefresh,
     'ɵɵviewQuery': ɵɵviewQuery,
-    'ɵɵstaticViewQuery': ɵɵstaticViewQuery,
-    'ɵɵstaticContentQuery': ɵɵstaticContentQuery,
     'ɵɵloadQuery': ɵɵloadQuery,
     'ɵɵcontentQuery': ɵɵcontentQuery,
     'ɵɵreference': ɵɵreference,
@@ -114403,8 +114810,9 @@ const ɵ0$c = () => ({
     'ɵɵsanitizeUrl': ɵɵsanitizeUrl,
     'ɵɵsanitizeUrlOrResourceUrl': ɵɵsanitizeUrlOrResourceUrl,
     'ɵɵtrustConstantHtml': ɵɵtrustConstantHtml,
-    'ɵɵtrustConstantScript': ɵɵtrustConstantScript,
     'ɵɵtrustConstantResourceUrl': ɵɵtrustConstantResourceUrl,
+    'forwardRef': forwardRef,
+    'resolveForwardRef': resolveForwardRef,
 });
 /**
  * A mapping of the @angular/core API surface used in generated expressions to the actual symbols.
@@ -115109,7 +115517,8 @@ function convertToR3QueryMetadata(propertyName, ann) {
         descendants: ann.descendants,
         first: ann.first,
         read: ann.read ? ann.read : null,
-        static: !!ann.static
+        static: !!ann.static,
+        emitDistinctChangesOnly: !!ann.emitDistinctChangesOnly,
     };
 }
 function extractQueriesMetadata(type, propMetadata, isQueryAnn) {
@@ -115468,7 +115877,7 @@ ApplicationInitStatus.ɵprov = ɵɵdefineInjectable({ token: ApplicationInitStat
 ApplicationInitStatus.ctorParameters = () => [
     { type: Array, decorators: [{ type: Inject, args: [APP_INITIALIZER,] }, { type: Optional }] }
 ];
-/*@__PURE__*/ (function () { setClassMetadata(ApplicationInitStatus, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ApplicationInitStatus, [{
         type: Injectable
     }], function () { return [{ type: Array, decorators: [{
                 type: Inject,
@@ -115559,7 +115968,7 @@ class Console {
 }
 Console.ɵfac = function Console_Factory(t) { return new (t || Console)(); };
 Console.ɵprov = ɵɵdefineInjectable({ token: Console, factory: Console.ɵfac });
-/*@__PURE__*/ (function () { setClassMetadata(Console, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Console, [{
         type: Injectable
     }], null, null); })();
 
@@ -115728,7 +116137,7 @@ const ivyEnabled = SWITCH_IVY_ENABLED__POST_R3__;
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Combination of NgModuleFactory and ComponentFactorys.
+ * Combination of NgModuleFactory and ComponentFactories.
  *
  * @publicApi
  */
@@ -115817,7 +116226,7 @@ class Compiler {
 }
 Compiler.ɵfac = function Compiler_Factory(t) { return new (t || Compiler)(); };
 Compiler.ɵprov = ɵɵdefineInjectable({ token: Compiler, factory: Compiler.ɵfac });
-/*@__PURE__*/ (function () { setClassMetadata(Compiler, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Compiler, [{
         type: Injectable
     }], function () { return []; }, null); })();
 /**
@@ -115961,7 +116370,7 @@ function getNativeRequestAnimationFrame() {
  * @publicApi
  */
 class NgZone {
-    constructor({ enableLongStackTrace = false, shouldCoalesceEventChangeDetection = false }) {
+    constructor({ enableLongStackTrace = false, shouldCoalesceEventChangeDetection = false, shouldCoalesceRunChangeDetection = false }) {
         this.hasPendingMacrotasks = false;
         this.hasPendingMicrotasks = false;
         /**
@@ -116001,7 +116410,11 @@ class NgZone {
         if (enableLongStackTrace && Zone['longStackTraceZoneSpec']) {
             self._inner = self._inner.fork(Zone['longStackTraceZoneSpec']);
         }
-        self.shouldCoalesceEventChangeDetection = shouldCoalesceEventChangeDetection;
+        // if shouldCoalesceRunChangeDetection is true, all tasks including event tasks will be
+        // coalesced, so shouldCoalesceEventChangeDetection option is not necessary and can be skipped.
+        self.shouldCoalesceEventChangeDetection =
+            !shouldCoalesceRunChangeDetection && shouldCoalesceEventChangeDetection;
+        self.shouldCoalesceRunChangeDetection = shouldCoalesceRunChangeDetection;
         self.lastRequestAnimationFrameId = -1;
         self.nativeRequestAnimationFrame = getNativeRequestAnimationFrame().nativeRequestAnimationFrame;
         forkInnerZoneWithAngularBehavior(self);
@@ -116129,19 +116542,18 @@ function forkInnerZoneWithAngularBehavior(zone) {
     const delayChangeDetectionForEventsDelegate = () => {
         delayChangeDetectionForEvents(zone);
     };
-    const maybeDelayChangeDetection = !!zone.shouldCoalesceEventChangeDetection &&
-        zone.nativeRequestAnimationFrame && delayChangeDetectionForEventsDelegate;
     zone._inner = zone._inner.fork({
         name: 'angular',
-        properties: { 'isAngularZone': true, 'maybeDelayChangeDetection': maybeDelayChangeDetection },
+        properties: { 'isAngularZone': true },
         onInvokeTask: (delegate, current, target, task, applyThis, applyArgs) => {
             try {
                 onEnter(zone);
                 return delegate.invokeTask(target, task, applyThis, applyArgs);
             }
             finally {
-                if (maybeDelayChangeDetection && task.type === 'eventTask') {
-                    maybeDelayChangeDetection();
+                if ((zone.shouldCoalesceEventChangeDetection && task.type === 'eventTask') ||
+                    zone.shouldCoalesceRunChangeDetection) {
+                    delayChangeDetectionForEventsDelegate();
                 }
                 onLeave(zone);
             }
@@ -116152,6 +116564,9 @@ function forkInnerZoneWithAngularBehavior(zone) {
                 return delegate.invoke(target, callback, applyThis, applyArgs, source);
             }
             finally {
+                if (zone.shouldCoalesceRunChangeDetection) {
+                    delayChangeDetectionForEventsDelegate();
+                }
                 onLeave(zone);
             }
         },
@@ -116179,7 +116594,8 @@ function forkInnerZoneWithAngularBehavior(zone) {
 }
 function updateMicroTaskStatus(zone) {
     if (zone._hasPendingMicrotasks ||
-        (zone.shouldCoalesceEventChangeDetection && zone.lastRequestAnimationFrameId !== -1)) {
+        ((zone.shouldCoalesceEventChangeDetection || zone.shouldCoalesceRunChangeDetection) &&
+            zone.lastRequestAnimationFrameId !== -1)) {
         zone.hasPendingMicrotasks = true;
     }
     else {
@@ -116398,7 +116814,7 @@ Testability.ɵprov = ɵɵdefineInjectable({ token: Testability, factory: Testabi
 Testability.ctorParameters = () => [
     { type: NgZone }
 ];
-/*@__PURE__*/ (function () { setClassMetadata(Testability, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Testability, [{
         type: Injectable
     }], function () { return [{ type: NgZone }]; }, null); })();
 /**
@@ -116464,7 +116880,7 @@ class TestabilityRegistry {
 TestabilityRegistry.ɵfac = function TestabilityRegistry_Factory(t) { return new (t || TestabilityRegistry)(); };
 TestabilityRegistry.ɵprov = ɵɵdefineInjectable({ token: TestabilityRegistry, factory: TestabilityRegistry.ɵfac });
 TestabilityRegistry.ctorParameters = () => [];
-/*@__PURE__*/ (function () { setClassMetadata(TestabilityRegistry, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(TestabilityRegistry, [{
         type: Injectable
     }], function () { return []; }, null); })();
 class _NoopGetTestability {
@@ -116735,10 +117151,13 @@ class PlatformRef {
         // pass that as parent to the NgModuleFactory.
         const ngZoneOption = options ? options.ngZone : undefined;
         const ngZoneEventCoalescing = (options && options.ngZoneEventCoalescing) || false;
-        const ngZone = getNgZone(ngZoneOption, ngZoneEventCoalescing);
+        const ngZoneRunCoalescing = (options && options.ngZoneRunCoalescing) || false;
+        const ngZone = getNgZone(ngZoneOption, { ngZoneEventCoalescing, ngZoneRunCoalescing });
         const providers = [{ provide: NgZone, useValue: ngZone }];
-        // Attention: Don't use ApplicationRef.run here,
-        // as we want to be sure that all possible constructor calls are inside `ngZone.run`!
+        // Note: Create ngZoneInjector within ngZone.run so that all of the instantiated services are
+        // created within the Angular zone
+        // Do not try to replace ngZone.run with ApplicationRef#run because ApplicationRef would then be
+        // created outside of the Angular zone.
         return ngZone.run(() => {
             const ngZoneInjector = Injector.create({ providers: providers, parent: this.injector, name: moduleFactory.moduleType.name });
             const moduleRef = moduleFactory.create(ngZoneInjector);
@@ -116842,10 +117261,10 @@ PlatformRef.ɵprov = ɵɵdefineInjectable({ token: PlatformRef, factory: Platfor
 PlatformRef.ctorParameters = () => [
     { type: Injector }
 ];
-/*@__PURE__*/ (function () { setClassMetadata(PlatformRef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(PlatformRef, [{
         type: Injectable
     }], function () { return [{ type: Injector }]; }, null); })();
-function getNgZone(ngZoneOption, ngZoneEventCoalescing) {
+function getNgZone(ngZoneOption, extra) {
     let ngZone;
     if (ngZoneOption === 'noop') {
         ngZone = new NoopNgZone();
@@ -116853,7 +117272,8 @@ function getNgZone(ngZoneOption, ngZoneEventCoalescing) {
     else {
         ngZone = (ngZoneOption === 'zone.js' ? undefined : ngZoneOption) || new NgZone({
             enableLongStackTrace: isDevMode(),
-            shouldCoalesceEventChangeDetection: ngZoneEventCoalescing
+            shouldCoalesceEventChangeDetection: !!(extra === null || extra === void 0 ? void 0 : extra.ngZoneEventCoalescing),
+            shouldCoalesceRunChangeDetection: !!(extra === null || extra === void 0 ? void 0 : extra.ngZoneRunCoalescing)
         });
     }
     return ngZone;
@@ -117186,7 +117606,7 @@ ApplicationRef.ctorParameters = () => [
     { type: ComponentFactoryResolver },
     { type: ApplicationInitStatus }
 ];
-/*@__PURE__*/ (function () { setClassMetadata(ApplicationRef, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ApplicationRef, [{
         type: Injectable
     }], function () { return [{ type: NgZone }, { type: Console }, { type: Injector }, { type: ErrorHandler }, { type: ComponentFactoryResolver }, { type: ApplicationInitStatus }]; }, null); })();
 function remove(list, el) {
@@ -117330,7 +117750,7 @@ SystemJsNgModuleLoader.ctorParameters = () => [
     { type: Compiler },
     { type: SystemJsNgModuleLoaderConfig, decorators: [{ type: Optional }] }
 ];
-/*@__PURE__*/ (function () { setClassMetadata(SystemJsNgModuleLoader, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(SystemJsNgModuleLoader, [{
         type: Injectable
     }], function () { return [{ type: Compiler }, { type: SystemJsNgModuleLoaderConfig, decorators: [{
                 type: Optional
@@ -118188,7 +118608,7 @@ ApplicationModule.ɵinj = ɵɵdefineInjector({ factory: function ApplicationModu
 ApplicationModule.ctorParameters = () => [
     { type: ApplicationRef }
 ];
-/*@__PURE__*/ (function () { setClassMetadata(ApplicationModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ApplicationModule, [{
         type: NgModule,
         args: [{ providers: APPLICATION_MODULE_PROVIDERS }]
     }], function () { return [{ type: ApplicationRef }]; }, null); })();
@@ -118527,8 +118947,8 @@ function queryDef(flags, id, bindings) {
         ngContent: null
     };
 }
-function createQuery() {
-    return new QueryList();
+function createQuery(emitDistinctChangesOnly) {
+    return new QueryList(emitDistinctChangesOnly);
 }
 function dirtyParentQueries(view) {
     const queryIds = view.def.nodeMatchedQueries;
@@ -118580,7 +119000,7 @@ function checkAndUpdateQuery(view, nodeDef) {
         newValues = calcQueryValues(view, 0, view.def.nodes.length - 1, nodeDef.query, []);
         directiveInstance = view.component;
     }
-    queryList.reset(newValues);
+    queryList.reset(newValues, unwrapElementRef);
     const bindings = nodeDef.query.bindings;
     let notify = false;
     for (let i = 0; i < bindings.length; i++) {
@@ -119341,7 +119761,8 @@ function createViewNodes(view) {
                 break;
             case 67108864 /* TypeContentQuery */:
             case 134217728 /* TypeViewQuery */:
-                nodeData = createQuery();
+                nodeData = createQuery((nodeDef.flags & -2147483648 /* EmitDistinctChangesOnly */) ===
+                    -2147483648 /* EmitDistinctChangesOnly */);
                 break;
             case 8 /* TypeNgContent */:
                 appendNgContent(view, renderHost, nodeDef);
@@ -120489,6 +120910,32 @@ class NgModuleFactory_ extends NgModuleFactory {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+/**
+ * Compiles a partial directive declaration object into a full directive definition object.
+ *
+ * @codeGenApi
+ */
+function ɵɵngDeclareDirective(decl) {
+    const compiler = getCompilerFacade();
+    return compiler.compileDirectiveDeclaration(angularCoreEnv, `ng:///${decl.type.name}/ɵfac.js`, decl);
+}
+/**
+ * Compiles a partial component declaration object into a full component definition object.
+ *
+ * @codeGenApi
+ */
+function ɵɵngDeclareComponent(decl) {
+    const compiler = getCompilerFacade();
+    return compiler.compileComponentDeclaration(angularCoreEnv, `ng:///${decl.type.name}/ɵcmp.js`, decl);
+}
+
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 // clang-format on
 
 /**
@@ -120709,14 +121156,14 @@ var USES_TO_LENGTH = arrayMethodUsesToLength(FIND);
 if (FIND in []) Array(1)[FIND](function () { SKIPS_HOLES = false; });
 
 // `Array.prototype.find` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.find
+// https://tc39.es/ecma262/#sec-array.prototype.find
 $({ target: 'Array', proto: true, forced: SKIPS_HOLES || !USES_TO_LENGTH }, {
   find: function find(callbackfn /* , that = undefined */) {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables(FIND);
 
 
@@ -120839,7 +121286,7 @@ var $parseFloat = global.parseFloat;
 var FORCED = 1 / $parseFloat(whitespaces + '-0') !== -Infinity;
 
 // `parseFloat` method
-// https://tc39.github.io/ecma262/#sec-parsefloat-string
+// https://tc39.es/ecma262/#sec-parsefloat-string
 module.exports = FORCED ? function parseFloat(string) {
   var trimmedString = trim(String(string));
   var result = $parseFloat(trimmedString);
@@ -121495,7 +121942,7 @@ Object(_internal_curry2_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function (su
 
 var fails = __webpack_require__(/*! ../internals/fails */ "0Dky");
 
-// Thank's IE8 for his funny defineProperty
+// Detect IE8's incomplete defineProperty implementation
 module.exports = !fails(function () {
   return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
 });
@@ -125079,7 +125526,7 @@ function uniqWith(array, comparator) {
 var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "ZUd8").charAt;
 
 // `AdvanceStringIndex` abstract operation
-// https://tc39.github.io/ecma262/#sec-advancestringindex
+// https://tc39.es/ecma262/#sec-advancestringindex
 module.exports = function (S, index, unicode) {
   return index + (unicode ? charAt(S, index).length : 1);
 };
@@ -126223,7 +126670,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ɵgetDOM", function() { return _angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵgetDOM"]; });
 
 /**
- * @license Angular v11.0.9
+ * @license Angular v11.1.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -126660,7 +127107,7 @@ EventManager.ctorParameters = () => [
     { type: Array, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [EVENT_MANAGER_PLUGINS,] }] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](EventManager, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](EventManager, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], function () { return [{ type: Array, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
@@ -126708,7 +127155,7 @@ class SharedStylesHost {
 }
 SharedStylesHost.ɵfac = function SharedStylesHost_Factory(t) { return new (t || SharedStylesHost)(); };
 SharedStylesHost.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: SharedStylesHost, factory: SharedStylesHost.ɵfac });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](SharedStylesHost, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](SharedStylesHost, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], function () { return []; }, null); })();
 class DomSharedStylesHost extends SharedStylesHost {
@@ -126745,7 +127192,7 @@ DomSharedStylesHost.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdef
 DomSharedStylesHost.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomSharedStylesHost, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomSharedStylesHost, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
@@ -126864,7 +127311,7 @@ DomRendererFactory2.ctorParameters = () => [
     { type: DomSharedStylesHost },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["APP_ID"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomRendererFactory2, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomRendererFactory2, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], function () { return [{ type: EventManager }, { type: DomSharedStylesHost }, { type: String, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
@@ -127083,7 +127530,7 @@ DomEventsPlugin.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineI
 DomEventsPlugin.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomEventsPlugin, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomEventsPlugin, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
@@ -127136,6 +127583,7 @@ const EVENT_NAMES = {
     'swipedown': true,
     // tap
     'tap': true,
+    'doubletap': true
 };
 /**
  * DI token for providing [HammerJS](https://hammerjs.github.io/) support to Angular.
@@ -127200,7 +127648,7 @@ class HammerGestureConfig {
 }
 HammerGestureConfig.ɵfac = function HammerGestureConfig_Factory(t) { return new (t || HammerGestureConfig)(); };
 HammerGestureConfig.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: HammerGestureConfig, factory: HammerGestureConfig.ɵfac });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HammerGestureConfig, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HammerGestureConfig, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], function () { return []; }, null); })();
 /**
@@ -127295,7 +127743,7 @@ HammerGesturesPlugin.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵConsole"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [HAMMER_LOADER,] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HammerGesturesPlugin, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HammerGesturesPlugin, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
@@ -127343,7 +127791,7 @@ class HammerModule {
 }
 HammerModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: HammerModule });
 HammerModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function HammerModule_Factory(t) { return new (t || HammerModule)(); }, providers: HAMMER_PROVIDERS__PRE_R3__ });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HammerModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HammerModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{ providers: HAMMER_PROVIDERS__PRE_R3__ }]
     }], null, null); })();
@@ -127523,7 +127971,7 @@ KeyEventsPlugin.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineI
 KeyEventsPlugin.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](KeyEventsPlugin, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](KeyEventsPlugin, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
@@ -127594,7 +128042,7 @@ class DomSanitizer {
 }
 DomSanitizer.ɵfac = function DomSanitizer_Factory(t) { return new (t || DomSanitizer)(); };
 DomSanitizer.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function DomSanitizer_Factory() { return Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(DomSanitizerImpl); }, token: DomSanitizer, providedIn: "root" });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomSanitizer, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomSanitizer, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root', useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(() => DomSanitizerImpl) }]
     }], null, null); })();
@@ -127616,7 +128064,7 @@ class DomSanitizerImpl extends DomSanitizer {
                 if (Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵallowSanitizationBypassAndThrow"])(value, "HTML" /* Html */)) {
                     return Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunwrapSafeValue"])(value);
                 }
-                return Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ_sanitizeHtml"])(this._doc, String(value));
+                return Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ_sanitizeHtml"])(this._doc, String(value)).toString();
             case _angular_core__WEBPACK_IMPORTED_MODULE_1__["SecurityContext"].STYLE:
                 if (Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵallowSanitizationBypassAndThrow"])(value, "Style" /* Style */)) {
                     return Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵunwrapSafeValue"])(value);
@@ -127663,7 +128111,7 @@ DomSanitizerImpl.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ�
 DomSanitizerImpl.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomSanitizerImpl, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](DomSanitizerImpl, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root', useFactory: domSanitizerImplFactory, deps: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]] }]
     }], function () { return [{ type: undefined, decorators: [{
@@ -127779,7 +128227,7 @@ BrowserModule.ctorParameters = () => [
     { type: BrowserModule, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [BrowserModule,] }] }
 ];
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](BrowserModule, { exports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationModule"]]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](BrowserModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](BrowserModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{ providers: BROWSER_MODULE_PROVIDERS, exports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ApplicationModule"]] }]
     }], function () { return [{ type: BrowserModule, decorators: [{
@@ -127959,7 +128407,7 @@ Meta.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjec
 Meta.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](Meta, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](Meta, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root', useFactory: createMeta, deps: [] }]
     }], function () { return [{ type: undefined, decorators: [{
@@ -128019,7 +128467,7 @@ Title.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInje
 Title.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](Title, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](Title, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root', useFactory: createTitle, deps: [] }]
     }], function () { return [{ type: undefined, decorators: [{
@@ -128251,7 +128699,7 @@ class TransferState {
 }
 TransferState.ɵfac = function TransferState_Factory(t) { return new (t || TransferState)(); };
 TransferState.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: TransferState, factory: TransferState.ɵfac });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](TransferState, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](TransferState, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], function () { return []; }, null); })();
 function initTransferState(doc, appId) {
@@ -128279,7 +128727,7 @@ class BrowserTransferStateModule {
 }
 BrowserTransferStateModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: BrowserTransferStateModule });
 BrowserTransferStateModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function BrowserTransferStateModule_Factory(t) { return new (t || BrowserTransferStateModule)(); }, providers: [{ provide: TransferState, useFactory: initTransferState, deps: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["APP_ID"]] }] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](BrowserTransferStateModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](BrowserTransferStateModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
                 providers: [{ provide: TransferState, useFactory: initTransferState, deps: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["APP_ID"]] }]
@@ -128364,7 +128812,7 @@ function elementMatches(n, selector) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('11.0.9');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('11.1.2');
 
 /**
  * @license
@@ -129461,7 +129909,7 @@ Object(_internal_curry2_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function con
 var $ = __webpack_require__(/*! ../internals/export */ "I+eb");
 
 // `Number.isNaN` method
-// https://tc39.github.io/ecma262/#sec-number.isnan
+// https://tc39.es/ecma262/#sec-number.isnan
 $({ target: 'Number', stat: true }, {
   isNaN: function isNaN(number) {
     // eslint-disable-next-line no-self-compare
@@ -130923,7 +131371,7 @@ CubejsClient.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInje
 CubejsClient.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: ['config',] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CubejsClient, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CubejsClient, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
@@ -130956,7 +131404,7 @@ class CubejsClientModule {
 }
 CubejsClientModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: CubejsClientModule });
 CubejsClientModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function CubejsClientModule_Factory(t) { return new (t || CubejsClientModule)(); }, providers: [CubejsClient] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CubejsClientModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CubejsClientModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 providers: [CubejsClient]
@@ -131775,7 +132223,7 @@ class QueryBuilderService {
 }
 QueryBuilderService.ɵfac = function QueryBuilderService_Factory(t) { return new (t || QueryBuilderService)(); };
 QueryBuilderService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: QueryBuilderService, factory: QueryBuilderService.ɵfac });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](QueryBuilderService, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](QueryBuilderService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return []; }, null); })();
 if (false) {}
@@ -134379,7 +134827,7 @@ var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "wE6v");
 var nativeDefineProperty = Object.defineProperty;
 
 // `Object.defineProperty` method
-// https://tc39.github.io/ecma262/#sec-object.defineproperty
+// https://tc39.es/ecma262/#sec-object.defineproperty
 exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
@@ -134742,6 +135190,7 @@ var omit = Object(_flatRest_js__WEBPACK_IMPORTED_MODULE_6__["default"])(function
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(/*! ../internals/an-object */ "glrk");
+var iteratorClose = __webpack_require__(/*! ../internals/iterator-close */ "KmKo");
 
 // call something on iterator step with safe closing on error
 module.exports = function (iterator, fn, value, ENTRIES) {
@@ -134749,8 +135198,7 @@ module.exports = function (iterator, fn, value, ENTRIES) {
     return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
   // 7.4.6 IteratorClose(iterator, completion)
   } catch (error) {
-    var returnMethod = iterator['return'];
-    if (returnMethod !== undefined) anObject(returnMethod.call(iterator));
+    iteratorClose(iterator);
     throw error;
   }
 };
@@ -135030,7 +135478,7 @@ var URLSearchParamsConstructor = function URLSearchParams(/* init */) {
 var URLSearchParamsPrototype = URLSearchParamsConstructor.prototype;
 
 redefineAll(URLSearchParamsPrototype, {
-  // `URLSearchParams.prototype.appent` method
+  // `URLSearchParams.prototype.append` method
   // https://url.spec.whatwg.org/#dom-urlsearchparams-append
   append: function append(name, value) {
     validateArgumentsLength(arguments.length, 2);
@@ -135528,7 +135976,7 @@ var isConcatSpreadable = function (O) {
 var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
 
 // `Array.prototype.concat` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.concat
+// https://tc39.es/ecma262/#sec-array.prototype.concat
 // with adding support of @@isConcatSpreadable and @@species
 $({ target: 'Array', proto: true, forced: FORCED }, {
   concat: function concat(arg) { // eslint-disable-line no-unused-vars
@@ -136576,7 +137024,7 @@ Platform.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineI
 Platform.ctorParameters = () => [
     { type: Object, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Platform, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Platform, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return [{ type: Object, decorators: [{
@@ -136595,7 +137043,7 @@ class PlatformModule {
 }
 PlatformModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: PlatformModule });
 PlatformModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function PlatformModule_Factory(t) { return new (t || PlatformModule)(); } });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PlatformModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PlatformModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{}]
     }], null, null); })();
@@ -136712,6 +137160,7 @@ function supportsScrollBehavior() {
         // If we're not in the browser, it can't be supported.
         if (typeof document !== 'object' || !document) {
             scrollBehaviorSupported = false;
+            return scrollBehaviorSupported;
         }
         // If the element can have a `scrollBehavior` style, we can be sure that it's supported.
         if ('scrollBehavior' in document.documentElement.style) {
@@ -138239,7 +138688,7 @@ var ES3_STRINGS = IndexedObject != Object;
 var STRICT_METHOD = arrayMethodIsStrict('join', ',');
 
 // `Array.prototype.join` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.join
+// https://tc39.es/ecma262/#sec-array.prototype.join
 $({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
   join: function join(separator) {
     return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
@@ -138449,7 +138898,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵsetRootDomAdapter", function() { return setRootDomAdapter; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /**
- * @license Angular v11.0.9
+ * @license Angular v11.1.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -138536,7 +138985,7 @@ class PlatformLocation {
 }
 PlatformLocation.ɵfac = function PlatformLocation_Factory(t) { return new (t || PlatformLocation)(); };
 PlatformLocation.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: useBrowserPlatformLocation, token: PlatformLocation, providedIn: "platform" });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PlatformLocation, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PlatformLocation, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'platform',
@@ -138635,7 +139084,7 @@ BrowserPlatformLocation.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0
 BrowserPlatformLocation.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [DOCUMENT,] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BrowserPlatformLocation, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BrowserPlatformLocation, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'platform',
@@ -138753,7 +139202,7 @@ class LocationStrategy {
 }
 LocationStrategy.ɵfac = function LocationStrategy_Factory(t) { return new (t || LocationStrategy)(); };
 LocationStrategy.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: provideLocationStrategy, token: LocationStrategy, providedIn: "root" });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LocationStrategy, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LocationStrategy, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{ providedIn: 'root', useFactory: provideLocationStrategy }]
     }], null, null); })();
@@ -138865,7 +139314,7 @@ PathLocationStrategy.ctorParameters = () => [
     { type: PlatformLocation },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [APP_BASE_HREF,] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PathLocationStrategy, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PathLocationStrategy, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: PlatformLocation }, { type: String, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
@@ -138954,7 +139403,7 @@ HashLocationStrategy.ctorParameters = () => [
     { type: PlatformLocation },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [APP_BASE_HREF,] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HashLocationStrategy, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HashLocationStrategy, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: PlatformLocation }, { type: String, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
@@ -139176,7 +139625,7 @@ Location.ctorParameters = () => [
     { type: LocationStrategy },
     { type: PlatformLocation }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Location, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Location, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root',
@@ -140620,12 +141069,7 @@ function toDate(value) {
     }
     if (typeof value === 'string') {
         value = value.trim();
-        const parsedNb = parseFloat(value);
-        // any string that only contains numbers, like "1234" but not like "1234hello"
-        if (!isNaN(value - parsedNb)) {
-            return new Date(parsedNb);
-        }
-        if (/^(\d{4}-\d{1,2}-\d{1,2})$/.test(value)) {
+        if (/^(\d{4}(-\d{1,2}(-\d{1,2})?)?)$/.test(value)) {
             /* For ISO Strings without time the day, month and year must be extracted from the ISO String
             before Date creation to avoid time offset and errors in the new Date.
             If we only replace '-' with ',' in the ISO String ("2015,01,01"), and try to create a new
@@ -140633,8 +141077,13 @@ function toDate(value) {
             If we leave the '-' ("2015-01-01") and try to create a new Date("2015-01-01") the timeoffset
             is applied.
             Note: ISO months are 0 for January, 1 for February, ... */
-            const [y, m, d] = value.split('-').map((val) => +val);
+            const [y, m = 1, d = 1] = value.split('-').map((val) => +val);
             return new Date(y, m - 1, d);
+        }
+        const parsedNb = parseFloat(value);
+        // any string that only contains numbers, like "1234" but not like "1234hello"
+        if (!isNaN(value - parsedNb)) {
+            return new Date(parsedNb);
         }
         let match;
         if (match = value.match(ISO8601_DATE_REGEX)) {
@@ -141136,7 +141585,7 @@ NgLocaleLocalization.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
 NgLocaleLocalization.ctorParameters = () => [
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgLocaleLocalization, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgLocaleLocalization, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
     }], function () { return [{ type: String, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
@@ -141340,7 +141789,7 @@ NgClass.propDecorators = {
     klass: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['class',] }],
     ngClass: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['ngClass',] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgClass, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgClass, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngClass]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["IterableDiffers"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"] }]; }, { klass: [{
@@ -141457,7 +141906,7 @@ NgComponentOutlet.propDecorators = {
     ngComponentOutletContent: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
     ngComponentOutletNgModuleFactory: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgComponentOutlet, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgComponentOutlet, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngComponentOutlet]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }]; }, { ngComponentOutlet: [{
@@ -141740,7 +142189,7 @@ NgForOf.propDecorators = {
     ngForTrackBy: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
     ngForTemplate: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgForOf, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgForOf, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngFor][ngForOf]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["IterableDiffers"] }]; }, { ngForOf: [{
@@ -141848,7 +142297,7 @@ function getTypeName(type) {
  * You might want to show a set of properties from the same object. If you are waiting
  * for asynchronous data, the object can be undefined.
  * In this case, you can use `ngIf` and store the result of the condition in a local
- * variable as shown in the the following example.
+ * variable as shown in the following example.
  *
  * {@example common/ngIf/ts/module.ts region='NgIfAs'}
  *
@@ -141984,7 +142433,7 @@ NgIf.propDecorators = {
     ngIfThen: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
     ngIfElse: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgIf, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgIf, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngIf]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] }]; }, { ngIf: [{
@@ -142157,7 +142606,7 @@ NgSwitch.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective
 NgSwitch.propDecorators = {
     ngSwitch: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgSwitch, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgSwitch, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngSwitch]' }]
     }], function () { return []; }, { ngSwitch: [{
@@ -142219,7 +142668,7 @@ NgSwitchCase.ctorParameters = () => [
 NgSwitchCase.propDecorators = {
     ngSwitchCase: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgSwitchCase, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgSwitchCase, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngSwitchCase]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] }, { type: NgSwitch, decorators: [{
@@ -142253,7 +142702,7 @@ NgSwitchDefault.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] },
     { type: NgSwitch, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Host"] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgSwitchDefault, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgSwitchDefault, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngSwitchDefault]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] }, { type: NgSwitch, decorators: [{
@@ -142335,7 +142784,7 @@ NgPlural.ctorParameters = () => [
 NgPlural.propDecorators = {
     ngPlural: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgPlural, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgPlural, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngPlural]' }]
     }], function () { return [{ type: NgLocalization }]; }, { ngPlural: [{
@@ -142376,7 +142825,7 @@ NgPluralCase.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] },
     { type: NgPlural, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Host"] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgPluralCase, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgPluralCase, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngPluralCase]' }]
     }], function () { return [{ type: String, decorators: [{
@@ -142477,7 +142926,7 @@ NgStyle.ctorParameters = () => [
 NgStyle.propDecorators = {
     ngStyle: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['ngStyle',] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgStyle, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgStyle, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngStyle]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"] }]; }, { ngStyle: [{
@@ -142589,7 +143038,7 @@ NgTemplateOutlet.propDecorators = {
     ngTemplateOutletContext: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
     ngTemplateOutlet: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgTemplateOutlet, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgTemplateOutlet, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[ngTemplateOutlet]' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }]; }, { ngTemplateOutletContext: [{
@@ -142641,7 +143090,7 @@ function invalidPipeArgumentError(type, value) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-class ObservableStrategy {
+class SubscribableStrategy {
     createSubscription(async, updateLatestValue) {
         return async.subscribe({
             next: updateLatestValue,
@@ -142667,7 +143116,7 @@ class PromiseStrategy {
     onDestroy(subscription) { }
 }
 const _promiseStrategy = new PromiseStrategy();
-const _observableStrategy = new ObservableStrategy();
+const _subscribableStrategy = new SubscribableStrategy();
 /**
  * @ngModule CommonModule
  * @description
@@ -142730,8 +143179,8 @@ class AsyncPipe {
         if (Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵisPromise"])(obj)) {
             return _promiseStrategy;
         }
-        if (Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵisObservable"])(obj)) {
-            return _observableStrategy;
+        if (Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵisSubscribable"])(obj)) {
+            return _subscribableStrategy;
         }
         throw invalidPipeArgumentError(AsyncPipe, obj);
     }
@@ -142753,7 +143202,7 @@ AsyncPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"](
 AsyncPipe.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AsyncPipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AsyncPipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'async', pure: false }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }]; }, null); })();
@@ -142792,7 +143241,7 @@ class LowerCasePipe {
 }
 LowerCasePipe.ɵfac = function LowerCasePipe_Factory(t) { return new (t || LowerCasePipe)(); };
 LowerCasePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({ name: "lowercase", type: LowerCasePipe, pure: true });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LowerCasePipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LowerCasePipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'lowercase' }]
     }], null, null); })();
@@ -142834,7 +143283,7 @@ class TitleCasePipe {
 }
 TitleCasePipe.ɵfac = function TitleCasePipe_Factory(t) { return new (t || TitleCasePipe)(); };
 TitleCasePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({ name: "titlecase", type: TitleCasePipe, pure: true });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TitleCasePipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TitleCasePipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'titlecase' }]
     }], null, null); })();
@@ -142858,7 +143307,7 @@ class UpperCasePipe {
 }
 UpperCasePipe.ɵfac = function UpperCasePipe_Factory(t) { return new (t || UpperCasePipe)(); };
 UpperCasePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({ name: "uppercase", type: UpperCasePipe, pure: true });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](UpperCasePipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](UpperCasePipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'uppercase' }]
     }], null, null); })();
@@ -143032,7 +143481,7 @@ DatePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
 DatePipe.ctorParameters = () => [
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DatePipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DatePipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'date', pure: true }]
     }], function () { return [{ type: String, decorators: [{
@@ -143088,7 +143537,7 @@ I18nPluralPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePi
 I18nPluralPipe.ctorParameters = () => [
     { type: NgLocalization }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](I18nPluralPipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](I18nPluralPipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'i18nPlural', pure: true }]
     }], function () { return [{ type: NgLocalization }]; }, null); })();
@@ -143140,7 +143589,7 @@ class I18nSelectPipe {
 }
 I18nSelectPipe.ɵfac = function I18nSelectPipe_Factory(t) { return new (t || I18nSelectPipe)(); };
 I18nSelectPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({ name: "i18nSelect", type: I18nSelectPipe, pure: true });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](I18nSelectPipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](I18nSelectPipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'i18nSelect', pure: true }]
     }], null, null); })();
@@ -143177,7 +143626,7 @@ class JsonPipe {
 }
 JsonPipe.ɵfac = function JsonPipe_Factory(t) { return new (t || JsonPipe)(); };
 JsonPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({ name: "json", type: JsonPipe, pure: false });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](JsonPipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](JsonPipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'json', pure: false }]
     }], null, null); })();
@@ -143241,7 +143690,7 @@ KeyValuePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe
 KeyValuePipe.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](KeyValuePipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](KeyValuePipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'keyvalue', pure: false }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"] }]; }, null); })();
@@ -143340,7 +143789,7 @@ DecimalPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"
 DecimalPipe.ctorParameters = () => [
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DecimalPipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DecimalPipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'number' }]
     }], function () { return [{ type: String, decorators: [{
@@ -143389,7 +143838,7 @@ PercentPipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"
 PercentPipe.ctorParameters = () => [
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PercentPipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PercentPipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'percent' }]
     }], function () { return [{ type: String, decorators: [{
@@ -143475,7 +143924,7 @@ CurrencyPipe.ctorParameters = () => [
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"],] }] },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_CURRENCY_CODE"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CurrencyPipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CurrencyPipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'currency' }]
     }], function () { return [{ type: String, decorators: [{
@@ -143559,7 +144008,7 @@ class SlicePipe {
 }
 SlicePipe.ɵfac = function SlicePipe_Factory(t) { return new (t || SlicePipe)(); };
 SlicePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({ name: "slice", type: SlicePipe, pure: false });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SlicePipe, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SlicePipe, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
         args: [{ name: 'slice', pure: false }]
     }], null, null); })();
@@ -143619,7 +144068,7 @@ CommonModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjec
         { provide: NgLocalization, useClass: NgLocaleLocalization },
     ] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](CommonModule, { declarations: [NgClass, NgComponentOutlet, NgForOf, NgIf, NgTemplateOutlet, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault, NgPlural, NgPluralCase, AsyncPipe, UpperCasePipe, LowerCasePipe, JsonPipe, SlicePipe, DecimalPipe, PercentPipe, TitleCasePipe, CurrencyPipe, DatePipe, I18nPluralPipe, I18nSelectPipe, KeyValuePipe], exports: [NgClass, NgComponentOutlet, NgForOf, NgIf, NgTemplateOutlet, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault, NgPlural, NgPluralCase, AsyncPipe, UpperCasePipe, LowerCasePipe, JsonPipe, SlicePipe, DecimalPipe, PercentPipe, TitleCasePipe, CurrencyPipe, DatePipe, I18nPluralPipe, I18nSelectPipe, KeyValuePipe] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CommonModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CommonModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 declarations: [COMMON_DIRECTIVES, COMMON_PIPES],
@@ -143680,7 +144129,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.0.9');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.1.2');
 
 /**
  * @license
@@ -144593,7 +145042,7 @@ var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
 var MAXIMUM_ALLOWED_LENGTH_EXCEEDED = 'Maximum allowed length exceeded';
 
 // `Array.prototype.splice` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.splice
+// https://tc39.es/ecma262/#sec-array.prototype.splice
 // with adding support of @@species
 $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
   splice: function splice(start, deleteCount /* , ...items */) {
@@ -144727,6 +145176,20 @@ var groupBy = Object(_createAggregator_js__WEBPACK_IMPORTED_MODULE_1__["default"
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (groupBy);
+
+
+/***/ }),
+
+/***/ "pLQz":
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/internals/engine-is-webos-webkit.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "NC/Y");
+
+module.exports = /web0s(?!.*chrome)/i.test(userAgent);
 
 
 /***/ }),
@@ -145123,7 +145586,7 @@ var STRICT_METHOD = arrayMethodIsStrict('every');
 var USES_TO_LENGTH = arrayMethodUsesToLength('every');
 
 // `Array.prototype.every` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.every
+// https://tc39.es/ecma262/#sec-array.prototype.every
 $({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
   every: function every(callbackfn /* , thisArg */) {
     return $every(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
@@ -145177,7 +145640,7 @@ var INCORRECT_ITERATION = !checkCorrectnessOfIteration(function (iterable) {
 });
 
 // `Array.from` method
-// https://tc39.github.io/ecma262/#sec-array.from
+// https://tc39.es/ecma262/#sec-array.from
 $({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
   from: from
 });
@@ -145218,7 +145681,7 @@ var ceil = Math.ceil;
 var floor = Math.floor;
 
 // `ToInteger` abstract operation
-// https://tc39.github.io/ecma262/#sec-tointeger
+// https://tc39.es/ecma262/#sec-tointeger
 module.exports = function (argument) {
   return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
 };
@@ -146293,7 +146756,7 @@ var NumberPrototype = NativeNumber.prototype;
 var BROKEN_CLASSOF = classof(create(NumberPrototype)) == NUMBER;
 
 // `ToNumber` abstract operation
-// https://tc39.github.io/ecma262/#sec-tonumber
+// https://tc39.es/ecma262/#sec-tonumber
 var toNumber = function (argument) {
   var it = toPrimitive(argument, false);
   var first, third, radix, maxCode, digits, length, index, code;
@@ -146322,7 +146785,7 @@ var toNumber = function (argument) {
 };
 
 // `Number` constructor
-// https://tc39.github.io/ecma262/#sec-number-constructor
+// https://tc39.es/ecma262/#sec-number-constructor
 if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
   var NumberWrapper = function Number(value) {
     var it = arguments.length < 1 ? 0 : value;
@@ -146337,7 +146800,9 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
     'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
     // ES2015 (in case, if modules with ES2015 Number statics required before):
     'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
-    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger'
+    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger,' +
+    // ESNext
+    'fromString,range'
   ).split(','), j = 0, key; keys.length > j; j++) {
     if (has(NativeNumber, key = keys[j]) && !has(NumberWrapper, key)) {
       defineProperty(NumberWrapper, key, getOwnPropertyDescriptor(NativeNumber, key));
@@ -146873,11 +147338,11 @@ module.exports = function (METHOD_NAME) {
   var regexp = /./;
   try {
     '/./'[METHOD_NAME](regexp);
-  } catch (e) {
+  } catch (error1) {
     try {
       regexp[MATCH] = false;
       return '/./'[METHOD_NAME](regexp);
-    } catch (f) { /* empty */ }
+    } catch (error2) { /* empty */ }
   } return false;
 };
 
@@ -146945,6 +147410,8 @@ function iif(condition, trueResult = _empty__WEBPACK_IMPORTED_MODULE_1__["EMPTY"
 var $ = __webpack_require__(/*! ../internals/export */ "I+eb");
 var exec = __webpack_require__(/*! ../internals/regexp-exec */ "kmMV");
 
+// `RegExp.prototype.exec` method
+// https://tc39.es/ecma262/#sec-regexp.prototype.exec
 $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
   exec: exec
 });
@@ -147154,7 +147621,7 @@ Object(_internal_curry1_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function val
 var anObject = __webpack_require__(/*! ../internals/an-object */ "glrk");
 
 // `RegExp.prototype.flags` getter implementation
-// https://tc39.github.io/ecma262/#sec-get-regexp.prototype.flags
+// https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
 module.exports = function () {
   var that = anObject(this);
   var result = '';
@@ -147534,7 +148001,7 @@ var BUGGY_SAFARI_ITERATORS = false;
 var returnThis = function () { return this; };
 
 // `%IteratorPrototype%` object
-// https://tc39.github.io/ecma262/#sec-%iteratorprototype%-object
+// https://tc39.es/ecma262/#sec-%iteratorprototype%-object
 var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
 
 if ([].keys) {
@@ -147857,7 +148324,7 @@ var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-s
 var classof = __webpack_require__(/*! ../internals/classof */ "9d/t");
 
 // `Object.prototype.toString` method implementation
-// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+// https://tc39.es/ecma262/#sec-object.prototype.tostring
 module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
   return '[object ' + classof(this) + ']';
 };
@@ -147946,7 +148413,7 @@ var nameRE = /^\s*function ([^ (]*)/;
 var NAME = 'name';
 
 // Function instances `.name` property
-// https://tc39.github.io/ecma262/#sec-function-instances-name
+// https://tc39.es/ecma262/#sec-function-instances-name
 if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
   defineProperty(FunctionPrototype, NAME, {
     configurable: true,
@@ -149905,7 +150372,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "R0Ic");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /**
- * @license Angular v11.0.9
+ * @license Angular v11.1.2
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -150159,7 +150626,7 @@ class NoopAnimationDriver {
 }
 NoopAnimationDriver.ɵfac = function NoopAnimationDriver_Factory(t) { return new (t || NoopAnimationDriver)(); };
 NoopAnimationDriver.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: NoopAnimationDriver, factory: NoopAnimationDriver.ɵfac });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](NoopAnimationDriver, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](NoopAnimationDriver, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"]
     }], null, null); })();
 /**
@@ -150389,21 +150856,6 @@ function iteratorToArray(iterator) {
         item = iterator.next();
     }
     return arr;
-}
-function mergeAnimationOptions(source, destination) {
-    if (source.params) {
-        const p0 = source.params;
-        if (!destination.params) {
-            destination.params = {};
-        }
-        const p1 = destination.params;
-        Object.keys(p0).forEach(param => {
-            if (!p1.hasOwnProperty(param)) {
-                p1[param] = p0[param];
-            }
-        });
-    }
-    return destination;
 }
 const DASH_CASE_REGEXP = /-+([a-z0-9])/g;
 function dashCaseToCamelCase(input) {
@@ -155124,14 +155576,15 @@ Object(_internal_curry2_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function def
 
 var global = __webpack_require__(/*! ../internals/global */ "2oRo");
 var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "Bs8V").f;
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "xrYK");
 var macrotask = __webpack_require__(/*! ../internals/task */ "LPSS").set;
 var IS_IOS = __webpack_require__(/*! ../internals/engine-is-ios */ "HNyW");
+var IS_WEBOS_WEBKIT = __webpack_require__(/*! ../internals/engine-is-webos-webkit */ "pLQz");
+var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "YF1G");
 
 var MutationObserver = global.MutationObserver || global.WebKitMutationObserver;
+var document = global.document;
 var process = global.process;
 var Promise = global.Promise;
-var IS_NODE = classof(process) == 'process';
 // Node.js 11 shows ExperimentalWarning on getting `queueMicrotask`
 var queueMicrotaskDescriptor = getOwnPropertyDescriptor(global, 'queueMicrotask');
 var queueMicrotask = queueMicrotaskDescriptor && queueMicrotaskDescriptor.value;
@@ -155157,13 +155610,9 @@ if (!queueMicrotask) {
     if (parent) parent.enter();
   };
 
-  // Node.js
-  if (IS_NODE) {
-    notify = function () {
-      process.nextTick(flush);
-    };
   // browsers with MutationObserver, except iOS - https://github.com/zloirock/core-js/issues/339
-  } else if (MutationObserver && !IS_IOS) {
+  // also except WebOS Webkit https://github.com/zloirock/core-js/issues/898
+  if (!IS_IOS && !IS_NODE && !IS_WEBOS_WEBKIT && MutationObserver && document) {
     toggle = true;
     node = document.createTextNode('');
     new MutationObserver(flush).observe(node, { characterData: true });
@@ -155177,6 +155626,11 @@ if (!queueMicrotask) {
     then = promise.then;
     notify = function () {
       then.call(promise, flush);
+    };
+  // Node.js without promises
+  } else if (IS_NODE) {
+    notify = function () {
+      process.nextTick(flush);
     };
   // for other environments - macrotask based on:
   // - setImmediate
@@ -155403,7 +155857,7 @@ var fails = __webpack_require__(/*! ../internals/fails */ "0Dky");
 var FAILS_ON_PRIMITIVES = fails(function () { nativeKeys(1); });
 
 // `Object.keys` method
-// https://tc39.github.io/ecma262/#sec-object.keys
+// https://tc39.es/ecma262/#sec-object.keys
 $({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
   keys: function keys(it) {
     return nativeKeys(toObject(it));
@@ -155538,13 +155992,14 @@ var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-crea
 
 var push = [].push;
 
-// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex }` methods implementation
+// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex, filterOut }` methods implementation
 var createMethod = function (TYPE) {
   var IS_MAP = TYPE == 1;
   var IS_FILTER = TYPE == 2;
   var IS_SOME = TYPE == 3;
   var IS_EVERY = TYPE == 4;
   var IS_FIND_INDEX = TYPE == 6;
+  var IS_FILTER_OUT = TYPE == 7;
   var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
   return function ($this, callbackfn, that, specificCreate) {
     var O = toObject($this);
@@ -155553,7 +156008,7 @@ var createMethod = function (TYPE) {
     var length = toLength(self.length);
     var index = 0;
     var create = specificCreate || arraySpeciesCreate;
-    var target = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
+    var target = IS_MAP ? create($this, length) : IS_FILTER || IS_FILTER_OUT ? create($this, 0) : undefined;
     var value, result;
     for (;length > index; index++) if (NO_HOLES || index in self) {
       value = self[index];
@@ -155565,7 +156020,10 @@ var createMethod = function (TYPE) {
           case 5: return value;             // find
           case 6: return index;             // findIndex
           case 2: push.call(target, value); // filter
-        } else if (IS_EVERY) return false;  // every
+        } else switch (TYPE) {
+          case 4: return false;             // every
+          case 7: push.call(target, value); // filterOut
+        }
       }
     }
     return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : target;
@@ -155574,26 +156032,29 @@ var createMethod = function (TYPE) {
 
 module.exports = {
   // `Array.prototype.forEach` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+  // https://tc39.es/ecma262/#sec-array.prototype.foreach
   forEach: createMethod(0),
   // `Array.prototype.map` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.map
+  // https://tc39.es/ecma262/#sec-array.prototype.map
   map: createMethod(1),
   // `Array.prototype.filter` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.filter
+  // https://tc39.es/ecma262/#sec-array.prototype.filter
   filter: createMethod(2),
   // `Array.prototype.some` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.some
+  // https://tc39.es/ecma262/#sec-array.prototype.some
   some: createMethod(3),
   // `Array.prototype.every` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.every
+  // https://tc39.es/ecma262/#sec-array.prototype.every
   every: createMethod(4),
   // `Array.prototype.find` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.find
+  // https://tc39.es/ecma262/#sec-array.prototype.find
   find: createMethod(5),
   // `Array.prototype.findIndex` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
-  findIndex: createMethod(6)
+  // https://tc39.es/ecma262/#sec-array.prototype.findIndex
+  findIndex: createMethod(6),
+  // `Array.prototype.filterOut` method
+  // https://github.com/tc39/proposal-array-filtering
+  filterOut: createMethod(7)
 };
 
 
@@ -155926,11 +156387,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_material_src_cdk_a11y_a11y_b", function() { return ConfigurableFocusTrapConfig; });
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/platform */ "nLfN");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/keycodes */ "FtGj");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/cdk/coercion */ "8LU1");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
+/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/keycodes */ "FtGj");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/cdk/coercion */ "8LU1");
+/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/cdk/platform */ "nLfN");
 /* harmony import */ var _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/cdk/observers */ "GU7r");
 
 
@@ -156013,49 +156474,40 @@ let messagesContainer = null;
  * content.
  */
 class AriaDescriber {
-    constructor(_document, 
-    /**
-     * @breaking-change 8.0.0 `_platform` parameter to be made required.
-     */
-    _platform) {
-        this._platform = _platform;
+    constructor(_document) {
         this._document = _document;
     }
-    /**
-     * Adds to the host element an aria-describedby reference to a hidden element that contains
-     * the message. If the same message has already been registered, then it will reuse the created
-     * message element.
-     */
-    describe(hostElement, message) {
+    describe(hostElement, message, role) {
         if (!this._canBeDescribed(hostElement, message)) {
             return;
         }
+        const key = getKey(message, role);
         if (typeof message !== 'string') {
             // We need to ensure that the element has an ID.
-            this._setMessageId(message);
-            messageRegistry.set(message, { messageElement: message, referenceCount: 0 });
+            setMessageId(message);
+            messageRegistry.set(key, { messageElement: message, referenceCount: 0 });
         }
-        else if (!messageRegistry.has(message)) {
-            this._createMessageElement(message);
+        else if (!messageRegistry.has(key)) {
+            this._createMessageElement(message, role);
         }
-        if (!this._isElementDescribedByMessage(hostElement, message)) {
-            this._addMessageReference(hostElement, message);
+        if (!this._isElementDescribedByMessage(hostElement, key)) {
+            this._addMessageReference(hostElement, key);
         }
     }
-    /** Removes the host element's aria-describedby reference to the message element. */
-    removeDescription(hostElement, message) {
+    removeDescription(hostElement, message, role) {
         if (!message || !this._isElementNode(hostElement)) {
             return;
         }
-        if (this._isElementDescribedByMessage(hostElement, message)) {
-            this._removeMessageReference(hostElement, message);
+        const key = getKey(message, role);
+        if (this._isElementDescribedByMessage(hostElement, key)) {
+            this._removeMessageReference(hostElement, key);
         }
         // If the message is a string, it means that it's one that we created for the
         // consumer so we can remove it safely, otherwise we should leave it in place.
         if (typeof message === 'string') {
-            const registeredMessage = messageRegistry.get(message);
+            const registeredMessage = messageRegistry.get(key);
             if (registeredMessage && registeredMessage.referenceCount === 0) {
-                this._deleteMessageElement(message);
+                this._deleteMessageElement(key);
             }
         }
         if (messagesContainer && messagesContainer.childNodes.length === 0) {
@@ -156078,34 +156530,29 @@ class AriaDescriber {
      * Creates a new element in the visually hidden message container element with the message
      * as its content and adds it to the message registry.
      */
-    _createMessageElement(message) {
+    _createMessageElement(message, role) {
         const messageElement = this._document.createElement('div');
-        this._setMessageId(messageElement);
+        setMessageId(messageElement);
         messageElement.textContent = message;
+        if (role) {
+            messageElement.setAttribute('role', role);
+        }
         this._createMessagesContainer();
         messagesContainer.appendChild(messageElement);
-        messageRegistry.set(message, { messageElement, referenceCount: 0 });
-    }
-    /** Assigns a unique ID to an element, if it doesn't have one already. */
-    _setMessageId(element) {
-        if (!element.id) {
-            element.id = `${CDK_DESCRIBEDBY_ID_PREFIX}-${nextId++}`;
-        }
+        messageRegistry.set(getKey(message, role), { messageElement, referenceCount: 0 });
     }
     /** Deletes the message element from the global messages container. */
-    _deleteMessageElement(message) {
-        const registeredMessage = messageRegistry.get(message);
+    _deleteMessageElement(key) {
+        const registeredMessage = messageRegistry.get(key);
         const messageElement = registeredMessage && registeredMessage.messageElement;
         if (messagesContainer && messageElement) {
             messagesContainer.removeChild(messageElement);
         }
-        messageRegistry.delete(message);
+        messageRegistry.delete(key);
     }
     /** Creates the global container for all aria-describedby messages. */
     _createMessagesContainer() {
         if (!messagesContainer) {
-            // @breaking-change 8.0.0 `_platform` null check can be removed once the parameter is required
-            const canBeAriaHidden = !this._platform || (!this._platform.EDGE && !this._platform.TRIDENT);
             const preExistingContainer = this._document.getElementById(MESSAGES_CONTAINER_ID);
             // When going from the server to the client, we may end up in a situation where there's
             // already a container on the page, but we don't have a reference to it. Clear the
@@ -156116,12 +156563,14 @@ class AriaDescriber {
             }
             messagesContainer = this._document.createElement('div');
             messagesContainer.id = MESSAGES_CONTAINER_ID;
+            // We add `visibility: hidden` in order to prevent text in this container from
+            // being searchable by the browser's Ctrl + F functionality.
+            // Screen-readers will still read the description for elements with aria-describedby even
+            // when the description element is not visible.
+            messagesContainer.style.visibility = 'hidden';
+            // Even though we use `visibility: hidden`, we still apply `cdk-visually-hidden` so that
+            // the description element doesn't impact page layout.
             messagesContainer.classList.add('cdk-visually-hidden');
-            // IE and Edge won't read out the messages if they're in an `aria-hidden` container.
-            // We only disable `aria-hidden` for these platforms, because it comes with the
-            // disadvantage that people might hit the messages when they've navigated past
-            // the end of the document using the arrow keys.
-            messagesContainer.setAttribute('aria-hidden', canBeAriaHidden + '');
             this._document.body.appendChild(messagesContainer);
         }
     }
@@ -156143,8 +156592,8 @@ class AriaDescriber {
      * Adds a message reference to the element using aria-describedby and increments the registered
      * message's reference count.
      */
-    _addMessageReference(element, message) {
-        const registeredMessage = messageRegistry.get(message);
+    _addMessageReference(element, key) {
+        const registeredMessage = messageRegistry.get(key);
         // Add the aria-describedby reference and set the
         // describedby_host attribute to mark the element.
         addAriaReferencedId(element, 'aria-describedby', registeredMessage.messageElement.id);
@@ -156155,16 +156604,16 @@ class AriaDescriber {
      * Removes a message reference from the element using aria-describedby
      * and decrements the registered message's reference count.
      */
-    _removeMessageReference(element, message) {
-        const registeredMessage = messageRegistry.get(message);
+    _removeMessageReference(element, key) {
+        const registeredMessage = messageRegistry.get(key);
         registeredMessage.referenceCount--;
         removeAriaReferencedId(element, 'aria-describedby', registeredMessage.messageElement.id);
         element.removeAttribute(CDK_DESCRIBEDBY_HOST_ATTRIBUTE);
     }
     /** Returns true if the element has been described by the provided message ID. */
-    _isElementDescribedByMessage(element, message) {
+    _isElementDescribedByMessage(element, key) {
         const referenceIds = getAriaReferenceIds(element, 'aria-describedby');
-        const registeredMessage = messageRegistry.get(message);
+        const registeredMessage = messageRegistry.get(key);
         const messageId = registeredMessage && registeredMessage.messageElement.id;
         return !!messageId && referenceIds.indexOf(messageId) != -1;
     }
@@ -156190,19 +156639,28 @@ class AriaDescriber {
         return element.nodeType === this._document.ELEMENT_NODE;
     }
 }
-AriaDescriber.ɵfac = function AriaDescriber_Factory(t) { return new (t || AriaDescriber)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"])); };
-AriaDescriber.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function AriaDescriber_Factory() { return new AriaDescriber(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"])); }, token: AriaDescriber, providedIn: "root" });
+AriaDescriber.ɵfac = function AriaDescriber_Factory(t) { return new (t || AriaDescriber)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); };
+AriaDescriber.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function AriaDescriber_Factory() { return new AriaDescriber(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); }, token: AriaDescriber, providedIn: "root" });
 AriaDescriber.ctorParameters = () => [
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] },
-    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AriaDescriber, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AriaDescriber, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
                 args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
-            }] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }]; }, null); })();
+            }] }]; }, null); })();
+/** Gets a key that can be used to look messages up in the registry. */
+function getKey(message, role) {
+    return typeof message === 'string' ? `${role || ''}/${message}` : message;
+}
+/** Assigns a unique ID to an element, if it doesn't have one already. */
+function setMessageId(element) {
+    if (!element.id) {
+        element.id = `${CDK_DESCRIBEDBY_ID_PREFIX}-${nextId++}`;
+    }
+}
 
 /**
  * @license
@@ -156221,8 +156679,8 @@ class ListKeyManager {
         this._activeItemIndex = -1;
         this._activeItem = null;
         this._wrap = false;
-        this._letterKeyStream = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
-        this._typeaheadSubscription = rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"].EMPTY;
+        this._letterKeyStream = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this._typeaheadSubscription = rxjs__WEBPACK_IMPORTED_MODULE_2__["Subscription"].EMPTY;
         this._vertical = true;
         this._allowedModifierKeys = [];
         this._homeAndEnd = false;
@@ -156237,9 +156695,9 @@ class ListKeyManager {
          * Stream that emits any time the TAB key is pressed, so components can react
          * when focus is shifted off of the list.
          */
-        this.tabOut = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.tabOut = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         /** Stream that emits whenever the active item of the list manager changes. */
-        this.change = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.change = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         // We allow for the items to be an array because, in some cases, the consumer may
         // not have access to a QueryList of the items they want to manage (e.g. when the
         // items aren't being collected via `ViewChildren` or `ContentChildren`).
@@ -156311,7 +156769,7 @@ class ListKeyManager {
         // Debounce the presses of non-navigational keys, collect the ones that correspond to letters
         // and convert those letters back into a string. Afterwards find the first item that starts
         // with that string and select it.
-        this._typeaheadSubscription = this._letterKeyStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(letter => this._pressedLetters.push(letter)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["debounceTime"])(debounceInterval), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(() => this._pressedLetters.length > 0), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(() => this._pressedLetters.join(''))).subscribe(inputString => {
+        this._typeaheadSubscription = this._letterKeyStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(letter => this._pressedLetters.push(letter)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(debounceInterval), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["filter"])(() => this._pressedLetters.length > 0), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(() => this._pressedLetters.join(''))).subscribe(inputString => {
             const items = this._getItemsArray();
             // Start at 1 because we want to start searching at the item immediately
             // following the current active item.
@@ -156355,10 +156813,10 @@ class ListKeyManager {
             return !event[modifier] || this._allowedModifierKeys.indexOf(modifier) > -1;
         });
         switch (keyCode) {
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["TAB"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["TAB"]:
                 this.tabOut.next();
                 return;
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["DOWN_ARROW"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["DOWN_ARROW"]:
                 if (this._vertical && isModifierAllowed) {
                     this.setNextItemActive();
                     break;
@@ -156366,7 +156824,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["UP_ARROW"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["UP_ARROW"]:
                 if (this._vertical && isModifierAllowed) {
                     this.setPreviousItemActive();
                     break;
@@ -156374,7 +156832,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["RIGHT_ARROW"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["RIGHT_ARROW"]:
                 if (this._horizontal && isModifierAllowed) {
                     this._horizontal === 'rtl' ? this.setPreviousItemActive() : this.setNextItemActive();
                     break;
@@ -156382,7 +156840,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["LEFT_ARROW"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["LEFT_ARROW"]:
                 if (this._horizontal && isModifierAllowed) {
                     this._horizontal === 'rtl' ? this.setNextItemActive() : this.setPreviousItemActive();
                     break;
@@ -156390,7 +156848,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["HOME"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["HOME"]:
                 if (this._homeAndEnd && isModifierAllowed) {
                     this.setFirstItemActive();
                     break;
@@ -156398,7 +156856,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["END"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["END"]:
                 if (this._homeAndEnd && isModifierAllowed) {
                     this.setLastItemActive();
                     break;
@@ -156407,13 +156865,13 @@ class ListKeyManager {
                     return;
                 }
             default:
-                if (isModifierAllowed || Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["hasModifierKey"])(event, 'shiftKey')) {
+                if (isModifierAllowed || Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["hasModifierKey"])(event, 'shiftKey')) {
                     // Attempt to use the `event.key` which also maps it to the user's keyboard language,
                     // otherwise fall back to resolving alphanumeric characters via the keyCode.
                     if (event.key && event.key.length === 1) {
                         this._letterKeyStream.next(event.key.toLocaleUpperCase());
                     }
-                    else if ((keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["A"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["Z"]) || (keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["ZERO"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["NINE"])) {
+                    else if ((keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["A"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["Z"]) || (keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["ZERO"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["NINE"])) {
                         this._letterKeyStream.next(String.fromCharCode(keyCode));
                     }
                 }
@@ -156697,15 +157155,15 @@ class InteractivityChecker {
             ((config === null || config === void 0 ? void 0 : config.ignoreVisibility) || this.isVisible(element));
     }
 }
-InteractivityChecker.ɵfac = function InteractivityChecker_Factory(t) { return new (t || InteractivityChecker)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"])); };
-InteractivityChecker.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function InteractivityChecker_Factory() { return new InteractivityChecker(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"])); }, token: InteractivityChecker, providedIn: "root" });
+InteractivityChecker.ɵfac = function InteractivityChecker_Factory(t) { return new (t || InteractivityChecker)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"])); };
+InteractivityChecker.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function InteractivityChecker_Factory() { return new InteractivityChecker(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"])); }, token: InteractivityChecker, providedIn: "root" });
 InteractivityChecker.ctorParameters = () => [
-    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](InteractivityChecker, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](InteractivityChecker, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
-    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }]; }, null); })();
+    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }]; }, null); })();
 /**
  * Returns the frame element from a window object. Since browsers like MS Edge throw errors if
  * the frameElement property is being accessed from a different host address, this property
@@ -157082,7 +157540,7 @@ class FocusTrap {
             fn();
         }
         else {
-            this._ngZone.onStable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(fn);
+            this._ngZone.onStable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["take"])(1)).subscribe(fn);
         }
     }
 }
@@ -157115,7 +157573,7 @@ FocusTrapFactory.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](FocusTrapFactory, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](FocusTrapFactory, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return [{ type: InteractivityChecker }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: undefined, decorators: [{
@@ -157134,13 +157592,13 @@ class CdkTrapFocus {
     }
     /** Whether the focus trap is active. */
     get enabled() { return this.focusTrap.enabled; }
-    set enabled(value) { this.focusTrap.enabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceBooleanProperty"])(value); }
+    set enabled(value) { this.focusTrap.enabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value); }
     /**
      * Whether the directive should automatically move focus into the trapped region upon
      * initialization and return focus to the previous activeElement upon destruction.
      */
     get autoCapture() { return this._autoCapture; }
-    set autoCapture(value) { this._autoCapture = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceBooleanProperty"])(value); }
+    set autoCapture(value) { this._autoCapture = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value); }
     ngOnDestroy() {
         this.focusTrap.destroy();
         // If we stored a previously focused element when using autoCapture, return focus to that
@@ -157184,7 +157642,7 @@ CdkTrapFocus.propDecorators = {
     enabled: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['cdkTrapFocus',] }],
     autoCapture: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['cdkTrapFocusAutoCapture',] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkTrapFocus, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkTrapFocus, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
         args: [{
                 selector: '[cdkTrapFocus]',
@@ -157422,7 +157880,7 @@ class FocusTrapManager {
 }
 FocusTrapManager.ɵfac = function FocusTrapManager_Factory(t) { return new (t || FocusTrapManager)(); };
 FocusTrapManager.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function FocusTrapManager_Factory() { return new FocusTrapManager(); }, token: FocusTrapManager, providedIn: "root" });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](FocusTrapManager, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](FocusTrapManager, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return []; }, null); })();
@@ -157465,7 +157923,7 @@ ConfigurableFocusTrapFactory.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [FOCUS_TRAP_INERT_STRATEGY,] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ConfigurableFocusTrapFactory, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ConfigurableFocusTrapFactory, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return [{ type: InteractivityChecker }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: FocusTrapManager }, { type: undefined, decorators: [{
@@ -157593,7 +158051,7 @@ LiveAnnouncer.ctorParameters = () => [
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [LIVE_ANNOUNCER_DEFAULT_OPTIONS,] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](LiveAnnouncer, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](LiveAnnouncer, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return [{ type: undefined, decorators: [{
@@ -157666,7 +158124,7 @@ CdkAriaLive.ctorParameters = () => [
 CdkAriaLive.propDecorators = {
     politeness: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['cdkAriaLive',] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkAriaLive, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkAriaLive, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
         args: [{
                 selector: '[cdkAriaLive]',
@@ -157711,7 +158169,7 @@ const FOCUS_MONITOR_DEFAULT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE
  * Event listener options that enable capturing and also
  * mark the listener as passive if the browser supports it.
  */
-const captureEventListenerOptions = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["normalizePassiveListenerOptions"])({
+const captureEventListenerOptions = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["normalizePassiveListenerOptions"])({
     passive: true,
     capture: true
 });
@@ -157800,15 +158258,15 @@ class FocusMonitor {
         this._detectionMode = (options === null || options === void 0 ? void 0 : options.detectionMode) || 0 /* IMMEDIATE */;
     }
     monitor(element, checkChildren = false) {
-        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceElement"])(element);
+        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(element);
         // Do nothing if we're not on the browser platform or the passed in node isn't an element.
         if (!this._platform.isBrowser || nativeElement.nodeType !== 1) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null);
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(null);
         }
         // If the element is inside the shadow DOM, we need to bind our focus/blur listeners to
         // the shadow root, rather than the `document`, because the browser won't emit focus events
         // to the `document`, if focus is moving within the same shadow root.
-        const rootNode = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["_getShadowRoot"])(nativeElement) || this._getDocument();
+        const rootNode = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["_getShadowRoot"])(nativeElement) || this._getDocument();
         const cachedInfo = this._elementInfo.get(nativeElement);
         // Check if we're already monitoring this element.
         if (cachedInfo) {
@@ -157823,7 +158281,7 @@ class FocusMonitor {
         // Create monitored element info.
         const info = {
             checkChildren: checkChildren,
-            subject: new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"](),
+            subject: new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"](),
             rootNode
         };
         this._elementInfo.set(nativeElement, info);
@@ -157831,7 +158289,7 @@ class FocusMonitor {
         return info.subject;
     }
     stopMonitoring(element) {
-        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceElement"])(element);
+        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(element);
         const elementInfo = this._elementInfo.get(nativeElement);
         if (elementInfo) {
             elementInfo.subject.complete();
@@ -157841,13 +158299,14 @@ class FocusMonitor {
         }
     }
     focusVia(element, origin, options) {
-        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceElement"])(element);
+        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(element);
         const focusedElement = this._getDocument().activeElement;
         // If the element is focused already, calling `focus` again won't trigger the event listener
         // which means that the focus classes won't be updated. If that's the case, update the classes
         // directly without waiting for an event.
-        if (nativeElement === focusedElement && this._elementInfo.has(nativeElement)) {
-            this._originChanged(nativeElement, origin, this._elementInfo.get(nativeElement));
+        if (nativeElement === focusedElement) {
+            this._getClosestElementsInfo(nativeElement)
+                .forEach(([currentElement, info]) => this._originChanged(currentElement, origin, info));
         }
         else {
             this._setOriginForCurrentEventQueue(origin);
@@ -158049,19 +158508,33 @@ class FocusMonitor {
         this._emitOrigin(elementInfo.subject, origin);
         this._lastFocusOrigin = origin;
     }
+    /**
+     * Collects the `MonitoredElementInfo` of a particular element and
+     * all of its ancestors that have enabled `checkChildren`.
+     * @param element Element from which to start the search.
+     */
+    _getClosestElementsInfo(element) {
+        const results = [];
+        this._elementInfo.forEach((info, currentElement) => {
+            if (currentElement === element || (info.checkChildren && currentElement.contains(element))) {
+                results.push([currentElement, info]);
+            }
+        });
+        return results;
+    }
 }
-FocusMonitor.ɵfac = function FocusMonitor_Factory(t) { return new (t || FocusMonitor)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](FOCUS_MONITOR_DEFAULT_OPTIONS, 8)); };
-FocusMonitor.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function FocusMonitor_Factory() { return new FocusMonitor(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(FOCUS_MONITOR_DEFAULT_OPTIONS, 8)); }, token: FocusMonitor, providedIn: "root" });
+FocusMonitor.ɵfac = function FocusMonitor_Factory(t) { return new (t || FocusMonitor)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](FOCUS_MONITOR_DEFAULT_OPTIONS, 8)); };
+FocusMonitor.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function FocusMonitor_Factory() { return new FocusMonitor(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(FOCUS_MONITOR_DEFAULT_OPTIONS, 8)); }, token: FocusMonitor, providedIn: "root" });
 FocusMonitor.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
-    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [FOCUS_MONITOR_DEFAULT_OPTIONS,] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](FocusMonitor, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](FocusMonitor, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
-    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }, { type: undefined, decorators: [{
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
             }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
@@ -158114,7 +158587,7 @@ CdkMonitorFocus.ctorParameters = () => [
 CdkMonitorFocus.propDecorators = {
     cdkFocusChange: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkMonitorFocus, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkMonitorFocus, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
         args: [{
                 selector: '[cdkMonitorElementFocus], [cdkMonitorSubtreeFocus]'
@@ -158199,16 +158672,16 @@ class HighContrastModeDetector {
         }
     }
 }
-HighContrastModeDetector.ɵfac = function HighContrastModeDetector_Factory(t) { return new (t || HighContrastModeDetector)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); };
-HighContrastModeDetector.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function HighContrastModeDetector_Factory() { return new HighContrastModeDetector(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); }, token: HighContrastModeDetector, providedIn: "root" });
+HighContrastModeDetector.ɵfac = function HighContrastModeDetector_Factory(t) { return new (t || HighContrastModeDetector)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); };
+HighContrastModeDetector.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function HighContrastModeDetector_Factory() { return new HighContrastModeDetector(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); }, token: HighContrastModeDetector, providedIn: "root" });
 HighContrastModeDetector.ctorParameters = () => [
-    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HighContrastModeDetector, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HighContrastModeDetector, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
-    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }, { type: undefined, decorators: [{
+    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
                 args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
             }] }]; }, null); })();
@@ -158226,15 +158699,15 @@ class A11yModule {
     }
 }
 A11yModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: A11yModule });
-A11yModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function A11yModule_Factory(t) { return new (t || A11yModule)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](HighContrastModeDetector)); }, imports: [[_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]] });
+A11yModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function A11yModule_Factory(t) { return new (t || A11yModule)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](HighContrastModeDetector)); }, imports: [[_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]] });
 A11yModule.ctorParameters = () => [
     { type: HighContrastModeDetector }
 ];
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](A11yModule, { declarations: function () { return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]; }, imports: function () { return [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]; }, exports: function () { return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](A11yModule, [{
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](A11yModule, { declarations: function () { return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]; }, imports: function () { return [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]; }, exports: function () { return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]; } }); })();
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](A11yModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
-                imports: [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]],
+                imports: [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]],
                 declarations: [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus],
                 exports: [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]
             }]
@@ -160435,7 +160908,8 @@ class FixedSizeVirtualScrollStrategy {
         const viewportSize = this._viewport.getViewportSize();
         const dataLength = this._viewport.getDataLength();
         let scrollOffset = this._viewport.measureScrollOffset();
-        let firstVisibleIndex = scrollOffset / this._itemSize;
+        // Prevent NaN as result when dividing by zero.
+        let firstVisibleIndex = (this._itemSize > 0) ? scrollOffset / this._itemSize : 0;
         // If user scrolls to the bottom of the list and data changes to a smaller list
         if (newRange.end > dataLength) {
             // We have to recalculate the first visible index based on new data length and viewport size.
@@ -160518,7 +160992,7 @@ CdkFixedSizeVirtualScroll.propDecorators = {
     minBufferPx: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
     maxBufferPx: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkFixedSizeVirtualScroll, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkFixedSizeVirtualScroll, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
         args: [{
                 selector: 'cdk-virtual-scroll-viewport[itemSize]',
@@ -160629,20 +161103,20 @@ class ScrollDispatcher {
     /**
      * Returns an observable that emits whenever any of the
      * scrollable ancestors of an element are scrolled.
-     * @param elementRef Element whose ancestors to listen for.
+     * @param elementOrElementRef Element whose ancestors to listen for.
      * @param auditTimeInMs Time to throttle the scroll events.
      */
-    ancestorScrolled(elementRef, auditTimeInMs) {
-        const ancestors = this.getAncestorScrollContainers(elementRef);
+    ancestorScrolled(elementOrElementRef, auditTimeInMs) {
+        const ancestors = this.getAncestorScrollContainers(elementOrElementRef);
         return this.scrolled(auditTimeInMs).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(target => {
             return !target || ancestors.indexOf(target) > -1;
         }));
     }
     /** Returns all registered Scrollables that contain the provided element. */
-    getAncestorScrollContainers(elementRef) {
+    getAncestorScrollContainers(elementOrElementRef) {
         const scrollingContainers = [];
         this.scrollContainers.forEach((_subscription, scrollable) => {
-            if (this._scrollableContainsElement(scrollable, elementRef)) {
+            if (this._scrollableContainsElement(scrollable, elementOrElementRef)) {
                 scrollingContainers.push(scrollable);
             }
         });
@@ -160653,8 +161127,8 @@ class ScrollDispatcher {
         return this._document.defaultView || window;
     }
     /** Returns true if the element is contained within the provided Scrollable. */
-    _scrollableContainsElement(scrollable, elementRef) {
-        let element = elementRef.nativeElement;
+    _scrollableContainsElement(scrollable, elementOrElementRef) {
+        let element = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceElement"])(elementOrElementRef);
         let scrollableElement = scrollable.getElementRef().nativeElement;
         // Traverse through the element parents until we reach null, checking if any of the elements
         // are the scrollable's element.
@@ -160687,7 +161161,7 @@ ScrollDispatcher.ctorParameters = () => [
     { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ScrollDispatcher, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ScrollDispatcher, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] }, { type: undefined, decorators: [{
@@ -160860,7 +161334,7 @@ CdkScrollable.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
     { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkScrollable, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkScrollable, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
         args: [{
                 selector: '[cdk-scrollable], [cdkScrollable]'
@@ -160996,7 +161470,7 @@ ViewportRuler.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"],] }] }
 ];
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ViewportRuler, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ViewportRuler, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
     }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: undefined, decorators: [{
@@ -161322,7 +161796,7 @@ class CdkVirtualScrollViewport extends CdkScrollable {
 }
 CdkVirtualScrollViewport.ɵfac = function CdkVirtualScrollViewport_Factory(t) { return new (t || CdkVirtualScrollViewport)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](VIRTUAL_SCROLL_STRATEGY, 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["Directionality"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ScrollDispatcher), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ViewportRuler)); };
 CdkVirtualScrollViewport.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: CdkVirtualScrollViewport, selectors: [["cdk-virtual-scroll-viewport"]], viewQuery: function CdkVirtualScrollViewport_Query(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstaticViewQuery"](_c0, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c0, 3);
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx._contentWrapper = _t.first);
@@ -161355,7 +161829,7 @@ CdkVirtualScrollViewport.propDecorators = {
     scrolledIndexChange: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"] }],
     _contentWrapper: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"], args: ['contentWrapper', { static: true },] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkVirtualScrollViewport, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkVirtualScrollViewport, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
         args: [{
                 selector: 'cdk-virtual-scroll-viewport',
@@ -161577,7 +162051,11 @@ class CdkVirtualForOf {
         }
         this._renderedItems = this._data.slice(this._renderedRange.start, this._renderedRange.end);
         if (!this._differ) {
-            this._differ = this._differs.find(this._renderedItems).create(this.cdkVirtualForTrackBy);
+            // Use a wrapper function for the `trackBy` so any new values are
+            // picked up automatically without having to recreate the differ.
+            this._differ = this._differs.find(this._renderedItems).create((index, item) => {
+                return this.cdkVirtualForTrackBy ? this.cdkVirtualForTrackBy(index, item) : item;
+            });
         }
         this._needsUpdate = true;
     }
@@ -161594,7 +162072,7 @@ class CdkVirtualForOf {
         const count = this._data.length;
         let i = this._viewContainerRef.length;
         while (i--) {
-            let view = this._viewContainerRef.get(i);
+            const view = this._viewContainerRef.get(i);
             view.context.index = this._renderedRange.start + i;
             view.context.count = count;
             this._updateComputedContextProperties(view.context);
@@ -161603,7 +162081,7 @@ class CdkVirtualForOf {
     }
     /** Apply changes to the DOM. */
     _applyChanges(changes) {
-        this._viewRepeater.applyChanges(changes, this._viewContainerRef, (record, adjustedPreviousIndex, currentIndex) => this._getEmbeddedViewArgs(record, currentIndex), (record) => record.item);
+        this._viewRepeater.applyChanges(changes, this._viewContainerRef, (record, _adjustedPreviousIndex, currentIndex) => this._getEmbeddedViewArgs(record, currentIndex), (record) => record.item);
         // Update $implicit for any items that had an identity change.
         changes.forEachIdentityChange((record) => {
             const view = this._viewContainerRef.get(record.currentIndex);
@@ -161667,7 +162145,7 @@ CdkVirtualForOf.propDecorators = {
     cdkVirtualForTemplate: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
     cdkVirtualForTemplateCacheSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
 };
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkVirtualForOf, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkVirtualForOf, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
         args: [{
                 selector: '[cdkVirtualFor][cdkVirtualForOf]',
@@ -161702,7 +162180,7 @@ class CdkScrollableModule {
 CdkScrollableModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: CdkScrollableModule });
 CdkScrollableModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function CdkScrollableModule_Factory(t) { return new (t || CdkScrollableModule)(); } });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](CdkScrollableModule, { declarations: [CdkScrollable], exports: [CdkScrollable] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkScrollableModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkScrollableModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
                 exports: [CdkScrollable],
@@ -161722,7 +162200,7 @@ ScrollingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineIn
         ], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["BidiModule"], CdkScrollableModule] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](ScrollingModule, { declarations: function () { return [CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport]; }, imports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["BidiModule"],
         _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"], CdkScrollableModule]; }, exports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["BidiModule"], CdkScrollableModule, CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport]; } }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ScrollingModule, [{
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ScrollingModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
                 imports: [
@@ -161896,7 +162374,7 @@ var $ = __webpack_require__(/*! ../internals/export */ "I+eb");
 var parseFloat = __webpack_require__(/*! ../internals/number-parse-float */ "fhKU");
 
 // `Number.parseFloat` method
-// https://tc39.github.io/ecma262/#sec-number.parseFloat
+// https://tc39.es/ecma262/#sec-number.parseFloat
 $({ target: 'Number', stat: true, forced: Number.parseFloat != parseFloat }, {
   parseFloat: parseFloat
 });
@@ -162291,7 +162769,7 @@ function baseKeysIn(object) {
 var isObject = __webpack_require__(/*! ../internals/is-object */ "hh1v");
 
 // `ToPrimitive` abstract operation
-// https://tc39.github.io/ecma262/#sec-toprimitive
+// https://tc39.es/ecma262/#sec-toprimitive
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (input, PREFERRED_STRING) {
@@ -170160,7 +170638,7 @@ __webpack_require__.r(__webpack_exports__);
  * found in the LICENSE file at https://angular.io/license
  */
 /** Current version of the Angular Component Development Kit. */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.0.3');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.1.2');
 
 /**
  * @license
@@ -170794,7 +171272,7 @@ var STRICT_METHOD = arrayMethodIsStrict('indexOf');
 var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
 
 // `Array.prototype.indexOf` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+// https://tc39.es/ecma262/#sec-array.prototype.indexof
 $({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || !STRICT_METHOD || !USES_TO_LENGTH }, {
   indexOf: function indexOf(searchElement /* , fromIndex = 0 */) {
     return NEGATIVE_ZERO
@@ -170920,14 +171398,14 @@ var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-
 var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
 
 // `Array.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+// https://tc39.es/ecma262/#sec-array.prototype.includes
 $({ target: 'Array', proto: true, forced: !USES_TO_LENGTH }, {
   includes: function includes(el /* , fromIndex = 0 */) {
     return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables('includes');
 
 
@@ -171910,7 +172388,7 @@ var $ = __webpack_require__(/*! ../internals/export */ "I+eb");
 var assign = __webpack_require__(/*! ../internals/object-assign */ "YNrV");
 
 // `Object.assign` method
-// https://tc39.github.io/ecma262/#sec-object.assign
+// https://tc39.es/ecma262/#sec-object.assign
 $({ target: 'Object', stat: true, forced: Object.assign !== assign }, {
   assign: assign
 });
