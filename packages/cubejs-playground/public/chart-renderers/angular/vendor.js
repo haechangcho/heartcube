@@ -21688,7 +21688,7 @@ function MatOption_span_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("(", ctx_r1.group.label, ")");
 } }
 const _c2 = ["*"];
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.1.2');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.2.0');
 
 /**
  * @license
@@ -21722,7 +21722,7 @@ AnimationDurations.EXITING = '195ms';
 // i.e. avoid core to depend on the @angular/material primary entry-point
 // Can be removed once the Material primary entry-point no longer
 // re-exports all secondary entry-points
-const VERSION$1 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.1.2');
+const VERSION$1 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.2.0');
 /** @docs-private */
 function MATERIAL_SANITY_CHECKS_FACTORY() {
     return true;
@@ -26350,6 +26350,27 @@ function flattenFilters() {
     return [].concat(_toConsumableArray__default['default'](memo), [filter]);
   }, []);
 }
+function getQueryMembers() {
+  var query = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var keys = ['measures', 'dimensions', 'segments'];
+  var members = new Set();
+  keys.forEach(function (key) {
+    return (query[key] || []).forEach(function (member) {
+      return members.add(member);
+    });
+  });
+  (query.timeDimensions || []).forEach(function (td) {
+    return members.add(td.dimension);
+  }); // todo: support for boolean filters
+
+  if (Array.isArray(query.filters)) {
+    query.filters.forEach(function (filter) {
+      return members.add(filter.dimension || filter.member);
+    });
+  }
+
+  return _toConsumableArray__default['default'](members);
+}
 
 function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -26861,6 +26882,7 @@ exports.default = index;
 exports.defaultHeuristics = defaultHeuristics;
 exports.defaultOrder = defaultOrder;
 exports.flattenFilters = flattenFilters;
+exports.getQueryMembers = getQueryMembers;
 exports.isQueryPresent = isQueryPresent;
 exports.moveItemInArray = moveItemInArray;
 exports.movePivotItem = movePivotItem;
@@ -60843,7 +60865,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵAnimationGroupPlayer", function() { return AnimationGroupPlayer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵPRE_STYLE", function() { return ɵPRE_STYLE; });
 /**
- * @license Angular v11.1.2
+ * @license Angular v11.2.0
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -62077,7 +62099,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations/browser */ "t9l1");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /**
- * @license Angular v11.1.2
+ * @license Angular v11.2.0
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -69925,7 +69947,7 @@ var store = __webpack_require__(/*! ../internals/shared-store */ "xs3f");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.8.2',
+  version: '3.8.3',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
 });
@@ -88050,7 +88072,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /**
- * @license Angular v11.1.2
+ * @license Angular v11.2.0
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -89306,6 +89328,14 @@ function assertBetween(lower, upper, index) {
     if (!(lower <= index && index < upper)) {
         throwError(`Index out of range (expecting ${lower} <= ${index} < ${upper})`);
     }
+}
+function assertProjectionSlots(lView, errMessage) {
+    assertDefined(lView[DECLARATION_COMPONENT_VIEW], 'Component views should exist.');
+    assertDefined(lView[DECLARATION_COMPONENT_VIEW][T_HOST].projection, errMessage ||
+        'Components with projection nodes (<ng-content>) must have projection slots defined.');
+}
+function assertParentView(lView, errMessage) {
+    assertDefined(lView, errMessage || 'Component views should always have a parent view (component\'s host view)');
 }
 /**
  * This is a basic sanity check that the `injectorIndex` seems to point to what looks like a
@@ -95623,17 +95653,29 @@ function getFirstNativeNode(lView, tNode) {
             return rNode || unwrapRNode(lView[tNode.index]);
         }
         else {
-            const componentView = lView[DECLARATION_COMPONENT_VIEW];
-            const componentHost = componentView[T_HOST];
-            const parentView = getLViewParent(componentView);
-            const firstProjectedTNode = componentHost.projection[tNode.projection];
-            if (firstProjectedTNode != null) {
-                return getFirstNativeNode(parentView, firstProjectedTNode);
+            const projectionNodes = getProjectionNodes(lView, tNode);
+            if (projectionNodes !== null) {
+                if (Array.isArray(projectionNodes)) {
+                    return projectionNodes[0];
+                }
+                const parentView = getLViewParent(lView[DECLARATION_COMPONENT_VIEW]);
+                ngDevMode && assertParentView(parentView);
+                return getFirstNativeNode(parentView, projectionNodes);
             }
             else {
                 return getFirstNativeNode(lView, tNode.next);
             }
         }
+    }
+    return null;
+}
+function getProjectionNodes(lView, tNode) {
+    if (tNode !== null) {
+        const componentView = lView[DECLARATION_COMPONENT_VIEW];
+        const componentHost = componentView[T_HOST];
+        const slotIdx = tNode.projection;
+        ngDevMode && assertProjectionSlots(lView);
+        return componentHost.projection[slotIdx];
     }
     return null;
 }
@@ -109420,7 +109462,7 @@ class Version {
 /**
  * @publicApi
  */
-const VERSION = new Version('11.1.2');
+const VERSION = new Version('11.2.0');
 
 /**
  * @license
@@ -109673,24 +109715,25 @@ class DefaultIterableDiffer {
             // Remove the record from the collection since we know it does not match the item.
             this._remove(record);
         }
-        // Attempt to see if we have seen the item before.
-        record = this._linkedRecords === null ? null : this._linkedRecords.get(itemTrackBy, index);
+        // See if we have evicted the item, which used to be at some anterior position of _itHead list.
+        record = this._unlinkedRecords === null ? null : this._unlinkedRecords.get(itemTrackBy, null);
         if (record !== null) {
-            // We have seen this before, we need to move it forward in the collection.
-            // But first we need to check if identity changed, so we can update in view if necessary
+            // It is an item which we have evicted earlier: reinsert it back into the list.
+            // But first we need to check if identity changed, so we can update in view if necessary.
             if (!Object.is(record.item, item))
                 this._addIdentityChange(record, item);
-            this._moveAfter(record, previousRecord, index);
+            this._reinsertAfter(record, previousRecord, index);
         }
         else {
-            // Never seen it, check evicted list.
-            record = this._unlinkedRecords === null ? null : this._unlinkedRecords.get(itemTrackBy, null);
+            // Attempt to see if the item is at some posterior position of _itHead list.
+            record = this._linkedRecords === null ? null : this._linkedRecords.get(itemTrackBy, index);
             if (record !== null) {
-                // It is an item which we have evicted earlier: reinsert it back into the list.
-                // But first we need to check if identity changed, so we can update in view if necessary
+                // We have the item in _itHead at/after `index` position. We need to move it forward in the
+                // collection.
+                // But first we need to check if identity changed, so we can update in view if necessary.
                 if (!Object.is(record.item, item))
                     this._addIdentityChange(record, item);
-                this._reinsertAfter(record, previousRecord, index);
+                this._moveAfter(record, previousRecord, index);
             }
             else {
                 // It is a new item: add it.
@@ -110521,19 +110564,13 @@ function collectNativeNodes(tView, lView, tNode, result, isProjection = false) {
             }
         }
         else if (tNodeType & 16 /* Projection */) {
-            const componentView = lView[DECLARATION_COMPONENT_VIEW];
-            const componentHost = componentView[T_HOST];
-            const slotIdx = tNode.projection;
-            ngDevMode &&
-                assertDefined(componentHost.projection, 'Components with projection nodes (<ng-content>) must have projection slots defined.');
-            const nodesInSlot = componentHost.projection[slotIdx];
+            const nodesInSlot = getProjectionNodes(lView, tNode);
             if (Array.isArray(nodesInSlot)) {
                 result.push(...nodesInSlot);
             }
             else {
-                const parentView = getLViewParent(componentView);
-                ngDevMode &&
-                    assertDefined(parentView, 'Component views should always have a parent view (component\'s host view)');
+                const parentView = getLViewParent(lView[DECLARATION_COMPONENT_VIEW]);
+                ngDevMode && assertParentView(parentView);
                 collectNativeNodes(parentView[TVIEW], parentView, nodesInSlot, result, true);
             }
         }
@@ -126670,7 +126707,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ɵgetDOM", function() { return _angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵgetDOM"]; });
 
 /**
- * @license Angular v11.1.2
+ * @license Angular v11.2.0
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -128812,7 +128849,7 @@ function elementMatches(n, selector) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('11.1.2');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('11.2.0');
 
 /**
  * @license
@@ -138898,7 +138935,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵsetRootDomAdapter", function() { return setRootDomAdapter; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /**
- * @license Angular v11.1.2
+ * @license Angular v11.2.0
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -140521,6 +140558,34 @@ function formatDate(value, format, locale, timezone) {
     });
     return text;
 }
+/**
+ * Create a new Date object with the given date value, and the time set to midnight.
+ *
+ * We cannot use `new Date(year, month, date)` because it maps years between 0 and 99 to 1900-1999.
+ * See: https://github.com/angular/angular/issues/40377
+ *
+ * Note that this function returns a Date object whose time is midnight in the current locale's
+ * timezone. In the future we might want to change this to be midnight in UTC, but this would be a
+ * considerable breaking change.
+ */
+function createDate(year, month, date) {
+    // The `newDate` is set to midnight (UTC) on January 1st 1970.
+    // - In PST this will be December 31st 1969 at 4pm.
+    // - In GMT this will be January 1st 1970 at 1am.
+    // Note that they even have different years, dates and months!
+    const newDate = new Date(0);
+    // `setFullYear()` allows years like 0001 to be set correctly. This function does not
+    // change the internal time of the date.
+    // Consider calling `setFullYear(2019, 8, 20)` (September 20, 2019).
+    // - In PST this will now be September 20, 2019 at 4pm
+    // - In GMT this will now be September 20, 2019 at 1am
+    newDate.setFullYear(year, month, date);
+    // We want the final date to be at local midnight, so we reset the time.
+    // - In PST this will now be September 20, 2019 at 12am
+    // - In GMT this will now be September 20, 2019 at 12am
+    newDate.setHours(0, 0, 0);
+    return newDate;
+}
 function getNamedFormat(locale, format) {
     const localeId = getLocaleId(locale);
     NAMED_FORMATS[localeId] = NAMED_FORMATS[localeId] || {};
@@ -140764,11 +140829,11 @@ function timeZoneGetter(width) {
 const JANUARY = 0;
 const THURSDAY = 4;
 function getFirstThursdayOfYear(year) {
-    const firstDayOfYear = (new Date(year, JANUARY, 1)).getDay();
-    return new Date(year, 0, 1 + ((firstDayOfYear <= THURSDAY) ? THURSDAY : THURSDAY + 7) - firstDayOfYear);
+    const firstDayOfYear = createDate(year, JANUARY, 1).getDay();
+    return createDate(year, 0, 1 + ((firstDayOfYear <= THURSDAY) ? THURSDAY : THURSDAY + 7) - firstDayOfYear);
 }
 function getThursdayThisWeek(datetime) {
-    return new Date(datetime.getFullYear(), datetime.getMonth(), datetime.getDate() + (THURSDAY - datetime.getDay()));
+    return createDate(datetime.getFullYear(), datetime.getMonth(), datetime.getDate() + (THURSDAY - datetime.getDay()));
 }
 function weekGetter(size, monthBased = false) {
     return function (date, locale) {
@@ -141078,7 +141143,7 @@ function toDate(value) {
             is applied.
             Note: ISO months are 0 for January, 1 for February, ... */
             const [y, m = 1, d = 1] = value.split('-').map((val) => +val);
-            return new Date(y, m - 1, d);
+            return createDate(y, m - 1, d);
         }
         const parsedNb = parseFloat(value);
         // any string that only contains numbers, like "1234" but not like "1234hello"
@@ -141245,7 +141310,7 @@ function formatNumberToLocaleString(value, pattern, locale, groupSymbol, decimal
  * @param currencyCode The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
  * currency code, such as `USD` for the US dollar and `EUR` for the euro.
  * Used to determine the number of digits in the decimal part.
- * @param digitInfo Decimal representation options, specified by a string in the following format:
+ * @param digitsInfo Decimal representation options, specified by a string in the following format:
  * `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`. See `DecimalPipe` for more details.
  *
  * @returns The formatted currency value.
@@ -141280,7 +141345,7 @@ function formatCurrency(value, locale, currency, currencyCode, digitsInfo) {
  *
  * @param value The number to format.
  * @param locale A locale code for the locale format rules to use.
- * @param digitInfo Decimal representation options, specified by a string in the following format:
+ * @param digitsInfo Decimal representation options, specified by a string in the following format:
  * `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`. See `DecimalPipe` for more details.
  *
  * @returns The formatted percentage value.
@@ -141306,7 +141371,7 @@ function formatPercent(value, locale, digitsInfo) {
  *
  * @param value The number to format.
  * @param locale A locale code for the locale format rules to use.
- * @param digitInfo Decimal representation options, specified by a string in the following format:
+ * @param digitsInfo Decimal representation options, specified by a string in the following format:
  * `{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}`. See `DecimalPipe` for more details.
  *
  * @returns The formatted text string.
@@ -143423,7 +143488,6 @@ UpperCasePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePip
  *  |                    | O, OO & OOO | Short localized GMT format                                    | GMT-8                                                      |
  *  |                    | OOOO        | Long localized GMT format                                     | GMT-08:00                                                  |
  *
- * Note that timezone correction is not applied to an ISO string that has no time component, such as "2016-09-19"
  *
  * ### Format examples
  *
@@ -144129,7 +144193,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.1.2');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.2.0');
 
 /**
  * @license
@@ -147989,6 +148053,7 @@ function baseToPairs(object, props) {
 
 "use strict";
 
+var fails = __webpack_require__(/*! ../internals/fails */ "0Dky");
 var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "4WOD");
 var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "kRJp");
 var has = __webpack_require__(/*! ../internals/has */ "UTVS");
@@ -148014,10 +148079,16 @@ if ([].keys) {
   }
 }
 
-if (IteratorPrototype == undefined) IteratorPrototype = {};
+var NEW_ITERATOR_PROTOTYPE = IteratorPrototype == undefined || fails(function () {
+  var test = {};
+  // FF44- legacy iterators case
+  return IteratorPrototype[ITERATOR].call(test) !== test;
+});
+
+if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-if (!IS_PURE && !has(IteratorPrototype, ITERATOR)) {
+if ((!IS_PURE || NEW_ITERATOR_PROTOTYPE) && !has(IteratorPrototype, ITERATOR)) {
   createNonEnumerableProperty(IteratorPrototype, ITERATOR, returnThis);
 }
 
@@ -150372,7 +150443,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "R0Ic");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /**
- * @license Angular v11.1.2
+ * @license Angular v11.2.0
  * (c) 2010-2020 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -152967,7 +153038,10 @@ class AnimationTransitionNamespace {
     }
     prepareLeaveAnimationListeners(element) {
         const listeners = this._elementListeners.get(element);
-        if (listeners) {
+        const elementStates = this._engine.statesByElement.get(element);
+        // if this statement fails then it means that the element was picked up
+        // by an earlier flush (or there are no listeners at all to track the leave).
+        if (listeners && elementStates) {
             const visitedTriggers = new Set();
             listeners.forEach(listener => {
                 const triggerName = listener.name;
@@ -152976,7 +153050,6 @@ class AnimationTransitionNamespace {
                 visitedTriggers.add(triggerName);
                 const trigger = this._triggers[triggerName];
                 const transition = trigger.fallbackTransition;
-                const elementStates = this._engine.statesByElement.get(element);
                 const fromState = elementStates[triggerName] || DEFAULT_STATE_VALUE;
                 const toState = new StateValue(VOID_VALUE);
                 const player = new TransitionAnimationPlayer(this.id, triggerName, element);
@@ -170638,7 +170711,7 @@ __webpack_require__.r(__webpack_exports__);
  * found in the LICENSE file at https://angular.io/license
  */
 /** Current version of the Angular Component Development Kit. */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.1.2');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.2.0');
 
 /**
  * @license
