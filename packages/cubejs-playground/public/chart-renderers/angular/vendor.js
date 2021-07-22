@@ -4,7 +4,7 @@
 /*!***********************************************************************!*\
   !*** ./node_modules/@angular/material/__ivy_ngcc__/fesm2015/table.js ***!
   \***********************************************************************/
-/*! exports provided: MatCell, MatCellDef, MatColumnDef, MatFooterCell, MatFooterCellDef, MatFooterRow, MatFooterRowDef, MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatNoDataRow, MatRow, MatRowDef, MatTable, MatTableDataSource, MatTableModule, MatTextColumn, _MatTableDataSource */
+/*! exports provided: MatCell, MatCellDef, MatColumnDef, MatFooterCell, MatFooterCellDef, MatFooterRow, MatFooterRowDef, MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatNoDataRow, MatRow, MatRowDef, MatTable, MatTableDataSource, MatTableModule, MatTextColumn */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27,7 +27,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTableDataSource", function() { return MatTableDataSource; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTableModule", function() { return MatTableModule; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTextColumn", function() { return MatTextColumn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_MatTableDataSource", function() { return _MatTableDataSource; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/table */ "f6nW");
 /* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/collections */ "0EQZ");
@@ -89,9 +88,7 @@ class MatTable extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CdkTable
     }
 }
 MatTable.ɵfac = function MatTable_Factory(t) { return ɵMatTable_BaseFactory(t || MatTable); };
-MatTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatTable, selectors: [["mat-table"], ["table", "mat-table", ""]], hostAttrs: [1, "mat-table"], hostVars: 2, hostBindings: function MatTable_HostBindings(rf, ctx) { if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-table-fixed-layout", ctx.fixedLayout);
-    } }, exportAs: ["matTable"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([
+MatTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatTable, selectors: [["mat-table"], ["table", "mat-table", ""]], hostAttrs: [1, "mat-table"], exportAs: ["matTable"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([
             // TODO(michaeljamesparsons) Abstract the view repeater strategy to a directive API so this code
             //  is only included in the build if used.
             { provide: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"], useClass: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_DisposeViewRepeaterStrategy"] },
@@ -106,7 +103,7 @@ MatTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](3, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](4, 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainer"](5, 3);
-    } }, directives: [_angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["HeaderRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["DataRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["NoDataRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["FooterRowOutlet"]], styles: ["mat-table{display:block}mat-header-row{min-height:56px}mat-row,mat-footer-row{min-height:48px}mat-row,mat-header-row,mat-footer-row{display:flex;border-width:0;border-bottom-width:1px;border-style:solid;align-items:center;box-sizing:border-box}mat-row::after,mat-header-row::after,mat-footer-row::after{display:inline-block;min-height:inherit;content:\"\"}mat-cell:first-of-type,mat-header-cell:first-of-type,mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] mat-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}mat-cell:last-of-type,mat-header-cell:last-of-type,mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] mat-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}mat-cell,mat-header-cell,mat-footer-cell{flex:1;display:flex;align-items:center;overflow:hidden;word-wrap:break-word;min-height:inherit}table.mat-table{border-spacing:0}tr.mat-header-row{height:56px}tr.mat-row,tr.mat-footer-row{height:48px}th.mat-header-cell{text-align:left}[dir=rtl] th.mat-header-cell{text-align:right}th.mat-header-cell,td.mat-cell,td.mat-footer-cell{padding:0;border-bottom-width:1px;border-bottom-style:solid}th.mat-header-cell:first-of-type,td.mat-cell:first-of-type,td.mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] th.mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}th.mat-header-cell:last-of-type,td.mat-cell:last-of-type,td.mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] th.mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}.mat-table-sticky{position:-webkit-sticky !important;position:sticky !important}.mat-table-fixed-layout{table-layout:fixed}\n"], encapsulation: 2 });
+    } }, directives: [_angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["HeaderRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["DataRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["NoDataRowOutlet"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["FooterRowOutlet"]], styles: ["mat-table{display:block}mat-header-row{min-height:56px}mat-row,mat-footer-row{min-height:48px}mat-row,mat-header-row,mat-footer-row{display:flex;border-width:0;border-bottom-width:1px;border-style:solid;align-items:center;box-sizing:border-box}mat-row::after,mat-header-row::after,mat-footer-row::after{display:inline-block;min-height:inherit;content:\"\"}mat-cell:first-of-type,mat-header-cell:first-of-type,mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] mat-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}mat-cell:last-of-type,mat-header-cell:last-of-type,mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] mat-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}mat-cell,mat-header-cell,mat-footer-cell{flex:1;display:flex;align-items:center;overflow:hidden;word-wrap:break-word;min-height:inherit}table.mat-table{border-spacing:0}tr.mat-header-row{height:56px}tr.mat-row,tr.mat-footer-row{height:48px}th.mat-header-cell{text-align:left}[dir=rtl] th.mat-header-cell{text-align:right}th.mat-header-cell,td.mat-cell,td.mat-footer-cell{padding:0;border-bottom-width:1px;border-bottom-style:solid}th.mat-header-cell:first-of-type,td.mat-cell:first-of-type,td.mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] th.mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}th.mat-header-cell:last-of-type,td.mat-cell:last-of-type,td.mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] th.mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}.mat-table-sticky{position:-webkit-sticky;position:sticky}\n"], encapsulation: 2 });
 const ɵMatTable_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatTable);
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTable, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
@@ -115,8 +112,7 @@ const ɵMatTable_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MOD
                 exportAs: 'matTable',
                 template: _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["CDK_TABLE_TEMPLATE"],
                 host: {
-                    'class': 'mat-table',
-                    '[class.mat-table-fixed-layout]': 'fixedLayout'
+                    'class': 'mat-table'
                 },
                 providers: [
                     // TODO(michaeljamesparsons) Abstract the view repeater strategy to a directive API so this code
@@ -130,7 +126,7 @@ const ɵMatTable_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MOD
                 // See note on CdkTable for explanation on why this uses the default change detection strategy.
                 // tslint:disable-next-line:validate-decorators
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].Default,
-                styles: ["mat-table{display:block}mat-header-row{min-height:56px}mat-row,mat-footer-row{min-height:48px}mat-row,mat-header-row,mat-footer-row{display:flex;border-width:0;border-bottom-width:1px;border-style:solid;align-items:center;box-sizing:border-box}mat-row::after,mat-header-row::after,mat-footer-row::after{display:inline-block;min-height:inherit;content:\"\"}mat-cell:first-of-type,mat-header-cell:first-of-type,mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] mat-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}mat-cell:last-of-type,mat-header-cell:last-of-type,mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] mat-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}mat-cell,mat-header-cell,mat-footer-cell{flex:1;display:flex;align-items:center;overflow:hidden;word-wrap:break-word;min-height:inherit}table.mat-table{border-spacing:0}tr.mat-header-row{height:56px}tr.mat-row,tr.mat-footer-row{height:48px}th.mat-header-cell{text-align:left}[dir=rtl] th.mat-header-cell{text-align:right}th.mat-header-cell,td.mat-cell,td.mat-footer-cell{padding:0;border-bottom-width:1px;border-bottom-style:solid}th.mat-header-cell:first-of-type,td.mat-cell:first-of-type,td.mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] th.mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}th.mat-header-cell:last-of-type,td.mat-cell:last-of-type,td.mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] th.mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}.mat-table-sticky{position:-webkit-sticky !important;position:sticky !important}.mat-table-fixed-layout{table-layout:fixed}\n"]
+                styles: ["mat-table{display:block}mat-header-row{min-height:56px}mat-row,mat-footer-row{min-height:48px}mat-row,mat-header-row,mat-footer-row{display:flex;border-width:0;border-bottom-width:1px;border-style:solid;align-items:center;box-sizing:border-box}mat-row::after,mat-header-row::after,mat-footer-row::after{display:inline-block;min-height:inherit;content:\"\"}mat-cell:first-of-type,mat-header-cell:first-of-type,mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] mat-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}mat-cell:last-of-type,mat-header-cell:last-of-type,mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] mat-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}mat-cell,mat-header-cell,mat-footer-cell{flex:1;display:flex;align-items:center;overflow:hidden;word-wrap:break-word;min-height:inherit}table.mat-table{border-spacing:0}tr.mat-header-row{height:56px}tr.mat-row,tr.mat-footer-row{height:48px}th.mat-header-cell{text-align:left}[dir=rtl] th.mat-header-cell{text-align:right}th.mat-header-cell,td.mat-cell,td.mat-footer-cell{padding:0;border-bottom-width:1px;border-bottom-style:solid}th.mat-header-cell:first-of-type,td.mat-cell:first-of-type,td.mat-footer-cell:first-of-type{padding-left:24px}[dir=rtl] th.mat-header-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:first-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:first-of-type:not(:only-of-type){padding-left:0;padding-right:24px}th.mat-header-cell:last-of-type,td.mat-cell:last-of-type,td.mat-footer-cell:last-of-type{padding-right:24px}[dir=rtl] th.mat-header-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-cell:last-of-type:not(:only-of-type),[dir=rtl] td.mat-footer-cell:last-of-type:not(:only-of-type){padding-right:0;padding-left:24px}.mat-table-sticky{position:-webkit-sticky;position:sticky}\n"]
             }]
     }], null, null); })();
 
@@ -541,8 +537,20 @@ MatTableModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInj
  * flaky browser support and the value not being defined in Closure's typings.
  */
 const MAX_SAFE_INTEGER = 9007199254740991;
-/** Shared base class with MDC-based implementation. */
-class _MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["DataSource"] {
+/**
+ * Data source that accepts a client-side data array and includes native support of filtering,
+ * sorting (using MatSort), and pagination (using MatPaginator).
+ *
+ * Allows for sort customization by overriding sortingDataAccessor, which defines how data
+ * properties are accessed. Also allows for filter customization by overriding filterTermAccessor,
+ * which defines how row data is converted to a string for filter matching.
+ *
+ * **Note:** This class is meant to be a simple data source to help you get started. As such
+ * it isn't equipped to handle some more advanced cases like robust i18n support or server-side
+ * interactions. If your app needs to support more advanced use cases, consider implementing your
+ * own `DataSource`.
+ */
+class MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1__["DataSource"] {
     constructor(initialData = []) {
         super();
         /** Stream emitting render data to the table (depends on ordered data changes). */
@@ -555,7 +563,7 @@ class _MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1_
          * Subscription to the changes that should trigger an update to the table's rendered rows, such
          * as filtering, sorting, pagination, or base data changes.
          */
-        this._renderChangesSubscription = null;
+        this._renderChangesSubscription = rxjs__WEBPACK_IMPORTED_MODULE_5__["Subscription"].EMPTY;
         /**
          * Data accessor function that is used for accessing data properties for sorting through
          * the default sortData function.
@@ -659,27 +667,13 @@ class _MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1_
     }
     /** Array of data that should be rendered by the table, where each object represents one row. */
     get data() { return this._data.value; }
-    set data(data) {
-        this._data.next(data);
-        // Normally the `filteredData` is updated by the re-render
-        // subscription, but that won't happen if it's inactive.
-        if (!this._renderChangesSubscription) {
-            this._filterData(data);
-        }
-    }
+    set data(data) { this._data.next(data); }
     /**
      * Filter term that should be used to filter out objects from the data array. To override how
      * data objects match to this filter string, provide a custom function for filterPredicate.
      */
     get filter() { return this._filter.value; }
-    set filter(filter) {
-        this._filter.next(filter);
-        // Normally the `filteredData` is updated by the re-render
-        // subscription, but that won't happen if it's inactive.
-        if (!this._renderChangesSubscription) {
-            this._filterData(this.data);
-        }
-    }
+    set filter(filter) { this._filter.next(filter); }
     /**
      * Instance of the MatSort directive used by the table to control its sorting. Sort changes
      * emitted by the MatSort will trigger an update to the table's rendered data.
@@ -710,7 +704,6 @@ class _MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1_
      * the provided base data and send it to the table for rendering.
      */
     _updateChangeSubscription() {
-        var _a;
         // Sorting and/or pagination should be watched if MatSort and/or MatPaginator are provided.
         // The events should emit whenever the component emits a change or initializes, or if no
         // component is provided, a stream with just a null event should be provided.
@@ -734,7 +727,7 @@ class _MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1_
         const paginatedData = Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["combineLatest"])([orderedData, pageChange])
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(([data]) => this._pageData(data)));
         // Watched for paged data changes and send the result to the table to render.
-        (_a = this._renderChangesSubscription) === null || _a === void 0 ? void 0 : _a.unsubscribe();
+        this._renderChangesSubscription.unsubscribe();
         this._renderChangesSubscription = paginatedData.subscribe(data => this._renderData.next(data));
     }
     /**
@@ -746,8 +739,8 @@ class _MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1_
         // If there is a filter string, filter out data that does not contain it.
         // Each data object is converted to a string using the function defined by filterTermAccessor.
         // May be overridden for customization.
-        this.filteredData = (this.filter == null || this.filter === '') ? data :
-            data.filter(obj => this.filterPredicate(obj, this.filter));
+        this.filteredData =
+            !this.filter ? data : data.filter(obj => this.filterPredicate(obj, this.filter));
         if (this.paginator) {
             this._updatePaginator(this.filteredData.length);
         }
@@ -805,36 +798,12 @@ class _MatTableDataSource extends _angular_cdk_table__WEBPACK_IMPORTED_MODULE_1_
      * Used by the MatTable. Called when it connects to the data source.
      * @docs-private
      */
-    connect() {
-        if (!this._renderChangesSubscription) {
-            this._updateChangeSubscription();
-        }
-        return this._renderData;
-    }
+    connect() { return this._renderData; }
     /**
-     * Used by the MatTable. Called when it disconnects from the data source.
+     * Used by the MatTable. Called when it is destroyed. No-op.
      * @docs-private
      */
-    disconnect() {
-        var _a;
-        (_a = this._renderChangesSubscription) === null || _a === void 0 ? void 0 : _a.unsubscribe();
-        this._renderChangesSubscription = null;
-    }
-}
-/**
- * Data source that accepts a client-side data array and includes native support of filtering,
- * sorting (using MatSort), and pagination (using MatPaginator).
- *
- * Allows for sort customization by overriding sortingDataAccessor, which defines how data
- * properties are accessed. Also allows for filter customization by overriding filterTermAccessor,
- * which defines how row data is converted to a string for filter matching.
- *
- * **Note:** This class is meant to be a simple data source to help you get started. As such
- * it isn't equipped to handle some more advanced cases like robust i18n support or server-side
- * interactions. If your app needs to support more advanced use cases, consider implementing your
- * own `DataSource`.
- */
-class MatTableDataSource extends _MatTableDataSource {
+    disconnect() { }
 }
 
 /**
@@ -3676,14 +3645,13 @@ class _RecycleViewRepeaterStrategy {
         for (const view of this._viewCache) {
             view.destroy();
         }
-        this._viewCache = [];
     }
     /**
      * Inserts a view for a new item, either from the cache or by creating a new
      * one. Returns `undefined` if the item was inserted into a cached view.
      */
     _insertView(viewArgsFactory, currentIndex, viewContainerRef, value) {
-        const cachedView = this._insertViewFromCache(currentIndex, viewContainerRef);
+        let cachedView = this._insertViewFromCache(currentIndex, viewContainerRef);
         if (cachedView) {
             cachedView.context.$implicit = value;
             return undefined;
@@ -3693,7 +3661,7 @@ class _RecycleViewRepeaterStrategy {
     }
     /** Detaches the view at the given index and inserts into the view cache. */
     _detachAndCacheView(index, viewContainerRef) {
-        const detachedView = viewContainerRef.detach(index);
+        const detachedView = this._detachView(index, viewContainerRef);
         this._maybeCacheView(detachedView, viewContainerRef);
     }
     /** Moves view at the previous index to the current index. */
@@ -3732,6 +3700,10 @@ class _RecycleViewRepeaterStrategy {
             viewContainerRef.insert(cachedView, index);
         }
         return cachedView || null;
+    }
+    /** Detaches the embedded view at the given index. */
+    _detachView(index, viewContainerRef) {
+        return viewContainerRef.detach(index);
     }
 }
 
@@ -13601,7 +13573,7 @@ function compareAscending(value, other) {
 /*!********************************************************!*\
   !*** ./node_modules/@angular/cdk/fesm2015/coercion.js ***!
   \********************************************************/
-/*! exports provided: _isNumberValue, coerceArray, coerceBooleanProperty, coerceCssPixelValue, coerceElement, coerceNumberProperty, coerceStringArray */
+/*! exports provided: _isNumberValue, coerceArray, coerceBooleanProperty, coerceCssPixelValue, coerceElement, coerceNumberProperty */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13612,7 +13584,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coerceCssPixelValue", function() { return coerceCssPixelValue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coerceElement", function() { return coerceElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coerceNumberProperty", function() { return coerceNumberProperty; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coerceStringArray", function() { return coerceStringArray; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
 
@@ -13688,44 +13659,6 @@ function coerceCssPixelValue(value) {
  */
 function coerceElement(elementOrRef) {
     return elementOrRef instanceof _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] ? elementOrRef.nativeElement : elementOrRef;
-}
-
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * Coerces a value to an array of trimmed non-empty strings.
- * Any input that is not an array, `null` or `undefined` will be turned into a string
- * via `toString()` and subsequently split with the given separator.
- * `null` and `undefined` will result in an empty array.
- * This results in the following outcomes:
- * - `null` -&gt; `[]`
- * - `[null]` -&gt; `["null"]`
- * - `["a", "b ", " "]` -&gt; `["a", "b"]`
- * - `[1, [2, 3]]` -&gt; `["1", "2,3"]`
- * - `[{ a: 0 }]` -&gt; `["[object Object]"]`
- * - `{ a: 0 }` -&gt; `["[object", "Object]"]`
- *
- * Useful for defining CSS classes or table columns.
- * @param value the value to coerce into an array of strings
- * @param separator split-separator if value isn't an array
- */
-function coerceStringArray(value, separator = /\s+/) {
-    const result = [];
-    if (value != null) {
-        const sourceValues = Array.isArray(value) ? value : `${value}`.split(separator);
-        for (const sourceValue of sourceValues) {
-            const trimmedString = `${sourceValue}`.trim();
-            if (trimmedString) {
-                result.push(trimmedString);
-            }
-        }
-    }
-    return result;
 }
 
 /**
@@ -21966,26 +21899,38 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************************!*\
   !*** ./node_modules/@angular/material/__ivy_ngcc__/fesm2015/core.js ***!
   \**********************************************************************/
-/*! exports provided: AnimationCurves, AnimationDurations, DateAdapter, ErrorStateMatcher, MATERIAL_SANITY_CHECKS, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_DATE_LOCALE_FACTORY, MAT_NATIVE_DATE_FORMATS, MAT_OPTGROUP, MAT_OPTION_PARENT_COMPONENT, MAT_RIPPLE_GLOBAL_OPTIONS, MatCommonModule, MatLine, MatLineModule, MatNativeDateModule, MatOptgroup, MatOption, MatOptionModule, MatOptionSelectionChange, MatPseudoCheckbox, MatPseudoCheckboxModule, MatRipple, MatRippleModule, NativeDateAdapter, NativeDateModule, RippleRef, RippleRenderer, ShowOnDirtyErrorStateMatcher, VERSION, _MatOptgroupBase, _MatOptionBase, _countGroupLabelsBeforeOption, _getOptionScrollPosition, defaultRippleAnimationConfig, mixinColor, mixinDisableRipple, mixinDisabled, mixinErrorState, mixinInitialized, mixinTabIndex, setLines, ɵ0, ɵangular_material_src_material_core_core_a */
+/*! exports provided: APR, AUG, AnimationCurves, AnimationDurations, DEC, DateAdapter, ErrorStateMatcher, FEB, JAN, JUL, JUN, MAR, MATERIAL_SANITY_CHECKS, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_DATE_LOCALE_FACTORY, MAT_DATE_LOCALE_PROVIDER, MAT_LABEL_GLOBAL_OPTIONS, MAT_NATIVE_DATE_FORMATS, MAT_OPTGROUP, MAT_OPTION_PARENT_COMPONENT, MAT_RIPPLE_GLOBAL_OPTIONS, MAY, MatCommonModule, MatLine, MatLineModule, MatLineSetter, MatNativeDateModule, MatOptgroup, MatOption, MatOptionModule, MatOptionSelectionChange, MatPseudoCheckbox, MatPseudoCheckboxModule, MatRipple, MatRippleModule, NOV, NativeDateAdapter, NativeDateModule, OCT, RippleRef, RippleRenderer, SEP, ShowOnDirtyErrorStateMatcher, VERSION, _MatOptgroupBase, _MatOptionBase, _countGroupLabelsBeforeOption, _getOptionScrollPosition, defaultRippleAnimationConfig, mixinColor, mixinDisableRipple, mixinDisabled, mixinErrorState, mixinInitialized, mixinTabIndex, setLines, ɵ0, ɵangular_material_src_material_core_core_a */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APR", function() { return APR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUG", function() { return AUG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationCurves", function() { return AnimationCurves; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationDurations", function() { return AnimationDurations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEC", function() { return DEC; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DateAdapter", function() { return DateAdapter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorStateMatcher", function() { return ErrorStateMatcher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FEB", function() { return FEB; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JAN", function() { return JAN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JUL", function() { return JUL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JUN", function() { return JUN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAR", function() { return MAR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MATERIAL_SANITY_CHECKS", function() { return MATERIAL_SANITY_CHECKS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_FORMATS", function() { return MAT_DATE_FORMATS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE", function() { return MAT_DATE_LOCALE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE_FACTORY", function() { return MAT_DATE_LOCALE_FACTORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE_PROVIDER", function() { return MAT_DATE_LOCALE_PROVIDER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_LABEL_GLOBAL_OPTIONS", function() { return MAT_LABEL_GLOBAL_OPTIONS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_NATIVE_DATE_FORMATS", function() { return MAT_NATIVE_DATE_FORMATS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_OPTGROUP", function() { return MAT_OPTGROUP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_OPTION_PARENT_COMPONENT", function() { return MAT_OPTION_PARENT_COMPONENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_RIPPLE_GLOBAL_OPTIONS", function() { return MAT_RIPPLE_GLOBAL_OPTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAY", function() { return MAY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatCommonModule", function() { return MatCommonModule; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatLine", function() { return MatLine; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatLineModule", function() { return MatLineModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatLineSetter", function() { return MatLineSetter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatNativeDateModule", function() { return MatNativeDateModule; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOptgroup", function() { return MatOptgroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOption", function() { return MatOption; });
@@ -21995,10 +21940,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatPseudoCheckboxModule", function() { return MatPseudoCheckboxModule; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatRipple", function() { return MatRipple; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatRippleModule", function() { return MatRippleModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NOV", function() { return NOV; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NativeDateAdapter", function() { return NativeDateAdapter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NativeDateModule", function() { return NativeDateModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OCT", function() { return OCT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RippleRef", function() { return RippleRef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RippleRenderer", function() { return RippleRenderer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEP", function() { return SEP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowOnDirtyErrorStateMatcher", function() { return ShowOnDirtyErrorStateMatcher; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VERSION", function() { return VERSION; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_MatOptgroupBase", function() { return _MatOptgroupBase; });
@@ -22054,22 +22002,13 @@ __webpack_require__.r(__webpack_exports__);
 const _c0 = ["*", [["mat-option"], ["ng-container"]]];
 const _c1 = ["*", "mat-option, ng-container"];
 function MatOption_mat_pseudo_checkbox_0_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-pseudo-checkbox", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-pseudo-checkbox", 3);
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("state", ctx_r0.selected ? "checked" : "unchecked")("disabled", ctx_r0.disabled);
 } }
-function MatOption_span_3_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("(", ctx_r1.group.label, ")");
-} }
 const _c2 = ["*"];
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.2.13');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('10.2.7');
 
 /**
  * @license
@@ -22103,7 +22042,7 @@ AnimationDurations.EXITING = '195ms';
 // i.e. avoid core to depend on the @angular/material primary entry-point
 // Can be removed once the Material primary entry-point no longer
 // re-exports all secondary entry-points
-const VERSION$1 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.2.13');
+const VERSION$1 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('10.2.7');
 /** @docs-private */
 function MATERIAL_SANITY_CHECKS_FACTORY() {
     return true;
@@ -22120,7 +22059,9 @@ const MATERIAL_SANITY_CHECKS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["I
  * This module should be imported to each top-level component module (e.g., MatTabsModule).
  */
 class MatCommonModule {
-    constructor(highContrastModeDetector, sanityChecks, document) {
+    constructor(highContrastModeDetector, sanityChecks, 
+    /** @breaking-change 11.0.0 make document required */
+    document) {
         /** Whether we've done the global sanity checks (e.g. a theme is loaded, there is a doctype). */
         this._hasDoneGlobalChecks = false;
         this._document = document;
@@ -22137,9 +22078,15 @@ class MatCommonModule {
             this._hasDoneGlobalChecks = true;
         }
     }
+    /** Access injected document if available or fallback to global document reference */
+    _getDocument() {
+        const doc = this._document || document;
+        return typeof doc === 'object' && doc ? doc : null;
+    }
     /** Use defaultView of injected document if available or fallback to global window reference */
     _getWindow() {
-        const win = this._document.defaultView || window;
+        const doc = this._getDocument();
+        const win = (doc === null || doc === void 0 ? void 0 : doc.defaultView) || window;
         return typeof win === 'object' && win ? win : null;
     }
     /** Whether any sanity checks are enabled. */
@@ -22158,7 +22105,8 @@ class MatCommonModule {
     _checkDoctypeIsDefined() {
         const isEnabled = this._checksAreEnabled() &&
             (this._sanityChecks === true || this._sanityChecks.doctype);
-        if (isEnabled && !this._document.doctype) {
+        const document = this._getDocument();
+        if (isEnabled && document && !document.doctype) {
             console.warn('Current document does not have a doctype. This may cause ' +
                 'some Angular Material components not to behave as expected.');
         }
@@ -22168,12 +22116,14 @@ class MatCommonModule {
         // and the `body` won't be defined if the consumer put their scripts in the `head`.
         const isDisabled = !this._checksAreEnabled() ||
             (this._sanityChecks === false || !this._sanityChecks.theme);
-        if (isDisabled || !this._document.body || typeof getComputedStyle !== 'function') {
+        const document = this._getDocument();
+        if (isDisabled || !document || !document.body ||
+            typeof getComputedStyle !== 'function') {
             return;
         }
-        const testElement = this._document.createElement('div');
+        const testElement = document.createElement('div');
         testElement.classList.add('mat-theme-loaded-marker');
-        this._document.body.appendChild(testElement);
+        document.body.appendChild(testElement);
         const computedStyle = getComputedStyle(testElement);
         // In some situations the computed style of the test element can be null. For example in
         // Firefox, the computed style is null if an application is running inside of a hidden iframe.
@@ -22183,7 +22133,7 @@ class MatCommonModule {
                 'components may not work as expected. For more info refer ' +
                 'to the theming guide: https://material.angular.io/guide/theming');
         }
-        this._document.body.removeChild(testElement);
+        document.body.removeChild(testElement);
     }
     /** Checks whether the material version matches the cdk version */
     _checkCdkVersionMatch() {
@@ -22197,11 +22147,11 @@ class MatCommonModule {
     }
 }
 MatCommonModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatCommonModule });
-MatCommonModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatCommonModule_Factory(t) { return new (t || MatCommonModule)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["HighContrastModeDetector"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](MATERIAL_SANITY_CHECKS, 8), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"])); }, imports: [[_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]] });
+MatCommonModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatCommonModule_Factory(t) { return new (t || MatCommonModule)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["HighContrastModeDetector"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](MATERIAL_SANITY_CHECKS, 8), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"], 8)); }, imports: [[_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]] });
 MatCommonModule.ctorParameters = () => [
     { type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["HighContrastModeDetector"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MATERIAL_SANITY_CHECKS,] }] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"],] }] }
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"],] }] }
 ];
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatCommonModule, { imports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]]; }, exports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]]; } }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatCommonModule, [{
@@ -22216,6 +22166,8 @@ MatCommonModule.ctorParameters = () => [
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
                 args: [MATERIAL_SANITY_CHECKS]
             }] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+            }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
                 args: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]
             }] }]; }, null); })();
@@ -22442,6 +22394,13 @@ const MAT_DATE_LOCALE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectio
 function MAT_DATE_LOCALE_FACTORY() {
     return Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["inject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]);
 }
+/**
+ * No longer needed since MAT_DATE_LOCALE has been changed to a scoped injectable.
+ * If you are importing and providing this in your code you can simply remove it.
+ * @deprecated
+ * @breaking-change 8.0.0
+ */
+const MAT_DATE_LOCALE_PROVIDER = { provide: MAT_DATE_LOCALE, useExisting: _angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"] };
 /** Adapts type `D` to be usable as a date by cdk-based components that work with dates. */
 class DateAdapter {
     constructor() {
@@ -22962,6 +22921,17 @@ function setClass(element, className, isAdd) {
     const classList = element.nativeElement.classList;
     isAdd ? classList.add(className) : classList.remove(className);
 }
+/**
+ * Helper that takes a query list of lines and sets the correct class on the host.
+ * @docs-private
+ * @deprecated Use `setLines` instead.
+ * @breaking-change 8.0.0
+ */
+class MatLineSetter {
+    constructor(lines, element) {
+        setLines(lines, element);
+    }
+}
 class MatLineModule {
 }
 MatLineModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatLineModule });
@@ -23132,14 +23102,6 @@ class RippleRenderer {
     fadeOutAll() {
         this._activeRipples.forEach(ripple => ripple.fadeOut());
     }
-    /** Fades out all currently active non-persistent ripples. */
-    fadeOutAllNonPersistent() {
-        this._activeRipples.forEach(ripple => {
-            if (!ripple.config.persistent) {
-                ripple.fadeOut();
-            }
-        });
-    }
     /** Sets up the trigger event listeners */
     setupTriggerEvents(elementOrElementRef) {
         const element = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(elementOrElementRef);
@@ -23187,7 +23149,7 @@ class RippleRenderer {
     }
     /** Function being called whenever the trigger is being pressed using touch. */
     _onTouchStart(event) {
-        if (!this._target.rippleDisabled && !Object(_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["isFakeTouchstartFromScreenReader"])(event)) {
+        if (!this._target.rippleDisabled) {
             // Some browsers fire mouse events after a `touchstart` event. Those synthetic mouse
             // events will launch a second ripple if we don't ignore mouse events for a specific
             // time after a touchstart event.
@@ -23291,9 +23253,6 @@ class MatRipple {
      */
     get disabled() { return this._disabled; }
     set disabled(value) {
-        if (value) {
-            this.fadeOutAllNonPersistent();
-        }
         this._disabled = value;
         this._setupTriggerEventsIfEnabled();
     }
@@ -23316,10 +23275,6 @@ class MatRipple {
     /** Fades out all currently showing ripple elements. */
     fadeOutAll() {
         this._rippleRenderer.fadeOutAll();
-    }
-    /** Fades out all currently showing non-persistent ripple elements. */
-    fadeOutAllNonPersistent() {
-        this._rippleRenderer.fadeOutAllNonPersistent();
     }
     /**
      * Ripple configuration from the directive's input values.
@@ -23518,12 +23473,11 @@ MatPseudoCheckbox.propDecorators = {
 class MatPseudoCheckboxModule {
 }
 MatPseudoCheckboxModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatPseudoCheckboxModule });
-MatPseudoCheckboxModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatPseudoCheckboxModule_Factory(t) { return new (t || MatPseudoCheckboxModule)(); }, imports: [[MatCommonModule]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatPseudoCheckboxModule, { declarations: [MatPseudoCheckbox], imports: [MatCommonModule], exports: [MatPseudoCheckbox] }); })();
+MatPseudoCheckboxModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatPseudoCheckboxModule_Factory(t) { return new (t || MatPseudoCheckboxModule)(); } });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatPseudoCheckboxModule, { declarations: [MatPseudoCheckbox], exports: [MatPseudoCheckbox] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatPseudoCheckboxModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-                imports: [MatCommonModule],
                 exports: [MatPseudoCheckbox],
                 declarations: [MatPseudoCheckbox]
             }]
@@ -23536,37 +23490,6 @@ MatPseudoCheckboxModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/**
- * Injection token used to provide the parent component to options.
- */
-const MAT_OPTION_PARENT_COMPONENT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_OPTION_PARENT_COMPONENT');
-
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-// Notes on the accessibility pattern used for `mat-optgroup`.
-// The option group has two different "modes": regular and inert. The regular mode uses the
-// recommended a11y pattern which has `role="group"` on the group element with `aria-labelledby`
-// pointing to the label. This works for `mat-select`, but it seems to hit a bug for autocomplete
-// under VoiceOver where the group doesn't get read out at all. The bug appears to be that if
-// there's __any__ a11y-related attribute on the group (e.g. `role` or `aria-labelledby`),
-// VoiceOver on Safari won't read it out.
-// We've introduced the `inert` mode as a workaround. Under this mode, all a11y attributes are
-// removed from the group, and we get the screen reader to read out the group label by mirroring it
-// inside an invisible element in the option. This is sub-optimal, because the screen reader will
-// repeat the group label on each navigation, whereas the default pattern only reads the group when
-// the user enters a new group. The following alternate approaches were considered:
-// 1. Reading out the group label using the `LiveAnnouncer` solves the problem, but we can't control
-//    when the text will be read out so sometimes it comes in too late or never if the user
-//    navigates quickly.
-// 2. `<mat-option aria-describedby="groupLabel"` - This works on Safari, but VoiceOver in Chrome
-//    won't read out the description at all.
-// 3. `<mat-option aria-labelledby="optionLabel groupLabel"` - This works on Chrome, but Safari
-//     doesn't read out the text at all. Furthermore, on
 // Boilerplate for applying mixins to MatOptgroup.
 /** @docs-private */
 class MatOptgroupBase {
@@ -23575,30 +23498,21 @@ const _MatOptgroupMixinBase = mixinDisabled(MatOptgroupBase);
 // Counter for unique group ids.
 let _uniqueOptgroupIdCounter = 0;
 class _MatOptgroupBase extends _MatOptgroupMixinBase {
-    constructor(parent) {
-        var _a;
-        super();
+    constructor() {
+        super(...arguments);
         /** Unique id for the underlying label. */
         this._labelId = `mat-optgroup-label-${_uniqueOptgroupIdCounter++}`;
-        this._inert = (_a = parent === null || parent === void 0 ? void 0 : parent.inertGroups) !== null && _a !== void 0 ? _a : false;
     }
 }
-_MatOptgroupBase.ɵfac = function _MatOptgroupBase_Factory(t) { return new (t || _MatOptgroupBase)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](MAT_OPTION_PARENT_COMPONENT, 8)); };
+_MatOptgroupBase.ɵfac = function _MatOptgroupBase_Factory(t) { return ɵ_MatOptgroupBase_BaseFactory(t || _MatOptgroupBase); };
 _MatOptgroupBase.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: _MatOptgroupBase, inputs: { label: "label" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
-_MatOptgroupBase.ctorParameters = () => [
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_OPTION_PARENT_COMPONENT,] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] }
-];
 _MatOptgroupBase.propDecorators = {
     label: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
 };
+const ɵ_MatOptgroupBase_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](_MatOptgroupBase);
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](_MatOptgroupBase, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"]
-    }], function () { return [{ type: undefined, decorators: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
-                args: [MAT_OPTION_PARENT_COMPONENT]
-            }, {
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
-            }] }]; }, { label: [{
+    }], null, { label: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }] }); })();
 /**
@@ -23613,12 +23527,12 @@ const MAT_OPTGROUP = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionTo
 class MatOptgroup extends _MatOptgroupBase {
 }
 MatOptgroup.ɵfac = function MatOptgroup_Factory(t) { return ɵMatOptgroup_BaseFactory(t || MatOptgroup); };
-MatOptgroup.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatOptgroup, selectors: [["mat-optgroup"]], hostAttrs: [1, "mat-optgroup"], hostVars: 5, hostBindings: function MatOptgroup_HostBindings(rf, ctx) { if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("role", ctx._inert ? null : "group")("aria-disabled", ctx._inert ? null : ctx.disabled.toString())("aria-labelledby", ctx._inert ? null : ctx._labelId);
+MatOptgroup.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatOptgroup, selectors: [["mat-optgroup"]], hostAttrs: ["role", "group", 1, "mat-optgroup"], hostVars: 4, hostBindings: function MatOptgroup_HostBindings(rf, ctx) { if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("aria-disabled", ctx.disabled.toString())("aria-labelledby", ctx._labelId);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-optgroup-disabled", ctx.disabled);
-    } }, inputs: { disabled: "disabled" }, exportAs: ["matOptgroup"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: MAT_OPTGROUP, useExisting: MatOptgroup }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c1, decls: 4, vars: 2, consts: [["aria-hidden", "true", 1, "mat-optgroup-label", 3, "id"]], template: function MatOptgroup_Template(rf, ctx) { if (rf & 1) {
+    } }, inputs: { disabled: "disabled" }, exportAs: ["matOptgroup"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{ provide: MAT_OPTGROUP, useExisting: MatOptgroup }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c1, decls: 4, vars: 2, consts: [[1, "mat-optgroup-label", 3, "id"]], template: function MatOptgroup_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"](_c0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -23634,16 +23548,16 @@ const ɵMatOptgroup_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_
         args: [{
                 selector: 'mat-optgroup',
                 exportAs: 'matOptgroup',
-                template: "<span class=\"mat-optgroup-label\" aria-hidden=\"true\" [id]=\"_labelId\">{{ label }} <ng-content></ng-content></span>\n<ng-content select=\"mat-option, ng-container\"></ng-content>\n",
+                template: "<label class=\"mat-optgroup-label\" [id]=\"_labelId\">{{ label }} <ng-content></ng-content></label>\n<ng-content select=\"mat-option, ng-container\"></ng-content>\n",
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
                 inputs: ['disabled'],
                 host: {
                     'class': 'mat-optgroup',
-                    '[attr.role]': '_inert ? null : "group"',
-                    '[attr.aria-disabled]': '_inert ? null : disabled.toString()',
-                    '[attr.aria-labelledby]': '_inert ? null : _labelId',
-                    '[class.mat-optgroup-disabled]': 'disabled'
+                    'role': 'group',
+                    '[class.mat-optgroup-disabled]': 'disabled',
+                    '[attr.aria-disabled]': 'disabled.toString()',
+                    '[attr.aria-labelledby]': '_labelId'
                 },
                 providers: [{ provide: MAT_OPTGROUP, useExisting: MatOptgroup }],
                 styles: [".mat-optgroup-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup-label[disabled]{cursor:default}[dir=rtl] .mat-optgroup-label{text-align:right}.mat-optgroup-label .mat-icon{margin-right:16px;vertical-align:middle}.mat-optgroup-label .mat-icon svg{vertical-align:top}[dir=rtl] .mat-optgroup-label .mat-icon{margin-left:16px;margin-right:0}\n"]
@@ -23673,6 +23587,10 @@ class MatOptionSelectionChange {
         this.isUserInput = isUserInput;
     }
 }
+/**
+ * Injection token used to provide the parent component to options.
+ */
+const MAT_OPTION_PARENT_COMPONENT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_OPTION_PARENT_COMPONENT');
 class _MatOptionBase {
     constructor(_element, _changeDetectorRef, _parent, group) {
         this._element = _element;
@@ -23866,21 +23784,18 @@ MatOption.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponen
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵhostProperty"]("id", ctx.id);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("tabindex", ctx._getTabIndex())("aria-selected", ctx._getAriaSelected())("aria-disabled", ctx.disabled.toString());
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-selected", ctx.selected)("mat-option-multiple", ctx.multiple)("mat-active", ctx.active)("mat-option-disabled", ctx.disabled);
-    } }, exportAs: ["matOption"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c2, decls: 5, vars: 4, consts: [["class", "mat-option-pseudo-checkbox", 3, "state", "disabled", 4, "ngIf"], [1, "mat-option-text"], ["class", "cdk-visually-hidden", 4, "ngIf"], ["mat-ripple", "", 1, "mat-option-ripple", 3, "matRippleTrigger", "matRippleDisabled"], [1, "mat-option-pseudo-checkbox", 3, "state", "disabled"], [1, "cdk-visually-hidden"]], template: function MatOption_Template(rf, ctx) { if (rf & 1) {
+    } }, exportAs: ["matOption"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c2, decls: 4, vars: 3, consts: [["class", "mat-option-pseudo-checkbox", 3, "state", "disabled", 4, "ngIf"], [1, "mat-option-text"], ["mat-ripple", "", 1, "mat-option-ripple", 3, "matRippleTrigger", "matRippleDisabled"], [1, "mat-option-pseudo-checkbox", 3, "state", "disabled"]], template: function MatOption_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, MatOption_mat_pseudo_checkbox_0_Template, 1, 2, "mat-pseudo-checkbox", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, MatOption_span_3_Template, 2, 1, "span", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 2);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.multiple);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.group && ctx.group._inert);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matRippleTrigger", ctx._getHostElement())("matRippleDisabled", ctx.disabled || ctx.disableRipple);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], MatRipple, MatPseudoCheckbox], styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.cdk-high-contrast-active .mat-option[aria-disabled=true]{opacity:.5}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"], encapsulation: 2, changeDetection: 0 });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], MatRipple, MatPseudoCheckbox], styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.cdk-high-contrast-active .mat-option .mat-option-ripple{opacity:.5}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"], encapsulation: 2, changeDetection: 0 });
 MatOption.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] },
@@ -23906,10 +23821,10 @@ MatOption.ctorParameters = () => [
                     '(keydown)': '_handleKeydown($event)',
                     'class': 'mat-option mat-focus-indicator'
                 },
-                template: "<mat-pseudo-checkbox *ngIf=\"multiple\" class=\"mat-option-pseudo-checkbox\"\n    [state]=\"selected ? 'checked' : 'unchecked'\" [disabled]=\"disabled\"></mat-pseudo-checkbox>\n\n<span class=\"mat-option-text\"><ng-content></ng-content></span>\n\n<!-- See a11y notes inside optgroup.ts for context behind this element. -->\n<span class=\"cdk-visually-hidden\" *ngIf=\"group && group._inert\">({{ group.label }})</span>\n\n<div class=\"mat-option-ripple\" mat-ripple\n     [matRippleTrigger]=\"_getHostElement()\"\n     [matRippleDisabled]=\"disabled || disableRipple\">\n</div>\n",
+                template: "<mat-pseudo-checkbox *ngIf=\"multiple\" class=\"mat-option-pseudo-checkbox\"\n    [state]=\"selected ? 'checked' : 'unchecked'\" [disabled]=\"disabled\"></mat-pseudo-checkbox>\n\n<span class=\"mat-option-text\"><ng-content></ng-content></span>\n\n<div class=\"mat-option-ripple\" mat-ripple\n     [matRippleTrigger]=\"_getHostElement()\"\n     [matRippleDisabled]=\"disabled || disableRipple\">\n</div>\n",
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
-                styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.cdk-high-contrast-active .mat-option[aria-disabled=true]{opacity:.5}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"]
+                styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.cdk-high-contrast-active .mat-option .mat-option-ripple{opacity:.5}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"]
             }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
@@ -23971,16 +23886,46 @@ function _getOptionScrollPosition(optionOffset, optionHeight, currentScrollPosit
 class MatOptionModule {
 }
 MatOptionModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatOptionModule });
-MatOptionModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatOptionModule_Factory(t) { return new (t || MatOptionModule)(); }, imports: [[MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], MatCommonModule, MatPseudoCheckboxModule]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatOptionModule, { declarations: function () { return [MatOption, MatOptgroup]; }, imports: function () { return [MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], MatCommonModule, MatPseudoCheckboxModule]; }, exports: function () { return [MatOption, MatOptgroup]; } }); })();
+MatOptionModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatOptionModule_Factory(t) { return new (t || MatOptionModule)(); }, imports: [[MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], MatPseudoCheckboxModule]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatOptionModule, { declarations: function () { return [MatOption, MatOptgroup]; }, imports: function () { return [MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], MatPseudoCheckboxModule]; }, exports: function () { return [MatOption, MatOptgroup]; } }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOptionModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-                imports: [MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], MatCommonModule, MatPseudoCheckboxModule],
+                imports: [MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], MatPseudoCheckboxModule],
                 exports: [MatOption, MatOptgroup],
                 declarations: [MatOption, MatOptgroup]
             }]
     }], null, null); })();
+
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * InjectionToken that can be used to specify the global label options.
+ * @deprecated Use `MAT_FORM_FIELD_DEFAULT_OPTIONS` injection token from
+ *     `@angular/material/form-field` instead.
+ * @breaking-change 11.0.0
+ */
+const MAT_LABEL_GLOBAL_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-label-global-options');
+
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * When constructing a Date, the month is zero-based. This can be confusing, since people are
+ * used to seeing them one-based. So we create these aliases to make writing the tests easier.
+ * @docs-private
+ * @breaking-change 8.0.0 Remove this with V8 since it was only targeted for testing.
+ */
+const JAN = 0, FEB = 1, MAR = 2, APR = 3, MAY = 4, JUN = 5, JUL = 6, AUG = 7, SEP = 8, OCT = 9, NOV = 10, DEC = 11;
 
 /**
  * @license
@@ -25484,7 +25429,7 @@ function size(collection) {
 /*!*********************************************************************!*\
   !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/keycodes.js ***!
   \*********************************************************************/
-/*! exports provided: A, ALT, APOSTROPHE, AT_SIGN, B, BACKSLASH, BACKSPACE, C, CAPS_LOCK, CLOSE_SQUARE_BRACKET, COMMA, CONTEXT_MENU, CONTROL, D, DASH, DELETE, DOWN_ARROW, E, EIGHT, END, ENTER, EQUALS, ESCAPE, F, F1, F10, F11, F12, F2, F3, F4, F5, F6, F7, F8, F9, FF_EQUALS, FF_MINUS, FF_MUTE, FF_SEMICOLON, FF_VOLUME_DOWN, FF_VOLUME_UP, FIRST_MEDIA, FIVE, FOUR, G, H, HOME, I, INSERT, J, K, L, LAST_MEDIA, LEFT_ARROW, M, MAC_ENTER, MAC_META, MAC_WK_CMD_LEFT, MAC_WK_CMD_RIGHT, META, MUTE, N, NINE, NUMPAD_DIVIDE, NUMPAD_EIGHT, NUMPAD_FIVE, NUMPAD_FOUR, NUMPAD_MINUS, NUMPAD_MULTIPLY, NUMPAD_NINE, NUMPAD_ONE, NUMPAD_PERIOD, NUMPAD_PLUS, NUMPAD_SEVEN, NUMPAD_SIX, NUMPAD_THREE, NUMPAD_TWO, NUMPAD_ZERO, NUM_CENTER, NUM_LOCK, O, ONE, OPEN_SQUARE_BRACKET, P, PAGE_DOWN, PAGE_UP, PAUSE, PERIOD, PLUS_SIGN, PRINT_SCREEN, Q, QUESTION_MARK, R, RIGHT_ARROW, S, SCROLL_LOCK, SEMICOLON, SEVEN, SHIFT, SINGLE_QUOTE, SIX, SLASH, SPACE, T, TAB, THREE, TILDE, TWO, U, UP_ARROW, V, VOLUME_DOWN, VOLUME_UP, W, X, Y, Z, ZERO, hasModifierKey */
+/*! exports provided: A, ALT, APOSTROPHE, AT_SIGN, B, BACKSLASH, BACKSPACE, C, CAPS_LOCK, CLOSE_SQUARE_BRACKET, COMMA, CONTEXT_MENU, CONTROL, D, DASH, DELETE, DOWN_ARROW, E, EIGHT, END, ENTER, EQUALS, ESCAPE, F, F1, F10, F11, F12, F2, F3, F4, F5, F6, F7, F8, F9, FF_EQUALS, FF_MINUS, FF_MUTE, FF_SEMICOLON, FF_VOLUME_DOWN, FF_VOLUME_UP, FIRST_MEDIA, FIVE, FOUR, G, H, HOME, I, INSERT, J, K, L, LAST_MEDIA, LEFT_ARROW, M, MAC_ENTER, MAC_META, MAC_WK_CMD_LEFT, MAC_WK_CMD_RIGHT, META, MUTE, N, NINE, NUMPAD_DIVIDE, NUMPAD_EIGHT, NUMPAD_FIVE, NUMPAD_FOUR, NUMPAD_MINUS, NUMPAD_MULTIPLY, NUMPAD_NINE, NUMPAD_ONE, NUMPAD_PERIOD, NUMPAD_PLUS, NUMPAD_SEVEN, NUMPAD_SIX, NUMPAD_THREE, NUMPAD_TWO, NUMPAD_ZERO, NUM_CENTER, NUM_LOCK, O, ONE, OPEN_SQUARE_BRACKET, P, PAGE_DOWN, PAGE_UP, PAUSE, PLUS_SIGN, PRINT_SCREEN, Q, QUESTION_MARK, R, RIGHT_ARROW, S, SCROLL_LOCK, SEMICOLON, SEVEN, SHIFT, SINGLE_QUOTE, SIX, SLASH, SPACE, T, TAB, THREE, TILDE, TWO, U, UP_ARROW, V, VOLUME_DOWN, VOLUME_UP, W, X, Y, Z, ZERO, hasModifierKey */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25577,7 +25522,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PAGE_DOWN", function() { return PAGE_DOWN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PAGE_UP", function() { return PAGE_UP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PAUSE", function() { return PAUSE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PERIOD", function() { return PERIOD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PLUS_SIGN", function() { return PLUS_SIGN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PRINT_SCREEN", function() { return PRINT_SCREEN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Q", function() { return Q; });
@@ -25726,7 +25670,6 @@ const SEMICOLON = 186; // Firefox (Gecko) fires 59 for SEMICOLON
 const EQUALS = 187; // Firefox (Gecko) fires 61 for EQUALS
 const COMMA = 188;
 const DASH = 189; // Firefox (Gecko) fires 173 for DASH/MINUS
-const PERIOD = 190;
 const SLASH = 191;
 const APOSTROPHE = 192;
 const TILDE = 192;
@@ -26220,75 +26163,73 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_27__);
 /* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "XYvV");
 /* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_28__);
-/* harmony import */ var core_js_modules_es_date_to_iso_string_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! core-js/modules/es.date.to-iso-string.js */ "uKWE");
-/* harmony import */ var core_js_modules_es_date_to_iso_string_js__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_date_to_iso_string_js__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! core-js/modules/es.array.includes.js */ "SCwd");
-/* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_30__);
-/* harmony import */ var core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! core-js/modules/es.string.includes.js */ "LW6M");
-/* harmony import */ var core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_31__);
-/* harmony import */ var core_js_modules_es_object_values_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! core-js/modules/es.object.values.js */ "5moP");
-/* harmony import */ var core_js_modules_es_object_values_js__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_values_js__WEBPACK_IMPORTED_MODULE_32__);
-/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! core-js/modules/es.array.find.js */ "aaU2");
-/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_33__);
-/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "Qgqt");
-/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_34__);
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "nLpF");
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_35__);
-/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! core-js/modules/es.string.split.js */ "g1pC");
-/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_36___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_36__);
-/* harmony import */ var core_js_modules_es_array_join_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! core-js/modules/es.array.join.js */ "+6Ec");
-/* harmony import */ var core_js_modules_es_array_join_js__WEBPACK_IMPORTED_MODULE_37___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_join_js__WEBPACK_IMPORTED_MODULE_37__);
-/* harmony import */ var core_js_modules_es_date_to_string_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! core-js/modules/es.date.to-string.js */ "4BR3");
-/* harmony import */ var core_js_modules_es_date_to_string_js__WEBPACK_IMPORTED_MODULE_38___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_date_to_string_js__WEBPACK_IMPORTED_MODULE_38__);
-/* harmony import */ var core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "l0Ve");
-/* harmony import */ var core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_39___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_39__);
-/* harmony import */ var core_js_modules_es_string_match_js__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! core-js/modules/es.string.match.js */ "rhU7");
-/* harmony import */ var core_js_modules_es_string_match_js__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_match_js__WEBPACK_IMPORTED_MODULE_40__);
-/* harmony import */ var core_js_modules_es_array_reduce_js__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! core-js/modules/es.array.reduce.js */ "oLvR");
-/* harmony import */ var core_js_modules_es_array_reduce_js__WEBPACK_IMPORTED_MODULE_41___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_reduce_js__WEBPACK_IMPORTED_MODULE_41__);
-/* harmony import */ var core_js_modules_es_number_is_nan_js__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! core-js/modules/es.number.is-nan.js */ "f3nc");
-/* harmony import */ var core_js_modules_es_number_is_nan_js__WEBPACK_IMPORTED_MODULE_42___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_is_nan_js__WEBPACK_IMPORTED_MODULE_42__);
-/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! core-js/modules/es.number.constructor.js */ "mXPe");
-/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_43___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_43__);
-/* harmony import */ var core_js_modules_es_number_parse_float_js__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! core-js/modules/es.number.parse-float.js */ "qn2K");
-/* harmony import */ var core_js_modules_es_number_parse_float_js__WEBPACK_IMPORTED_MODULE_44___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_parse_float_js__WEBPACK_IMPORTED_MODULE_44__);
-/* harmony import */ var core_js_modules_es_set_js__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! core-js/modules/es.set.js */ "8wdw");
-/* harmony import */ var core_js_modules_es_set_js__WEBPACK_IMPORTED_MODULE_45___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_set_js__WEBPACK_IMPORTED_MODULE_45__);
-/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! core-js/modules/es.array.index-of.js */ "27YR");
-/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_46___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_46__);
-/* harmony import */ var core_js_modules_es_object_assign_js__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! core-js/modules/es.object.assign.js */ "rUty");
-/* harmony import */ var core_js_modules_es_object_assign_js__WEBPACK_IMPORTED_MODULE_47___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_assign_js__WEBPACK_IMPORTED_MODULE_47__);
-/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! core-js/modules/es.string.trim.js */ "Ek5y");
-/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_48___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_48__);
-/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! dayjs */ "Wgwc");
-/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_49___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_49__);
-/* harmony import */ var ramda__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ramda */ "sX7g");
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "o65n");
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_51___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_51__);
-/* harmony import */ var core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! core-js/modules/es.array.sort.js */ "3qpM");
-/* harmony import */ var core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_52___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_52__);
-/* harmony import */ var core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! core-js/modules/web.url.js */ "lJVc");
-/* harmony import */ var core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_53___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_53__);
-/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! cross-fetch */ "XWHH");
-/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_54___default = /*#__PURE__*/__webpack_require__.n(cross_fetch__WEBPACK_IMPORTED_MODULE_54__);
-/* harmony import */ var url_search_params_polyfill__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! url-search-params-polyfill */ "dasq");
-/* harmony import */ var url_search_params_polyfill__WEBPACK_IMPORTED_MODULE_55___default = /*#__PURE__*/__webpack_require__.n(url_search_params_polyfill__WEBPACK_IMPORTED_MODULE_55__);
-/* harmony import */ var core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! core-js/modules/es.reflect.construct.js */ "EgUo");
-/* harmony import */ var core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_56___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_56__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "7W2i");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_57___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_57__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "a1gu");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_58___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_58__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "Nsbk");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_59___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_59__);
-/* harmony import */ var _babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ "oShl");
-/* harmony import */ var _babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_60___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_60__);
-/* harmony import */ var core_js_modules_es_object_entries_js__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! core-js/modules/es.object.entries.js */ "UHT2");
-/* harmony import */ var core_js_modules_es_object_entries_js__WEBPACK_IMPORTED_MODULE_61___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_entries_js__WEBPACK_IMPORTED_MODULE_61__);
-/* harmony import */ var core_js_modules_es_array_every_js__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! core-js/modules/es.array.every.js */ "L49w");
-/* harmony import */ var core_js_modules_es_array_every_js__WEBPACK_IMPORTED_MODULE_62___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_every_js__WEBPACK_IMPORTED_MODULE_62__);
-/* harmony import */ var core_js_modules_es_array_splice_js__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! core-js/modules/es.array.splice.js */ "igvY");
-/* harmony import */ var core_js_modules_es_array_splice_js__WEBPACK_IMPORTED_MODULE_63___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_splice_js__WEBPACK_IMPORTED_MODULE_63__);
+/* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! core-js/modules/es.array.includes.js */ "SCwd");
+/* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_29__);
+/* harmony import */ var core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! core-js/modules/es.string.includes.js */ "LW6M");
+/* harmony import */ var core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_30__);
+/* harmony import */ var core_js_modules_es_object_values_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! core-js/modules/es.object.values.js */ "5moP");
+/* harmony import */ var core_js_modules_es_object_values_js__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_values_js__WEBPACK_IMPORTED_MODULE_31__);
+/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! core-js/modules/es.array.find.js */ "aaU2");
+/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_32__);
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "Qgqt");
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_33__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "nLpF");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_34__);
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! core-js/modules/es.string.split.js */ "g1pC");
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_35__);
+/* harmony import */ var core_js_modules_es_array_join_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! core-js/modules/es.array.join.js */ "+6Ec");
+/* harmony import */ var core_js_modules_es_array_join_js__WEBPACK_IMPORTED_MODULE_36___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_join_js__WEBPACK_IMPORTED_MODULE_36__);
+/* harmony import */ var core_js_modules_es_date_to_string_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! core-js/modules/es.date.to-string.js */ "4BR3");
+/* harmony import */ var core_js_modules_es_date_to_string_js__WEBPACK_IMPORTED_MODULE_37___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_date_to_string_js__WEBPACK_IMPORTED_MODULE_37__);
+/* harmony import */ var core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "l0Ve");
+/* harmony import */ var core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_38___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_to_string_js__WEBPACK_IMPORTED_MODULE_38__);
+/* harmony import */ var core_js_modules_es_string_match_js__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! core-js/modules/es.string.match.js */ "rhU7");
+/* harmony import */ var core_js_modules_es_string_match_js__WEBPACK_IMPORTED_MODULE_39___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_match_js__WEBPACK_IMPORTED_MODULE_39__);
+/* harmony import */ var core_js_modules_es_array_reduce_js__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! core-js/modules/es.array.reduce.js */ "oLvR");
+/* harmony import */ var core_js_modules_es_array_reduce_js__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_reduce_js__WEBPACK_IMPORTED_MODULE_40__);
+/* harmony import */ var core_js_modules_es_number_is_nan_js__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! core-js/modules/es.number.is-nan.js */ "f3nc");
+/* harmony import */ var core_js_modules_es_number_is_nan_js__WEBPACK_IMPORTED_MODULE_41___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_is_nan_js__WEBPACK_IMPORTED_MODULE_41__);
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! core-js/modules/es.number.constructor.js */ "mXPe");
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_42___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_42__);
+/* harmony import */ var core_js_modules_es_number_parse_float_js__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! core-js/modules/es.number.parse-float.js */ "qn2K");
+/* harmony import */ var core_js_modules_es_number_parse_float_js__WEBPACK_IMPORTED_MODULE_43___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_parse_float_js__WEBPACK_IMPORTED_MODULE_43__);
+/* harmony import */ var core_js_modules_es_set_js__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! core-js/modules/es.set.js */ "8wdw");
+/* harmony import */ var core_js_modules_es_set_js__WEBPACK_IMPORTED_MODULE_44___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_set_js__WEBPACK_IMPORTED_MODULE_44__);
+/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! core-js/modules/es.array.index-of.js */ "27YR");
+/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_45___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_45__);
+/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! core-js/modules/es.string.trim.js */ "Ek5y");
+/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_46___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_46__);
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! dayjs */ "Wgwc");
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_47___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_47__);
+/* harmony import */ var dayjs_locale_en__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! dayjs/locale/en */ "njAx");
+/* harmony import */ var dayjs_locale_en__WEBPACK_IMPORTED_MODULE_48___default = /*#__PURE__*/__webpack_require__.n(dayjs_locale_en__WEBPACK_IMPORTED_MODULE_48__);
+/* harmony import */ var ramda__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ramda */ "sX7g");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "o65n");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_50___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_50__);
+/* harmony import */ var core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! core-js/modules/es.array.sort.js */ "3qpM");
+/* harmony import */ var core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_51___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_51__);
+/* harmony import */ var core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! core-js/modules/web.url.js */ "lJVc");
+/* harmony import */ var core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_52___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_url_js__WEBPACK_IMPORTED_MODULE_52__);
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! cross-fetch */ "XWHH");
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_53___default = /*#__PURE__*/__webpack_require__.n(cross_fetch__WEBPACK_IMPORTED_MODULE_53__);
+/* harmony import */ var url_search_params_polyfill__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! url-search-params-polyfill */ "dasq");
+/* harmony import */ var url_search_params_polyfill__WEBPACK_IMPORTED_MODULE_54___default = /*#__PURE__*/__webpack_require__.n(url_search_params_polyfill__WEBPACK_IMPORTED_MODULE_54__);
+/* harmony import */ var core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! core-js/modules/es.reflect.construct.js */ "EgUo");
+/* harmony import */ var core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_55___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_construct_js__WEBPACK_IMPORTED_MODULE_55__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "7W2i");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_56___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_56__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "a1gu");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_57___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_57__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "Nsbk");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_58___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_58__);
+/* harmony import */ var _babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ "oShl");
+/* harmony import */ var _babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_59___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_59__);
+/* harmony import */ var core_js_modules_es_object_entries_js__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! core-js/modules/es.object.entries.js */ "UHT2");
+/* harmony import */ var core_js_modules_es_object_entries_js__WEBPACK_IMPORTED_MODULE_60___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_entries_js__WEBPACK_IMPORTED_MODULE_60__);
+/* harmony import */ var core_js_modules_es_array_every_js__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! core-js/modules/es.array.every.js */ "L49w");
+/* harmony import */ var core_js_modules_es_array_every_js__WEBPACK_IMPORTED_MODULE_61___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_every_js__WEBPACK_IMPORTED_MODULE_61__);
+/* harmony import */ var core_js_modules_es_array_splice_js__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! core-js/modules/es.array.splice.js */ "igvY");
+/* harmony import */ var core_js_modules_es_array_splice_js__WEBPACK_IMPORTED_MODULE_62___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_splice_js__WEBPACK_IMPORTED_MODULE_62__);
 
 
 
@@ -26353,14 +26294,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var _excluded$2 = ["category", "x"],
+var _excluded$2 = ["x"],
     _excluded2 = ["key"],
     _excluded3 = ["title", "shortTitle"];
 
 function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_10___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+dayjs__WEBPACK_IMPORTED_MODULE_47___default.a.locale(_objectSpread$3(_objectSpread$3({}, dayjs_locale_en__WEBPACK_IMPORTED_MODULE_48___default.a), {}, {
+  weekStart: 1
+}));
 var TIME_SERIES = {
   day: function day(range) {
     return range.by('d').map(function (d) {
@@ -26393,8 +26336,8 @@ var TIME_SERIES = {
     });
   },
   week: function week(range) {
-    return range.snapTo('isoweek').by('w').map(function (d) {
-      return d.startOf('isoweek').format('YYYY-MM-DDT00:00:00.000');
+    return range.snapTo('week').by('w').map(function (d) {
+      return d.startOf('week').format('YYYY-MM-DDT00:00:00.000');
     });
   }
 };
@@ -26417,12 +26360,22 @@ var groupByToPairs = function groupByToPairs(keyFn) {
   };
 };
 
+var unnest = function unnest(arr) {
+  var res = [];
+  arr.forEach(function (subArr) {
+    subArr.forEach(function (element) {
+      return res.push(element);
+    });
+  });
+  return res;
+};
+
 var dayRange = function dayRange(from, to) {
   return {
     by: function by(value) {
       var results = [];
-      var start = dayjs__WEBPACK_IMPORTED_MODULE_49___default()(from);
-      var end = dayjs__WEBPACK_IMPORTED_MODULE_49___default()(to);
+      var start = dayjs__WEBPACK_IMPORTED_MODULE_47___default()(from);
+      var end = dayjs__WEBPACK_IMPORTED_MODULE_47___default()(to);
 
       while (start.isBefore(end) || start.isSame(end)) {
         results.push(start);
@@ -26432,10 +26385,10 @@ var dayRange = function dayRange(from, to) {
       return results;
     },
     snapTo: function snapTo(value) {
-      return dayRange(dayjs__WEBPACK_IMPORTED_MODULE_49___default()(from).startOf(value).toISOString(), dayjs__WEBPACK_IMPORTED_MODULE_49___default()(to).endOf(value).toISOString());
+      return dayRange(dayjs__WEBPACK_IMPORTED_MODULE_47___default()(from).startOf(value), dayjs__WEBPACK_IMPORTED_MODULE_47___default()(to).endOf(value));
     },
-    start: dayjs__WEBPACK_IMPORTED_MODULE_49___default()(from),
-    end: dayjs__WEBPACK_IMPORTED_MODULE_49___default()(to)
+    start: dayjs__WEBPACK_IMPORTED_MODULE_47___default()(from),
+    end: dayjs__WEBPACK_IMPORTED_MODULE_47___default()(to)
   };
 };
 var QUERY_TYPE = {
@@ -26595,13 +26548,11 @@ var ResultSet = /*#__PURE__*/function () {
           title: title,
           key: key,
           series: _this.chartPivot(pivotConfig).map(function (_ref10) {
-            var category = _ref10.category,
-                x = _ref10.x,
+            var x = _ref10.x,
                 obj = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_21___default()(_ref10, _excluded$2);
 
             return {
               value: obj[key],
-              category: category,
               x: x
             };
           })
@@ -26661,14 +26612,13 @@ var ResultSet = /*#__PURE__*/function () {
       var dateRange = timeDimension.dateRange;
 
       if (!dateRange) {
-        var dates = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["map"])(function (row) {
-          return row[ResultSet.timeDimensionMember(timeDimension)] && dayjs__WEBPACK_IMPORTED_MODULE_49___default()(row[ResultSet.timeDimensionMember(timeDimension)]);
-        }), Object(ramda__WEBPACK_IMPORTED_MODULE_50__["filter"])(function (r) {
-          return !!r;
-        }))(this.timeDimensionBackwardCompatibleData());
-        dateRange = dates.length && [Object(ramda__WEBPACK_IMPORTED_MODULE_50__["reduce"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["minBy"])(function (d) {
+        var member = ResultSet.timeDimensionMember(timeDimension);
+        var dates = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_49__["map"])(function (row) {
+          return row[member] && dayjs__WEBPACK_IMPORTED_MODULE_47___default()(row[member]);
+        }), Object(ramda__WEBPACK_IMPORTED_MODULE_49__["filter"])(Boolean))(this.timeDimensionBackwardCompatibleData());
+        dateRange = dates.length && [Object(ramda__WEBPACK_IMPORTED_MODULE_49__["reduce"])(Object(ramda__WEBPACK_IMPORTED_MODULE_49__["minBy"])(function (d) {
           return d.toDate();
-        }), dates[0], dates), Object(ramda__WEBPACK_IMPORTED_MODULE_50__["reduce"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["maxBy"])(function (d) {
+        }), dates[0], dates), Object(ramda__WEBPACK_IMPORTED_MODULE_49__["reduce"])(Object(ramda__WEBPACK_IMPORTED_MODULE_49__["maxBy"])(function (d) {
           return d.toDate();
         }), dates[0], dates)] || null;
       }
@@ -26713,8 +26663,8 @@ var ResultSet = /*#__PURE__*/function () {
           return row[measure];
         };
 
-        if (pivotConfig.fillMissingDates && pivotConfig.x.length === 1 && Object(ramda__WEBPACK_IMPORTED_MODULE_50__["equals"])(pivotConfig.x, (query.timeDimensions || []).filter(function (td) {
-          return !!td.granularity;
+        if (pivotConfig.fillMissingDates && pivotConfig.x.length === 1 && Object(ramda__WEBPACK_IMPORTED_MODULE_49__["equals"])(pivotConfig.x, (query.timeDimensions || []).filter(function (td) {
+          return Boolean(td.granularity);
         }).map(function (td) {
           return ResultSet.timeDimensionMember(td);
         }))) {
@@ -26724,9 +26674,9 @@ var ResultSet = /*#__PURE__*/function () {
 
           if (series[0]) {
             groupByXAxis = function groupByXAxis(rows) {
-              var byXValues = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["groupBy"])(function (_ref12) {
+              var byXValues = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["groupBy"])(function (_ref12) {
                 var xValues = _ref12.xValues;
-                return dayjs__WEBPACK_IMPORTED_MODULE_49___default()(xValues[0]).format('YYYY-MM-DDTHH:mm:ss.SSS');
+                return xValues[0];
               }, rows);
               return series[resultIndex].map(function (d) {
                 return [d, byXValues[d] || [{
@@ -26742,56 +26692,60 @@ var ResultSet = /*#__PURE__*/function () {
           }
         }
 
-        var xGrouped = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["map"])(function (row) {
+        var xGrouped = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_49__["map"])(function (row) {
           return _this2.axisValues(pivotConfig.x, resultIndex)(row).map(function (xValues) {
             return {
               xValues: xValues,
               row: row
             };
           });
-        }), ramda__WEBPACK_IMPORTED_MODULE_50__["unnest"], groupByXAxis)(_this2.timeDimensionBackwardCompatibleData(resultIndex));
-        var allYValues = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["map"])(function (_ref13) {
+        }), unnest, groupByXAxis)(_this2.timeDimensionBackwardCompatibleData(resultIndex));
+        var yValuesMap = {};
+        xGrouped.forEach(function (_ref13) {
           var _ref14 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_23___default()(_ref13, 2),
               rows = _ref14[1];
 
-          return Object(ramda__WEBPACK_IMPORTED_MODULE_50__["unnest"])( // collect Y values only from filled rows
-          rows.filter(function (_ref15) {
+          rows.forEach(function (_ref15) {
             var row = _ref15.row;
-            return Object.keys(row).length > 0;
-          }).map(function (_ref16) {
-            var row = _ref16.row;
-            return _this2.axisValues(pivotConfig.y, resultIndex)(row);
-          }));
-        }), ramda__WEBPACK_IMPORTED_MODULE_50__["unnest"], ramda__WEBPACK_IMPORTED_MODULE_50__["uniq"])(xGrouped);
-        return xGrouped.map(function (_ref17) {
-          var _ref18 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_23___default()(_ref17, 2),
-              rows = _ref18[1];
+
+            _this2.axisValues(pivotConfig.y, resultIndex)(row).forEach(function (values) {
+              if (Object.keys(row).length > 0) {
+                yValuesMap[values.join()] = values;
+              }
+            });
+          });
+        });
+        var allYValues = Object.values(yValuesMap);
+        var measureOnX = Boolean(pivotConfig.x.find(function (d) {
+          return d === 'measures';
+        }));
+        return xGrouped.map(function (_ref16) {
+          var _ref17 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_23___default()(_ref16, 2),
+              rows = _ref17[1];
 
           var xValues = rows[0].xValues;
-          var yGrouped = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["map"])(function (_ref19) {
-            var row = _ref19.row;
-            return _this2.axisValues(pivotConfig.y, resultIndex)(row).map(function (yValues) {
+          var yGrouped = {};
+          rows.forEach(function (_ref18) {
+            var row = _ref18.row;
+
+            var arr = _this2.axisValues(pivotConfig.y, resultIndex)(row).map(function (yValues) {
               return {
                 yValues: yValues,
                 row: row
               };
             });
-          }), ramda__WEBPACK_IMPORTED_MODULE_50__["unnest"], Object(ramda__WEBPACK_IMPORTED_MODULE_50__["groupBy"])(function (_ref20) {
-            var yValues = _ref20.yValues;
-            return _this2.axisValuesString(yValues);
-          }))(rows);
+
+            arr.forEach(function (res) {
+              yGrouped[_this2.axisValuesString(res.yValues)] = res;
+            });
+          });
           return {
             xValues: xValues,
-            yValuesArray: Object(ramda__WEBPACK_IMPORTED_MODULE_50__["unnest"])(allYValues.map(function (yValues) {
-              var measure = pivotConfig.x.find(function (d) {
-                return d === 'measures';
-              }) ? ResultSet.measureFromAxis(xValues) : ResultSet.measureFromAxis(yValues);
-              return (yGrouped[_this2.axisValuesString(yValues)] || [{
+            yValuesArray: unnest(allYValues.map(function (yValues) {
+              var measure = measureOnX ? ResultSet.measureFromAxis(xValues) : ResultSet.measureFromAxis(yValues);
+              return [[yValues, measureValue((yGrouped[_this2.axisValuesString(yValues)] || {
                 row: {}
-              }]).map(function (_ref21) {
-                var row = _ref21.row;
-                return [yValues, measureValue(row, measure)];
-              });
+              }).row, measure)]];
             }))
           };
         });
@@ -26814,7 +26768,7 @@ var ResultSet = /*#__PURE__*/function () {
         }).join(', ')] : minLengthPivot[index].xValues;
         return {
           xValues: xValues,
-          yValuesArray: Object(ramda__WEBPACK_IMPORTED_MODULE_50__["unnest"])(pivots.map(function (pivot) {
+          yValuesArray: unnest(pivots.map(function (pivot) {
             return pivot[index].yValuesArray;
           }))
         };
@@ -26844,8 +26798,8 @@ var ResultSet = /*#__PURE__*/function () {
       var duplicateMeasures = new Set();
 
       if (this.queryType === QUERY_TYPE.BLENDING_QUERY) {
-        var allMeasures = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["flatten"])(this.loadResponses.map(function (_ref22) {
-          var query = _ref22.query;
+        var allMeasures = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["flatten"])(this.loadResponses.map(function (_ref19) {
+          var query = _ref19.query;
           return query.measures;
         }));
         allMeasures.filter(function (e, i, a) {
@@ -26866,23 +26820,21 @@ var ResultSet = /*#__PURE__*/function () {
         return [yValues];
       };
 
-      return this.pivot(pivotConfig).map(function (_ref23) {
-        var xValues = _ref23.xValues,
-            yValuesArray = _ref23.yValuesArray;
+      return this.pivot(pivotConfig).map(function (_ref20) {
+        var xValues = _ref20.xValues,
+            yValuesArray = _ref20.yValuesArray;
+        var yValuesMap = {};
+        yValuesArray.forEach(function (_ref21, i) {
+          var _ref22 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_23___default()(_ref21, 2),
+              yValues = _ref22[0],
+              m = _ref22[1];
+
+          yValuesMap[_this3.axisValuesString(aliasSeries(yValues, i), ',')] = m && validate(m);
+        });
         return _objectSpread$3({
-          category: _this3.axisValuesString(xValues, ','),
-          // TODO deprecated
           x: _this3.axisValuesString(xValues, ','),
           xValues: xValues
-        }, yValuesArray.map(function (_ref24, i) {
-          var _ref25 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_23___default()(_ref24, 2),
-              yValues = _ref25[0],
-              m = _ref25[1];
-
-          return _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_10___default()({}, _this3.axisValuesString(aliasSeries(yValues, i), ','), m && validate(m));
-        }).reduce(function (a, b) {
-          return Object.assign(a, b);
-        }, {}));
+        }, yValuesMap);
       });
     }
   }, {
@@ -26890,15 +26842,15 @@ var ResultSet = /*#__PURE__*/function () {
     value: function tablePivot(pivotConfig) {
       var normalizedPivotConfig = this.normalizePivotConfig(pivotConfig || {});
       var isMeasuresPresent = normalizedPivotConfig.x.concat(normalizedPivotConfig.y).includes('measures');
-      return this.pivot(normalizedPivotConfig).map(function (_ref27) {
-        var xValues = _ref27.xValues,
-            yValuesArray = _ref27.yValuesArray;
-        return Object(ramda__WEBPACK_IMPORTED_MODULE_50__["fromPairs"])(normalizedPivotConfig.x.map(function (key, index) {
+      return this.pivot(normalizedPivotConfig).map(function (_ref23) {
+        var xValues = _ref23.xValues,
+            yValuesArray = _ref23.yValuesArray;
+        return Object(ramda__WEBPACK_IMPORTED_MODULE_49__["fromPairs"])(normalizedPivotConfig.x.map(function (key, index) {
           return [key, xValues[index]];
-        }).concat(isMeasuresPresent ? yValuesArray.map(function (_ref28) {
-          var _ref29 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_23___default()(_ref28, 2),
-              yValues = _ref29[0],
-              measure = _ref29[1];
+        }).concat(isMeasuresPresent ? yValuesArray.map(function (_ref24) {
+          var _ref25 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_23___default()(_ref24, 2),
+              yValues = _ref25[0],
+              measure = _ref25[1];
 
           return [yValues.length ? yValues.join() : 'value', measure];
         }) : []));
@@ -26908,19 +26860,19 @@ var ResultSet = /*#__PURE__*/function () {
     key: "tableColumns",
     value: function tableColumns(pivotConfig) {
       var normalizedPivotConfig = this.normalizePivotConfig(pivotConfig || {});
-      var annotations = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pluck"])('annotation'), Object(ramda__WEBPACK_IMPORTED_MODULE_50__["reduce"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["mergeDeepLeft"])(), {}))(this.loadResponses);
+      var annotations = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_49__["pluck"])('annotation'), Object(ramda__WEBPACK_IMPORTED_MODULE_49__["reduce"])(Object(ramda__WEBPACK_IMPORTED_MODULE_49__["mergeDeepLeft"])(), {}))(this.loadResponses);
       var flatMeta = Object.values(annotations).reduce(function (a, b) {
         return _objectSpread$3(_objectSpread$3({}, a), b);
       }, {});
       var schema = {};
 
       var extractFields = function extractFields(key) {
-        var _ref30 = flatMeta[key] || {},
-            title = _ref30.title,
-            shortTitle = _ref30.shortTitle,
-            type = _ref30.type,
-            format = _ref30.format,
-            meta = _ref30.meta;
+        var _ref26 = flatMeta[key] || {},
+            title = _ref26.title,
+            shortTitle = _ref26.shortTitle,
+            type = _ref26.type,
+            format = _ref26.format,
+            meta = _ref26.meta;
 
         return {
           key: key,
@@ -26933,9 +26885,9 @@ var ResultSet = /*#__PURE__*/function () {
       };
 
       var pivot = this.pivot(normalizedPivotConfig);
-      (pivot[0] && pivot[0].yValuesArray || []).forEach(function (_ref31) {
-        var _ref32 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_23___default()(_ref31, 1),
-            yValues = _ref32[0];
+      (pivot[0] && pivot[0].yValuesArray || []).forEach(function (_ref27) {
+        var _ref28 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_23___default()(_ref27, 1),
+            yValues = _ref28[0];
 
         if (yValues.length > 0) {
           var currentItem = schema;
@@ -26958,9 +26910,9 @@ var ResultSet = /*#__PURE__*/function () {
           return [];
         }
 
-        return Object.values(item).map(function (_ref33) {
-          var key = _ref33.key,
-              currentItem = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_21___default()(_ref33, _excluded2);
+        return Object.values(item).map(function (_ref29) {
+          var key = _ref29.key,
+              currentItem = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_21___default()(_ref29, _excluded2);
 
           var children = toColumns(currentItem.children, [].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_22___default()(path), [key]));
 
@@ -27043,15 +26995,15 @@ var ResultSet = /*#__PURE__*/function () {
       var _this4 = this;
 
       pivotConfig = this.normalizePivotConfig(pivotConfig);
-      var measures = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pluck"])('annotation'), Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pluck"])('measures'), ramda__WEBPACK_IMPORTED_MODULE_50__["mergeAll"])(this.loadResponses);
-      var seriesNames = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["unnest"])(this.loadResponses.map(function (_, index) {
-        return Object(ramda__WEBPACK_IMPORTED_MODULE_50__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["map"])(_this4.axisValues(pivotConfig.y, index)), ramda__WEBPACK_IMPORTED_MODULE_50__["unnest"], ramda__WEBPACK_IMPORTED_MODULE_50__["uniq"])(_this4.timeDimensionBackwardCompatibleData(index));
+      var measures = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_49__["pluck"])('annotation'), Object(ramda__WEBPACK_IMPORTED_MODULE_49__["pluck"])('measures'), ramda__WEBPACK_IMPORTED_MODULE_49__["mergeAll"])(this.loadResponses);
+      var seriesNames = unnest(this.loadResponses.map(function (_, index) {
+        return Object(ramda__WEBPACK_IMPORTED_MODULE_49__["pipe"])(Object(ramda__WEBPACK_IMPORTED_MODULE_49__["map"])(_this4.axisValues(pivotConfig.y, index)), unnest, ramda__WEBPACK_IMPORTED_MODULE_49__["uniq"])(_this4.timeDimensionBackwardCompatibleData(index));
       }));
       var duplicateMeasures = new Set();
 
       if (this.queryType === QUERY_TYPE.BLENDING_QUERY) {
-        var allMeasures = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["flatten"])(this.loadResponses.map(function (_ref34) {
-          var query = _ref34.query;
+        var allMeasures = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["flatten"])(this.loadResponses.map(function (_ref30) {
+          var query = _ref30.query;
           return query.measures;
         }));
         allMeasures.filter(function (e, i, a) {
@@ -27076,7 +27028,7 @@ var ResultSet = /*#__PURE__*/function () {
         return {
           title: _this4.axisValuesString(pivotConfig.y.find(function (d) {
             return d === 'measures';
-          }) ? Object(ramda__WEBPACK_IMPORTED_MODULE_50__["dropLast"])(1, aliasedAxis).concat(measures[ResultSet.measureFromAxis(axisValues)].title) : aliasedAxis, ', '),
+          }) ? Object(ramda__WEBPACK_IMPORTED_MODULE_49__["dropLast"])(1, aliasedAxis).concat(measures[ResultSet.measureFromAxis(axisValues)].title) : aliasedAxis, ', '),
           key: _this4.axisValuesString(aliasedAxis, ','),
           yValues: axisValues
         };
@@ -27124,10 +27076,10 @@ var ResultSet = /*#__PURE__*/function () {
             data = _this$loadResponses$r.data,
             query = _this$loadResponses$r.query;
         var timeDimensions = (query.timeDimensions || []).filter(function (td) {
-          return !!td.granularity;
+          return Boolean(td.granularity);
         });
         this.backwardCompatibleData[resultIndex] = data.map(function (row) {
-          return _objectSpread$3(_objectSpread$3({}, row), Object(ramda__WEBPACK_IMPORTED_MODULE_50__["fromPairs"])(Object.keys(row).filter(function (field) {
+          return _objectSpread$3(_objectSpread$3({}, row), Object(ramda__WEBPACK_IMPORTED_MODULE_49__["fromPairs"])(Object.keys(row).filter(function (field) {
             return timeDimensions.find(function (d) {
               return d.dimension === field;
             }) && !row[ResultSet.timeDimensionMember(timeDimensions.find(function (d) {
@@ -27162,7 +27114,7 @@ var ResultSet = /*#__PURE__*/function () {
     key: "serialize",
     value: function serialize() {
       return {
-        loadResponse: Object(ramda__WEBPACK_IMPORTED_MODULE_50__["clone"])(this.loadResponse)
+        loadResponse: Object(ramda__WEBPACK_IMPORTED_MODULE_49__["clone"])(this.loadResponse)
       };
     }
   }], [{
@@ -27208,7 +27160,7 @@ var ResultSet = /*#__PURE__*/function () {
         x: dimensions,
         y: []
       });
-      pivotConfig = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["mergeDeepLeft"])(pivotConfig, defaultPivotConfig);
+      pivotConfig = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["mergeDeepLeft"])(pivotConfig, defaultPivotConfig);
 
       var substituteTimeDimensionMembers = function substituteTimeDimensionMembers(axis) {
         return axis.map(function (subDim) {
@@ -27287,7 +27239,7 @@ var SqlQuery = /*#__PURE__*/function () {
 }();
 
 var memberMap = function memberMap(memberArray) {
-  return Object(ramda__WEBPACK_IMPORTED_MODULE_50__["fromPairs"])(memberArray.map(function (m) {
+  return Object(ramda__WEBPACK_IMPORTED_MODULE_49__["fromPairs"])(memberArray.map(function (m) {
     return [m.name, m];
   }));
 };
@@ -27368,7 +27320,7 @@ var Meta = /*#__PURE__*/function () {
     this.meta = metaResponse;
     var cubes = this.meta.cubes;
     this.cubes = cubes;
-    this.cubesMap = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["fromPairs"])(cubes.map(function (c) {
+    this.cubesMap = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["fromPairs"])(cubes.map(function (c) {
       return [c.name, {
         measures: memberMap(c.measures),
         dimensions: memberMap(c.dimensions),
@@ -27380,7 +27332,7 @@ var Meta = /*#__PURE__*/function () {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_13___default()(Meta, [{
     key: "membersForQuery",
     value: function membersForQuery(query, memberType) {
-      return Object(ramda__WEBPACK_IMPORTED_MODULE_50__["unnest"])(this.cubes.map(function (c) {
+      return Object(ramda__WEBPACK_IMPORTED_MODULE_49__["unnest"])(this.cubes.map(function (c) {
         return c[memberType];
       })).sort(function (a, b) {
         return a.title > b.title ? 1 : -1;
@@ -27392,12 +27344,22 @@ var Meta = /*#__PURE__*/function () {
       var memberKeys = ['measures', 'dimensions', 'segments', 'timeDimensions'];
       return this.cubes.reduce(function (memo, cube) {
         memberKeys.forEach(function (key) {
+          var members = cube[key];
+
+          if (key === 'timeDimensions') {
+            members = cube.dimensions.filter(function (m) {
+              return m.type === 'time';
+            });
+          } else if (key === 'dimensions') {
+            members = cube.dimensions.filter(function (m) {
+              return m.type !== 'time';
+            });
+          }
+
           memo[key] = [].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_22___default()(memo[key]), [{
             cubeName: cube.name,
             cubeTitle: cube.title,
-            members: key === 'timeDimensions' ? cube.dimensions.filter(function (m) {
-              return m.type === 'time';
-            }) : cube[key]
+            members: members
           }]);
         });
         return memo;
@@ -27529,9 +27491,9 @@ var HttpTransport = /*#__PURE__*/function () {
         return _objectSpread$2(_objectSpread$2({}, a), b);
       }, {}));
       var url = "".concat(this.apiUrl, "/").concat(method).concat(searchParams.toString().length ? "?".concat(searchParams) : '');
-      this.method = this.method || (url.length < 2000 ? 'GET' : 'POST');
+      var requestMethod = this.method || (url.length < 2000 ? 'GET' : 'POST');
 
-      if (this.method === 'POST') {
+      if (requestMethod === 'POST') {
         url = "".concat(this.apiUrl, "/").concat(method);
         this.headers['Content-Type'] = 'application/json';
       } // Currently, all methods make GET requests. If a method makes a request with a body payload,
@@ -27539,14 +27501,14 @@ var HttpTransport = /*#__PURE__*/function () {
 
 
       var runRequest = function runRequest() {
-        return cross_fetch__WEBPACK_IMPORTED_MODULE_54___default()(url, {
-          method: _this.method,
+        return cross_fetch__WEBPACK_IMPORTED_MODULE_53___default()(url, {
+          method: requestMethod,
           headers: _objectSpread$2({
             Authorization: _this.authorization,
             'x-request-id': baseRequestId && "".concat(baseRequestId, "-span-").concat(spanCounter++)
           }, _this.headers),
           credentials: _this.credentials,
-          body: _this.method === 'POST' ? JSON.stringify(params) : null
+          body: requestMethod === 'POST' ? JSON.stringify(params) : null
         });
       };
 
@@ -27584,12 +27546,12 @@ var HttpTransport = /*#__PURE__*/function () {
   return HttpTransport;
 }();
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_59___default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_59___default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_58___default()(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_58___default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_58___default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_57___default()(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 var RequestError = /*#__PURE__*/function (_Error) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_57___default()(RequestError, _Error);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_56___default()(RequestError, _Error);
 
   var _super = _createSuper(RequestError);
 
@@ -27604,7 +27566,7 @@ var RequestError = /*#__PURE__*/function (_Error) {
   }
 
   return RequestError;
-}( /*#__PURE__*/_babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_60___default()(Error));
+}( /*#__PURE__*/_babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_59___default()(Error));
 
 var _excluded = ["query"];
 
@@ -27640,7 +27602,7 @@ var GRANULARITIES = [{
 function areQueriesEqual() {
   var query1 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var query2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return Object(ramda__WEBPACK_IMPORTED_MODULE_50__["equals"])(Object.entries(query1 && query1.order || {}), Object.entries(query2 && query2.order || {})) && Object(ramda__WEBPACK_IMPORTED_MODULE_50__["equals"])(query1, query2);
+  return Object(ramda__WEBPACK_IMPORTED_MODULE_49__["equals"])(Object.entries(query1 && query1.order || {}), Object.entries(query2 && query2.order || {})) && Object(ramda__WEBPACK_IMPORTED_MODULE_49__["equals"])(query1, query2);
 }
 function defaultOrder(query) {
   var granularity = (query.timeDimensions || []).find(function (d) {
@@ -27661,7 +27623,7 @@ function defaultHeuristics(newState) {
   var oldQuery = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var options = arguments.length > 2 ? arguments[2] : undefined;
 
-  var _clone = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["clone"])(newState),
+  var _clone = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["clone"])(newState),
       query = _clone.query,
       props = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_21___default()(_clone, _excluded);
 
@@ -27861,7 +27823,7 @@ function getQueryMembers() {
 }
 function getOrderMembersFromOrder(orderMembers, order) {
   var ids = new Set();
-  var indexedOrderMembers = Object(ramda__WEBPACK_IMPORTED_MODULE_50__["indexBy"])(Object(ramda__WEBPACK_IMPORTED_MODULE_50__["prop"])('id'), orderMembers);
+  var indexedOrderMembers = Object(ramda__WEBPACK_IMPORTED_MODULE_49__["indexBy"])(Object(ramda__WEBPACK_IMPORTED_MODULE_49__["prop"])('id'), orderMembers);
   var entries = Array.isArray(order) ? order : Object.entries(order || {});
   var nextOrderMembers = [];
   entries.forEach(function (_ref6) {
@@ -28859,8 +28821,9 @@ class CdkObserveContent {
         });
     }
     _unsubscribe() {
-        var _a;
-        (_a = this._currentSubscription) === null || _a === void 0 ? void 0 : _a.unsubscribe();
+        if (this._currentSubscription) {
+            this._currentSubscription.unsubscribe();
+        }
     }
 }
 CdkObserveContent.ɵfac = function CdkObserveContent_Factory(t) { return new (t || CdkObserveContent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ContentObserver), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"])); };
@@ -36173,7 +36136,7 @@ function getColors(chartType, index, count) {
     if (chartType === 'scatter') {
         return formatPieColors(generateColors(count));
     }
-    throw new Error(`getColors - Unsupported chart type ${chartType}`);
+    throw new Error('getColors - Unsupported chart type: ' + chartType);
 }
 /**
  * @param {?} colour
@@ -64032,48 +63995,6 @@ class AsapScheduler extends _AsyncScheduler__WEBPACK_IMPORTED_MODULE_0__["AsyncS
 
 /***/ }),
 
-/***/ "RbCe":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@cubejs-client/core/node_modules/core-js/internals/string-pad.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// https://github.com/tc39/proposal-string-pad-start-end
-var toLength = __webpack_require__(/*! ../internals/to-length */ "AdSY");
-var repeat = __webpack_require__(/*! ../internals/string-repeat */ "e62g");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "KUuW");
-
-var ceil = Math.ceil;
-
-// `String.prototype.{ padStart, padEnd }` methods implementation
-var createMethod = function (IS_END) {
-  return function ($this, maxLength, fillString) {
-    var S = String(requireObjectCoercible($this));
-    var stringLength = S.length;
-    var fillStr = fillString === undefined ? ' ' : String(fillString);
-    var intMaxLength = toLength(maxLength);
-    var fillLen, stringFiller;
-    if (intMaxLength <= stringLength || fillStr == '') return S;
-    fillLen = intMaxLength - stringLength;
-    stringFiller = repeat.call(fillStr, ceil(fillLen / fillStr.length));
-    if (stringFiller.length > fillLen) stringFiller = stringFiller.slice(0, fillLen);
-    return IS_END ? S + stringFiller : stringFiller + S;
-  };
-};
-
-module.exports = {
-  // `String.prototype.padStart` method
-  // https://tc39.es/ecma262/#sec-string.prototype.padstart
-  start: createMethod(false),
-  // `String.prototype.padEnd` method
-  // https://tc39.es/ecma262/#sec-string.prototype.padend
-  end: createMethod(true)
-};
-
-
-/***/ }),
-
 /***/ "Reno":
 /*!************************************************!*\
   !*** ./node_modules/ramda/es/internal/_map.js ***!
@@ -84143,32 +84064,6 @@ Object(_internal_checkForMethod_js__WEBPACK_IMPORTED_MODULE_0__["default"])('for
 
 /***/ }),
 
-/***/ "e62g":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@cubejs-client/core/node_modules/core-js/internals/string-repeat.js ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "Y/Bc");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "KUuW");
-
-// `String.prototype.repeat` method implementation
-// https://tc39.es/ecma262/#sec-string.prototype.repeat
-module.exports = function repeat(count) {
-  var str = String(requireObjectCoercible(this));
-  var result = '';
-  var n = toInteger(count);
-  if (n < 0 || n == Infinity) throw RangeError('Wrong number of repetitions');
-  for (;n > 0; (n >>>= 1) && (str += str)) if (n & 1) result += str;
-  return result;
-};
-
-
-/***/ }),
-
 /***/ "eAQQ":
 /*!**********************************************!*\
   !*** ./node_modules/lodash-es/_copyArray.js ***!
@@ -85428,7 +85323,7 @@ function createPadding(length, chars) {
 /*!******************************************************************!*\
   !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/table.js ***!
   \******************************************************************/
-/*! exports provided: DataSource, BaseCdkCell, BaseRowDef, CDK_ROW_TEMPLATE, CDK_TABLE, CDK_TABLE_TEMPLATE, CdkCell, CdkCellDef, CdkCellOutlet, CdkColumnDef, CdkFooterCell, CdkFooterCellDef, CdkFooterRow, CdkFooterRowDef, CdkHeaderCell, CdkHeaderCellDef, CdkHeaderRow, CdkHeaderRowDef, CdkNoDataRow, CdkRow, CdkRowDef, CdkTable, CdkTableModule, CdkTextColumn, DataRowOutlet, FooterRowOutlet, HeaderRowOutlet, NoDataRowOutlet, STICKY_DIRECTIONS, STICKY_POSITIONING_LISTENER, StickyStyler, TEXT_COLUMN_OPTIONS, _COALESCED_STYLE_SCHEDULER, _CoalescedStyleScheduler, _Schedule, mixinHasStickyInput */
+/*! exports provided: DataSource, BaseCdkCell, BaseRowDef, CDK_ROW_TEMPLATE, CDK_TABLE, CDK_TABLE_TEMPLATE, CdkCell, CdkCellDef, CdkCellOutlet, CdkColumnDef, CdkFooterCell, CdkFooterCellDef, CdkFooterRow, CdkFooterRowDef, CdkHeaderCell, CdkHeaderCellDef, CdkHeaderRow, CdkHeaderRowDef, CdkNoDataRow, CdkRow, CdkRowDef, CdkTable, CdkTableModule, CdkTextColumn, DataRowOutlet, FooterRowOutlet, HeaderRowOutlet, NoDataRowOutlet, STICKY_DIRECTIONS, StickyStyler, TEXT_COLUMN_OPTIONS, _COALESCED_STYLE_SCHEDULER, _CoalescedStyleScheduler, _Schedule, mixinHasStickyInput */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85461,7 +85356,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderRowOutlet", function() { return HeaderRowOutlet; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoDataRowOutlet", function() { return NoDataRowOutlet; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STICKY_DIRECTIONS", function() { return STICKY_DIRECTIONS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STICKY_POSITIONING_LISTENER", function() { return STICKY_POSITIONING_LISTENER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StickyStyler", function() { return StickyStyler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TEXT_COLUMN_OPTIONS", function() { return TEXT_COLUMN_OPTIONS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_COALESCED_STYLE_SCHEDULER", function() { return _COALESCED_STYLE_SCHEDULER; });
@@ -85473,13 +85367,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/collections */ "0EQZ");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/platform */ "nLfN");
-/* harmony import */ var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/cdk/scrolling */ "vxfF");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataSource", function() { return _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["DataSource"]; });
 
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "qCKp");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+/* harmony import */ var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/cdk/scrolling */ "vxfF");
 
 
 
@@ -85683,8 +85576,8 @@ class CdkColumnDef extends _CdkColumnDefBase {
      * @docs-private
      */
     _setNameInput(value) {
-        // If the directive is set without a name (updated programmatically), then this setter will
-        // trigger with an empty string and should not overwrite the programmatically set value.
+        // If the directive is set without a name (updated programatically), then this setter will
+        // trigger with an empty string and should not overwrite the programatically set value.
         if (value) {
             this._name = value;
             this.cssClassFriendlyName = value.replace(/[^a-z0-9_-]/ig, '-');
@@ -85848,7 +85741,7 @@ class _CoalescedStyleScheduler {
     constructor(_ngZone) {
         this._ngZone = _ngZone;
         this._currentSchedule = null;
-        this._destroyed = new rxjs__WEBPACK_IMPORTED_MODULE_7__["Subject"]();
+        this._destroyed = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
     }
     /**
      * Schedules the specified task to run at the end of the current VM turn.
@@ -85875,7 +85768,7 @@ class _CoalescedStyleScheduler {
             return;
         }
         this._currentSchedule = new _Schedule();
-        this._getScheduleObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this._destroyed)).subscribe(() => {
+        this._getScheduleObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed)).subscribe(() => {
             while (this._currentSchedule.tasks.length || this._currentSchedule.endTasks.length) {
                 const schedule = this._currentSchedule;
                 // Capture new tasks scheduled by the current set of tasks.
@@ -85894,8 +85787,8 @@ class _CoalescedStyleScheduler {
         // Use onStable when in the context of an ongoing change detection cycle so that we
         // do not accidentally trigger additional cycles.
         return this._ngZone.isStable ?
-            Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["from"])(Promise.resolve(undefined)) :
-            this._ngZone.onStable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["take"])(1));
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["from"])(Promise.resolve(undefined)) :
+            this._ngZone.onStable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["take"])(1));
     }
 }
 _CoalescedStyleScheduler.ɵfac = function _CoalescedStyleScheduler_Factory(t) { return new (t || _CoalescedStyleScheduler)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgZone"])); };
@@ -86223,29 +86116,19 @@ class StickyStyler {
      * @param _needsPositionStickyOnElement Whether we need to specify position: sticky on cells
      *     using inline styles. If false, it is assumed that position: sticky is included in
      *     the component stylesheet for _stickCellCss.
-     * @param _positionListener A listener that is notified of changes to sticky rows/columns
-     *     and their dimensions.
      */
     constructor(_isNativeHtmlTable, _stickCellCss, direction, 
     /**
      * @deprecated `_coalescedStyleScheduler` parameter to become required.
      * @breaking-change 11.0.0
      */
-    _coalescedStyleScheduler, _isBrowser = true, _needsPositionStickyOnElement = true, _positionListener) {
+    _coalescedStyleScheduler, _isBrowser = true, _needsPositionStickyOnElement = true) {
         this._isNativeHtmlTable = _isNativeHtmlTable;
         this._stickCellCss = _stickCellCss;
         this.direction = direction;
         this._coalescedStyleScheduler = _coalescedStyleScheduler;
         this._isBrowser = _isBrowser;
         this._needsPositionStickyOnElement = _needsPositionStickyOnElement;
-        this._positionListener = _positionListener;
-        this._cachedCellWidths = [];
-        this._borderCellCss = {
-            'top': `${_stickCellCss}-border-elem-top`,
-            'bottom': `${_stickCellCss}-border-elem-bottom`,
-            'left': `${_stickCellCss}-border-elem-left`,
-            'right': `${_stickCellCss}-border-elem-right`,
-        };
     }
     /**
      * Clears the sticky positioning styles from the row and its cells by resetting the `position`
@@ -86281,25 +86164,17 @@ class StickyStyler {
      *     in this index position should be stuck to the start of the row.
      * @param stickyEndStates A list of boolean states where each state represents whether the cell
      *     in this index position should be stuck to the end of the row.
-     * @param recalculateCellWidths Whether the sticky styler should recalculate the width of each
-     *     column cell. If `false` cached widths will be used instead.
      */
-    updateStickyColumns(rows, stickyStartStates, stickyEndStates, recalculateCellWidths = true) {
+    updateStickyColumns(rows, stickyStartStates, stickyEndStates) {
         if (!rows.length || !this._isBrowser || !(stickyStartStates.some(state => state) ||
             stickyEndStates.some(state => state))) {
-            if (this._positionListener) {
-                this._positionListener.stickyColumnsUpdated({ sizes: [] });
-                this._positionListener.stickyEndColumnsUpdated({ sizes: [] });
-            }
             return;
         }
         const firstRow = rows[0];
         const numCells = firstRow.children.length;
-        const cellWidths = this._getCellWidths(firstRow, recalculateCellWidths);
+        const cellWidths = this._getCellWidths(firstRow);
         const startPositions = this._getStickyStartColumnPositions(cellWidths, stickyStartStates);
         const endPositions = this._getStickyEndColumnPositions(cellWidths, stickyEndStates);
-        const lastStickyStart = stickyStartStates.lastIndexOf(true);
-        const firstStickyEnd = stickyEndStates.indexOf(true);
         // Coalesce with sticky row updates (and potentially other changes like column resize).
         this._scheduleStyleChanges(() => {
             const isRtl = this.direction === 'rtl';
@@ -86309,29 +86184,12 @@ class StickyStyler {
                 for (let i = 0; i < numCells; i++) {
                     const cell = row.children[i];
                     if (stickyStartStates[i]) {
-                        this._addStickyStyle(cell, start, startPositions[i], i === lastStickyStart);
+                        this._addStickyStyle(cell, start, startPositions[i]);
                     }
                     if (stickyEndStates[i]) {
-                        this._addStickyStyle(cell, end, endPositions[i], i === firstStickyEnd);
+                        this._addStickyStyle(cell, end, endPositions[i]);
                     }
                 }
-            }
-            if (this._positionListener) {
-                this._positionListener.stickyColumnsUpdated({
-                    sizes: lastStickyStart === -1 ?
-                        [] :
-                        cellWidths
-                            .slice(0, lastStickyStart + 1)
-                            .map((width, index) => stickyStartStates[index] ? width : null)
-                });
-                this._positionListener.stickyEndColumnsUpdated({
-                    sizes: firstStickyEnd === -1 ?
-                        [] :
-                        cellWidths
-                            .slice(firstStickyEnd)
-                            .map((width, index) => stickyEndStates[index + firstStickyEnd] ? width : null)
-                            .reverse()
-                });
             }
         });
     }
@@ -86357,41 +86215,31 @@ class StickyStyler {
         const rows = position === 'bottom' ? rowsToStick.slice().reverse() : rowsToStick;
         const states = position === 'bottom' ? stickyStates.slice().reverse() : stickyStates;
         // Measure row heights all at once before adding sticky styles to reduce layout thrashing.
-        const stickyOffsets = [];
-        const stickyCellHeights = [];
+        const stickyHeights = [];
         const elementsToStick = [];
-        for (let rowIndex = 0, stickyOffset = 0; rowIndex < rows.length; rowIndex++) {
-            stickyOffsets[rowIndex] = stickyOffset;
+        for (let rowIndex = 0, stickyHeight = 0; rowIndex < rows.length; rowIndex++) {
+            stickyHeights[rowIndex] = stickyHeight;
             if (!states[rowIndex]) {
                 continue;
             }
             const row = rows[rowIndex];
             elementsToStick[rowIndex] = this._isNativeHtmlTable ?
                 Array.from(row.children) : [row];
-            const height = row.getBoundingClientRect().height;
-            stickyOffset += height;
-            stickyCellHeights[rowIndex] = height;
+            if (rowIndex !== rows.length - 1) {
+                stickyHeight += row.getBoundingClientRect().height;
+            }
         }
-        const borderedRowIndex = states.lastIndexOf(true);
         // Coalesce with other sticky row updates (top/bottom), sticky columns updates
         // (and potentially other changes like column resize).
         this._scheduleStyleChanges(() => {
-            var _a, _b;
             for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
                 if (!states[rowIndex]) {
                     continue;
                 }
-                const offset = stickyOffsets[rowIndex];
-                const isBorderedRowIndex = rowIndex === borderedRowIndex;
+                const height = stickyHeights[rowIndex];
                 for (const element of elementsToStick[rowIndex]) {
-                    this._addStickyStyle(element, position, offset, isBorderedRowIndex);
+                    this._addStickyStyle(element, position, height);
                 }
-            }
-            if (position === 'top') {
-                (_a = this._positionListener) === null || _a === void 0 ? void 0 : _a.stickyHeaderRowsUpdated({ sizes: stickyCellHeights, elements: elementsToStick });
-            }
-            else {
-                (_b = this._positionListener) === null || _b === void 0 ? void 0 : _b.stickyFooterRowsUpdated({ sizes: stickyCellHeights, elements: elementsToStick });
             }
         });
     }
@@ -86412,7 +86260,7 @@ class StickyStyler {
                 this._removeStickyStyle(tfoot, ['bottom']);
             }
             else {
-                this._addStickyStyle(tfoot, 'bottom', 0, false);
+                this._addStickyStyle(tfoot, 'bottom', 0);
             }
         });
     }
@@ -86424,7 +86272,6 @@ class StickyStyler {
     _removeStickyStyle(element, stickyDirections) {
         for (const dir of stickyDirections) {
             element.style[dir] = '';
-            element.classList.remove(this._borderCellCss[dir]);
         }
         // If the element no longer has any more sticky directions, remove sticky positioning and
         // the sticky CSS class.
@@ -86448,11 +86295,8 @@ class StickyStyler {
      * to be sticky (and -webkit-sticky), setting the appropriate zIndex, and adding a sticky
      * direction and value.
      */
-    _addStickyStyle(element, dir, dirValue, isBorderElement) {
+    _addStickyStyle(element, dir, dirValue) {
         element.classList.add(this._stickCellCss);
-        if (isBorderElement) {
-            element.classList.add(this._borderCellCss[dir]);
-        }
         element.style[dir] = `${dirValue}px`;
         element.style.zIndex = this._getCalculatedZIndex(element);
         if (this._needsPositionStickyOnElement) {
@@ -86489,17 +86333,13 @@ class StickyStyler {
         return zIndex ? `${zIndex}` : '';
     }
     /** Gets the widths for each cell in the provided row. */
-    _getCellWidths(row, recalculateCellWidths = true) {
-        if (!recalculateCellWidths && this._cachedCellWidths.length) {
-            return this._cachedCellWidths;
-        }
+    _getCellWidths(row) {
         const cellWidths = [];
         const firstRowCells = row.children;
         for (let i = 0; i < firstRowCells.length; i++) {
             let cell = firstRowCells[i];
             cellWidths.push(cell.getBoundingClientRect().width);
         }
-        this._cachedCellWidths = cellWidths;
         return cellWidths;
     }
     /**
@@ -86615,16 +86455,6 @@ function getTableTextColumnMissingParentTableError() {
 function getTableTextColumnMissingNameError() {
     return Error(`Table text column must have a name.`);
 }
-
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/** The injection token used to specify the StickyPositioningListener. */
-const STICKY_POSITIONING_LISTENER = new _angular_core__WEBPACK_IMPORTED_MODULE_3__["InjectionToken"]('CDK_SPL');
 
 /**
  * @license
@@ -86749,11 +86579,7 @@ class CdkTable {
      *    parameters to become required.
      * @breaking-change 11.0.0
      */
-    _viewRepeater, _coalescedStyleScheduler, _stickyPositioningListener, 
-    // Optional for backwards compatibility. The viewport ruler is provided in root. Therefore,
-    // this property will never be null.
-    // tslint:disable-next-line: lightweight-tokens
-    _viewportRuler) {
+    _viewRepeater, _coalescedStyleScheduler) {
         this._differs = _differs;
         this._changeDetectorRef = _changeDetectorRef;
         this._elementRef = _elementRef;
@@ -86761,10 +86587,8 @@ class CdkTable {
         this._platform = _platform;
         this._viewRepeater = _viewRepeater;
         this._coalescedStyleScheduler = _coalescedStyleScheduler;
-        this._stickyPositioningListener = _stickyPositioningListener;
-        this._viewportRuler = _viewportRuler;
         /** Subject that emits when the component has been destroyed. */
-        this._onDestroy = new rxjs__WEBPACK_IMPORTED_MODULE_7__["Subject"]();
+        this._onDestroy = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
         /**
          * Map of all the user's defined columns (header, data, and footer cell template) identified by
          * name. Collection populated by the column definitions gathered by `ContentChildren` as well as
@@ -86806,17 +86630,6 @@ class CdkTable {
          */
         this._footerRowDefChanged = true;
         /**
-         * Whether the sticky column styles need to be updated. Set to `true` when the visible columns
-         * change.
-         */
-        this._stickyColumnStylesNeedReset = true;
-        /**
-         * Whether the sticky styler should recalculate cell widths when applying sticky styles. If
-         * `false`, cached values will be used instead. This is only applicable to tables with
-         * {@link fixedLayout} enabled. For other tables, cell widths will always be recalculated.
-         */
-        this._forceRecalculateCellWidths = true;
-        /**
          * Cache of the latest rendered `RenderRow` objects as a map for easy retrieval when constructing
          * a new list of `RenderRow` objects for rendering rows. Since the new list is constructed with
          * the cached `RenderRow` objects when possible, the row identity is preserved when the data
@@ -86844,7 +86657,6 @@ class CdkTable {
         /** Whether the no data row is currently showing anything. */
         this._isShowingNoDataRow = false;
         this._multiTemplateDataRows = false;
-        this._fixedLayout = false;
         // TODO(andrewseguin): Remove max value as the end index
         //   and instead calculate the view on init and scroll.
         /**
@@ -86853,7 +86665,7 @@ class CdkTable {
          *
          * @docs-private
          */
-        this.viewChange = new rxjs__WEBPACK_IMPORTED_MODULE_7__["BehaviorSubject"]({ start: 0, end: Number.MAX_VALUE });
+        this.viewChange = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"]({ start: 0, end: Number.MAX_VALUE });
         if (!role) {
             this._elementRef.nativeElement.setAttribute('role', 'grid');
         }
@@ -86921,19 +86733,6 @@ class CdkTable {
             this.updateStickyColumnStyles();
         }
     }
-    /**
-     * Whether to use a fixed table layout. Enabling this option will enforce consistent column widths
-     * and optimize rendering sticky styles for native tables. No-op for flex tables.
-     */
-    get fixedLayout() {
-        return this._fixedLayout;
-    }
-    set fixedLayout(v) {
-        this._fixedLayout = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__["coerceBooleanProperty"])(v);
-        // Toggling `fixedLayout` may change column widths. Sticky column styles should be recalculated.
-        this._forceRecalculateCellWidths = true;
-        this._stickyColumnStylesNeedReset = true;
-    }
     ngOnInit() {
         this._setupStickyStyler();
         if (this._isNativeHtmlTable) {
@@ -86945,14 +86744,6 @@ class CdkTable {
         this._dataDiffer = this._differs.find([]).create((_i, dataRow) => {
             return this.trackBy ? this.trackBy(dataRow.dataIndex, dataRow.data) : dataRow;
         });
-        // Table cell dimensions may change after resizing the window. Signal the sticky styler to
-        // refresh its cache of cell widths the next time sticky styles are updated.
-        // @breaking-change 11.0.0 Remove null check for _viewportRuler once it's a required parameter.
-        if (this._viewportRuler) {
-            this._viewportRuler.change().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this._onDestroy)).subscribe(() => {
-                this._forceRecalculateCellWidths = true;
-            });
-        }
     }
     ngAfterContentChecked() {
         // Cache the row and column definitions gathered by ContentChildren and programmatic injection.
@@ -86965,10 +86756,7 @@ class CdkTable {
         }
         // Render updates if the list of columns have been changed for the header, row, or footer defs.
         const columnsChanged = this._renderUpdatedColumns();
-        const rowDefsChanged = columnsChanged || this._headerRowDefChanged || this._footerRowDefChanged;
-        // Ensure sticky column styles are reset if set to `true` elsewhere.
-        this._stickyColumnStylesNeedReset = this._stickyColumnStylesNeedReset || rowDefsChanged;
-        this._forceRecalculateCellWidths = rowDefsChanged;
+        const stickyColumnStyleUpdateNeeded = columnsChanged || this._headerRowDefChanged || this._footerRowDefChanged;
         // If the header row definition has been changed, trigger a render to the header row.
         if (this._headerRowDefChanged) {
             this._forceRenderHeaderRows();
@@ -86984,7 +86772,7 @@ class CdkTable {
         if (this.dataSource && this._rowDefs.length > 0 && !this._renderChangeSubscription) {
             this._observeRenderChanges();
         }
-        else if (this._stickyColumnStylesNeedReset) {
+        else if (stickyColumnStyleUpdateNeeded) {
             // In the above case, _observeRenderChanges will result in updateStickyColumnStyles being
             // called when it row data arrives. Otherwise, we need to call it proactively.
             this.updateStickyColumnStyles();
@@ -87094,10 +86882,6 @@ class CdkTable {
         this._customFooterRowDefs.delete(footerRowDef);
         this._footerRowDefChanged = true;
     }
-    /** Sets a no data row definition that was not included as a part of the content children. */
-    setNoDataRow(noDataRow) {
-        this._customNoDataRow = noDataRow;
-    }
     /**
      * Updates the header sticky styles. First resets all applied styles with respect to the cells
      * sticking to the top. Then, evaluating which cells need to be stuck to the top. This is
@@ -87156,17 +86940,9 @@ class CdkTable {
         const headerRows = this._getRenderedRows(this._headerRowOutlet);
         const dataRows = this._getRenderedRows(this._rowOutlet);
         const footerRows = this._getRenderedRows(this._footerRowOutlet);
-        // For tables not using a fixed layout, the column widths may change when new rows are rendered.
-        // In a table using a fixed layout, row content won't affect column width, so sticky styles
-        // don't need to be cleared unless either the sticky column config changes or one of the row
-        // defs change.
-        if ((this._isNativeHtmlTable && !this._fixedLayout)
-            || this._stickyColumnStylesNeedReset) {
-            // Clear the left and right positioning from all columns in the table across all rows since
-            // sticky columns span across all table sections (header, data, footer)
-            this._stickyStyler.clearStickyPositioning([...headerRows, ...dataRows, ...footerRows], ['left', 'right']);
-            this._stickyColumnStylesNeedReset = false;
-        }
+        // Clear the left and right positioning from all columns in the table across all rows since
+        // sticky columns span across all table sections (header, data, footer)
+        this._stickyStyler.clearStickyPositioning([...headerRows, ...dataRows, ...footerRows], ['left', 'right']);
         // Update the sticky styles for each header row depending on the def's sticky state
         headerRows.forEach((headerRow, i) => {
             this._addStickyColumnStyles([headerRow], this._headerRowDefs[i]);
@@ -87322,16 +87098,16 @@ class CdkTable {
         if (Object(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["isDataSource"])(this.dataSource)) {
             dataStream = this.dataSource.connect(this);
         }
-        else if (Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["isObservable"])(this.dataSource)) {
+        else if (Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["isObservable"])(this.dataSource)) {
             dataStream = this.dataSource;
         }
         else if (Array.isArray(this.dataSource)) {
-            dataStream = Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["of"])(this.dataSource);
+            dataStream = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(this.dataSource);
         }
         if (dataStream === undefined && (typeof ngDevMode === 'undefined' || ngDevMode)) {
             throw getTableUnknownDataSourceError();
         }
-        this._renderChangeSubscription = dataStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this._onDestroy))
+        this._renderChangeSubscription = dataStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._onDestroy))
             .subscribe(data => {
             this._data = data || [];
             this.renderRows();
@@ -87372,7 +87148,7 @@ class CdkTable {
         });
         const stickyStartStates = columnDefs.map(columnDef => columnDef.sticky);
         const stickyEndStates = columnDefs.map(columnDef => columnDef.stickyEnd);
-        this._stickyStyler.updateStickyColumns(rows, stickyStartStates, stickyEndStates, !this._fixedLayout || this._forceRecalculateCellWidths);
+        this._stickyStyler.updateStickyColumns(rows, stickyStartStates, stickyEndStates);
     }
     /** Gets the list of rows that have been rendered in the row outlet. */
     _getRenderedRows(rowOutlet) {
@@ -87520,7 +87296,6 @@ class CdkTable {
             this.updateStickyFooterRowStyles();
         }
         if (Array.from(this._columnDefsByName.values()).reduce(stickyCheckReducer, false)) {
-            this._stickyColumnStylesNeedReset = true;
             this.updateStickyColumnStyles();
         }
     }
@@ -87531,9 +87306,9 @@ class CdkTable {
      */
     _setupStickyStyler() {
         const direction = this._dir ? this._dir.value : 'ltr';
-        this._stickyStyler = new StickyStyler(this._isNativeHtmlTable, this.stickyCssClass, direction, this._coalescedStyleScheduler, this._platform.isBrowser, this.needsPositionStickyOnElement, this._stickyPositioningListener);
-        (this._dir ? this._dir.change : Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["of"])())
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this._onDestroy))
+        this._stickyStyler = new StickyStyler(this._isNativeHtmlTable, this.stickyCssClass, direction, this._coalescedStyleScheduler, this._platform.isBrowser, this.needsPositionStickyOnElement);
+        (this._dir ? this._dir.change : Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])())
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._onDestroy))
             .subscribe(value => {
             this._stickyStyler.direction = value;
             this.updateStickyColumnStyles();
@@ -87545,18 +87320,17 @@ class CdkTable {
     }
     /** Creates or removes the no data row, depending on whether any data is being shown. */
     _updateNoDataRow() {
-        const noDataRow = this._customNoDataRow || this._noDataRow;
-        if (noDataRow) {
+        if (this._noDataRow) {
             const shouldShow = this._rowOutlet.viewContainer.length === 0;
             if (shouldShow !== this._isShowingNoDataRow) {
                 const container = this._noDataRowOutlet.viewContainer;
-                shouldShow ? container.createEmbeddedView(noDataRow.templateRef) : container.clear();
+                shouldShow ? container.createEmbeddedView(this._noDataRow.templateRef) : container.clear();
                 this._isShowingNoDataRow = shouldShow;
             }
         }
     }
 }
-CdkTable.ɵfac = function CdkTable_Factory(t) { return new (t || CdkTable)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinjectAttribute"]('role'), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_0__["Directionality"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_COALESCED_STYLE_SCHEDULER, 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](STICKY_POSITIONING_LISTENER, 12), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ViewportRuler"], 8)); };
+CdkTable.ɵfac = function CdkTable_Factory(t) { return new (t || CdkTable)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinjectAttribute"]('role'), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_0__["Directionality"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_COALESCED_STYLE_SCHEDULER, 8)); };
 CdkTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: CdkTable, selectors: [["cdk-table"], ["table", "cdk-table", ""]], contentQueries: function CdkTable_ContentQueries(rf, ctx, dirIndex) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkNoDataRow, true);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵcontentQuery"](dirIndex, CdkColumnDef, true);
@@ -87581,14 +87355,10 @@ CdkTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx._headerRowOutlet = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx._footerRowOutlet = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx._noDataRowOutlet = _t.first);
-    } }, hostAttrs: [1, "cdk-table"], hostVars: 2, hostBindings: function CdkTable_HostBindings(rf, ctx) { if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵclassProp"]("cdk-table-fixed-layout", ctx.fixedLayout);
-    } }, inputs: { trackBy: "trackBy", dataSource: "dataSource", multiTemplateDataRows: "multiTemplateDataRows", fixedLayout: "fixedLayout" }, exportAs: ["cdkTable"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵProvidersFeature"]([
+    } }, hostAttrs: [1, "cdk-table"], inputs: { trackBy: "trackBy", dataSource: "dataSource", multiTemplateDataRows: "multiTemplateDataRows" }, exportAs: ["cdkTable"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵProvidersFeature"]([
             { provide: CDK_TABLE, useExisting: CdkTable },
             { provide: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"], useClass: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_DisposeViewRepeaterStrategy"] },
             { provide: _COALESCED_STYLE_SCHEDULER, useClass: _CoalescedStyleScheduler },
-            // Prevent nested tables from seeing this table's StickyPositioningListener.
-            { provide: STICKY_POSITIONING_LISTENER, useValue: null },
         ])], ngContentSelectors: _c1, decls: 6, vars: 0, consts: [["headerRowOutlet", ""], ["rowOutlet", ""], ["noDataRowOutlet", ""], ["footerRowOutlet", ""]], template: function CdkTable_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵprojectionDef"](_c0);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵprojection"](0);
@@ -87597,25 +87367,22 @@ CdkTable.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainer"](3, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainer"](4, 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainer"](5, 3);
-    } }, directives: [HeaderRowOutlet, DataRowOutlet, NoDataRowOutlet, FooterRowOutlet], styles: [".cdk-table-fixed-layout{table-layout:fixed}\n"], encapsulation: 2 });
+    } }, directives: [HeaderRowOutlet, DataRowOutlet, NoDataRowOutlet, FooterRowOutlet], encapsulation: 2 });
 CdkTable.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Attribute"], args: ['role',] }] },
     { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_0__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"],] }] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"],] }] },
     { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"],] }] },
-    { type: _CoalescedStyleScheduler, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_COALESCED_STYLE_SCHEDULER,] }] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["SkipSelf"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [STICKY_POSITIONING_LISTENER,] }] },
-    { type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ViewportRuler"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }] }
+    { type: _CoalescedStyleScheduler, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_COALESCED_STYLE_SCHEDULER,] }] }
 ];
 CdkTable.propDecorators = {
     trackBy: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }],
     dataSource: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }],
     multiTemplateDataRows: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }],
-    fixedLayout: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }],
     _rowOutlet: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: [DataRowOutlet, { static: true },] }],
     _headerRowOutlet: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: [HeaderRowOutlet, { static: true },] }],
     _footerRowOutlet: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: [FooterRowOutlet, { static: true },] }],
@@ -87637,8 +87404,7 @@ CdkTable.propDecorators = {
                 exportAs: 'cdkTable',
                 template: CDK_TABLE_TEMPLATE,
                 host: {
-                    'class': 'cdk-table',
-                    '[class.cdk-table-fixed-layout]': 'fixedLayout'
+                    'class': 'cdk-table'
                 },
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewEncapsulation"].None,
                 // The "OnPush" status for the `MatTable` component is effectively a noop, so we are removing it.
@@ -87650,10 +87416,7 @@ CdkTable.propDecorators = {
                     { provide: CDK_TABLE, useExisting: CdkTable },
                     { provide: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_VIEW_REPEATER_STRATEGY"], useClass: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["_DisposeViewRepeaterStrategy"] },
                     { provide: _COALESCED_STYLE_SCHEDULER, useClass: _CoalescedStyleScheduler },
-                    // Prevent nested tables from seeing this table's StickyPositioningListener.
-                    { provide: STICKY_POSITIONING_LISTENER, useValue: null },
-                ],
-                styles: [".cdk-table-fixed-layout{table-layout:fixed}\n"]
+                ]
             }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"] }, { type: String, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Attribute"],
@@ -87662,7 +87425,7 @@ CdkTable.propDecorators = {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
             }] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
-                args: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"]]
+                args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"]]
             }] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
             }, {
@@ -87673,22 +87436,11 @@ CdkTable.propDecorators = {
             }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
                 args: [_COALESCED_STYLE_SCHEDULER]
-            }] }, { type: undefined, decorators: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
-            }, {
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["SkipSelf"]
-            }, {
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
-                args: [STICKY_POSITIONING_LISTENER]
-            }] }, { type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ViewportRuler"], decorators: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
             }] }]; }, { trackBy: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
         }], dataSource: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
         }], multiTemplateDataRows: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
-        }], fixedLayout: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
         }], _rowOutlet: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"],
@@ -87923,14 +87675,14 @@ const EXPORTED_DECLARATIONS = [
 class CdkTableModule {
 }
 CdkTableModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineNgModule"]({ type: CdkTableModule });
-CdkTableModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ factory: function CdkTableModule_Factory(t) { return new (t || CdkTableModule)(); }, imports: [[_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ScrollingModule"]]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](CdkTableModule, { declarations: function () { return [CdkTable, CdkRowDef, CdkCellDef, CdkCellOutlet, CdkHeaderCellDef, CdkFooterCellDef, CdkColumnDef, CdkCell, CdkRow, CdkHeaderCell, CdkFooterCell, CdkHeaderRow, CdkHeaderRowDef, CdkFooterRow, CdkFooterRowDef, DataRowOutlet, HeaderRowOutlet, FooterRowOutlet, CdkTextColumn, CdkNoDataRow, NoDataRowOutlet]; }, imports: function () { return [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ScrollingModule"]]; }, exports: function () { return [CdkTable, CdkRowDef, CdkCellDef, CdkCellOutlet, CdkHeaderCellDef, CdkFooterCellDef, CdkColumnDef, CdkCell, CdkRow, CdkHeaderCell, CdkFooterCell, CdkHeaderRow, CdkHeaderRowDef, CdkFooterRow, CdkFooterRowDef, DataRowOutlet, HeaderRowOutlet, FooterRowOutlet, CdkTextColumn, CdkNoDataRow, NoDataRowOutlet]; } }); })();
+CdkTableModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ factory: function CdkTableModule_Factory(t) { return new (t || CdkTableModule)(); }, imports: [[_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_8__["ScrollingModule"]]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](CdkTableModule, { declarations: function () { return [CdkTable, CdkRowDef, CdkCellDef, CdkCellOutlet, CdkHeaderCellDef, CdkFooterCellDef, CdkColumnDef, CdkCell, CdkRow, CdkHeaderCell, CdkFooterCell, CdkHeaderRow, CdkHeaderRowDef, CdkFooterRow, CdkFooterRowDef, DataRowOutlet, HeaderRowOutlet, FooterRowOutlet, CdkTextColumn, CdkNoDataRow, NoDataRowOutlet]; }, imports: function () { return [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_8__["ScrollingModule"]]; }, exports: function () { return [CdkTable, CdkRowDef, CdkCellDef, CdkCellOutlet, CdkHeaderCellDef, CdkFooterCellDef, CdkColumnDef, CdkCell, CdkRow, CdkHeaderCell, CdkFooterCell, CdkHeaderRow, CdkHeaderRowDef, CdkFooterRow, CdkFooterRowDef, DataRowOutlet, HeaderRowOutlet, FooterRowOutlet, CdkTextColumn, CdkNoDataRow, NoDataRowOutlet]; } }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](CdkTableModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"],
         args: [{
                 exports: EXPORTED_DECLARATIONS,
                 declarations: EXPORTED_DECLARATIONS,
-                imports: [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_5__["ScrollingModule"]]
+                imports: [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_8__["ScrollingModule"]]
             }]
     }], null, null); })();
 
@@ -131693,7 +131445,8 @@ class FilterMember {
      * @return {?}
      */
     get filters() {
-        return this.query.asCubeQuery().filters || [];
+        // TODO: update this type assertion once the QueryBuilder supports logical and/or
+        return (/** @type {?} */ ((this.query.asCubeQuery().filters || [])));
     }
     /**
      * @param {?} by
@@ -137767,11 +137520,9 @@ let scrollBehaviorSupported;
 /** Check whether the browser supports scroll behaviors. */
 function supportsScrollBehavior() {
     if (scrollBehaviorSupported == null) {
-        // If we're not in the browser, it can't be supported. Also check for `Element`, because
-        // some projects stub out the global `document` during SSR which can throw us off.
-        if (typeof document !== 'object' || !document || typeof Element !== 'function' || !Element) {
+        // If we're not in the browser, it can't be supported.
+        if (typeof document !== 'object' || !document) {
             scrollBehaviorSupported = false;
-            return scrollBehaviorSupported;
         }
         // If the element can have a `scrollBehavior` style, we can be sure that it's supported.
         if ('scrollBehavior' in document.documentElement.style) {
@@ -138284,6 +138035,17 @@ function _assertPromise(name, p) {
     throw new TypeError('`' + name + '` expected a Promise, received ' + Object(_toString_js__WEBPACK_IMPORTED_MODULE_1__["default"])(p, []));
   }
 }
+
+/***/ }),
+
+/***/ "njAx":
+/*!*****************************************!*\
+  !*** ./node_modules/dayjs/locale/en.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,n){ true?module.exports=n():undefined}(this,(function(){"use strict";return{name:"en",weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_")}}));
 
 /***/ }),
 
@@ -148287,26 +148049,6 @@ Object(_internal_curry1_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function val
 
 /***/ }),
 
-/***/ "rUty":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@cubejs-client/core/node_modules/core-js/modules/es.object.assign.js ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__(/*! ../internals/export */ "1BGQ");
-var assign = __webpack_require__(/*! ../internals/object-assign */ "4qLW");
-
-// `Object.assign` method
-// https://tc39.es/ecma262/#sec-object.assign
-// eslint-disable-next-line es/no-object-assign -- required for testing
-$({ target: 'Object', stat: true, forced: Object.assign !== assign }, {
-  assign: assign
-});
-
-
-/***/ }),
-
 /***/ "raLr":
 /*!******************************************!*\
   !*** ./node_modules/moment/locale/uk.js ***!
@@ -157094,7 +156836,7 @@ function pickBy(object, predicate) {
 /*!*****************************************************************!*\
   !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/a11y.js ***!
   \*****************************************************************/
-/*! exports provided: A11yModule, ActiveDescendantKeyManager, AriaDescriber, CDK_DESCRIBEDBY_HOST_ATTRIBUTE, CDK_DESCRIBEDBY_ID_PREFIX, CdkAriaLive, CdkMonitorFocus, CdkTrapFocus, ConfigurableFocusTrap, ConfigurableFocusTrapFactory, EventListenerFocusTrapInertStrategy, FOCUS_MONITOR_DEFAULT_OPTIONS, FOCUS_TRAP_INERT_STRATEGY, FocusKeyManager, FocusMonitor, FocusTrap, FocusTrapFactory, HighContrastModeDetector, InteractivityChecker, IsFocusableConfig, LIVE_ANNOUNCER_DEFAULT_OPTIONS, LIVE_ANNOUNCER_ELEMENT_TOKEN, LIVE_ANNOUNCER_ELEMENT_TOKEN_FACTORY, ListKeyManager, LiveAnnouncer, MESSAGES_CONTAINER_ID, TOUCH_BUFFER_MS, isFakeMousedownFromScreenReader, isFakeTouchstartFromScreenReader, ɵangular_material_src_cdk_a11y_a11y_a, ɵangular_material_src_cdk_a11y_a11y_b */
+/*! exports provided: A11yModule, ActiveDescendantKeyManager, AriaDescriber, CDK_DESCRIBEDBY_HOST_ATTRIBUTE, CDK_DESCRIBEDBY_ID_PREFIX, CdkAriaLive, CdkMonitorFocus, CdkTrapFocus, ConfigurableFocusTrap, ConfigurableFocusTrapFactory, EventListenerFocusTrapInertStrategy, FOCUS_MONITOR_DEFAULT_OPTIONS, FOCUS_TRAP_INERT_STRATEGY, FocusKeyManager, FocusMonitor, FocusTrap, FocusTrapFactory, HighContrastModeDetector, InteractivityChecker, IsFocusableConfig, LIVE_ANNOUNCER_DEFAULT_OPTIONS, LIVE_ANNOUNCER_ELEMENT_TOKEN, LIVE_ANNOUNCER_ELEMENT_TOKEN_FACTORY, ListKeyManager, LiveAnnouncer, MESSAGES_CONTAINER_ID, TOUCH_BUFFER_MS, isFakeMousedownFromScreenReader, ɵangular_material_src_cdk_a11y_a11y_a, ɵangular_material_src_cdk_a11y_a11y_b */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -157127,16 +156869,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MESSAGES_CONTAINER_ID", function() { return MESSAGES_CONTAINER_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOUCH_BUFFER_MS", function() { return TOUCH_BUFFER_MS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isFakeMousedownFromScreenReader", function() { return isFakeMousedownFromScreenReader; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isFakeTouchstartFromScreenReader", function() { return isFakeTouchstartFromScreenReader; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_material_src_cdk_a11y_a11y_a", function() { return FocusTrapManager; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_material_src_cdk_a11y_a11y_b", function() { return ConfigurableFocusTrapConfig; });
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/keycodes */ "FtGj");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/cdk/coercion */ "8LU1");
-/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/cdk/platform */ "nLfN");
+/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/platform */ "nLfN");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "qCKp");
+/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/keycodes */ "FtGj");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/cdk/coercion */ "8LU1");
 /* harmony import */ var _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/cdk/observers */ "GU7r");
 
 
@@ -157219,40 +156960,49 @@ let messagesContainer = null;
  * content.
  */
 class AriaDescriber {
-    constructor(_document) {
+    constructor(_document, 
+    /**
+     * @breaking-change 8.0.0 `_platform` parameter to be made required.
+     */
+    _platform) {
+        this._platform = _platform;
         this._document = _document;
     }
-    describe(hostElement, message, role) {
+    /**
+     * Adds to the host element an aria-describedby reference to a hidden element that contains
+     * the message. If the same message has already been registered, then it will reuse the created
+     * message element.
+     */
+    describe(hostElement, message) {
         if (!this._canBeDescribed(hostElement, message)) {
             return;
         }
-        const key = getKey(message, role);
         if (typeof message !== 'string') {
             // We need to ensure that the element has an ID.
-            setMessageId(message);
-            messageRegistry.set(key, { messageElement: message, referenceCount: 0 });
+            this._setMessageId(message);
+            messageRegistry.set(message, { messageElement: message, referenceCount: 0 });
         }
-        else if (!messageRegistry.has(key)) {
-            this._createMessageElement(message, role);
+        else if (!messageRegistry.has(message)) {
+            this._createMessageElement(message);
         }
-        if (!this._isElementDescribedByMessage(hostElement, key)) {
-            this._addMessageReference(hostElement, key);
+        if (!this._isElementDescribedByMessage(hostElement, message)) {
+            this._addMessageReference(hostElement, message);
         }
     }
-    removeDescription(hostElement, message, role) {
+    /** Removes the host element's aria-describedby reference to the message element. */
+    removeDescription(hostElement, message) {
         if (!message || !this._isElementNode(hostElement)) {
             return;
         }
-        const key = getKey(message, role);
-        if (this._isElementDescribedByMessage(hostElement, key)) {
-            this._removeMessageReference(hostElement, key);
+        if (this._isElementDescribedByMessage(hostElement, message)) {
+            this._removeMessageReference(hostElement, message);
         }
         // If the message is a string, it means that it's one that we created for the
         // consumer so we can remove it safely, otherwise we should leave it in place.
         if (typeof message === 'string') {
-            const registeredMessage = messageRegistry.get(key);
+            const registeredMessage = messageRegistry.get(message);
             if (registeredMessage && registeredMessage.referenceCount === 0) {
-                this._deleteMessageElement(key);
+                this._deleteMessageElement(message);
             }
         }
         if (messagesContainer && messagesContainer.childNodes.length === 0) {
@@ -157275,29 +157025,34 @@ class AriaDescriber {
      * Creates a new element in the visually hidden message container element with the message
      * as its content and adds it to the message registry.
      */
-    _createMessageElement(message, role) {
+    _createMessageElement(message) {
         const messageElement = this._document.createElement('div');
-        setMessageId(messageElement);
+        this._setMessageId(messageElement);
         messageElement.textContent = message;
-        if (role) {
-            messageElement.setAttribute('role', role);
-        }
         this._createMessagesContainer();
         messagesContainer.appendChild(messageElement);
-        messageRegistry.set(getKey(message, role), { messageElement, referenceCount: 0 });
+        messageRegistry.set(message, { messageElement, referenceCount: 0 });
+    }
+    /** Assigns a unique ID to an element, if it doesn't have one already. */
+    _setMessageId(element) {
+        if (!element.id) {
+            element.id = `${CDK_DESCRIBEDBY_ID_PREFIX}-${nextId++}`;
+        }
     }
     /** Deletes the message element from the global messages container. */
-    _deleteMessageElement(key) {
-        const registeredMessage = messageRegistry.get(key);
+    _deleteMessageElement(message) {
+        const registeredMessage = messageRegistry.get(message);
         const messageElement = registeredMessage && registeredMessage.messageElement;
         if (messagesContainer && messageElement) {
             messagesContainer.removeChild(messageElement);
         }
-        messageRegistry.delete(key);
+        messageRegistry.delete(message);
     }
     /** Creates the global container for all aria-describedby messages. */
     _createMessagesContainer() {
         if (!messagesContainer) {
+            // @breaking-change 8.0.0 `_platform` null check can be removed once the parameter is required
+            const canBeAriaHidden = !this._platform || (!this._platform.EDGE && !this._platform.TRIDENT);
             const preExistingContainer = this._document.getElementById(MESSAGES_CONTAINER_ID);
             // When going from the server to the client, we may end up in a situation where there's
             // already a container on the page, but we don't have a reference to it. Clear the
@@ -157308,14 +157063,12 @@ class AriaDescriber {
             }
             messagesContainer = this._document.createElement('div');
             messagesContainer.id = MESSAGES_CONTAINER_ID;
-            // We add `visibility: hidden` in order to prevent text in this container from
-            // being searchable by the browser's Ctrl + F functionality.
-            // Screen-readers will still read the description for elements with aria-describedby even
-            // when the description element is not visible.
-            messagesContainer.style.visibility = 'hidden';
-            // Even though we use `visibility: hidden`, we still apply `cdk-visually-hidden` so that
-            // the description element doesn't impact page layout.
             messagesContainer.classList.add('cdk-visually-hidden');
+            // IE and Edge won't read out the messages if they're in an `aria-hidden` container.
+            // We only disable `aria-hidden` for these platforms, because it comes with the
+            // disadvantage that people might hit the messages when they've navigated past
+            // the end of the document using the arrow keys.
+            messagesContainer.setAttribute('aria-hidden', canBeAriaHidden + '');
             this._document.body.appendChild(messagesContainer);
         }
     }
@@ -157337,8 +157090,8 @@ class AriaDescriber {
      * Adds a message reference to the element using aria-describedby and increments the registered
      * message's reference count.
      */
-    _addMessageReference(element, key) {
-        const registeredMessage = messageRegistry.get(key);
+    _addMessageReference(element, message) {
+        const registeredMessage = messageRegistry.get(message);
         // Add the aria-describedby reference and set the
         // describedby_host attribute to mark the element.
         addAriaReferencedId(element, 'aria-describedby', registeredMessage.messageElement.id);
@@ -157349,16 +157102,16 @@ class AriaDescriber {
      * Removes a message reference from the element using aria-describedby
      * and decrements the registered message's reference count.
      */
-    _removeMessageReference(element, key) {
-        const registeredMessage = messageRegistry.get(key);
+    _removeMessageReference(element, message) {
+        const registeredMessage = messageRegistry.get(message);
         registeredMessage.referenceCount--;
         removeAriaReferencedId(element, 'aria-describedby', registeredMessage.messageElement.id);
         element.removeAttribute(CDK_DESCRIBEDBY_HOST_ATTRIBUTE);
     }
     /** Returns true if the element has been described by the provided message ID. */
-    _isElementDescribedByMessage(element, key) {
+    _isElementDescribedByMessage(element, message) {
         const referenceIds = getAriaReferenceIds(element, 'aria-describedby');
-        const registeredMessage = messageRegistry.get(key);
+        const registeredMessage = messageRegistry.get(message);
         const messageId = registeredMessage && registeredMessage.messageElement.id;
         return !!messageId && referenceIds.indexOf(messageId) != -1;
     }
@@ -157384,10 +157137,11 @@ class AriaDescriber {
         return element.nodeType === this._document.ELEMENT_NODE;
     }
 }
-AriaDescriber.ɵfac = function AriaDescriber_Factory(t) { return new (t || AriaDescriber)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); };
-AriaDescriber.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function AriaDescriber_Factory() { return new AriaDescriber(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); }, token: AriaDescriber, providedIn: "root" });
+AriaDescriber.ɵfac = function AriaDescriber_Factory(t) { return new (t || AriaDescriber)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"])); };
+AriaDescriber.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function AriaDescriber_Factory() { return new AriaDescriber(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"])); }, token: AriaDescriber, providedIn: "root" });
 AriaDescriber.ctorParameters = () => [
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }
 ];
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AriaDescriber, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
@@ -157395,17 +157149,7 @@ AriaDescriber.ctorParameters = () => [
     }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
                 args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
-            }] }]; }, null); })();
-/** Gets a key that can be used to look messages up in the registry. */
-function getKey(message, role) {
-    return typeof message === 'string' ? `${role || ''}/${message}` : message;
-}
-/** Assigns a unique ID to an element, if it doesn't have one already. */
-function setMessageId(element) {
-    if (!element.id) {
-        element.id = `${CDK_DESCRIBEDBY_ID_PREFIX}-${nextId++}`;
-    }
-}
+            }] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }]; }, null); })();
 
 /**
  * @license
@@ -157424,8 +157168,8 @@ class ListKeyManager {
         this._activeItemIndex = -1;
         this._activeItem = null;
         this._wrap = false;
-        this._letterKeyStream = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this._typeaheadSubscription = rxjs__WEBPACK_IMPORTED_MODULE_2__["Subscription"].EMPTY;
+        this._letterKeyStream = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this._typeaheadSubscription = rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"].EMPTY;
         this._vertical = true;
         this._allowedModifierKeys = [];
         this._homeAndEnd = false;
@@ -157440,9 +157184,9 @@ class ListKeyManager {
          * Stream that emits any time the TAB key is pressed, so components can react
          * when focus is shifted off of the list.
          */
-        this.tabOut = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.tabOut = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         /** Stream that emits whenever the active item of the list manager changes. */
-        this.change = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.change = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         // We allow for the items to be an array because, in some cases, the consumer may
         // not have access to a QueryList of the items they want to manage (e.g. when the
         // items aren't being collected via `ViewChildren` or `ContentChildren`).
@@ -157514,7 +157258,7 @@ class ListKeyManager {
         // Debounce the presses of non-navigational keys, collect the ones that correspond to letters
         // and convert those letters back into a string. Afterwards find the first item that starts
         // with that string and select it.
-        this._typeaheadSubscription = this._letterKeyStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(letter => this._pressedLetters.push(letter)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(debounceInterval), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["filter"])(() => this._pressedLetters.length > 0), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(() => this._pressedLetters.join(''))).subscribe(inputString => {
+        this._typeaheadSubscription = this._letterKeyStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(letter => this._pressedLetters.push(letter)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["debounceTime"])(debounceInterval), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(() => this._pressedLetters.length > 0), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(() => this._pressedLetters.join(''))).subscribe(inputString => {
             const items = this._getItemsArray();
             // Start at 1 because we want to start searching at the item immediately
             // following the current active item.
@@ -157558,10 +157302,10 @@ class ListKeyManager {
             return !event[modifier] || this._allowedModifierKeys.indexOf(modifier) > -1;
         });
         switch (keyCode) {
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["TAB"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["TAB"]:
                 this.tabOut.next();
                 return;
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["DOWN_ARROW"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["DOWN_ARROW"]:
                 if (this._vertical && isModifierAllowed) {
                     this.setNextItemActive();
                     break;
@@ -157569,7 +157313,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["UP_ARROW"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["UP_ARROW"]:
                 if (this._vertical && isModifierAllowed) {
                     this.setPreviousItemActive();
                     break;
@@ -157577,7 +157321,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["RIGHT_ARROW"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["RIGHT_ARROW"]:
                 if (this._horizontal && isModifierAllowed) {
                     this._horizontal === 'rtl' ? this.setPreviousItemActive() : this.setNextItemActive();
                     break;
@@ -157585,7 +157329,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["LEFT_ARROW"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["LEFT_ARROW"]:
                 if (this._horizontal && isModifierAllowed) {
                     this._horizontal === 'rtl' ? this.setNextItemActive() : this.setPreviousItemActive();
                     break;
@@ -157593,7 +157337,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["HOME"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["HOME"]:
                 if (this._homeAndEnd && isModifierAllowed) {
                     this.setFirstItemActive();
                     break;
@@ -157601,7 +157345,7 @@ class ListKeyManager {
                 else {
                     return;
                 }
-            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["END"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["END"]:
                 if (this._homeAndEnd && isModifierAllowed) {
                     this.setLastItemActive();
                     break;
@@ -157610,13 +157354,13 @@ class ListKeyManager {
                     return;
                 }
             default:
-                if (isModifierAllowed || Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["hasModifierKey"])(event, 'shiftKey')) {
+                if (isModifierAllowed || Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["hasModifierKey"])(event, 'shiftKey')) {
                     // Attempt to use the `event.key` which also maps it to the user's keyboard language,
                     // otherwise fall back to resolving alphanumeric characters via the keyCode.
                     if (event.key && event.key.length === 1) {
                         this._letterKeyStream.next(event.key.toLocaleUpperCase());
                     }
-                    else if ((keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["A"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["Z"]) || (keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["ZERO"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["NINE"])) {
+                    else if ((keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["A"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["Z"]) || (keyCode >= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["ZERO"] && keyCode <= _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["NINE"])) {
                         this._letterKeyStream.next(String.fromCharCode(keyCode));
                     }
                 }
@@ -157900,15 +157644,15 @@ class InteractivityChecker {
             ((config === null || config === void 0 ? void 0 : config.ignoreVisibility) || this.isVisible(element));
     }
 }
-InteractivityChecker.ɵfac = function InteractivityChecker_Factory(t) { return new (t || InteractivityChecker)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"])); };
-InteractivityChecker.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function InteractivityChecker_Factory() { return new InteractivityChecker(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"])); }, token: InteractivityChecker, providedIn: "root" });
+InteractivityChecker.ɵfac = function InteractivityChecker_Factory(t) { return new (t || InteractivityChecker)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"])); };
+InteractivityChecker.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function InteractivityChecker_Factory() { return new InteractivityChecker(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"])); }, token: InteractivityChecker, providedIn: "root" });
 InteractivityChecker.ctorParameters = () => [
-    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }
 ];
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](InteractivityChecker, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
-    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }]; }, null); })();
+    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }]; }, null); })();
 /**
  * Returns the frame element from a window object. Since browsers like MS Edge throw errors if
  * the frameElement property is being accessed from a different host address, this property
@@ -158018,10 +157762,10 @@ function getWindow(node) {
  *
  * This class currently uses a relatively simple approach to focus trapping.
  * It assumes that the tab order is the same as DOM order, which is not necessarily true.
- * Things like `tabIndex > 0`, flex `order`, and shadow roots can cause the two to be misaligned.
+ * Things like `tabIndex > 0`, flex `order`, and shadow roots can cause the two to misalign.
  *
  * @deprecated Use `ConfigurableFocusTrap` instead.
- * @breaking-change 11.0.0
+ * @breaking-change for 11.0.0 Remove this class.
  */
 class FocusTrap {
     constructor(_element, _checker, _ngZone, _document, deferAnchors = false) {
@@ -158069,7 +157813,7 @@ class FocusTrap {
     /**
      * Inserts the anchors into the DOM. This is usually done automatically
      * in the constructor, but can be deferred for cases like directives with `*ngIf`.
-     * @returns Whether the focus trap managed to attach successfully. This may not be the case
+     * @returns Whether the focus trap managed to attach successfuly. This may not be the case
      * if the target element isn't currently in the DOM.
      */
     attachAnchors() {
@@ -158098,7 +157842,7 @@ class FocusTrap {
      * Waits for the zone to stabilize, then either focuses the first element that the
      * user specified, or the first tabbable element.
      * @returns Returns a promise that resolves with a boolean, depending
-     * on whether focus was moved successfully.
+     * on whether focus was moved successfuly.
      */
     focusInitialElementWhenReady() {
         return new Promise(resolve => {
@@ -158109,7 +157853,7 @@ class FocusTrap {
      * Waits for the zone to stabilize, then focuses
      * the first tabbable element within the focus trap region.
      * @returns Returns a promise that resolves with a boolean, depending
-     * on whether focus was moved successfully.
+     * on whether focus was moved successfuly.
      */
     focusFirstTabbableElementWhenReady() {
         return new Promise(resolve => {
@@ -158120,7 +157864,7 @@ class FocusTrap {
      * Waits for the zone to stabilize, then focuses
      * the last tabbable element within the focus trap region.
      * @returns Returns a promise that resolves with a boolean, depending
-     * on whether focus was moved successfully.
+     * on whether focus was moved successfuly.
      */
     focusLastTabbableElementWhenReady() {
         return new Promise(resolve => {
@@ -158158,7 +157902,7 @@ class FocusTrap {
     }
     /**
      * Focuses the element that should be focused when the focus trap is initialized.
-     * @returns Whether focus was moved successfully.
+     * @returns Whether focus was moved successfuly.
      */
     focusInitialElement() {
         // Contains the deprecated version of selector, for temporary backwards comparability.
@@ -158177,11 +157921,6 @@ class FocusTrap {
                 !this._checker.isFocusable(redirectToElement)) {
                 console.warn(`Element matching '[cdkFocusInitial]' is not focusable.`, redirectToElement);
             }
-            if (!this._checker.isFocusable(redirectToElement)) {
-                const focusableChild = this._getFirstTabbableElement(redirectToElement);
-                focusableChild === null || focusableChild === void 0 ? void 0 : focusableChild.focus();
-                return !!focusableChild;
-            }
             redirectToElement.focus();
             return true;
         }
@@ -158189,7 +157928,7 @@ class FocusTrap {
     }
     /**
      * Focuses the first tabbable element within the focus trap region.
-     * @returns Whether focus was moved successfully.
+     * @returns Whether focus was moved successfuly.
      */
     focusFirstTabbableElement() {
         const redirectToElement = this._getRegionBoundary('start');
@@ -158200,7 +157939,7 @@ class FocusTrap {
     }
     /**
      * Focuses the last tabbable element within the focus trap region.
-     * @returns Whether focus was moved successfully.
+     * @returns Whether focus was moved successfuly.
      */
     focusLastTabbableElement() {
         const redirectToElement = this._getRegionBoundary('end');
@@ -158210,7 +157949,7 @@ class FocusTrap {
         return !!redirectToElement;
     }
     /**
-     * Checks whether the focus trap has successfully been attached.
+     * Checks whether the focus trap has successfuly been attached.
      */
     hasAttached() {
         return this._hasAttached;
@@ -158285,14 +158024,14 @@ class FocusTrap {
             fn();
         }
         else {
-            this._ngZone.onStable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["take"])(1)).subscribe(fn);
+            this._ngZone.onStable.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(fn);
         }
     }
 }
 /**
  * Factory that allows easy instantiation of focus traps.
  * @deprecated Use `ConfigurableFocusTrapFactory` instead.
- * @breaking-change 11.0.0
+ * @breaking-change for 11.0.0 Remove this class.
  */
 class FocusTrapFactory {
     constructor(_checker, _ngZone, _document) {
@@ -158337,13 +158076,13 @@ class CdkTrapFocus {
     }
     /** Whether the focus trap is active. */
     get enabled() { return this.focusTrap.enabled; }
-    set enabled(value) { this.focusTrap.enabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value); }
+    set enabled(value) { this.focusTrap.enabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceBooleanProperty"])(value); }
     /**
-     * Whether the directive should automatically move focus into the trapped region upon
+     * Whether the directive should automatially move focus into the trapped region upon
      * initialization and return focus to the previous activeElement upon destruction.
      */
     get autoCapture() { return this._autoCapture; }
-    set autoCapture(value) { this._autoCapture = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value); }
+    set autoCapture(value) { this._autoCapture = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceBooleanProperty"])(value); }
     ngOnDestroy() {
         this.focusTrap.destroy();
         // If we stored a previously focused element when using autoCapture, return focus to that
@@ -158372,12 +158111,7 @@ class CdkTrapFocus {
         }
     }
     _captureFocus() {
-        var _a, _b;
-        // If the `activeElement` is inside a shadow root, `document.activeElement` will
-        // point to the shadow root so we have to descend into it ourselves.
-        const activeElement = (_a = this._document) === null || _a === void 0 ? void 0 : _a.activeElement;
-        this._previouslyFocusedElement =
-            ((_b = activeElement === null || activeElement === void 0 ? void 0 : activeElement.shadowRoot) === null || _b === void 0 ? void 0 : _b.activeElement) || activeElement;
+        this._previouslyFocusedElement = this._document.activeElement;
         this.focusTrap.focusInitialElementWhenReady();
     }
 }
@@ -158892,24 +158626,15 @@ CdkAriaLive.propDecorators = {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/** Gets whether an event could be a faked `mousedown` event dispatched by a screen reader. */
+/**
+ * Screenreaders will often fire fake mousedown events when a focusable element
+ * is activated using the keyboard. We can typically distinguish between these faked
+ * mousedown events and real mousedown events using the "buttons" property. While
+ * real mousedowns will indicate the mouse button that was pressed (e.g. "1" for
+ * the left mouse button), faked mousedowns will usually set the property value to 0.
+ */
 function isFakeMousedownFromScreenReader(event) {
-    // We can typically distinguish between these faked mousedown events and real mousedown events
-    // using the "buttons" property. While real mousedowns will indicate the mouse button that was
-    // pressed (e.g. "1" for the left mouse button), faked mousedowns will usually set the property
-    // value to 0.
     return event.buttons === 0;
-}
-/** Gets whether an event could be a faked `touchstart` event dispatched by a screen reader. */
-function isFakeTouchstartFromScreenReader(event) {
-    const touch = (event.touches && event.touches[0]) ||
-        (event.changedTouches && event.changedTouches[0]);
-    // A fake `touchstart` can be distinguished from a real one by looking at the `identifier`
-    // which is typically >= 0 on a real device versus -1 from a screen reader. Just to be safe,
-    // we can also look at `radiusX` and `radiusY`. This behavior was observed against a Windows 10
-    // device with a touch screen running NVDA v2020.4 and Firefox 85 or Chrome 88.
-    return !!touch && touch.identifier === -1 && (touch.radiusX == null || touch.radiusX === 1) &&
-        (touch.radiusY == null || touch.radiusY === 1);
 }
 
 /**
@@ -158928,7 +158653,7 @@ const FOCUS_MONITOR_DEFAULT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE
  * Event listener options that enable capturing and also
  * mark the listener as passive if the browser supports it.
  */
-const captureEventListenerOptions = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["normalizePassiveListenerOptions"])({
+const captureEventListenerOptions = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["normalizePassiveListenerOptions"])({
     passive: true,
     capture: true
 });
@@ -158982,21 +158707,14 @@ class FocusMonitor {
          * Needs to be an arrow function in order to preserve the context when it gets bound.
          */
         this._documentTouchstartListener = (event) => {
-            // Some screen readers will fire a fake `touchstart` event if an element is activated using
-            // the keyboard while on a device with a touchsreen. Consider such events as keyboard focus.
-            if (!isFakeTouchstartFromScreenReader(event)) {
-                // When the touchstart event fires the focus event is not yet in the event queue. This means
-                // we can't rely on the trick used above (setting timeout of 1ms). Instead we wait 650ms to
-                // see if a focus happens.
-                if (this._touchTimeoutId != null) {
-                    clearTimeout(this._touchTimeoutId);
-                }
-                this._lastTouchTarget = getTarget(event);
-                this._touchTimeoutId = setTimeout(() => this._lastTouchTarget = null, TOUCH_BUFFER_MS);
+            // When the touchstart event fires the focus event is not yet in the event queue. This means
+            // we can't rely on the trick used above (setting timeout of 1ms). Instead we wait 650ms to
+            // see if a focus happens.
+            if (this._touchTimeoutId != null) {
+                clearTimeout(this._touchTimeoutId);
             }
-            else if (!this._lastTouchTarget) {
-                this._setOriginForCurrentEventQueue('keyboard');
-            }
+            this._lastTouchTarget = getTarget(event);
+            this._touchTimeoutId = setTimeout(() => this._lastTouchTarget = null, TOUCH_BUFFER_MS);
         };
         /**
          * Event listener for `focus` events on the window.
@@ -159024,15 +158742,15 @@ class FocusMonitor {
         this._detectionMode = (options === null || options === void 0 ? void 0 : options.detectionMode) || 0 /* IMMEDIATE */;
     }
     monitor(element, checkChildren = false) {
-        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(element);
+        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceElement"])(element);
         // Do nothing if we're not on the browser platform or the passed in node isn't an element.
         if (!this._platform.isBrowser || nativeElement.nodeType !== 1) {
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(null);
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null);
         }
         // If the element is inside the shadow DOM, we need to bind our focus/blur listeners to
         // the shadow root, rather than the `document`, because the browser won't emit focus events
         // to the `document`, if focus is moving within the same shadow root.
-        const rootNode = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["_getShadowRoot"])(nativeElement) || this._getDocument();
+        const rootNode = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["_getShadowRoot"])(nativeElement) || this._getDocument();
         const cachedInfo = this._elementInfo.get(nativeElement);
         // Check if we're already monitoring this element.
         if (cachedInfo) {
@@ -159047,7 +158765,7 @@ class FocusMonitor {
         // Create monitored element info.
         const info = {
             checkChildren: checkChildren,
-            subject: new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"](),
+            subject: new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"](),
             rootNode
         };
         this._elementInfo.set(nativeElement, info);
@@ -159055,7 +158773,7 @@ class FocusMonitor {
         return info.subject;
     }
     stopMonitoring(element) {
-        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(element);
+        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceElement"])(element);
         const elementInfo = this._elementInfo.get(nativeElement);
         if (elementInfo) {
             elementInfo.subject.complete();
@@ -159065,21 +158783,12 @@ class FocusMonitor {
         }
     }
     focusVia(element, origin, options) {
-        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceElement"])(element);
-        const focusedElement = this._getDocument().activeElement;
-        // If the element is focused already, calling `focus` again won't trigger the event listener
-        // which means that the focus classes won't be updated. If that's the case, update the classes
-        // directly without waiting for an event.
-        if (nativeElement === focusedElement) {
-            this._getClosestElementsInfo(nativeElement)
-                .forEach(([currentElement, info]) => this._originChanged(currentElement, origin, info));
-        }
-        else {
-            this._setOriginForCurrentEventQueue(origin);
-            // `focus` isn't available on the server
-            if (typeof nativeElement.focus === 'function') {
-                nativeElement.focus(options);
-            }
+        const nativeElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_6__["coerceElement"])(element);
+        this._setOriginForCurrentEventQueue(origin);
+        // `focus` isn't available on the server
+        if (typeof nativeElement.focus === 'function') {
+            // Cast the element to `any`, because the TS typings don't have the `options` parameter yet.
+            nativeElement.focus(options);
         }
     }
     ngOnDestroy() {
@@ -159193,7 +158902,10 @@ class FocusMonitor {
         if (!elementInfo || (!elementInfo.checkChildren && element !== getTarget(event))) {
             return;
         }
-        this._originChanged(element, this._getFocusOrigin(event), elementInfo);
+        const origin = this._getFocusOrigin(event);
+        this._setClasses(element, origin);
+        this._emitOrigin(elementInfo.subject, origin);
+        this._lastFocusOrigin = origin;
     }
     /**
      * Handles blur events on a registered element.
@@ -159268,39 +158980,19 @@ class FocusMonitor {
             clearTimeout(this._originTimeoutId);
         }
     }
-    /** Updates all the state on an element once its focus origin has changed. */
-    _originChanged(element, origin, elementInfo) {
-        this._setClasses(element, origin);
-        this._emitOrigin(elementInfo.subject, origin);
-        this._lastFocusOrigin = origin;
-    }
-    /**
-     * Collects the `MonitoredElementInfo` of a particular element and
-     * all of its ancestors that have enabled `checkChildren`.
-     * @param element Element from which to start the search.
-     */
-    _getClosestElementsInfo(element) {
-        const results = [];
-        this._elementInfo.forEach((info, currentElement) => {
-            if (currentElement === element || (info.checkChildren && currentElement.contains(element))) {
-                results.push([currentElement, info]);
-            }
-        });
-        return results;
-    }
 }
-FocusMonitor.ɵfac = function FocusMonitor_Factory(t) { return new (t || FocusMonitor)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](FOCUS_MONITOR_DEFAULT_OPTIONS, 8)); };
-FocusMonitor.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function FocusMonitor_Factory() { return new FocusMonitor(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(FOCUS_MONITOR_DEFAULT_OPTIONS, 8)); }, token: FocusMonitor, providedIn: "root" });
+FocusMonitor.ɵfac = function FocusMonitor_Factory(t) { return new (t || FocusMonitor)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](FOCUS_MONITOR_DEFAULT_OPTIONS, 8)); };
+FocusMonitor.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function FocusMonitor_Factory() { return new FocusMonitor(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(FOCUS_MONITOR_DEFAULT_OPTIONS, 8)); }, token: FocusMonitor, providedIn: "root" });
 FocusMonitor.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
-    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [FOCUS_MONITOR_DEFAULT_OPTIONS,] }] }
 ];
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](FocusMonitor, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
-    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }, { type: undefined, decorators: [{
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
             }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
@@ -159438,16 +159130,16 @@ class HighContrastModeDetector {
         }
     }
 }
-HighContrastModeDetector.ɵfac = function HighContrastModeDetector_Factory(t) { return new (t || HighContrastModeDetector)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); };
-HighContrastModeDetector.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function HighContrastModeDetector_Factory() { return new HighContrastModeDetector(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); }, token: HighContrastModeDetector, providedIn: "root" });
+HighContrastModeDetector.ɵfac = function HighContrastModeDetector_Factory(t) { return new (t || HighContrastModeDetector)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); };
+HighContrastModeDetector.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function HighContrastModeDetector_Factory() { return new HighContrastModeDetector(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])); }, token: HighContrastModeDetector, providedIn: "root" });
 HighContrastModeDetector.ctorParameters = () => [
-    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] }] }
 ];
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HighContrastModeDetector, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{ providedIn: 'root' }]
-    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }, { type: undefined, decorators: [{
+    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["Platform"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
                 args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
             }] }]; }, null); })();
@@ -159465,15 +159157,15 @@ class A11yModule {
     }
 }
 A11yModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: A11yModule });
-A11yModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function A11yModule_Factory(t) { return new (t || A11yModule)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](HighContrastModeDetector)); }, imports: [[_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]] });
+A11yModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function A11yModule_Factory(t) { return new (t || A11yModule)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](HighContrastModeDetector)); }, imports: [[_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]] });
 A11yModule.ctorParameters = () => [
     { type: HighContrastModeDetector }
 ];
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](A11yModule, { declarations: function () { return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]; }, imports: function () { return [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]; }, exports: function () { return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]; } }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](A11yModule, { declarations: function () { return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]; }, imports: function () { return [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]]; }, exports: function () { return [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]; } }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](A11yModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
-                imports: [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]],
+                imports: [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_2__["PlatformModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]],
                 declarations: [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus],
                 exports: [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus]
             }]
@@ -159946,26 +159638,6 @@ function listCacheDelete(key) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (listCacheDelete);
-
-
-/***/ }),
-
-/***/ "uKWE":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@cubejs-client/core/node_modules/core-js/modules/es.date.to-iso-string.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__(/*! ../internals/export */ "1BGQ");
-var toISOString = __webpack_require__(/*! ../internals/date-to-iso-string */ "vM7/");
-
-// `Date.prototype.toISOString` method
-// https://tc39.es/ecma262/#sec-date.prototype.toisostring
-// PhantomJS / old WebKit has a broken implementations
-$({ target: 'Date', proto: true, forced: Date.prototype.toISOString !== toISOString }, {
-  toISOString: toISOString
-});
 
 
 /***/ }),
@@ -161119,49 +160791,6 @@ function isFunction(value) {
 
 /***/ }),
 
-/***/ "vM7/":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@cubejs-client/core/node_modules/core-js/internals/date-to-iso-string.js ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var fails = __webpack_require__(/*! ../internals/fails */ "LfZC");
-var padStart = __webpack_require__(/*! ../internals/string-pad */ "RbCe").start;
-
-var abs = Math.abs;
-var DatePrototype = Date.prototype;
-var getTime = DatePrototype.getTime;
-var nativeDateToISOString = DatePrototype.toISOString;
-
-// `Date.prototype.toISOString` method implementation
-// https://tc39.es/ecma262/#sec-date.prototype.toisostring
-// PhantomJS / old WebKit fails here:
-module.exports = (fails(function () {
-  return nativeDateToISOString.call(new Date(-5e13 - 1)) != '0385-07-25T07:06:39.999Z';
-}) || !fails(function () {
-  nativeDateToISOString.call(new Date(NaN));
-})) ? function toISOString() {
-  if (!isFinite(getTime.call(this))) throw RangeError('Invalid time value');
-  var date = this;
-  var year = date.getUTCFullYear();
-  var milliseconds = date.getUTCMilliseconds();
-  var sign = year < 0 ? '-' : year > 9999 ? '+' : '';
-  return sign + padStart(abs(year), sign ? 6 : 4, 0) +
-    '-' + padStart(date.getUTCMonth() + 1, 2, 0) +
-    '-' + padStart(date.getUTCDate(), 2, 0) +
-    'T' + padStart(date.getUTCHours(), 2, 0) +
-    ':' + padStart(date.getUTCMinutes(), 2, 0) +
-    ':' + padStart(date.getUTCSeconds(), 2, 0) +
-    '.' + padStart(milliseconds, 3, 0) +
-    'Z';
-} : nativeDateToISOString;
-
-
-/***/ }),
-
 /***/ "vPIQ":
 /*!********************************************!*\
   !*** ./node_modules/lodash-es/findLast.js ***!
@@ -162028,8 +161657,7 @@ class FixedSizeVirtualScrollStrategy {
         const viewportSize = this._viewport.getViewportSize();
         const dataLength = this._viewport.getDataLength();
         let scrollOffset = this._viewport.measureScrollOffset();
-        // Prevent NaN as result when dividing by zero.
-        let firstVisibleIndex = (this._itemSize > 0) ? scrollOffset / this._itemSize : 0;
+        let firstVisibleIndex = scrollOffset / this._itemSize;
         // If user scrolls to the bottom of the list and data changes to a smaller list
         if (newRange.end > dataLength) {
             // We have to recalculate the first visible index based on new data length and viewport size.
@@ -162144,7 +161772,9 @@ const DEFAULT_SCROLL_TIME = 20;
  * Scrollable references emit a scrolled event.
  */
 class ScrollDispatcher {
-    constructor(_ngZone, _platform, document) {
+    constructor(_ngZone, _platform, 
+    /** @breaking-change 11.0.0 make document required */
+    document) {
         this._ngZone = _ngZone;
         this._platform = _platform;
         /** Subject for notifying that a registered scrollable reference element has been scrolled. */
@@ -162223,32 +161853,37 @@ class ScrollDispatcher {
     /**
      * Returns an observable that emits whenever any of the
      * scrollable ancestors of an element are scrolled.
-     * @param elementOrElementRef Element whose ancestors to listen for.
+     * @param elementRef Element whose ancestors to listen for.
      * @param auditTimeInMs Time to throttle the scroll events.
      */
-    ancestorScrolled(elementOrElementRef, auditTimeInMs) {
-        const ancestors = this.getAncestorScrollContainers(elementOrElementRef);
+    ancestorScrolled(elementRef, auditTimeInMs) {
+        const ancestors = this.getAncestorScrollContainers(elementRef);
         return this.scrolled(auditTimeInMs).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(target => {
             return !target || ancestors.indexOf(target) > -1;
         }));
     }
     /** Returns all registered Scrollables that contain the provided element. */
-    getAncestorScrollContainers(elementOrElementRef) {
+    getAncestorScrollContainers(elementRef) {
         const scrollingContainers = [];
         this.scrollContainers.forEach((_subscription, scrollable) => {
-            if (this._scrollableContainsElement(scrollable, elementOrElementRef)) {
+            if (this._scrollableContainsElement(scrollable, elementRef)) {
                 scrollingContainers.push(scrollable);
             }
         });
         return scrollingContainers;
     }
+    /** Access injected document if available or fallback to global document reference */
+    _getDocument() {
+        return this._document || document;
+    }
     /** Use defaultView of injected document if available or fallback to global window reference */
     _getWindow() {
-        return this._document.defaultView || window;
+        const doc = this._getDocument();
+        return doc.defaultView || window;
     }
     /** Returns true if the element is contained within the provided Scrollable. */
-    _scrollableContainsElement(scrollable, elementOrElementRef) {
-        let element = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceElement"])(elementOrElementRef);
+    _scrollableContainsElement(scrollable, elementRef) {
+        let element = elementRef.nativeElement;
         let scrollableElement = scrollable.getElementRef().nativeElement;
         // Traverse through the element parents until we reach null, checking if any of the elements
         // are the scrollable's element.
@@ -162477,7 +162112,9 @@ const DEFAULT_RESIZE_TIME = 20;
  * @docs-private
  */
 class ViewportRuler {
-    constructor(_platform, ngZone, document) {
+    constructor(_platform, ngZone, 
+    /** @breaking-change 11.0.0 make document required */
+    document) {
         this._platform = _platform;
         /** Stream of viewport change events. */
         this._change = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
@@ -162554,7 +162191,7 @@ class ViewportRuler {
         // `scrollTop` and `scrollLeft` is inconsistent. However, using the bounding rect of
         // `document.documentElement` works consistently, where the `top` and `left` values will
         // equal negative the scroll position.
-        const document = this._document;
+        const document = this._getDocument();
         const window = this._getWindow();
         const documentElement = document.documentElement;
         const documentRect = documentElement.getBoundingClientRect();
@@ -162571,9 +162208,14 @@ class ViewportRuler {
     change(throttleTime = DEFAULT_RESIZE_TIME) {
         return throttleTime > 0 ? this._change.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["auditTime"])(throttleTime)) : this._change;
     }
+    /** Access injected document if available or fallback to global document reference */
+    _getDocument() {
+        return this._document || document;
+    }
     /** Use defaultView of injected document if available or fallback to global window reference */
     _getWindow() {
-        return this._document.defaultView || window;
+        const doc = this._getDocument();
+        return doc.defaultView || window;
     }
     /** Updates the cached viewport size. */
     _updateViewportSize() {
@@ -162619,7 +162261,12 @@ function rangesEqual(r1, r2) {
 const SCROLL_SCHEDULER = typeof requestAnimationFrame !== 'undefined' ? rxjs__WEBPACK_IMPORTED_MODULE_2__["animationFrameScheduler"] : rxjs__WEBPACK_IMPORTED_MODULE_2__["asapScheduler"];
 /** A viewport that virtualizes its scrolling with the help of `CdkVirtualForOf`. */
 class CdkVirtualScrollViewport extends CdkScrollable {
-    constructor(elementRef, _changeDetectorRef, ngZone, _scrollStrategy, dir, scrollDispatcher, viewportRuler) {
+    constructor(elementRef, _changeDetectorRef, ngZone, _scrollStrategy, dir, scrollDispatcher, 
+    /**
+     * @deprecated `viewportRuler` parameter to become required.
+     * @breaking-change 11.0.0
+     */
+    viewportRuler) {
         super(elementRef, scrollDispatcher, ngZone, dir);
         this.elementRef = elementRef;
         this._changeDetectorRef = _changeDetectorRef;
@@ -162667,9 +162314,12 @@ class CdkVirtualScrollViewport extends CdkScrollable {
         if (!_scrollStrategy && (typeof ngDevMode === 'undefined' || ngDevMode)) {
             throw Error('Error: cdk-virtual-scroll-viewport requires the "itemSize" property to be set.');
         }
-        this._viewportChanges = viewportRuler.change().subscribe(() => {
-            this.checkViewportSize();
-        });
+        // @breaking-change 11.0.0 Remove null check for `viewportRuler`.
+        if (viewportRuler) {
+            this._viewportChanges = viewportRuler.change().subscribe(() => {
+                this.checkViewportSize();
+            });
+        }
     }
     /** The direction the viewport scrolls. */
     get orientation() {
@@ -163171,11 +162821,7 @@ class CdkVirtualForOf {
         }
         this._renderedItems = this._data.slice(this._renderedRange.start, this._renderedRange.end);
         if (!this._differ) {
-            // Use a wrapper function for the `trackBy` so any new values are
-            // picked up automatically without having to recreate the differ.
-            this._differ = this._differs.find(this._renderedItems).create((index, item) => {
-                return this.cdkVirtualForTrackBy ? this.cdkVirtualForTrackBy(index, item) : item;
-            });
+            this._differ = this._differs.find(this._renderedItems).create(this.cdkVirtualForTrackBy);
         }
         this._needsUpdate = true;
     }
@@ -163192,7 +162838,7 @@ class CdkVirtualForOf {
         const count = this._data.length;
         let i = this._viewContainerRef.length;
         while (i--) {
-            const view = this._viewContainerRef.get(i);
+            let view = this._viewContainerRef.get(i);
             view.context.index = this._renderedRange.start + i;
             view.context.count = count;
             this._updateComputedContextProperties(view.context);
@@ -163201,7 +162847,7 @@ class CdkVirtualForOf {
     }
     /** Apply changes to the DOM. */
     _applyChanges(changes) {
-        this._viewRepeater.applyChanges(changes, this._viewContainerRef, (record, _adjustedPreviousIndex, currentIndex) => this._getEmbeddedViewArgs(record, currentIndex), (record) => record.item);
+        this._viewRepeater.applyChanges(changes, this._viewContainerRef, (record, adjustedPreviousIndex, currentIndex) => this._getEmbeddedViewArgs(record, currentIndex), (record) => record.item);
         // Update $implicit for any items that had an identity change.
         changes.forEachIdentityChange((record) => {
             const view = this._viewContainerRef.get(record.currentIndex);
@@ -171764,7 +171410,7 @@ __webpack_require__.r(__webpack_exports__);
  * found in the LICENSE file at https://angular.io/license
  */
 /** Current version of the Angular Component Development Kit. */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('11.2.13');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('10.2.7');
 
 /**
  * @license
