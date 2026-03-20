@@ -267,6 +267,10 @@ pub fn sql_tests(prefix: &str) -> Vec<(&'static str, TestFn)> {
         t("queue_list_v1", queue_list_v1),
         t("queue_full_workflow_v1", queue_full_workflow_v1),
         t("queue_full_workflow_v2", queue_full_workflow_v2),
+        t(
+            "queue_full_workflow_v2_with_external_id",
+            queue_full_workflow_v2_with_external_id,
+        ),
         t("queue_latest_result_v1", queue_latest_result_v1),
         t("queue_retrieve_extended", queue_retrieve_extended),
         t("queue_ack_then_result_v1", queue_ack_then_result_v1),
@@ -290,10 +294,6 @@ pub fn sql_tests(prefix: &str) -> Vec<(&'static str, TestFn)> {
         ),
         t("queue_custom_orphaned", queue_custom_orphaned),
         t("queue_result_by_external_id", queue_result_by_external_id),
-        t(
-            "queue_result_by_external_id_v2",
-            queue_result_by_external_id_v2,
-        ),
         t("limit_pushdown_group", limit_pushdown_group),
         t("limit_pushdown_group_order", limit_pushdown_group_order),
         t(
@@ -356,7 +356,7 @@ lazy_static::lazy_static! {
         "queue_ack_then_result_v2_with_external_id",
         "queue_custom_orphaned",
         "queue_result_by_external_id",
-        "queue_result_by_external_id_v2",
+        "queue_full_workflow_v2_with_external_id",
         "queue_full_workflow_v1",
         "queue_full_workflow_v2",
         "queue_heartbeat_by_id",
@@ -11228,13 +11228,20 @@ async fn queue_result_by_external_id(service: Box<dyn SqlClient>) -> Result<(), 
     Ok(())
 }
 
-async fn queue_result_by_external_id_v2(service: Box<dyn SqlClient>) -> Result<(), CubeError> {
+async fn queue_full_workflow_v2_with_external_id(
+    service: Box<dyn SqlClient>,
+) -> Result<(), CubeError> {
     let add_response = service
         .exec_query(
             r#"QUEUE ADD PRIORITY 1 EXTERNAL_ID 'ext-v2' "STANDALONE#queue:ext_v2" "payload_ext_v2";"#,
         )
         .await?;
     let id = assert_queue_add_and_get_id(&add_response)?;
+
+    let retrieve_response = service
+        .exec_query(r#"QUEUE RETRIEVE CONCURRENCY 1 "STANDALONE#queue:ext_v2""#)
+        .await?;
+    assert_eq!(retrieve_response.get_rows().len(), 1);
 
     let ack_result = service
         .exec_query(&format!(r#"QUEUE ACK {} "result:ext_v2""#, id))
@@ -11291,8 +11298,6 @@ async fn queue_result_by_external_id_v2(service: Box<dyn SqlClient>) -> Result<(
         ]),]
     );
 
-    // Unknown external_id with valid path falls back to path lookup
-    // (but path result was already marked deleted, so returns empty)
     let result = service
         .exec_query(r#"QUEUE RESULT EXTERNAL_ID "unknown-ext" "STANDALONE#queue:ext_v2""#)
         .await?;
