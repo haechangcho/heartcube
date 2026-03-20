@@ -526,8 +526,20 @@ impl CacheStoreSqlService {
                     true,
                 )
             }
-            QueueCommand::Result { key } => {
-                let ack_result = self.cachestore.queue_result(key).await?;
+            QueueCommand::Result { key, external_id } => {
+                let ack_result = if let Some(external_id) = external_id {
+                    let r = self
+                        .cachestore
+                        .queue_result_by_external_id(external_id)
+                        .await?;
+                    if r.is_some() {
+                        r
+                    } else {
+                        self.cachestore.queue_result(key).await?
+                    }
+                } else {
+                    self.cachestore.queue_result(key).await?
+                };
                 let rows = if let Some(ack_result) = ack_result {
                     vec![ack_result.into_queue_result_row()]
                 } else {

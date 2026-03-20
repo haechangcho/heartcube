@@ -290,6 +290,10 @@ pub fn sql_tests(prefix: &str) -> Vec<(&'static str, TestFn)> {
         ),
         t("queue_custom_orphaned", queue_custom_orphaned),
         t("queue_result_by_external_id", queue_result_by_external_id),
+        t(
+            "queue_result_by_external_id_v2",
+            queue_result_by_external_id_v2,
+        ),
         t("limit_pushdown_group", limit_pushdown_group),
         t("limit_pushdown_group_order", limit_pushdown_group_order),
         t(
@@ -352,6 +356,7 @@ lazy_static::lazy_static! {
         "queue_ack_then_result_v2_with_external_id",
         "queue_custom_orphaned",
         "queue_result_by_external_id",
+        "queue_result_by_external_id_v2",
         "queue_full_workflow_v1",
         "queue_full_workflow_v2",
         "queue_heartbeat_by_id",
@@ -11220,6 +11225,79 @@ async fn queue_result_by_external_id(service: Box<dyn SqlClient>) -> Result<(), 
             TableValue::String("success".to_string())
         ]),]
     );
+    Ok(())
+}
+
+async fn queue_result_by_external_id_v2(service: Box<dyn SqlClient>) -> Result<(), CubeError> {
+    let add_response = service
+        .exec_query(
+            r#"QUEUE ADD PRIORITY 1 EXTERNAL_ID 'ext-v2' "STANDALONE#queue:ext_v2" "payload_ext_v2";"#,
+        )
+        .await?;
+    let id = assert_queue_add_and_get_id(&add_response)?;
+
+    let ack_result = service
+        .exec_query(&format!(r#"QUEUE ACK {} "result:ext_v2""#, id))
+        .await?;
+    assert_eq!(
+        ack_result.get_rows(),
+        &vec![Row::new(vec![TableValue::Boolean(true)])]
+    );
+
+    // QUEUE RESULT EXTERNAL_ID "ext-v2" "path" — found by external_id, marks deleted
+    let result = service
+        .exec_query(r#"QUEUE RESULT EXTERNAL_ID "ext-v2" "STANDALONE#queue:ext_v2""#)
+        .await?;
+    assert_eq!(
+        result.get_columns(),
+        &vec![
+            Column::new("payload".to_string(), ColumnType::String, 0),
+            Column::new("type".to_string(), ColumnType::String, 1),
+        ]
+    );
+    assert_eq!(
+        result.get_rows(),
+        &vec![Row::new(vec![
+            TableValue::String("result:ext_v2".to_string()),
+            TableValue::String("success".to_string())
+        ]),]
+    );
+
+    // Second call still returns result (mark-then-read semantics of external_id lookup)
+    let result = service
+        .exec_query(r#"QUEUE RESULT EXTERNAL_ID "ext-v2" "STANDALONE#queue:ext_v2""#)
+        .await?;
+    assert_eq!(
+        result.get_rows(),
+        &vec![Row::new(vec![
+            TableValue::String("result:ext_v2".to_string()),
+            TableValue::String("success".to_string())
+        ]),]
+    );
+
+    // QUEUE RESULT by path returns empty (marked deleted by external_id read)
+    let result = service
+        .exec_query(r#"QUEUE RESULT "STANDALONE#queue:ext_v2""#)
+        .await?;
+    assert_eq!(result.get_rows().len(), 0);
+
+    // QUEUE RESULT by id still works (read-many)
+    let result = service.exec_query(&format!("QUEUE RESULT {}", id)).await?;
+    assert_eq!(
+        result.get_rows(),
+        &vec![Row::new(vec![
+            TableValue::String("result:ext_v2".to_string()),
+            TableValue::String("success".to_string())
+        ]),]
+    );
+
+    // Unknown external_id with valid path falls back to path lookup
+    // (but path result was already marked deleted, so returns empty)
+    let result = service
+        .exec_query(r#"QUEUE RESULT EXTERNAL_ID "unknown-ext" "STANDALONE#queue:ext_v2""#)
+        .await?;
+    assert_eq!(result.get_rows().len(), 0);
+
     Ok(())
 }
 
