@@ -45,6 +45,7 @@ COPY packages/cubejs-server-core/package.json          packages/cubejs-server-co
 COPY packages/cubejs-templates/package.json            packages/cubejs-templates/package.json
 COPY packages/cubejs-testing-shared/package.json       packages/cubejs-testing-shared/package.json
 COPY rust/cubestore/package.json                       rust/cubestore/package.json
+COPY rust/cubestore/bin                                rust/cubestore/bin
 COPY rust/cubesql/package.json                         rust/cubesql/package.json
 
 RUN yarn install
@@ -74,7 +75,11 @@ COPY packages/cubejs-testing-shared/       packages/cubejs-testing-shared/
 COPY rust/cubestore/                       rust/cubestore/
 COPY rust/cubesql/                         rust/cubesql/
 
-# Build TypeScript packages in dependency order, then playground (Vite)
+# cubejs-client-core uses a non-standard build script name (build:client-core)
+# so lerna skips it — build it manually first
+RUN yarn workspace @cubejs-client/core build:client-core
+
+# Build remaining TypeScript packages in dependency order, then playground (Vite)
 RUN yarn lerna run build \
     --ignore @cubejs-backend/testing \
     --ignore @cubejs-client/ngx \
