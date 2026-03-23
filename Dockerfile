@@ -75,11 +75,11 @@ COPY packages/cubejs-testing-shared/       packages/cubejs-testing-shared/
 COPY rust/cubestore/                       rust/cubestore/
 COPY rust/cubesql/                         rust/cubesql/
 
-# cubejs-client-core uses a non-standard build script name (build:client-core)
-# so lerna skips it — build it manually first
-RUN yarn workspace @cubejs-client/core build:client-core
+# Step 1: build client-core + Rollup bundles for @cubejs-client/react etc.
+# (mirrors dev.Dockerfile: yarn build = lerna run build:client-core && rollup -c)
+RUN yarn build
 
-# Build remaining TypeScript packages in dependency order, then playground (Vite)
+# Step 2: build backend TypeScript packages + playground Vite SPA via lerna
 RUN yarn lerna run build \
     --ignore @cubejs-backend/testing \
     --ignore @cubejs-client/ngx \
