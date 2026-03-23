@@ -11,9 +11,6 @@ export interface FileContent {
 export interface SchemaFileRepository {
   localPath: () => string;
   dataSchemaFiles: (includeDependencies?: boolean) => Promise<FileContent[]>;
-  writeDataSchemaFile: (fileName: string, source: string) => void;
-  deleteDataSchemaFile: (fileName: string) => void;
-  renameDataSchemaFile: (oldFileName: string, newFileName: string) => void;
 }
 
 export class FileRepository implements SchemaFileRepository {
