@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { Layout, Modal, Empty, Typography } from 'antd';
+import { Layout, Modal, Empty, Typography, Input, Button, Tooltip, Dropdown } from 'antd';
+import {
+  PlusOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  SaveOutlined,
+  MoreOutlined,
+} from '@ant-design/icons';
+import Editor from '@monaco-editor/react';
 import { RouterProps } from 'react-router-dom';
 
-import PrismCode from '../../PrismCode';
 import { playgroundAction } from '../../events';
 import { Menu, Tabs, Tree } from '../../components';
 import { Alert, CubeLoader } from '../../atoms';
@@ -12,7 +19,6 @@ import { ButtonDropdown } from '../../QueryBuilder/ButtonDropdown';
 import { SchemaFormat } from '../../types';
 
 const { Content, Sider } = Layout;
-
 const { TreeNode } = Tree;
 const { TabPane } = Tabs;
 
@@ -24,23 +30,24 @@ const schemaToTreeData = (schemas) =>
     treeData: Object.keys(schemas[schemaName]).map((tableName) => {
       const key = `${schemaName}.${tableName}`;
       schemasMap[key] = [schemaName, tableName];
-      return {
-        title: tableName,
-        key,
-      };
+      return { title: tableName, key };
     }),
   }));
+
+function getLanguage(fileName: string): string {
+  if (fileName.endsWith('.yml') || fileName.endsWith('.yaml')) return 'yaml';
+  if (fileName.endsWith('.js')) return 'javascript';
+  return 'plaintext';
+}
 
 type SchemaPageProps = RouterProps;
 
 export class SchemaPage extends Component<SchemaPageProps, any> {
   static contextType = AppContext;
-
   context!: React.ContextType<typeof AppContext>;
 
   constructor(props) {
     super(props);
-
     this.state = {
       expandedKeys: [],
       autoExpandParent: true,
@@ -49,7 +56,18 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       activeTab: 'schema',
       files: [],
       isDocker: null,
-      shown: false
+      shown: false,
+      // editor
+      selectedFile: null,
+      editingContent: null,
+      isDirty: false,
+      saving: false,
+      // modals
+      newFileModal: false,
+      newFileName: '',
+      renameModal: false,
+      renameTarget: null,
+      renameNewName: '',
     };
   }
 
@@ -60,10 +78,7 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
 
   onExpand(expandedKeys) {
     playgroundAction('Expand Tables');
-    this.setState({
-      expandedKeys,
-      autoExpandParent: false,
-    });
+    this.setState({ expandedKeys, autoExpandParent: false });
   }
 
   onCheck(checkedKeys) {
@@ -80,9 +95,7 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
     try {
       const res = await playgroundFetch('playground/db-schema');
       const result = await res.json();
-      this.setState({
-        tablesSchema: result.tablesSchema,
-      });
+      this.setState({ tablesSchema: result.tablesSchema });
     } catch (e: any) {
       this.setState({ schemaLoadingError: e });
     } finally {
@@ -93,81 +106,217 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
   async loadFiles() {
     const res = await playgroundFetch('playground/files');
     const result = await res.json();
+    const files = result.files || [];
     this.setState({
-      files: result.files,
-      activeTab: result.files && result.files.length > 0 ? 'files' : 'schema',
+      files,
+      activeTab: files.length > 0 ? 'files' : 'schema',
     });
   }
 
   async generateSchema(format: SchemaFormat = SchemaFormat.js) {
     const { checkedKeys, tablesSchema } = this.state;
     const { history } = this.props;
-
     const options = { format };
-
     playgroundAction('Generate Schema', options);
     const res = await playgroundFetch('playground/generate-schema', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         format,
-        tables: checkedKeys
-          .filter((k) => !!schemasMap[k])
-          .map((e) => schemasMap[e]),
+        tables: checkedKeys.filter((k) => !!schemasMap[k]).map((e) => schemasMap[e]),
         tablesSchema,
       }),
     });
-
     if (res.status === 200) {
       playgroundAction('Generate Schema Success', options);
       await this.loadFiles();
       this.setState({ checkedKeys: [], activeTab: 'files' });
       Modal.success({
         title: 'Data model files successfully generated!',
-        content:
-          'You can start exploring your data model and building the charts',
+        content: 'You can start exploring your data model and building the charts',
         okText: 'Build',
         cancelText: 'Close',
         okCancel: true,
-        onOk() {
-          history.push('/build');
-        },
+        onOk() { history.push('/build'); },
       });
     } else {
-      playgroundAction('Generate Schema Fail', {
-        error: await res.text(),
-        ...options,
-      });
+      playgroundAction('Generate Schema Fail', { error: await res.text(), ...options });
     }
   }
 
-  selectedFileContent() {
-    const file = this.selectedFile();
-    return file && file.content;
+  selectFile(fileName: string) {
+    const { files, isDirty, selectedFile } = this.state;
+    if (isDirty && selectedFile) {
+      Modal.confirm({
+        title: 'Unsaved changes',
+        content: `"${selectedFile}" has unsaved changes. Discard?`,
+        okText: 'Discard',
+        okType: 'danger',
+        onOk: () => {
+          const file = files.find((f) => f.fileName === fileName);
+          this.setState({ selectedFile: fileName, editingContent: file?.content ?? '', isDirty: false });
+        },
+      });
+    } else {
+      const file = files.find((f) => f.fileName === fileName);
+      this.setState({ selectedFile: fileName, editingContent: file?.content ?? '', isDirty: false });
+    }
   }
 
-  selectedFile() {
-    const { files, selectedFile } = this.state;
-    return files.find((f) => f.fileName === selectedFile);
+  async saveFile() {
+    const { selectedFile, editingContent } = this.state;
+    if (!selectedFile) return;
+    this.setState({ saving: true });
+    try {
+      await playgroundFetch('playground/model/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fileName: selectedFile, content: editingContent }),
+      });
+      // update local cache
+      this.setState((prev) => ({
+        files: prev.files.map((f) =>
+          f.fileName === selectedFile ? { ...f, content: editingContent } : f
+        ),
+        isDirty: false,
+      }));
+      playgroundAction('Save Model File');
+    } finally {
+      this.setState({ saving: false });
+    }
+  }
+
+  async createFile() {
+    const { newFileName } = this.state;
+    const name = newFileName.trim();
+    if (!name) return;
+    const res = await playgroundFetch('playground/model/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fileName: name, content: '' }),
+    });
+    if (res.ok) {
+      await this.loadFiles();
+      this.setState({ newFileModal: false, newFileName: '' });
+      this.selectFile(name);
+      playgroundAction('Create Model File');
+    } else {
+      const { error } = await res.json();
+      Modal.error({ title: 'Error', content: error });
+    }
+  }
+
+  async deleteFile(fileName: string) {
+    Modal.confirm({
+      title: `Delete "${fileName}"?`,
+      okText: 'Delete',
+      okType: 'danger',
+      onOk: async () => {
+        await playgroundFetch('playground/model', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fileName }),
+        });
+        await this.loadFiles();
+        if (this.state.selectedFile === fileName) {
+          this.setState({ selectedFile: null, editingContent: null, isDirty: false });
+        }
+        playgroundAction('Delete Model File');
+      },
+    });
+  }
+
+  async renameFile() {
+    const { renameTarget, renameNewName } = this.state;
+    const newName = renameNewName.trim();
+    if (!newName || !renameTarget) return;
+    const res = await playgroundFetch('playground/model/rename', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ oldFileName: renameTarget, newFileName: newName }),
+    });
+    if (res.ok) {
+      await this.loadFiles();
+      const { selectedFile } = this.state;
+      if (selectedFile === renameTarget) {
+        this.selectFile(newName);
+      }
+      this.setState({ renameModal: false, renameTarget: null, renameNewName: '' });
+      playgroundAction('Rename Model File');
+    } else {
+      const { error } = await res.json();
+      Modal.error({ title: 'Error', content: error });
+    }
   }
 
   renderFilesMenu() {
     const { selectedFile, files } = this.state;
     return (
-      <Menu
-        mode="inline"
-        onClick={({ key }) => {
-          playgroundAction('Select File');
-          this.setState({ selectedFile: key });
-        }}
-        selectedKeys={selectedFile ? [selectedFile] : []}
-      >
-        {files.map((f) => (
-          <Menu.Item key={f.fileName}>{f.fileName}</Menu.Item>
-        ))}
-      </Menu>
+      <div>
+        <div style={{ padding: '8px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontWeight: 500, fontSize: 12, color: '#8c8c8c' }}>MODEL FILES</span>
+          <Tooltip title="New file">
+            <Button
+              type="text"
+              size="small"
+              icon={<PlusOutlined />}
+              onClick={() => this.setState({ newFileModal: true })}
+            />
+          </Tooltip>
+        </div>
+        <Menu
+          mode="inline"
+          selectedKeys={selectedFile ? [selectedFile] : []}
+        >
+          {files.map((f) => (
+            <Menu.Item
+              key={f.fileName}
+              onClick={() => this.selectFile(f.fileName)}
+              style={{ paddingRight: 8 }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', flex: 1 }}>
+                  {f.fileName}
+                </span>
+                <Dropdown
+                  overlay={
+                    <Menu>
+                      <Menu.Item
+                        icon={<EditOutlined />}
+                        onClick={(e) => {
+                          e.domEvent.stopPropagation();
+                          this.setState({ renameModal: true, renameTarget: f.fileName, renameNewName: f.fileName });
+                        }}
+                      >
+                        Rename
+                      </Menu.Item>
+                      <Menu.Item
+                        icon={<DeleteOutlined />}
+                        danger
+                        onClick={(e) => {
+                          e.domEvent.stopPropagation();
+                          this.deleteFile(f.fileName);
+                        }}
+                      >
+                        Delete
+                      </Menu.Item>
+                    </Menu>
+                  }
+                  trigger={['click']}
+                >
+                  <Button
+                    type="text"
+                    size="small"
+                    icon={<MoreOutlined />}
+                    onClick={(e) => e.stopPropagation()}
+                    style={{ flexShrink: 0 }}
+                  />
+                </Dropdown>
+              </div>
+            </Menu.Item>
+          ))}
+        </Menu>
+      </div>
     );
   }
 
@@ -182,11 +331,16 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       checkedKeys,
       selectedKeys,
       activeTab,
-      isDocker,
+      editingContent,
+      isDirty,
+      saving,
+      newFileModal,
+      newFileName,
+      renameModal,
+      renameNewName,
     } = this.state;
 
     const { playgroundContext } = this.context;
-
     const [major, minor] = playgroundContext.coreServerVersion
       ? playgroundContext.coreServerVersion.split('.')
       : [];
@@ -241,7 +395,7 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
 
     return (
       <Layout style={{ height: '100%' }}>
-        <Sider width={340} className="schema-sidebar">
+        <Sider width={280} className="schema-sidebar">
           <Tabs
             activeKey={activeTab}
             onChange={(tab) => this.setState({ activeTab: tab })}
@@ -254,11 +408,7 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
                 overlay={
                   <Menu data-testid="generate-schema">
                     <Menu.Item
-                      title={
-                        !isYamlFormatSupported
-                          ? 'yaml schema format is supported by Cube 0.31.0 and later'
-                          : ''
-                      }
+                      title={!isYamlFormatSupported ? 'yaml schema format is supported by Cube 0.31.0 and later' : ''}
                       disabled={!isYamlFormatSupported}
                       onClick={() => this.generateSchema(SchemaFormat.yaml)}
                     >
@@ -281,65 +431,102 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
             <TabPane tab="Tables" key="schema">
               {schemaLoading ? <CubeLoader /> : renderTreeOrError()}
             </TabPane>
-
             <TabPane tab="Files" key="files">
               {this.renderFilesMenu()}
             </TabPane>
           </Tabs>
         </Sider>
 
-        <Content
-          style={{
-            minHeight: 280,
-            padding: 24,
-          }}
-        >
-          {selectedFile && (
-            <Alert
-              message={
-                isDocker ? (
-                  <span>
-                    Data model files are located and can be edited in the mount
-                    volume directory.{' '}
-                    <Typography.Link
-                      href="https://cube.dev/docs/schema/getting-started"
-                      target="_blank"
-                    >
-                      Learn more about working with Cube data model in the docs
-                    </Typography.Link>
-                  </span>
-                ) : (
-                  <span>
-                    This file can be edited at&nbsp;
-                    <b>{this.selectedFile().absPath}</b>
-                  </span>
-                )
-              }
-              type="info"
-              style={{ paddingTop: 10, paddingBottom: 11 }}
-            />
-          )}
+        <Content style={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
           {selectedFile ? (
-            <PrismCode
-              code={this.selectedFileContent()}
-              style={{
-                padding: 0,
-                marginTop: 24,
-              }}
-            />
+            <>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '8px 16px',
+                borderBottom: '1px solid #f0f0f0',
+                background: '#fafafa',
+              }}>
+                <Typography.Text strong style={{ fontSize: 13 }}>
+                  {selectedFile}
+                  {isDirty && <span style={{ color: '#faad14', marginLeft: 6 }}>●</span>}
+                </Typography.Text>
+                <Button
+                  type="primary"
+                  size="small"
+                  icon={<SaveOutlined />}
+                  loading={saving}
+                  disabled={!isDirty}
+                  onClick={() => this.saveFile()}
+                >
+                  Save
+                </Button>
+              </div>
+              <div style={{ flex: 1, overflow: 'hidden' }}>
+                <Editor
+                  height="100%"
+                  language={getLanguage(selectedFile)}
+                  value={editingContent ?? ''}
+                  theme="vs-dark"
+                  onChange={(value) => this.setState({ editingContent: value ?? '', isDirty: true })}
+                  options={{
+                    minimap: { enabled: false },
+                    fontSize: 13,
+                    lineNumbers: 'on',
+                    wordWrap: 'on',
+                    scrollBeyondLastLine: false,
+                    automaticLayout: true,
+                  }}
+                />
+              </div>
+            </>
           ) : (
             <Empty
-              style={{ marginTop: 50 }}
-              description="Select tables to generate Cube data model"
+              style={{ marginTop: 80 }}
+              description="Select a file to edit, or create a new one"
             />
           )}
-
-          <AppContextConsumer
-            onReady={({ playgroundContext }) =>
-              this.setState({ isDocker: playgroundContext?.isDocker })
-            }
-          />
         </Content>
+
+        {/* New File Modal */}
+        <Modal
+          title="New Model File"
+          visible={newFileModal}
+          onOk={() => this.createFile()}
+          onCancel={() => this.setState({ newFileModal: false, newFileName: '' })}
+          okText="Create"
+        >
+          <Input
+            placeholder="e.g. cubes/orders.yml"
+            value={newFileName}
+            onChange={(e) => this.setState({ newFileName: e.target.value })}
+            onPressEnter={() => this.createFile()}
+            autoFocus
+          />
+        </Modal>
+
+        {/* Rename Modal */}
+        <Modal
+          title="Rename File"
+          visible={renameModal}
+          onOk={() => this.renameFile()}
+          onCancel={() => this.setState({ renameModal: false, renameTarget: null, renameNewName: '' })}
+          okText="Rename"
+        >
+          <Input
+            value={renameNewName}
+            onChange={(e) => this.setState({ renameNewName: e.target.value })}
+            onPressEnter={() => this.renameFile()}
+            autoFocus
+          />
+        </Modal>
+
+        <AppContextConsumer
+          onReady={({ playgroundContext: ctx }) =>
+            this.setState({ isDocker: ctx?.isDocker })
+          }
+        />
       </Layout>
     );
   }

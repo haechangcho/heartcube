@@ -11,6 +11,9 @@ export interface FileContent {
 export interface SchemaFileRepository {
   localPath: () => string;
   dataSchemaFiles: (includeDependencies?: boolean) => Promise<FileContent[]>;
+  writeDataSchemaFile: (fileName: string, source: string) => void;
+  deleteDataSchemaFile: (fileName: string) => void;
+  renameDataSchemaFile: (oldFileName: string, newFileName: string) => void;
 }
 
 export class FileRepository implements SchemaFileRepository {
@@ -72,6 +75,24 @@ export class FileRepository implements SchemaFileRepository {
     fs.writeFileSync(path.join(this.localPath(), fileName), source, {
       encoding: 'utf-8'
     });
+  }
+
+  public deleteDataSchemaFile(fileName: string) {
+    const filePath = path.join(this.localPath(), fileName);
+    if (!filePath.startsWith(this.localPath())) {
+      throw new Error('Invalid file path');
+    }
+    fs.removeSync(filePath);
+  }
+
+  public renameDataSchemaFile(oldFileName: string, newFileName: string) {
+    const oldPath = path.join(this.localPath(), oldFileName);
+    const newPath = path.join(this.localPath(), newFileName);
+    if (!oldPath.startsWith(this.localPath()) || !newPath.startsWith(this.localPath())) {
+      throw new Error('Invalid file path');
+    }
+    fs.ensureDirSync(path.dirname(newPath));
+    fs.moveSync(oldPath, newPath, { overwrite: false });
   }
 
   protected async readModules() {

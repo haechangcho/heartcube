@@ -610,6 +610,67 @@ export class DevServer {
       res.json({ token });
     }));
 
+    // Data Model IDE endpoints
+    app.post('/playground/model/save', catchErrors(async (req: Request, res: Response) => {
+      const { fileName, content } = req.body;
+      if (!fileName || content === undefined) {
+        return res.status(400).json({ error: 'fileName and content are required' });
+      }
+
+      const repoPath = this.cubejsServer.repository.localPath();
+      const absPath = path.resolve(repoPath, fileName);
+      if (!absPath.startsWith(repoPath)) {
+        return res.status(400).json({ error: 'Invalid file path' });
+      }
+
+      this.cubejsServer.repository.writeDataSchemaFile(fileName, content);
+      this.cubejsServer.event('Dev Server Model File Save');
+      return res.json({ fileName });
+    }));
+
+    app.post('/playground/model/create', catchErrors(async (req: Request, res: Response) => {
+      const { fileName, content = '' } = req.body;
+      if (!fileName) {
+        return res.status(400).json({ error: 'fileName is required' });
+      }
+
+      const repoPath = this.cubejsServer.repository.localPath();
+      const absPath = path.resolve(repoPath, fileName);
+      if (!absPath.startsWith(repoPath)) {
+        return res.status(400).json({ error: 'Invalid file path' });
+      }
+      if (fs.existsSync(absPath)) {
+        return res.status(400).json({ error: `File "${fileName}" already exists` });
+      }
+
+      fs.ensureDirSync(path.dirname(absPath));
+      this.cubejsServer.repository.writeDataSchemaFile(fileName, content);
+      this.cubejsServer.event('Dev Server Model File Create');
+      return res.json({ fileName });
+    }));
+
+    app.delete('/playground/model', catchErrors(async (req: Request, res: Response) => {
+      const { fileName } = req.body;
+      if (!fileName) {
+        return res.status(400).json({ error: 'fileName is required' });
+      }
+
+      this.cubejsServer.repository.deleteDataSchemaFile(fileName);
+      this.cubejsServer.event('Dev Server Model File Delete');
+      return res.json({ fileName });
+    }));
+
+    app.post('/playground/model/rename', catchErrors(async (req: Request, res: Response) => {
+      const { oldFileName, newFileName } = req.body;
+      if (!oldFileName || !newFileName) {
+        return res.status(400).json({ error: 'oldFileName and newFileName are required' });
+      }
+
+      this.cubejsServer.repository.renameDataSchemaFile(oldFileName, newFileName);
+      this.cubejsServer.event('Dev Server Model File Rename');
+      return res.json({ oldFileName, newFileName });
+    }));
+
     app.post('/playground/schema/pre-aggregation', catchErrors(async (req: Request, res: Response) => {
       const { cubeName, preAggregationName, code } = req.body;
 
