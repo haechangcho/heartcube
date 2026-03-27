@@ -167,7 +167,7 @@ cubes:
 
     pre_aggregations:
       - name: daily_treatment_rollup
-        type: rollup 
+        type: rollup    
         measures:
           - count 
           - total_treat_amt_insured
