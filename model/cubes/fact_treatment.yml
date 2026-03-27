@@ -15,7 +15,7 @@ cubes:
         sql: "{fact_treatment}.hospital_id = {dim_hospital}.hospital_id"
         relationship: many_to_one
 
-      - name: dim_diagnosis
+      - name: dim_diagnosis 
         sql: "{fact_treatment}.diagnosis_id = {dim_diagnosis}.diagnosis_id"
         relationship: many_to_one
 
@@ -167,9 +167,9 @@ cubes:
 
     pre_aggregations:
       - name: daily_treatment_rollup
-        type: rollup
+        type: rollup 
         measures:
-          - count
+          - count 
           - total_treat_amt_insured
           - total_treat_amt_noninsured
           - avg_inpatient_days

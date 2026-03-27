@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Modal, Empty, Typography, Input, Button, Tooltip, Dropdown } from 'antd';
+import { Layout, Modal, Empty, Typography, Input, Button, Tooltip, Dropdown, message } from 'antd';
 import {
   PlusOutlined,
   DeleteOutlined,
@@ -62,8 +62,6 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       editingContent: null,
       isDirty: false,
       saving: false,
-      compileError: null as string | null,
-      compileOk: false,
       // modals
       newFileModal: false,
       newFileName: '',
@@ -168,7 +166,7 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
   async saveFile() {
     const { selectedFile, editingContent } = this.state;
     if (!selectedFile) return;
-    this.setState({ saving: true, compileError: null, compileOk: false });
+    this.setState({ saving: true });
     try {
       await playgroundFetch('playground/model/save', {
         method: 'POST',
@@ -352,8 +350,6 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       editingContent,
       isDirty,
       saving,
-      compileError,
-      compileOk,
       newFileModal,
       newFileName,
       renameModal,
