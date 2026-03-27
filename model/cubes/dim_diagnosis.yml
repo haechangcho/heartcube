@@ -13,6 +13,8 @@ cubes:
       - name: diagnosis_id
         sql: diagnosis_id
         type: string
+        primary_key: true
+        public: false
 
       - name: diagnosis_nm
         sql: diagnosis_nm
