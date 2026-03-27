@@ -1,0 +1,29 @@
+cubes:
+  - name: dim_customer
+    sql_table: oda.dim_customer
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: birth_dt
+        sql: birth_dt
+        type: string
+
+      - name: customer_id
+        sql: customer_id
+        type: string
+        primary_key: true
+
+      - name: gender
+        sql: gender
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

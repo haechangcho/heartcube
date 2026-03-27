@@ -1,0 +1,24 @@
+cubes:
+  - name: dim_ko_product
+    sql_table: 'oda. + table_name + '
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: product_cd
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 상품코드
+        primary_key: true
+
+      - name: product_nm
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 상품명
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:

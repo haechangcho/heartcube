@@ -1,0 +1,36 @@
+cubes:
+  - name: dim_diagnosis
+    sql_table: oda.dim_diagnosis
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: diagnosis_cd
+        sql: diagnosis_cd
+        type: string
+
+      - name: diagnosis_id
+        sql: diagnosis_id
+        type: string
+
+      - name: diagnosis_nm
+        sql: diagnosis_nm
+        type: string
+
+      - name: diagnosis_subtype
+        sql: diagnosis_subtype
+        type: string
+
+      - name: diagnosis_type
+        sql: diagnosis_type
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

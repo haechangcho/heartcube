@@ -1,0 +1,74 @@
+cubes:
+  - name: fact_ko_treatment
+    sql_table: 'oda. + table_name + '
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: accident_no
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 사고번호
+        primary_key: true
+
+      - name: diagnosis_id
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 진단ID
+
+      - name: diagnosis_confirmed_dt
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 진단확정일
+
+      - name: first_revisit_cd
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 초진재진여부
+
+      - name: hospital_id
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 병원ID
+
+      - name: dx_analysis_l1
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 진단분석대분류
+
+      - name: dx_analysis_l2
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 진단분석중분류
+
+      - name: dx_analysis_l3
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 진단분석소분류
+
+      - name: inpatient_period_grp
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 입원기간구간
+
+      - name: treatment_item
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 치료항목
+
+      - name: noninsured_item
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 비급여항목
+
+      - name: treatment_pattern
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 치료패턴
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:

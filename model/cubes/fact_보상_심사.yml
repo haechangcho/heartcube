@@ -1,0 +1,54 @@
+cubes:
+  - name: fact_ko_review
+    sql_table: 'oda. + table_name + '
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: accident_no
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 사고번호
+        primary_key: true
+
+      - name: review_yn
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 재심여부
+
+      - name: lawsuit_yn
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 소송여부
+
+      - name: org_type
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 조직구분
+
+      - name: claim_center_nm
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 보상센터명
+
+      - name: claim_team_nm
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 보상팀명
+
+      - name: adjuster_id
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 보상담당자사번
+
+      - name: anomaly_label
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 이상유형라벨
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:

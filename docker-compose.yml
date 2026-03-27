@@ -1,0 +1,34 @@
+services:
+  cube:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: heartcube:latest
+    container_name: heartcube
+    ports:
+      - "15432:15432"
+    env_file:
+      - .env
+    volumes:
+      - .:/cubejs/conf
+    restart: unless-stopped
+    networks:
+      - heartcube_net
+
+  auth:
+    build:
+      context: /home/ubuntu/heartcube-auth
+      dockerfile: Dockerfile
+    image: heartcube-auth:latest
+    container_name: heartcube-auth
+    ports:
+      - "5101:3000"
+    depends_on:
+      - cube
+    restart: unless-stopped
+    networks:
+      - heartcube_net
+
+networks:
+  heartcube_net:
+    driver: bridge

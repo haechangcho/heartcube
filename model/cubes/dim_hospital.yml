@@ -1,0 +1,29 @@
+cubes:
+  - name: dim_hospital
+    sql_table: oda.dim_hospital
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: hospital_grade_cd
+        sql: hospital_grade_cd
+        type: string
+
+      - name: hospital_id
+        sql: hospital_id
+        type: string
+        primary_key: true
+
+      - name: hospital_nm
+        sql: hospital_nm
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+
