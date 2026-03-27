@@ -62,6 +62,8 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       editingContent: null,
       isDirty: false,
       saving: false,
+      compileError: null as string | null,
+      compileOk: false,
       // modals
       newFileModal: false,
       newFileName: '',
@@ -166,14 +168,13 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
   async saveFile() {
     const { selectedFile, editingContent } = this.state;
     if (!selectedFile) return;
-    this.setState({ saving: true });
+    this.setState({ saving: true, compileError: null, compileOk: false });
     try {
       await playgroundFetch('playground/model/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fileName: selectedFile, content: editingContent }),
       });
-      // update local cache
       this.setState((prev) => ({
         files: prev.files.map((f) =>
           f.fileName === selectedFile ? { ...f, content: editingContent } : f
@@ -181,6 +182,23 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
         isDirty: false,
       }));
       playgroundAction('Save Model File');
+      // 저장 후 컴파일 결과 폴링 (최대 5회 × 1.5초)
+      for (let i = 0; i < 5; i++) {
+        await new Promise((r) => setTimeout(r, 1500));
+        try {
+          const metaRes = await fetch('/cubejs-api/v1/meta', {
+            headers: { Authorization: '' },
+          });
+          const metaJson = await metaRes.json();
+          if (metaJson.error) {
+            this.setState({ compileError: metaJson.error });
+            break;
+          } else if (metaJson.cubes) {
+            this.setState({ compileOk: true });
+            break;
+          }
+        } catch (_) {}
+      }
     } finally {
       this.setState({ saving: false });
     }
@@ -334,6 +352,8 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       editingContent,
       isDirty,
       saving,
+      compileError,
+      compileOk,
       newFileModal,
       newFileName,
       renameModal,
