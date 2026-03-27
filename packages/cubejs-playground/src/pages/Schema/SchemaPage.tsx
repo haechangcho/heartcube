@@ -164,8 +164,9 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
   }
 
   async saveFile() {
-    const { selectedFile, editingContent } = this.state;
+    const { selectedFile, editingContent, files } = this.state;
     if (!selectedFile) return;
+    const prevContent = files.find((f) => f.fileName === selectedFile)?.content ?? '';
     this.setState({ saving: true });
     try {
       await playgroundFetch('playground/model/save', {
@@ -189,10 +190,27 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
           });
           const metaJson = await metaRes.json();
           if (metaJson.error) {
-            this.setState({ compileError: metaJson.error });
+            // 에러 시 이전 내용으로 revert
+            await playgroundFetch('playground/model/save', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ fileName: selectedFile, content: prevContent }),
+            });
+            this.setState((prev) => ({
+              ...prev,
+              files: prev.files.map((f) =>
+                f.fileName === selectedFile ? { ...f, content: prevContent } : f
+              ),
+              editingContent: prevContent,
+              isDirty: false,
+            }));
+            const errMsg = metaJson.error.replace(/Error: Compile errors:
+Errors:
+/, '').trim();
+            message.error({ content: errMsg, duration: 10 });
             break;
           } else if (metaJson.cubes) {
-            this.setState({ compileOk: true });
+            message.success('컴파일 성공');
             break;
           }
         } catch (_) {}
