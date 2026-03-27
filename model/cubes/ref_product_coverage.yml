@@ -1,0 +1,24 @@
+cubes:
+  - name: ref_product_coverage
+    sql_table: oda.ref_product_coverage
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: coverage_cd
+        sql: coverage_cd
+        type: string
+
+      - name: product_cd
+        sql: product_cd
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

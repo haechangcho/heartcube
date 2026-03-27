@@ -1,0 +1,45 @@
+cubes:
+  - name: fact_contract
+    sql_table: oda.fact_contract
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: accident_no
+        sql: accident_no
+        type: string
+        primary_key: true
+
+      - name: coverage_cd
+        sql: coverage_cd
+        type: string
+
+      - name: enrollment_dt
+        sql: enrollment_dt
+        type: string
+
+      - name: product_cd
+        sql: product_cd
+        type: string
+
+      - name: sales_agent_id
+        sql: sales_agent_id
+        type: string
+
+      - name: sales_division
+        sql: sales_division
+        type: string
+
+      - name: sales_org_cd
+        sql: sales_org_cd
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

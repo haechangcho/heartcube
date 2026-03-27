@@ -1,0 +1,118 @@
+cubes:
+  - name: fact_payment
+    sql_table: oda.fact_payment
+    data_source: default
+
+    title: 청구 지급
+    description: >
+      사고 건별 보험금 청구 및 지급 내역 팩트 테이블.
+      1행 = 사고 1건의 지급 결과. fact_accident 와 accident_no 로 조인.
+      지급유형(진단비/수술비/일당 등)과 최종지급코드(정상/감액/일부)를 포함한다.
+
+    joins: []
+
+    dimensions:
+      - name: accident_no
+        sql: accident_no
+        type: string
+        title: 사고번호
+        primary_key: true
+        public: false
+
+      - name: claim_item
+        sql: claim_item
+        type: string
+        title: 청구항목
+
+      - name: final_payment_cd
+        sql: final_payment_cd
+        type: string
+        title: 최종지급코드
+        description: 정상지급·감액지급·일부지급 3종.
+        meta:
+          values: [정상지급, 감액지급, 일부지급]
+
+      - name: payment_type
+        sql: payment_type
+        type: string
+        title: 지급유형
+        description: 진단비·수술비·일당·손해실비·통원의료비·약제의료비·기타.
+        meta:
+          values: [진단비, 수술비, 일당, 손해실비, 통원의료비, 약제의료비, 기타]
+
+      - name: payment_item_l1
+        sql: payment_item_l1
+        type: string
+        title: 지급항목(대)
+
+      - name: payment_item_l2
+        sql: payment_item_l2
+        type: string
+        title: 지급항목(중)
+
+      - name: final_coverage_nm
+        sql: final_coverage_nm
+        type: string
+        title: 최종담보명
+
+      - name: reduction_reason
+        sql: reduction_reason
+        type: string
+        title: 감액사유
+
+    measures:
+      - name: count
+        type: count
+        title: 지급 건수
+
+      - name: total_claim_amt
+        sql: claim_amt
+        type: sum
+        title: 청구금액 합계
+        format: currency
+        description: 고객이 청구한 총 금액.
+
+      - name: total_payment_amt
+        sql: payment_amt
+        type: sum
+        title: 지급결정금액 합계
+        format: currency
+        description: >
+          최종 지급이 결정된 금액의 합계.
+          fact_accident.payment_rate 계산의 분자로 사용된다.
+
+      - name: total_loss_amt
+        sql: loss_amt
+        type: sum
+        title: 손해액 합계
+        format: currency
+
+      - name: total_reduction_amt
+        sql: reduction_amt
+        type: sum
+        title: 감액 합계
+        format: currency
+        description: 청구금액 대비 감액된 금액 합계.
+
+      - name: payment_ratio
+        type: number
+        title: 지급률(%)
+        description: >
+          청구금액 대비 지급결정금액 비율.
+          100% 초과 시 데이터 이상 가능성.
+        sql: "100.0 * {total_payment_amt} / NULLIF({total_claim_amt}, 0)"
+        format: percent
+
+      - name: normal_payment_count
+        type: count
+        title: 정상지급 건수
+        filters:
+          - sql: "{CUBE}.final_payment_cd = '정상지급'"
+
+      - name: reduction_count
+        type: count
+        title: 감액지급 건수
+        filters:
+          - sql: "{CUBE}.final_payment_cd = '감액지급'"
+
+    pre_aggregations:

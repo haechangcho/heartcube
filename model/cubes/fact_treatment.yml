@@ -1,0 +1,65 @@
+cubes:
+  - name: fact_treatment
+    sql_table: oda.fact_treatment
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: accident_no
+        sql: accident_no
+        type: string
+        primary_key: true
+
+      - name: diagnosis_confirmed_dt
+        sql: diagnosis_confirmed_dt
+        type: string
+
+      - name: diagnosis_id
+        sql: diagnosis_id
+        type: string
+
+      - name: dx_analysis_l1
+        sql: dx_analysis_l1
+        type: string
+
+      - name: dx_analysis_l2
+        sql: dx_analysis_l2
+        type: string
+
+      - name: dx_analysis_l3
+        sql: dx_analysis_l3
+        type: string
+
+      - name: first_revisit_cd
+        sql: first_revisit_cd
+        type: string
+
+      - name: hospital_id
+        sql: hospital_id
+        type: string
+
+      - name: inpatient_period_grp
+        sql: inpatient_period_grp
+        type: string
+
+      - name: noninsured_item
+        sql: noninsured_item
+        type: string
+
+      - name: treatment_item
+        sql: treatment_item
+        type: string
+
+      - name: treatment_pattern
+        sql: treatment_pattern
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

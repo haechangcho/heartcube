@@ -1,7 +1,5 @@
 import {
-  FileFilled,
   MenuOutlined,
-  SlackOutlined,
 } from '@ant-design/icons';
 import { Dropdown, Layout, Menu } from 'antd';
 import { useMediaQuery } from 'react-responsive';
@@ -9,7 +7,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { StyledMenu, StyledMenuButton, StyledMenuItem } from './Menu';
-import { RunOnCubeCloud } from './RunOnCubeCloud';
 
 const StyledHeader = styled(Layout.Header)`
   && {
@@ -58,29 +55,9 @@ export default function Header({ selectedKeys }: Props) {
             <Link to="/frontend-integrations">Frontend Integrations</Link>
           </StyledMenuItem>
 
-          <StyledMenuItem key="/cube-bi">
-            <Link to="/cube-bi">Cube BI</Link>
+          <StyledMenuItem key="/hc-analytics">
+            <a href="https://stg.heartcount.io/" target="_blank" rel="noreferrer">HC Analytics</a>
           </StyledMenuItem>
-
-          <StyledMenuButton
-            key="slack"
-            href="https://slack.cube.dev"
-            target="_blank"
-          >
-            <SlackOutlined />
-            Slack
-          </StyledMenuButton>
-
-          <StyledMenuButton
-            key="docs"
-            href="https://cube.dev/docs"
-            target="_blank"
-          >
-            <FileFilled />
-            Docs
-          </StyledMenuButton>
-
-          <RunOnCubeCloud />
         </StyledMenu>
       )}
 

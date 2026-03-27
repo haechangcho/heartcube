@@ -1,0 +1,54 @@
+cubes:
+  - name: dim_ko_coverage
+    sql_table: 'oda. + table_name + '
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: coverage_cd
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 담보코드
+        primary_key: true
+
+      - name: coverage_nm
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 담보명
+
+      - name: lt_cov_grp_nm
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 장기담보군명
+
+      - name: coverage_cat1
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 담보대분류
+
+      - name: coverage_cat2
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 담보중분류
+
+      - name: coverage_cat3
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 담보소분류
+
+      - name: coverage_type
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 담보구분
+
+      - name: coverage_unit_type
+        sql: '{CUBE}. + col + '
+        type: string
+        title: 담보및유닛구분
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:

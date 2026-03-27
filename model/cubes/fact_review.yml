@@ -1,0 +1,112 @@
+cubes:
+  - name: fact_review
+    sql_table: oda.fact_review
+    data_source: default
+
+    title: 보상 심사
+    description: >
+      사고 건별 보상 심사 결과 팩트 테이블.
+      재심여부·소송여부·이상유형라벨·처리기간 등을 포함한다.
+      fact_accident 와 accident_no 로 조인되며,
+      이상징후 탐지 및 심사 효율 분석에 활용한다.
+
+    joins: []
+
+    dimensions:
+      - name: accident_no
+        sql: accident_no
+        type: string
+        title: 사고번호
+        primary_key: true
+        public: false
+
+      - name: review_yn
+        sql: review_yn
+        type: string
+        title: 재심여부
+        meta:
+          values: [Y, N]
+
+      - name: lawsuit_yn
+        sql: lawsuit_yn
+        type: string
+        title: 소송여부
+        meta:
+          values: [Y, N]
+
+      - name: org_type
+        sql: org_type
+        type: string
+        title: 조직구분
+
+      - name: claim_center_nm
+        sql: claim_center_nm
+        type: string
+        title: 보상센터명
+
+      - name: claim_team_nm
+        sql: claim_team_nm
+        type: string
+        title: 보상팀명
+
+      - name: adjuster_id
+        sql: adjuster_id
+        type: string
+        title: 보상담당자사번
+        public: false
+
+      - name: anomaly_label
+        sql: anomaly_label
+        type: string
+        title: 이상유형라벨
+        description: >
+          보상 심사 결과 이상 여부 분류.
+          정상·사기의심·과지급·과소지급·중복지급·착오지급 6종.
+        meta:
+          values: [정상, 사기의심, 과지급, 과소지급, 중복지급, 착오지급]
+
+    measures:
+      - name: count
+        type: count
+        title: 심사 건수
+
+      - name: anomaly_count
+        type: count
+        title: 이상징후 건수
+        description: >
+          이상유형라벨이 '정상' 이 아닌 건수.
+          fact_accident.anomaly_rate 계산의 분자로 사용된다.
+        filters:
+          - sql: "{CUBE}.anomaly_label != '정상'"
+
+      - name: fraud_suspect_count
+        type: count
+        title: 사기의심 건수
+        filters:
+          - sql: "{CUBE}.anomaly_label = '사기의심'"
+
+      - name: review_count
+        type: count
+        title: 재심 건수
+        filters:
+          - sql: "{CUBE}.review_yn = 'Y'"
+
+      - name: lawsuit_count
+        type: count
+        title: 소송 건수
+        filters:
+          - sql: "{CUBE}.lawsuit_yn = 'Y'"
+
+      - name: avg_processing_days
+        sql: processing_biz_days
+        type: avg
+        title: 평균 처리기간(영업일)
+        description: 사고 접수부터 보상 완료까지 평균 영업일수.
+
+      - name: total_baseline_amt
+        sql: baseline_amt
+        type: sum
+        title: 기준금액 합계
+        format: currency
+
+    pre_aggregations:

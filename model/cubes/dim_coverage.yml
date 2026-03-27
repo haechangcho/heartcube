@@ -1,0 +1,48 @@
+cubes:
+  - name: dim_coverage
+    sql_table: oda.dim_coverage
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: coverage_cat1
+        sql: coverage_cat1
+        type: string
+
+      - name: coverage_cat2
+        sql: coverage_cat2
+        type: string
+
+      - name: coverage_cat3
+        sql: coverage_cat3
+        type: string
+
+      - name: coverage_cd
+        sql: coverage_cd
+        type: string
+
+      - name: coverage_nm
+        sql: coverage_nm
+        type: string
+
+      - name: coverage_type
+        sql: coverage_type
+        type: string
+
+      - name: coverage_unit_type
+        sql: coverage_unit_type
+        type: string
+
+      - name: lt_cov_grp_nm
+        sql: lt_cov_grp_nm
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+
