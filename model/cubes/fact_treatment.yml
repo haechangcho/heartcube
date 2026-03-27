@@ -3,63 +3,181 @@ cubes:
     sql_table: oda.fact_treatment
     data_source: default
 
-    joins: []
+    title: 진단 치료
+    description: >
+      사고 건별 진단 및 치료 내역 팩트 테이블.
+      1행 = 사고 1건의 치료 결과. fact_accident 와 accident_no 로 조인.
+      입원일수·통원횟수·치료비(급여/비급여)를 포함하며,
+      병원·진단 차원과 연결해 치료 패턴 및 과잉진료 분석에 활용한다.
+
+    joins:
+      - name: dim_hospital
+        sql: "{fact_treatment}.hospital_id = {dim_hospital}.hospital_id"
+        relationship: many_to_one
+
+      - name: dim_diagnosis
+        sql: "{fact_treatment}.diagnosis_id = {dim_diagnosis}.diagnosis_id"
+        relationship: many_to_one
 
     dimensions:
       - name: accident_no
         sql: accident_no
         type: string
+        title: 사고번호
         primary_key: true
-
-      - name: diagnosis_confirmed_dt
-        sql: diagnosis_confirmed_dt
-        type: string
+        public: false
 
       - name: diagnosis_id
         sql: diagnosis_id
         type: string
+        title: 진단ID
+        public: false
 
-      - name: dx_analysis_l1
-        sql: dx_analysis_l1
-        type: string
-
-      - name: dx_analysis_l2
-        sql: dx_analysis_l2
-        type: string
-
-      - name: dx_analysis_l3
-        sql: dx_analysis_l3
-        type: string
-
-      - name: first_revisit_cd
-        sql: first_revisit_cd
-        type: string
+      - name: diagnosis_confirmed_dt
+        sql: "CAST({CUBE}.diagnosis_confirmed_dt AS DATE)"
+        type: time
+        title: 진단확정일자
 
       - name: hospital_id
         sql: hospital_id
         type: string
+        title: 병원ID
+        public: false
+
+      - name: first_revisit_cd
+        sql: first_revisit_cd
+        type: string
+        title: 초진재진구분
+        description: 초진 또는 재진 여부.
+        meta:
+          values: [초진, 재진]
+
+      - name: dx_analysis_l1
+        sql: dx_analysis_l1
+        type: string
+        title: 진단분석(대)
+        description: 외상·특정감염·암·심혈관 등 진단 대분류.
+
+      - name: dx_analysis_l2
+        sql: dx_analysis_l2
+        type: string
+        title: 진단분석(중)
+
+      - name: dx_analysis_l3
+        sql: dx_analysis_l3
+        type: string
+        title: 진단분석(소)
 
       - name: inpatient_period_grp
         sql: inpatient_period_grp
         type: string
-
-      - name: noninsured_item
-        sql: noninsured_item
-        type: string
+        title: 입원기간그룹
+        description: 통원·1-7일·7-15일·15-30일·30일초과 등 그룹 분류.
 
       - name: treatment_item
         sql: treatment_item
         type: string
+        title: 치료항목
+        description: 물리치료·한방치료·입원치료 등 실시된 치료 종류.
+
+      - name: noninsured_item
+        sql: noninsured_item
+        type: string
+        title: 비급여항목
+        description: MRI·특수검사·상급병실료 등 비급여 처치 종류.
 
       - name: treatment_pattern
         sql: treatment_pattern
         type: string
+        title: 치료패턴
+        description: 입원·통원·입원+통원 복합 패턴 분류.
+        meta:
+          values: [입원, 통원, 입원+통원]
 
     measures:
       - name: count
         type: count
+        title: 치료 건수
+
+      - name: total_treat_amt_insured
+        sql: treat_amt_insured
+        type: sum
+        title: 급여 치료비 합계
+        format: currency
+        description: 건강보험 급여 적용 치료비 합계.
+
+      - name: total_treat_amt_noninsured
+        sql: treat_amt_noninsured
+        type: sum
+        title: 비급여 치료비 합계
+        format: currency
+        description: 건강보험 비급여 치료비 합계. 과잉진료 탐지 시 주요 지표.
+
+      - name: total_treat_amt
+        type: number
+        title: 총 치료비 합계
+        format: currency
+        description: 급여 + 비급여 치료비 합계.
+        sql: "{total_treat_amt_insured} + {total_treat_amt_noninsured}"
+
+      - name: noninsured_ratio
+        type: number
+        title: 비급여 비율(%)
+        description: >
+          총 치료비 대비 비급여 치료비 비율.
+          비율이 높을수록 과잉진료·허위청구 의심 가능성이 높다.
+        sql: "100.0 * {total_treat_amt_noninsured} / NULLIF({total_treat_amt_insured} + {total_treat_amt_noninsured}, 0)"
+        format: percent
+
+      - name: avg_inpatient_days
+        sql: inpatient_days
+        type: avg
+        title: 평균 입원일수
+        description: 사고 건당 평균 입원일수.
+
+      - name: total_inpatient_days
+        sql: inpatient_days
+        type: sum
+        title: 총 입원일수
+
+      - name: avg_outpatient_cnt
+        sql: outpatient_cnt
+        type: avg
+        title: 평균 통원횟수
+
+      - name: avg_treatment_days
+        sql: treatment_days
+        type: avg
+        title: 평균 치료기간(일)
+        description: 치료 시작부터 종료까지 평균 일수.
+
+      - name: inpatient_count
+        type: count
+        title: 입원 건수
+        description: 입원일수가 1일 이상인 건수.
+        filters:
+          - sql: "{CUBE}.inpatient_days > 0"
+
+      - name: long_inpatient_count
+        type: count
+        title: 장기입원 건수
+        description: 입원일수 30일 초과 건수. 과잉입원 모니터링 지표.
+        filters:
+          - sql: "{CUBE}.inpatient_days > 30"
 
     pre_aggregations:
-      # Pre-aggregation definitions go here.
-      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-
+      - name: daily_treatment_rollup
+        type: rollup
+        measures:
+          - count
+          - total_treat_amt_insured
+          - total_treat_amt_noninsured
+          - avg_inpatient_days
+        dimensions:
+          - dx_analysis_l1
+          - treatment_pattern
+        time_dimension: diagnosis_confirmed_dt
+        granularity: day
+        partition_granularity: month
+        refresh_key:
+          every: 1 hour
