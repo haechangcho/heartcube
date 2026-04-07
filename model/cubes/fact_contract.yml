@@ -3,43 +3,123 @@ cubes:
     sql_table: oda.fact_contract
     data_source: default
 
-    joins: []
+    title: 계약 정보
+    description: >
+      사고 건의 계약 상세 정보. 가입금액(손해율 분모), 담보, 모집채널 포함.
+
+    joins:
+      - name: dim_product
+        sql: "{fact_contract}.product_cd = {dim_product}.product_cd"
+        relationship: many_to_one
+
+      - name: dim_coverage
+        sql: "{fact_contract}.coverage_cd = {dim_coverage}.coverage_cd"
+        relationship: many_to_one
 
     dimensions:
       - name: accident_no
         sql: accident_no
         type: string
+        title: 사고번호
         primary_key: true
-
-      - name: coverage_cd
-        sql: coverage_cd
-        type: string
-
-      - name: enrollment_dt
-        sql: enrollment_dt
-        type: string
+        public: false
 
       - name: product_cd
         sql: product_cd
         type: string
+        title: 상품코드
+        public: false
 
-      - name: sales_agent_id
-        sql: sales_agent_id
+      - name: coverage_cd
+        sql: coverage_cd
         type: string
+        title: 담보코드
+        public: false
+
+      - name: enrollment_dt
+        sql: "TO_DATE({CUBE}.enrollment_dt, 'YYYY.MM.DD')"
+        type: time
+        title: 가입일자
 
       - name: sales_division
         sql: sales_division
         type: string
+        title: 영업채널구분
 
       - name: sales_org_cd
         sql: sales_org_cd
         type: string
+        title: 영업조직코드
+        description: 영업 조직 코드. ORG001~ORG099 범위.
+
+      - name: sales_agent_id
+        sql: sales_agent_id
+        type: string
+        title: 영업사원ID
+        public: false
+
+      - name: exemption_days
+        sql: exemption_days
+        type: number
+        title: 면책기간
+        description: >
+          보험 가입 후 보장이 개시되기까지의 면책 기간(일).
+          0이면 즉시 보장. 90일 면책 상품의 경우 가입 후 90일 이내 사고는 보장 제외.
+
+      - name: reduction_days
+        sql: reduction_days
+        type: number
+        title: 감액일수
+        description: >
+          보험 가입 후 일정 기간 동안 보험금을 감액 지급하는 기간(일).
+          0이면 감액 없음.
 
     measures:
       - name: count
         type: count
+        title: 계약 건수
+        description: 사고와 연결된 계약 건수.
+
+      - name: total_insured_amt
+        sql: insured_amt
+        type: sum
+        title: 보험가입금액 합계
+        format: currency
+        description: 계약된 보험가입금액의 합계.
+
+      - name: avg_insured_amt
+        sql: insured_amt
+        type: avg
+        title: 평균 보험가입금액
+        format: currency
+        description: 계약 건당 평균 보험가입금액.
+
+      - name: exemption_count
+        type: count
+        title: 면책 계약 건수
+        description: 면책일수가 0 초과인 계약 건수.
+        filters:
+          - sql: "{CUBE}.exemption_days > 0"
+
+      - name: reduction_count
+        type: count
+        title: 감액 계약 건수
+        description: 감액일수가 0 초과인 계약 건수.
+        filters:
+          - sql: "{CUBE}.reduction_days > 0"
 
     pre_aggregations:
-      # Pre-aggregation definitions go here.
-      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-
+      - name: monthly_contract_rollup
+        type: rollup
+        measures:
+          - count
+          - total_insured_amt
+          - avg_insured_amt
+        dimensions:
+          - sales_division
+          - sales_org_cd
+        time_dimension: enrollment_dt
+        granularity: month
+        partition_granularity: year
+        refresh_key:
+          every: 1 hour

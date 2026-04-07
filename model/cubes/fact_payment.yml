@@ -3,11 +3,9 @@ cubes:
     sql_table: oda.fact_payment
     data_source: default
 
-    title: 청구 지급
+    title: 지급 정보
     description: >
-      사고 건별 보험금 청구 및 지급 내역 팩트 테이블.
-      1행 = 사고 1건의 지급 결과. fact_accident 와 accident_no 로 조인.
-      지급유형(진단비/수술비/일당 등)과 최종지급코드(정상/감액/일부)를 포함한다.
+      보험금 청구 및 지급 상세 내역. 손해율·청구인용율 등 수익성 KPI의 원천.
 
     joins: []
 
@@ -28,17 +26,13 @@ cubes:
         sql: final_payment_cd
         type: string
         title: 최종지급코드
-        description: 정상지급·감액지급·일부지급 3종.
-        meta:
-          values: [정상지급, 감액지급, 일부지급]
+        description: 정상지급·감액지급·일부지급
 
       - name: payment_type
         sql: payment_type
         type: string
         title: 지급유형
-        description: 진단비·수술비·일당·손해실비·통원의료비·약제의료비·기타.
-        meta:
-          values: [진단비, 수술비, 일당, 손해실비, 통원의료비, 약제의료비, 기타]
+        description: 진단비·수술비·일당·손해실비·통원의료비·약제의료비·기타 등
 
       - name: payment_item_l1
         sql: payment_item_l1
@@ -59,7 +53,14 @@ cubes:
         sql: reduction_reason
         type: string
         title: 감액사유
+        description: 해당없음 / 과잉진료 / 중복청구 등
 
+
+      - name: payment_amt
+        sql: payment_amt
+        type: number
+        title: 지급결정금액
+        description: "건별 지급결정금액 (재심번복 판단용)"
     measures:
       - name: count
         type: count
@@ -79,13 +80,14 @@ cubes:
         format: currency
         description: >
           최종 지급이 결정된 금액의 합계.
-          fact_accident.payment_rate 계산의 분자로 사용된다.
+          손해율, 청구인용율의 분자로 사용된다.
 
       - name: total_loss_amt
         sql: loss_amt
         type: sum
         title: 손해액 합계
         format: currency
+        description: 실제 발생한 손해 금액
 
       - name: total_reduction_amt
         sql: reduction_amt
@@ -93,6 +95,12 @@ cubes:
         title: 감액 합계
         format: currency
         description: 청구금액 대비 감액된 금액 합계.
+
+      - name: avg_payment_amt
+        title: 평균지급금액
+        sql: payment_amt
+        type: avg
+        description: 건당 평균 지급 결정 금액.
 
       - name: payment_ratio
         type: number
@@ -115,4 +123,18 @@ cubes:
         filters:
           - sql: "{CUBE}.final_payment_cd = '감액지급'"
 
+
+      - name: approval_rate
+        type: number
+        title: 청구인용율(%)
+        description: "정상지급 건수 / 전체 청구 건수 × 100"
+        sql: "100.0 * {normal_payment_count} / NULLIF({count}, 0)"
+        format: percent
+
+      - name: reduction_rate
+        type: number
+        title: 감액율(%)
+        description: "감액금액 / 청구금액 × 100. 과잉청구 규모의 간접 지표"
+        sql: "100.0 * {total_reduction_amt} / NULLIF({total_claim_amt}, 0)"
+        format: percent
     pre_aggregations:

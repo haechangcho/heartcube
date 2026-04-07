@@ -3,10 +3,9 @@ cubes:
     sql_table: oda.fact_treatment
     data_source: default
 
-    title: 진단 치료
+    title: 진료 내역
     description: >
-      사고 건별 진단 및 치료 내역 팩트 테이블.
-      1행 = 사고 1건의 치료 결과. fact_accident 와 accident_no 로 조인.
+      사고 건별 진단 및 치료 내역 테이블.
       입원일수·통원횟수·치료비(급여/비급여)를 포함하며,
       병원·진단 차원과 연결해 치료 패턴 및 과잉진료 분석에 활용한다.
 
@@ -111,7 +110,7 @@ cubes:
         type: sum
         title: 비급여 치료비 합계
         format: currency
-        description: 건강보험 비급여 치료비 합계. 과잉진료 탐지 시 주요 지표.
+        description: 건강보험 비급여 치료비 합계.
 
       - name: total_treat_amt
         type: number
@@ -128,6 +127,7 @@ cubes:
           비율이 높을수록 과잉진료·허위청구 의심 가능성이 높다.
         sql: "100.0 * {total_treat_amt_noninsured} / NULLIF({total_treat_amt_insured} + {total_treat_amt_noninsured}, 0)"
         format: percent
+
 
       - name: avg_inpatient_days
         sql: inpatient_days

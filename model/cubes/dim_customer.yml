@@ -3,27 +3,52 @@ cubes:
     sql_table: oda.dim_customer
     data_source: default
 
+    title: 고객
+    description: >
+      보험 계약 고객 차원 테이블. 고객ID·성별·생년월일을 포함한다.
+      fact_accident 와 customer_id 로 조인하여 고객 특성별 사고 분석에 활용한다.
+
     joins: []
 
     dimensions:
-      - name: birth_dt
-        sql: birth_dt
-        type: string
-
       - name: customer_id
         sql: customer_id
         type: string
+        title: 고객ID
         primary_key: true
+        public: false
 
       - name: gender
         sql: gender
         type: string
+        title: 성별
+        description: 고객 성별.
+
+      - name: birth_dt
+        sql: "TO_DATE({CUBE}.birth_dt, 'YYYY.MM.DD')"
+        type: time
+        title: 생년월일
+        description: 고객 생년월일. 연령대별 사고 분석 시 활용.
+        
+      - name: age_group
+        title: "연령대"
+        sql: >
+          CASE
+            WHEN CAST(SUBSTR(birth_dt, 1, 4) AS INT) >= 2000 THEN '20대 이하'
+            WHEN CAST(SUBSTR(birth_dt, 1, 4) AS INT) >= 1990 THEN '30대'
+            WHEN CAST(SUBSTR(birth_dt, 1, 4) AS INT) >= 1980 THEN '40대'
+            WHEN CAST(SUBSTR(birth_dt, 1, 4) AS INT) >= 1970 THEN '50대'
+            ELSE '60대 이상'
+          END
+        type: string
+        description: "생년월일 기반 연령대 구분"
 
     measures:
       - name: count
         type: count
+        title: 고객 수
+        description: 전체 고객 수.
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-
