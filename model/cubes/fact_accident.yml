@@ -98,9 +98,18 @@ cubes:
         type: count
         title: 사고 건수
         description: 전체 사고 접수 건수.
+      
+      - name: loss_ratio
+        type: number
+        title: 손해율(%)
+        description: >
+          보험가입금액 대비 지급결정금액 비율.
+          지급결정금액 합계 ÷ 보험가입금액 합계 × 100.
+        sql: "100.0 * {fact_payment.total_payment_amt} / NULLIF({fact_contract.total_insured_amt}, 0)"
+        format: percent
         meta:
           kpi: true
-
+          
       - name: traffic_count
         type: count
         title: 교통사고 건수
@@ -152,6 +161,25 @@ cubes:
         sql: "100.0 * {fact_review.anomaly_count} / NULLIF({count}, 0)"
         format: percent
 
+
+      - name: review_reversal_count
+        type: count
+        title: 재심번복 건수
+        description: "재심(review_yn=Y) 후 실제 지급액이 기준금액을 초과한 건수"
+        sql: "CASE WHEN {fact_review.review_yn} = 'Y' AND {fact_payment.payment_amt} > {fact_review.baseline_amt} THEN {CUBE}.accident_no END"
+
+      - name: review_reversal_rate
+        type: number
+        title: 재심번복율(%)
+        description: "재심 건 중 추가지급(번복)으로 이어진 비율"
+        sql: "100.0 * {review_reversal_count} / NULLIF({fact_review.review_count}, 0)"
+        format: percent
+
+      - name: high_prior_claim_count
+        type: count
+        title: 상습청구건수(3회이상)
+        description: "과거 청구 3회 이상 고객의 청구 건수. 상습 청구 탐지 Driver"
+        sql: "CASE WHEN {CUBE}.prior_claim_cnt >= 3 THEN {CUBE}.accident_no END"
     pre_aggregations:
       - name: daily_accident_rollup
         type: rollup

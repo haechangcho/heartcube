@@ -23,6 +23,8 @@ services:
     container_name: heartcube-auth
     ports:
       - "5101:3000"
+    env_file:
+      - .env
     depends_on:
       - cube
     restart: unless-stopped

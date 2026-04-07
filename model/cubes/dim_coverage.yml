@@ -3,46 +3,64 @@ cubes:
     sql_table: oda.dim_coverage
     data_source: default
 
+    title: 담보
+    description: >
+      보험 담보 차원 테이블. 담보코드·담보명·담보유형·분류체계를 포함한다.
+      fact_contract 와 coverage_cd 로 조인하여 담보별 계약·사고 분석에 활용한다.
+
     joins: []
 
     dimensions:
-      - name: coverage_cat1
-        sql: coverage_cat1
-        type: string
-
-      - name: coverage_cat2
-        sql: coverage_cat2
-        type: string
-
-      - name: coverage_cat3
-        sql: coverage_cat3
-        type: string
-
       - name: coverage_cd
         sql: coverage_cd
         type: string
+        title: 담보코드
+        primary_key: true
+        public: false
 
       - name: coverage_nm
         sql: coverage_nm
         type: string
+        title: 담보명
+        description: 담보의 정식 명칭.
 
       - name: coverage_type
         sql: coverage_type
         type: string
+        title: 담보유형
+        description: >
+          담보의 보장 유형. 암진단비·상해수술비·실손의료비·입원일당 등으로 구성된다.
 
       - name: coverage_unit_type
         sql: coverage_unit_type
         type: string
+        title: 담보단위유형
+        description: 지급 단위 유형.
+        meta:
+          values: [수술비, 진단비, 치료비, 의료비, 입원일당, 통원의료비, 벌금]
+
+      - name: coverage_cat1
+        sql: coverage_cat1
+        type: string
+        title: 담보분류(대)
+        description: 담보 대분류. 질병·상해 등.
+
+      - name: coverage_cat2
+        sql: coverage_cat2
+        type: string
+        title: 담보분류(중)
+
+      - name: coverage_cat3
+        sql: coverage_cat3
+        type: string
+        title: 담보분류(소)
 
       - name: lt_cov_grp_nm
         sql: lt_cov_grp_nm
         type: string
-
-    measures:
-      - name: count
-        type: count
+        title: 장기담보그룹명
+        description: 장기보험 담보 그룹 분류명.
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-

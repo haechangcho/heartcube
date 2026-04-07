@@ -3,27 +3,38 @@ cubes:
     sql_table: oda.dim_hospital
     data_source: default
 
-    joins: []
+    title: 병원
+    description: >
+      의료기관 차원 테이블. 병원ID·병원명·병원등급코드를 포함한다.
+      fact_treatment 와 hospital_id 로 조인하여 의료기관별 치료비·입원일수 분석에 활용한다.
 
     dimensions:
-      - name: hospital_grade_cd
-        sql: hospital_grade_cd
-        type: string
-
       - name: hospital_id
         sql: hospital_id
         type: string
+        title: 병원ID
         primary_key: true
+        public: false
 
       - name: hospital_nm
         sql: hospital_nm
         type: string
+        title: 병원명
+        description: 의료기관 정식 명칭.
+
+      - name: hospital_grade_cd
+        sql: hospital_grade_cd
+        type: string
+        title: 병원등급코드
+        description: >
+          의료기관 종별 등급. 등급이 높을수록 치료비가 높은 경향이 있으며
+          과잉진료 탐지 시 참고 지표로 활용한다.
 
     measures:
       - name: count
         type: count
+        title: 병원 수
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-

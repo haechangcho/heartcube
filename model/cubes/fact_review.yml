@@ -3,12 +3,9 @@ cubes:
     sql_table: oda.fact_review
     data_source: default
 
-    title: 보상 심사
+    title: 심사 및 이상탐지
     description: >
-      사고 건별 보상 심사 결과 팩트 테이블.
-      재심여부·소송여부·이상유형라벨·처리기간 등을 포함한다.
-      fact_accident 와 accident_no 로 조인되며,
-      이상징후 탐지 및 심사 효율 분석에 활용한다.
+      청구 심사 과정 및 이상 탐지 결과. SLA 준수율·과지급율 등 지급 품질 KPI 원천.
 
     joins: []
 
@@ -24,20 +21,19 @@ cubes:
         sql: review_yn
         type: string
         title: 재심여부
-        meta:
-          values: [Y, N]
+        description: Y = 재심 청구 발생
 
       - name: lawsuit_yn
         sql: lawsuit_yn
         type: string
         title: 소송여부
-        meta:
-          values: [Y, N]
+        description: Y = 소송 제기
 
       - name: org_type
         sql: org_type
         type: string
         title: 조직구분
+        description: 보상부 / CAS / 간편심사 등
 
       - name: claim_center_nm
         sql: claim_center_nm
@@ -65,6 +61,24 @@ cubes:
         meta:
           values: [정상, 사기의심, 과지급, 과소지급, 중복지급, 착오지급]
 
+
+      - name: processing_biz_days
+        sql: processing_biz_days
+        type: number
+        title: 처리기간(영업일)
+        description: "사고 접수부터 보상 완료까지 영업일수. SLA 기준: 5일"
+
+      - name: sla_breached
+        sql: "CASE WHEN processing_biz_days > 5 THEN 'Y' ELSE 'N' END"
+        type: string
+        title: SLA초과여부
+        description: "처리기간이 SLA 기준(5영업일) 초과 시 Y"
+
+      - name: baseline_amt
+        sql: baseline_amt
+        type: number
+        title: 기준금액
+        description: "심사 기준 금액 (재심번복 판단 기준)"
     measures:
       - name: count
         type: count
@@ -101,7 +115,7 @@ cubes:
         sql: processing_biz_days
         type: avg
         title: 평균 처리기간(영업일)
-        description: 사고 접수부터 보상 완료까지 평균 영업일수.
+        description: "사고 접수부터 보상 완료까지 평균 영업일수. SLA 기준: 5일"
 
       - name: total_baseline_amt
         sql: baseline_amt
@@ -109,4 +123,94 @@ cubes:
         title: 기준금액 합계
         format: currency
 
+
+      - name: overpayment_count
+        type: count
+        title: 과지급 건수
+        filters:
+          - sql: "{CUBE}.anomaly_label = '과지급'"
+
+      - name: overpayment_rate
+        type: number
+        title: 과지급율(%)
+        description: "전체 심사 건 중 과지급 건 비율"
+        sql: "100.0 * {overpayment_count} / NULLIF({count}, 0)"
+        format: percent
+
+
+      - name: sla_breach_count
+        type: count
+        title: SLA초과 건수
+        description: "처리기간 5영업일 초과 건수"
+        filters:
+          - sql: "{CUBE}.processing_biz_days > 5"
+
+      - name: sla_compliance_rate
+        type: number
+        title: SLA준수율(%)
+        description: "SLA(5영업일) 이내 처리 건 비율"
+        sql: "100.0 * ({count} - {sla_breach_count}) / NULLIF({count}, 0)"
+        format: percent
+
+
+      - name: review_reversal_count
+        type: count
+        title: 재심번복 건수
+        description: "재심 후 추가지급(baseline_amt 초과)으로 전환된 건수"
+        filters:
+          - sql: "{CUBE}.review_yn = 'Y' AND {fact_payment.total_payment_amt} > {CUBE}.baseline_amt"
+
+      - name: fraud_suspicion_rate
+        type: number
+        title: 사기의심율(%)
+        description: "사기의심 탐지 건수 비율. 목표: 1% 이하"
+        sql: "100.0 * {fraud_suspect_count} / NULLIF({count}, 0)"
+        format: percent
+
+      - name: review_rate
+        type: number
+        title: 재심율(%)
+        description: "재심 청구 건수 비율. 목표: 3% 이하"
+        sql: "100.0 * {review_count} / NULLIF({count}, 0)"
+        format: percent
+
+      - name: lawsuit_rate
+        type: number
+        title: 소송율(%)
+        description: "소송 제기 건수 비율. 목표: 1% 이하"
+        sql: "100.0 * {lawsuit_count} / NULLIF({count}, 0)"
+        format: percent
+
+      - name: payment_delay_rate
+        type: number
+        title: 지급지연율(%)
+        description: "처리기간 5영업일 초과 건수 비율. SLA준수율의 역수"
+        sql: "100.0 * {sla_breach_count} / NULLIF({count}, 0)"
+        format: percent
+
+      - name: duplicate_payment_count
+        type: count
+        title: 중복지급 건수
+        filters:
+          - sql: "{CUBE}.anomaly_label = '중복지급'"
+
+      - name: duplicate_payment_rate
+        type: number
+        title: 중복지급율(%)
+        description: "중복지급 탐지 건수 비율"
+        sql: "100.0 * {duplicate_payment_count} / NULLIF({count}, 0)"
+        format: percent
+
+      - name: error_payment_count
+        type: count
+        title: 착오지급 건수
+        filters:
+          - sql: "{CUBE}.anomaly_label = '착오지급'"
+
+      - name: error_payment_rate
+        type: number
+        title: 착오지급율(%)
+        description: "착오지급 탐지 건수 비율"
+        sql: "100.0 * {error_payment_count} / NULLIF({count}, 0)"
+        format: percent
     pre_aggregations:

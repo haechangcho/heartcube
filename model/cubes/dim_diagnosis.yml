@@ -3,36 +3,47 @@ cubes:
     sql_table: oda.dim_diagnosis
     data_source: default
 
-    joins: []
+    title: 진단
+    description: 진단 코드 및 분류. 진단별 지급 패턴·비급여 비중 분석에 활용.
 
     dimensions:
-      - name: diagnosis_cd
-        sql: diagnosis_cd
-        type: string
-
       - name: diagnosis_id
         sql: diagnosis_id
         type: string
+        title: 진단ID
         primary_key: true
         public: false
+
+      - name: diagnosis_cd
+        sql: diagnosis_cd
+        type: string
+        title: 진단코드
+        description: KCD(한국표준질병사인분류) 기반 진단 코드.
 
       - name: diagnosis_nm
         sql: diagnosis_nm
         type: string
-
-      - name: diagnosis_subtype
-        sql: diagnosis_subtype
-        type: string
+        title: 진단명
+        description: 진단의 정식 명칭.
 
       - name: diagnosis_type
         sql: diagnosis_type
         type: string
+        title: 진단유형
+        description: >
+          진단 대분류 유형. 암·외상·순환기질환·근골격질환·감염질환 등으로 구성된다.
+
+      - name: diagnosis_subtype
+        sql: diagnosis_subtype
+        type: string
+        title: 진단세부유형
+        description: 진단유형 하위 세분류. 골절·위암·심근경색 등.
 
     measures:
       - name: count
         type: count
+        title: 진단 수
 
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-
