@@ -1,5 +1,6 @@
 cubes:
   - name: fact_payment
+    public: false
     sql_table: oda.fact_payment
     data_source: default
 

@@ -1,5 +1,6 @@
 cubes:
   - name: dim_coverage
+    public: false
     sql_table: oda.dim_coverage
     data_source: default
 

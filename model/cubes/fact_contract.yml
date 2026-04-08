@@ -1,5 +1,6 @@
 cubes:
   - name: fact_contract
+    public: false
     sql_table: oda.fact_contract
     data_source: default
 

@@ -1,0 +1,142 @@
+views:
+  - name: ops
+    title: 운영 조회
+    description: >
+      보험 청구 운영 분석용 통합 뷰.
+      fact_accident를 기준으로 모든 fact/dim을 join_path로 연결하여
+      사고번호·처리기간·담보명 등 ops.* 단일 prefix로 조회 가능.
+      LQLS·LQHS·HQLS·HQHS 모든 운영 질문에 사용한다.
+      전략 KPI 분석은 kpi 뷰를 사용한다.
+
+    cubes:
+      # ── fact_accident (기준 큐브) ─────────────────────────────────────────
+      - join_path: fact_accident
+        includes:
+          - name: accident_no
+            title: 사고번호
+            description: 사고 식별자. detail 조회 및 필터에 사용.
+          - accident_dt
+          - claim_dt
+          - payment_dt
+          - accident_type_l1
+          - accident_type_l2
+          - accident_type_l3
+          - name: customer_id
+            title: 고객ID
+            description: 고객 필터용 (특정 고객 이력 조회 시 사용).
+          - accident_claim_gap_days
+          - name: count
+            alias: claim_count
+            title: 청구건수
+          - loss_ratio
+          - anomaly_rate
+          - review_reversal_count
+          - review_reversal_rate
+          - high_prior_claim_count
+
+      # ── fact_payment ──────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_payment
+        includes:
+          - name: final_coverage_nm
+            title: 최종담보명
+            description: 실제 지급이 결정된 담보 명칭.
+          - final_payment_cd
+          - payment_type
+          - payment_item_l1
+          - reduction_reason
+          - total_claim_amt
+          - total_payment_amt
+          - total_reduction_amt
+          - avg_payment_amt
+          - name: count
+            alias: payment_count
+            title: 지급건수
+          - reduction_count
+          - approval_rate
+          - reduction_rate
+          - name: payment_ratio
+            alias: claim_approval_rate
+            title: 청구인용율(%)
+
+      # ── fact_review ───────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_review
+        includes:
+          - name: processing_biz_days
+            title: 처리기간(영업일)
+            description: "사고 접수부터 보상 완료까지 영업일수. SLA 기준: 5일. 필터·정렬용 dimension."
+          - anomaly_label
+          - claim_center_nm
+          - claim_team_nm
+          - name: adjuster_id
+            title: 담당자사번
+          - org_type
+          - review_yn
+          - lawsuit_yn
+          - sla_breached
+          - name: count
+            alias: inspect_count
+            title: 심사건수
+          - anomaly_count
+          - fraud_suspect_count
+          - overpayment_count
+          - review_count
+          - avg_processing_days
+          - overpayment_rate
+          - sla_compliance_rate
+          - sla_breach_count
+          - fraud_suspicion_rate
+          - review_rate
+          - lawsuit_rate
+          - payment_delay_rate
+          - duplicate_payment_rate
+          - error_payment_rate
+
+      # ── fact_contract ─────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_contract
+        includes:
+          - sales_division
+          - sales_org_cd
+          - total_insured_amt
+
+      # ── fact_treatment ────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_treatment
+        includes:
+          - dx_analysis_l1
+          - dx_analysis_l2
+          - treatment_pattern
+          - inpatient_period_grp
+          - noninsured_ratio
+          - avg_inpatient_days
+          - total_treat_amt_noninsured
+          - total_treat_amt
+
+      # ── dim_customer ──────────────────────────────────────────────────────
+      - join_path: fact_accident.dim_customer
+        includes:
+          - gender
+          - age_group
+
+      # ── dim_coverage ──────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_contract.dim_coverage
+        includes:
+          - coverage_nm
+          - coverage_type
+          - coverage_cat1
+          - coverage_cat2
+
+      # ── dim_product ───────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_contract.dim_product
+        includes:
+          - product_nm
+
+      # ── dim_hospital ──────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_treatment.dim_hospital
+        includes:
+          - hospital_nm
+          - hospital_grade_cd
+
+      # ── dim_diagnosis ─────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_treatment.dim_diagnosis
+        includes:
+          - diagnosis_nm
+          - diagnosis_type

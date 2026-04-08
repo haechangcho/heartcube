@@ -1,5 +1,6 @@
 cubes:
   - name: fact_review
+    public: false
     sql_table: oda.fact_review
     data_source: default
 

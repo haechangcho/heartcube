@@ -1,5 +1,6 @@
 cubes:
   - name: fact_treatment
+    public: false
     sql_table: oda.fact_treatment
     data_source: default
 

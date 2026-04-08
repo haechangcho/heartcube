@@ -1,5 +1,6 @@
 cubes:
   - name: fact_accident
+    public: false
     sql_table: oda.fact_accident
     data_source: default
 

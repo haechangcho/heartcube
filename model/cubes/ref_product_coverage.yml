@@ -1,5 +1,6 @@
 cubes:
   - name: ref_product_coverage
+    public: false
     sql_table: oda.ref_product_coverage
     data_source: default
 
