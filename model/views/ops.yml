@@ -3,9 +3,8 @@ views:
     title: 보험 청구 운영 조회
     description: >
       보험 청구·심사·지급·계약·진료·고객 데이터를 통합한 운영 분석 뷰.
-      사용자의 자연어 질문을 Cube 쿼리로 변환할 때 이 뷰의 멤버만 사용한다.
-      모든 멤버는 ops.[멤버명] 형태로 참조한다.
-      전략 KPI(손해율 목표 초과·SLA 준수율 트렌드 등 경영 의사결정 목적) 분석은 kpi 뷰를 사용한다.
+      사고 단위 목록 조회, 필터링, 집계 분석에 사용한다.
+      전략 KPI 분석(경영 의사결정 목적)은 kpi 뷰를 사용한다.
 
     cubes:
       # ── fact_accident (기준 큐브) ─────────────────────────────────────────
@@ -13,529 +12,330 @@ views:
         includes:
           - name: accident_no
             title: 사고번호
-            description: >
-              개별 사고 건의 고유 식별자.
-              "사고번호를 보여줘", "목록으로 조회해줘", "특정 사고번호의 상세를 보여줘"처럼
-              결과에 사고번호가 포함되어야 하거나 특정 건을 필터링할 때 사용한다.
+            description: 사고 건의 고유 식별자.
 
           - name: accident_dt
             title: 사고일자
-            description: >
-              사고가 실제로 발생한 날짜. 시계열 분석의 기본 기준 날짜.
-              "이번 달", "지난달", "최근 6개월", "올해" 등 기간 조건이 있을 때 기본으로 사용한다.
-              "언제 사고가 났는지", "사고 발생일 기준으로 조회해줘" 등의 질문에 활용.
+            description: 사고 발생일. 기간 필터의 기본 기준 날짜.
 
           - name: claim_dt
             title: 청구일자
-            description: >
-              고객이 보험금을 청구한 날짜.
-              "이번 달 청구된 건", "청구일 기준으로 조회" 등 청구 시점 기준 조회에 사용한다.
-              사고일(accident_dt)과 다를 수 있으며, 청구 지연 분석에도 활용.
+            description: 고객이 보험금을 청구한 날짜. accident_dt와 다를 수 있음.
 
           - name: payment_dt
             title: 지급일자
-            description: >
-              보험금이 최종 지급된 날짜.
-              "지급일 기준 조회", "언제 지급됐는지" 등 지급 완료 시점 분석에 사용한다.
+            description: 보험금이 최종 지급된 날짜.
 
           - name: accident_type_l1
             title: 사고유형(대)
-            description: >
-              사고의 대분류. 값: 교통·상해·질병.
-              "교통사고 건만 보여줘", "질병 관련 청구만 조회", "사고유형별로 나눠서 보여줘" 등
-              사고 종류로 필터링하거나 그룹화할 때 사용한다.
+            description: "사고 대분류. 값: 교통·상해·질병."
 
           - name: accident_type_l2
             title: 사고유형(중)
-            description: >
-              사고의 중분류. accident_type_l1보다 세분화된 유형.
-              "사고유형을 더 자세히 나눠서", "중분류별로 보여줘" 등의 질문에 활용.
+            description: 사고 중분류. accident_type_l1의 하위 분류.
 
           - name: accident_type_l3
             title: 사고유형(소)
-            description: >
-              사고의 소분류. 가장 세분화된 사고 유형.
-              "사고유형 소분류까지 포함해서 보여줘" 등의 질문에 활용.
+            description: 사고 소분류. 가장 세분화된 유형.
 
           - name: customer_id
             title: 고객ID
-            description: >
-              고객 식별자.
-              "특정 고객의 이력을 조회해줘", "이 고객이 과거에 청구한 건을 보여줘"처럼
-              특정 고객을 필터링할 때 filters 조건으로 사용한다.
-              결과 컬럼으로 표시하기보다 필터 조건에 주로 쓰인다.
+            description: 고객 식별자. 특정 고객 필터링 시 사용.
 
           - name: accident_claim_gap_days
             title: 사고-청구 간격(일)
-            description: >
-              사고 발생일부터 보험금 청구일까지 경과한 일수.
-              값이 클수록 지연 청구로 사기 의심 가능성이 높아진다.
-              "오래 지나서 청구한 건", "청구 지연이 큰 건을 찾아줘" 등의 질문에 활용.
+            description: 사고 발생일부터 청구일까지 경과 일수. 클수록 지연 청구로 사기 의심.
 
           - name: count
             alias: claim_count
             title: 청구건수
-            description: >
-              전체 사고·청구 건수. 가장 기본적인 집계 지표.
-              "몇 건이야?", "건수를 보여줘", "얼마나 많은 사고가 있어?" 등 건수를 세는 모든 질문에 사용.
-              다른 비율 지표(손해율·이상탐지율 등)의 분모로도 사용된다.
-
-          - name: loss_ratio
-            title: 손해율(%)
-            description: >
-              지급결정금액 합계 ÷ 보험가입금액 합계 × 100. 단위: %.
-              "손해율이 얼마야?", "손해율이 높은 곳은?", "손해율 80% 초과 건을 찾아줘" 등
-              수익성 분석 질문에 사용. 목표 기준: 80% 이하.
-
-          - name: anomaly_rate
-            title: 이상징후 비율(%)
-            description: >
-              전체 청구 건 중 이상유형라벨이 '정상'이 아닌 건의 비율. 단위: %.
-              "이상탐지율이 높은 곳은?", "보상센터별 이상탐지율을 비교해줘" 등의 질문에 사용.
-
-          - name: review_reversal_count
-            title: 재심번복 건수
-            description: >
-              재심 후 추가지급(초심 결정이 뒤집힌)으로 이어진 건수.
-              "재심 후 결정이 뒤집힌 건은 몇 건이야?" 등의 질문에 사용.
-
-          - name: review_reversal_rate
-            title: 재심번복율(%)
-            description: >
-              재심 건 중 추가지급(번복)으로 이어진 비율. 단위: %.
-              "초심 오류율이 얼마야?", "재심 후 뒤집히는 비율은?" 등의 질문에 사용.
-
-          - name: high_prior_claim_count
-            title: 상습청구건수(3회 이상)
-            description: >
-              과거 청구 횟수가 3회 이상인 고객의 청구 건수.
-              "상습 청구 의심 건은 몇 건이야?", "반복 청구 고객의 건수를 보여줘" 등의 질문에 사용.
+            description: 전체 사고·청구 건수.
 
           - name: claim_approval_rate
             title: 청구인용율(%)
-            description: >
-              지급결정금액 합계 ÷ 청구금액 합계 × 100. 단위: %.
-              "청구인용율이 얼마야?", "인용율이 낮은 담보 TOP5를 보여줘",
-              "어떤 담보가 잘 안 나와?" 등의 질문에 사용. 목표: 85~90%.
+            description: "지급결정금액 합계 ÷ 청구금액 합계 × 100. 목표: 85~90%."
+
+          - name: loss_ratio
+            title: 손해율(%)
+            description: "지급결정금액 합계 ÷ 보험가입금액 합계 × 100. 목표: 80% 이하."
+
+          - name: anomaly_rate
+            title: 이상징후 비율(%)
+            description: "전체 청구 건 중 이상유형라벨이 '정상'이 아닌 건의 비율."
+
+          - name: review_reversal_count
+            title: 재심번복 건수
+            description: 재심 후 추가지급(초심 번복)으로 이어진 건수.
+
+          - name: review_reversal_rate
+            title: 재심번복율(%)
+            description: 재심 건 중 추가지급(번복)으로 이어진 비율.
+
+          - name: high_prior_claim_count
+            title: 상습청구건수(3회 이상)
+            description: 과거 청구 3회 이상 고객의 청구 건수.
 
       # ── fact_payment ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_payment
         includes:
           - name: final_coverage_nm
             title: 최종담보명
-            description: >
-              실제 보험금 지급에 적용된 담보의 명칭.
-              "어떤 담보로 지급됐는지", "담보명을 보여줘", "담보별로 나눠서 보여줘" 등
-              지급 담보 기준 조회·그룹화에 사용한다.
-              dim_coverage의 coverage_nm(계약상 담보명)과 다를 수 있다.
+            description: 실제 지급 시 적용된 담보명. 계약상 담보명(coverage_nm)과 다를 수 있음.
 
           - name: final_payment_cd
             title: 최종지급코드
-            description: >
-              지급 처리 결과 유형. 값: 정상지급·감액지급·일부지급.
-              "감액지급된 건만 보여줘", "정상지급 건만 필터링해줘"처럼
-              지급 결과 유형으로 필터링할 때 사용한다.
+            description: "지급 결과 유형. 값: 정상지급·감액지급·일부지급."
 
           - name: payment_type
             title: 지급유형
-            description: >
-              보험금 지급 종류. 값: 진단비·수술비·일당·손해실비·통원의료비·약제의료비·기타.
-              "수술비로 지급된 건만 보여줘", "지급유형별로 나눠서 조회해줘" 등의 질문에 활용.
+            description: "지급 종류. 값: 진단비·수술비·일당·손해실비·통원의료비·약제의료비·기타."
 
           - name: payment_item_l1
             title: 지급항목(대)
-            description: >
-              지급된 보험금의 항목 대분류.
-              "어떤 항목으로 지급됐는지", "지급항목 대분류별 집계" 등의 질문에 활용.
+            description: 지급 항목 대분류.
 
           - name: reduction_reason
             title: 감액사유
-            description: >
-              청구금액이 감액된 이유. 값: 해당없음·과잉진료·중복청구·면책조항 등.
-              "왜 감액됐어?", "감액 이유를 보여줘", "감액사유별로 분류해줘",
-              "이번 달 감액지급된 건의 감액사유를 보여줘" 등의 질문에 사용.
+            description: "청구금액이 감액된 이유. 값: 해당없음·과잉진료·중복청구·면책조항 등."
 
           - name: total_claim_amt
             title: 청구금액 합계
-            description: >
-              고객이 청구한 금액의 합계.
-              "총 청구금액이 얼마야?", "청구금액을 보여줘" 등의 질문에 사용.
+            description: 고객이 청구한 금액 합계.
 
           - name: total_payment_amt
             title: 지급결정금액 합계
-            description: >
-              최종 지급이 결정된 금액의 합계.
-              "지급금액이 얼마야?", "총 지급액을 보여줘", "지급결정금액을 포함해서 보여줘" 등
-              지급 금액을 집계하는 모든 질문에 사용.
+            description: 최종 지급 결정된 금액 합계. 손해율·청구인용율의 분자.
 
           - name: total_reduction_amt
             title: 감액금액 합계
-            description: >
-              청구금액 대비 감액된 금액의 합계.
-              "얼마나 감액됐어?", "총 감액금액을 보여줘" 등의 질문에 사용.
+            description: 청구금액 대비 감액된 금액 합계.
 
           - name: avg_payment_amt
             title: 평균지급금액
-            description: >
-              건당 평균 지급결정금액.
-              "평균 지급금액이 얼마야?", "건당 평균 얼마씩 지급했어?" 등의 질문에 사용.
+            description: 건당 평균 지급결정금액.
 
           - name: count
             alias: payment_count
             title: 지급건수
-            description: >
-              지급 처리된 건수. claim_count(사고건수)와 다를 수 있다.
-              "지급 건수는 몇 건이야?", "청구인용율 계산 시 전체 지급건수" 등에 사용.
+            description: 지급 처리된 건수.
 
           - name: reduction_count
             title: 감액지급 건수
-            description: >
-              감액지급(final_payment_cd = '감액지급') 건수.
-              "감액된 건이 몇 건이야?", "감액지급 건수를 보여줘" 등의 질문에 사용.
+            description: "감액지급(final_payment_cd = '감액지급') 건수."
 
           - name: reduction_rate
             title: 감액율(%)
-            description: >
-              감액금액 ÷ 청구금액 × 100. 단위: %.
-              "감액율이 얼마야?", "과잉청구 규모가 어느 정도야?" 등의 질문에 사용.
+            description: 감액금액 ÷ 청구금액 × 100.
 
           - name: payment_rate
             title: 청구인용율(금액기준, %)
-            description: >
-              지급결정금액 합계 ÷ 청구금액 합계 × 100. 단위: %.
-              "지급결정금액 기준 인용율이 얼마야?" 등 금액 관점 인용율 질문에 사용.
+            description: 지급결정금액 합계 ÷ 청구금액 합계 × 100. claim_approval_rate와 동일 계산.
 
       # ── fact_review ───────────────────────────────────────────────────────
       - join_path: fact_accident.fact_review
         includes:
           - name: processing_biz_days
             title: 처리기간(영업일)
-            description: >
-              사고 접수부터 보상 완료까지 소요된 영업일수. SLA 기준: 5영업일.
-              "처리기간이 며칠이야?", "SLA(5영업일)를 초과한 건을 찾아줘",
-              "처리기간 순으로 정렬해줘" 등 개별 건의 처리기간 조회·필터링에 사용.
-              집계(평균)가 필요하면 avg_processing_days를 사용한다.
+            description: "사고 접수부터 보상 완료까지 영업일수. SLA 기준: 5일. 개별 건 조회·필터용. 집계 평균은 avg_processing_days 사용."
 
           - name: anomaly_label
             title: 이상유형라벨
-            description: >
-              심사 결과 이상 여부 분류. 값: 정상·사기의심·과지급·과소지급·중복지급·착오지급.
-              "이상징후가 탐지된 건을 보여줘", "사기의심 건만 필터링해줘",
-              "이상유형이 뭔지 보여줘" 등의 질문에 사용.
-              이상 건만 필터링 시: anomaly_label != '정상'.
+            description: "심사 이상 분류. 값: 정상·사기의심·과지급·과소지급·중복지급·착오지급. 이상 건 필터: anomaly_label != '정상'."
 
           - name: claim_center_nm
             title: 보상센터명
-            description: >
-              사고를 담당하는 보상센터 이름.
-              "보상센터별로 나눠서 보여줘", "어느 센터에서 발생하고 있어?",
-              "센터별 비교를 해줘" 등 보상센터 기준 그룹화·필터링에 사용.
+            description: 담당 보상센터명.
 
           - name: claim_team_nm
             title: 보상팀명
-            description: >
-              보상센터 내 담당 팀 이름.
-              "팀별로 나눠서 보여줘", "어떤 팀이 가장 많아?",
-              "SLA 준수율이 낮은 팀은 어디야?" 등 팀 단위 분석에 사용.
+            description: 보상센터 내 담당 팀명.
 
           - name: adjuster_id
             title: 담당자사번
-            description: >
-              보상 심사를 담당한 심사자의 사번.
-              "심사자별로 보여줘", "누가 담당하고 있어?", "담당자사번을 포함해줘",
-              "과지급율이 높은 심사자는 누구야?" 등의 질문에 사용.
+            description: 심사 담당자 사번.
 
           - name: org_type
             title: 조직구분
-            description: >
-              심사 조직 유형. 값: 보상부·CAS·간편심사 등.
-              "조직유형별로 나눠서 보여줘", "간편심사 건만 보여줘",
-              "자동화 심사 확대가 필요한 조직유형은?" 등의 질문에 활용.
+            description: "심사 조직 유형. 값: 보상부·CAS·간편심사 등."
 
           - name: review_yn
             title: 재심여부
-            description: >
-              재심 청구 발생 여부. 값: Y(재심 있음)·N(재심 없음).
-              "재심이 청구된 건만 보여줘", "재심 여부를 포함해서 보여줘" 등의 질문에 사용.
+            description: "재심 청구 여부. 값: Y·N."
 
           - name: lawsuit_yn
             title: 소송여부
-            description: >
-              소송 제기 여부. 값: Y(소송 있음)·N(소송 없음).
-              "소송이 제기된 건만 보여줘", "소송 건을 조회해줘" 등
-              소송 건 필터링에 사용.
+            description: "소송 제기 여부. 값: Y·N."
 
           - name: sla_breached
             title: SLA초과여부
-            description: >
-              처리기간이 SLA 기준(5영업일) 초과 여부. 값: Y·N.
-              "SLA를 초과한 건만 보여줘" 등 SLA 위반 건 필터링에 사용.
-              processing_biz_days > 5 조건과 동일하지만 간단히 필터링할 때 활용.
+            description: "처리기간 5영업일 초과 여부. 값: Y·N. processing_biz_days > 5와 동일."
 
           - name: count
             alias: inspect_count
             title: 심사건수
-            description: >
-              심사 처리된 전체 건수.
-              각종 비율(과지급율·SLA준수율 등)의 분모로 사용되며,
-              "심사 건수가 몇 건이야?" 등의 질문에 사용.
+            description: 심사 처리 전체 건수. 각종 비율 지표의 분모.
 
           - name: anomaly_count
             title: 이상징후 건수
-            description: >
-              이상유형라벨이 '정상'이 아닌 건수.
-              "이상징후 건수는 몇 건이야?", "이상탐지율 계산 시 분자" 등에 사용.
+            description: "이상유형라벨이 '정상'이 아닌 건수. anomaly_rate의 분자."
 
           - name: fraud_suspect_count
             title: 사기의심 건수
-            description: >
-              이상유형라벨이 '사기의심'인 건수.
-              "사기의심 건수는 몇 건이야?" 등의 질문에 사용.
+            description: "이상유형라벨 = '사기의심' 건수."
 
           - name: overpayment_count
             title: 과지급 건수
-            description: >
-              이상유형라벨이 '과지급'인 건수.
-              "과지급 건수는 몇 건이야?", "과지급율 계산 시 분자" 등에 사용.
+            description: "이상유형라벨 = '과지급' 건수."
 
           - name: review_count
             title: 재심 건수
-            description: >
-              재심이 청구된 건수(review_yn = 'Y').
-              "재심 건수가 몇 건이야?", "재심율 계산 시 분자" 등에 사용.
+            description: "재심 청구 건수(review_yn = 'Y')."
 
           - name: avg_processing_days
             title: 평균 처리기간(영업일)
-            description: >
-              사고 접수부터 보상 완료까지 평균 영업일수.
-              "평균 처리기간이 며칠이야?", "처리기간 평균이 가장 긴 심사자는?",
-              "센터별 평균 처리기간을 비교해줘" 등 집계 분석에 사용.
-              개별 건의 처리기간 조회·필터링에는 processing_biz_days를 사용한다.
+            description: "사고 접수부터 보상 완료까지 평균 영업일수. SLA 기준: 5일."
 
           - name: overpayment_rate
             title: 과지급율(%)
-            description: >
-              전체 심사 건 중 과지급 건 비율. 단위: %.
-              "과지급율이 얼마야?", "과지급율이 가장 높은 심사자 TOP5는?",
-              "어떤 센터에서 과지급이 많이 발생해?" 등의 질문에 사용. 목표: 2% 이하.
+            description: "전체 심사 건 중 과지급 건 비율. 목표: 2% 이하."
 
           - name: sla_compliance_rate
             title: SLA준수율(%)
-            description: >
-              처리기간 5영업일 이내 건 비율. 단위: %.
-              "SLA 준수율이 얼마야?", "SLA 준수율이 낮은 팀은 어디야?",
-              "지난달 SLA 준수율이 떨어진 팀을 찾아줘" 등의 질문에 사용. 목표: 95% 이상.
+            description: "처리기간 5영업일 이내 건 비율. 목표: 95% 이상."
 
           - name: sla_breach_count
             title: SLA초과 건수
-            description: >
-              처리기간 5영업일을 초과한 건수.
-              "SLA 초과 건이 몇 건이야?", "지연 건 분포를 보여줘" 등의 질문에 사용.
+            description: 처리기간 5영업일 초과 건수.
 
           - name: fraud_suspicion_rate
             title: 사기의심율(%)
-            description: >
-              전체 심사 건 중 사기의심 건 비율. 단위: %.
-              "사기의심율이 높은 병원 TOP10을 찾아줘",
-              "어떤 병원에서 사기 의심이 많이 나와?" 등의 질문에 사용. 목표: 1% 이하.
+            description: "전체 심사 건 중 사기의심 건 비율. 목표: 1% 이하."
 
           - name: review_rate
             title: 재심율(%)
-            description: >
-              전체 심사 건 중 재심 청구 건 비율. 단위: %.
-              "재심율이 높은 보상센터는 어디야?",
-              "어떤 담보에서 재심이 집중돼?" 등의 질문에 사용. 목표: 3% 이하.
+            description: "전체 심사 건 중 재심 청구 건 비율. 목표: 3% 이하."
 
           - name: lawsuit_rate
             title: 소송율(%)
-            description: >
-              전체 심사 건 중 소송 제기 건 비율. 단위: %.
-              "소송율이 얼마야?", "소송이 많이 발생하는 담보는?" 등의 질문에 사용. 목표: 1% 이하.
+            description: "전체 심사 건 중 소송 제기 건 비율. 목표: 1% 이하."
 
           - name: payment_delay_rate
             title: 지급지연율(%)
-            description: >
-              처리기간 5영업일 초과 건수 비율. SLA준수율의 역수(100 - SLA준수율). 단위: %.
-              "지급 지연율이 얼마야?", "어디서 지연이 많이 발생해?" 등의 질문에 사용.
+            description: 처리기간 5영업일 초과 건 비율. SLA준수율의 역수.
 
           - name: duplicate_payment_rate
             title: 중복지급율(%)
-            description: >
-              전체 심사 건 중 중복지급 탐지 건 비율. 단위: %.
-              "중복지급 의심 건 비율이 얼마야?",
-              "동일 고객이 같은 날 여러 건 청구한 의심 건의 비율은?" 등의 질문에 사용.
+            description: 전체 심사 건 중 중복지급 탐지 건 비율.
 
           - name: error_payment_rate
             title: 착오지급율(%)
-            description: >
-              전체 심사 건 중 착오지급 탐지 건 비율. 단위: %.
-              "착오지급 건 비율이 얼마야?", "실수로 잘못 지급된 건 비율은?" 등의 질문에 사용.
+            description: 전체 심사 건 중 착오지급 탐지 건 비율.
 
       # ── fact_contract ─────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract
         includes:
           - name: sales_division
             title: 영업채널구분
-            description: >
-              보험을 판매한 모집 채널. 값: GA·방카·직판·TM 등.
-              "모집채널별로 나눠서 보여줘", "어떤 채널에서 가입한 건이야?",
-              "채널별 손해율 매트릭스를 보여줘" 등 채널 기준 분석에 사용.
+            description: "모집 채널. 값: GA·방카·직판·TM 등."
 
           - name: sales_org_cd
             title: 영업조직코드
-            description: >
-              판매 조직 코드. 영업채널구분보다 세분화된 조직 단위.
-              "특정 영업조직의 건만 보여줘" 등 조직 단위 필터링에 사용.
+            description: 영업 조직 코드. sales_division보다 세분화된 단위.
 
           - name: total_insured_amt
             title: 보험가입금액 합계
-            description: >
-              계약된 보험가입금액의 합계. 손해율(loss_ratio)의 분모.
-              "보험가입금액 합계가 얼마야?", "가입금액 규모를 보여줘" 등의 질문에 사용.
+            description: 계약된 보험가입금액 합계. 손해율(loss_ratio)의 분모.
 
       # ── fact_treatment ────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment
         includes:
           - name: dx_analysis_l1
             title: 진단분석(대)
-            description: >
-              진단의 대분류 분석 결과. 값: 외상·특정감염·암·심혈관·근골격 등.
-              "어떤 진단이 많아?", "진단 대분류별로 나눠서 보여줘",
-              "어떤 진단에서 사기의심이 집중돼?" 등의 질문에 사용.
+            description: "진단 대분류. 값: 외상·특정감염·암·심혈관·근골격 등."
 
           - name: dx_analysis_l2
             title: 진단분석(중)
-            description: >
-              진단의 중분류 분석 결과. dx_analysis_l1보다 세분화.
-              "진단을 더 세분화해서 보여줘" 등의 질문에 활용.
+            description: 진단 중분류. dx_analysis_l1의 하위 분류.
 
           - name: treatment_pattern
             title: 치료패턴
-            description: >
-              치료 방식 패턴. 값: 입원·통원·입원+통원.
-              "입원 건만 보여줘", "치료패턴별로 나눠서 보여줘",
-              "어떤 치료패턴이 많아?" 등의 질문에 사용.
+            description: "치료 방식. 값: 입원·통원·입원+통원."
 
           - name: inpatient_period_grp
             title: 입원기간그룹
-            description: >
-              입원 기간을 구간으로 분류. 값: 통원·1-7일·7-15일·15-30일·30일초과.
-              "입원기간이 긴 건을 보여줘", "입원기간 구간별로 분류해줘" 등의 질문에 사용.
+            description: "입원 기간 구간. 값: 통원·1-7일·7-15일·15-30일·30일초과."
 
           - name: noninsured_ratio
             title: 비급여 비율(%)
-            description: >
-              총 치료비 대비 비급여 치료비 비율. 단위: %.
-              "비급여 비중이 높은 병원을 찾아줘", "비급여 비율이 얼마야?",
-              "어떤 병원이 비급여를 많이 쓰고 있어?" 등의 질문에 사용.
-              비율이 높을수록 과잉진료·허위청구 의심.
+            description: 총 치료비 대비 비급여 치료비 비율. 높을수록 과잉진료·허위청구 의심.
 
           - name: avg_inpatient_days
             title: 평균 입원일수
-            description: >
-              건당 평균 입원일수.
-              "평균 입원일수가 며칠이야?", "입원이 긴 편이야?" 등의 질문에 사용.
+            description: 건당 평균 입원일수.
 
           - name: total_treat_amt_noninsured
             title: 비급여 치료비 합계
-            description: >
-              비급여 치료비 합계 금액.
-              "비급여 치료비가 얼마야?", "비급여 금액 합계를 보여줘",
-              "어떤 비급여 항목이 집중돼?" 등의 질문에 사용.
+            description: 건강보험 비급여 치료비 합계.
 
           - name: total_treat_amt
             title: 총 치료비 합계
-            description: >
-              급여 + 비급여 치료비 합계 금액.
-              "총 치료비가 얼마야?", "치료비 전체 규모를 보여줘" 등의 질문에 사용.
+            description: 급여 + 비급여 치료비 합계.
 
       # ── dim_customer ──────────────────────────────────────────────────────
       - join_path: fact_accident.dim_customer
         includes:
           - name: gender
             title: 성별
-            description: >
-              고객 성별. 값: 남·여.
-              "성별로 나눠서 보여줘", "남성·여성 고객 비교",
-              "고객 성별을 포함해서 보여줘" 등의 질문에 사용.
+            description: "고객 성별. 값: 남·여."
 
           - name: age_group
             title: 연령대
-            description: >
-              고객 연령대 구분. 값: 20대 이하·30대·40대·50대·60대 이상.
-              "연령대별로 나눠서 보여줘", "어떤 연령대가 많아?",
-              "고객 연령대를 포함해서 보여줘" 등의 질문에 사용.
+            description: "고객 연령대. 값: 20대 이하·30대·40대·50대·60대 이상."
 
       # ── dim_coverage ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract.dim_coverage
         includes:
           - name: coverage_nm
             title: 담보명
-            description: >
-              보험 계약상 담보의 정식 명칭.
-              "담보별로 나눠서 보여줘", "어떤 담보에서 발생해?",
-              "담보명을 포함해서 보여줘", "손해율이 높은 담보는?" 등의 질문에 사용.
-              지급 시 적용된 담보명은 final_coverage_nm을 사용한다.
+            description: 계약상 담보 명칭. 지급 시 적용 담보명은 final_coverage_nm 사용.
 
           - name: coverage_type
             title: 담보유형
-            description: >
-              담보의 보장 유형. 값: 암진단비·상해수술비·실손의료비·입원일당 등.
-              "담보유형별로 나눠서 보여줘", "실손 담보 건만 보여줘" 등의 질문에 사용.
+            description: "담보 보장 유형. 값: 암진단비·상해수술비·실손의료비·입원일당 등."
 
           - name: coverage_cat1
             title: 담보분류(대)
-            description: >
-              담보 대분류. 값: 질병·상해 등.
-              "질병 담보 건만 보여줘", "담보 대분류별로 나눠서 보여줘" 등의 질문에 사용.
+            description: "담보 대분류. 값: 질병·상해 등."
 
           - name: coverage_cat2
             title: 담보분류(중)
-            description: >
-              담보 중분류. coverage_cat1보다 세분화된 담보 분류.
-              "담보 중분류별로 나눠서 보여줘" 등의 질문에 활용.
+            description: 담보 중분류. coverage_cat1의 하위 분류.
 
       # ── dim_product ───────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract.dim_product
         includes:
           - name: product_nm
             title: 상품명
-            description: >
-              보험 상품의 정식 명칭.
-              "상품별로 나눠서 보여줘", "어떤 상품이야?",
-              "상품명을 포함해서 보여줘", "상품별 손해율 매트릭스를 보여줘" 등의 질문에 사용.
+            description: 보험 상품 명칭.
 
       # ── dim_hospital ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment.dim_hospital
         includes:
           - name: hospital_nm
             title: 병원명
-            description: >
-              치료를 받은 의료기관의 정식 명칭.
-              "병원별로 나눠서 보여줘", "어떤 병원이야?",
-              "사기의심율이 높은 병원 TOP10을 찾아줘",
-              "비급여 비중이 높은 병원을 찾아줘" 등의 질문에 사용.
+            description: 치료 의료기관 명칭.
 
           - name: hospital_grade_cd
             title: 병원등급코드
-            description: >
-              의료기관 종별 등급 코드. 값: 상급종합·종합·병원·의원·한방병원 등.
-              "상급종합병원 건만 보여줘", "병원 등급별로 나눠서 보여줘",
-              "등급이 높은 병원에서 비급여가 많이 나와?" 등의 질문에 사용.
+            description: "의료기관 종별 등급. 값: 상급종합·종합·병원·의원·한방병원 등."
 
       # ── dim_diagnosis ─────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment.dim_diagnosis
         includes:
           - name: diagnosis_nm
             title: 진단명
-            description: >
-              진단의 정식 명칭(KCD 기반).
-              "진단명을 포함해서 보여줘", "어떤 진단이야?",
-              "특정 진단 건만 조회해줘" 등의 질문에 사용.
+            description: 진단 정식 명칭(KCD 기반).
 
           - name: diagnosis_type
             title: 진단유형
-            description: >
-              진단 대분류 유형. 값: 암·외상·순환기질환·근골격질환·감염질환 등.
-              "진단유형별로 나눠서 보여줘", "어떤 진단군에서 집중돼?",
-              "사기의심율이 높은 진단유형은?" 등의 질문에 사용.
+            description: "진단 대분류. 값: 암·외상·순환기질환·근골격질환·감염질환 등."
