@@ -13,6 +13,10 @@
 `kpi` 뷰 기반 쿼리는 모두 KDL 해당.
 > 
 
+> **비KDL(LQLS·LQHS·HQLS·HQHS)** 은 모두 `ops` 뷰 기반 쿼리.
+`ops.*` 단일 prefix로 모든 fact/dim 멤버에 접근한다.
+> 
+
 ---
 
 ## LQLS — 단순 조회 × 단순 스키마
@@ -26,14 +30,14 @@
     {
       "query": {
         "dimensions": [
-          "fact_payment.accident_no",
-          "fact_payment.final_coverage_nm",
-          "fact_payment.reduction_reason"
+          "ops.accident_no",
+          "ops.final_coverage_nm",
+          "ops.reduction_reason"
         ],
-        "measures": ["fact_payment.total_payment_amt"],
-        "timeDimensions": [{"dimension": "fact_accident.claim_dt", "dateRange": "this month"}],
-        "filters": [{"member": "fact_payment.final_payment_cd", "operator": "equals", "values": ["감액지급"]}],
-        "order": {"fact_payment.total_payment_amt": "desc"}
+        "measures": ["ops.total_payment_amt"],
+        "timeDimensions": [{"dimension": "ops.claim_dt", "dateRange": "this month"}],
+        "filters": [{"member": "ops.final_payment_cd", "operator": "equals", "values": ["감액지급"]}],
+        "order": {"ops.total_payment_amt": "desc"}
       }
     }
     ```
@@ -45,13 +49,13 @@
     {
       "query": {
         "dimensions": [
-          "fact_accident.accident_no",
-          "fact_review.anomaly_label",
-          "fact_review.claim_center_nm",
-          "fact_review.adjuster_id"
+          "ops.accident_no",
+          "ops.anomaly_label",
+          "ops.claim_center_nm",
+          "ops.adjuster_id"
         ],
-        "filters": [{"member": "fact_review.anomaly_label", "operator": "notEquals", "values": ["정상"]}],
-        "order": {"fact_accident.accident_no": "desc"}
+        "filters": [{"member": "ops.anomaly_label", "operator": "notEquals", "values": ["정상"]}],
+        "order": {"ops.accident_no": "desc"}
       }
     }
     ```
@@ -63,13 +67,13 @@
 {
   "query": {
     "dimensions": [
-      "fact_accident.accident_no",
-      "fact_review.processing_biz_days",
-      "fact_review.adjuster_id",
-      "fact_review.claim_center_nm"
+      "ops.accident_no",
+      "ops.processing_biz_days",
+      "ops.adjuster_id",
+      "ops.claim_center_nm"
     ],
-    "filters": [{"member": "fact_review.processing_biz_days", "operator": "gt", "values": ["5"]}],
-    "order": {"fact_review.processing_biz_days": "desc"}
+    "filters": [{"member": "ops.processing_biz_days", "operator": "gt", "values": ["5"]}],
+    "order": {"ops.processing_biz_days": "desc"}
   }
 }
 ```
@@ -81,16 +85,16 @@
     {
       "query": {
         "dimensions": [
-          "fact_accident.accident_no",
-          "fact_accident.accident_dt",
-          "fact_accident.claim_dt",
-          "fact_accident.accident_type_l1",
-          "fact_accident.accident_type_l2",
-          "dim_customer.gender",
-          "dim_customer.age_group"
+          "ops.accident_no",
+          "ops.accident_dt",
+          "ops.claim_dt",
+          "ops.accident_type_l1",
+          "ops.accident_type_l2",
+          "ops.gender",
+          "ops.age_group"
         ],
-        "filters": [{"member": "fact_accident.customer_id", "operator": "equals", "values": ["{{customer_id}}"]}],
-        "order": {"fact_accident.accident_dt": "asc"}
+        "filters": [{"member": "ops.customer_id", "operator": "equals", "values": ["{{customer_id}}"]}],
+        "order": {"ops.accident_dt": "asc"}
       }
     }
     ```
@@ -109,20 +113,20 @@
     {
       "query": {
         "dimensions": [
-          "fact_accident.accident_no",
-          "fact_accident.accident_dt",
-          "fact_accident.accident_type_l1",
-          "dim_customer.gender",
-          "dim_customer.age_group",
-          "fact_contract.sales_division",
-          "dim_product.product_nm",
-          "dim_coverage.coverage_nm",
-          "dim_coverage.coverage_type",
-          "fact_payment.final_payment_cd",
-          "fact_payment.reduction_reason"
+          "ops.accident_no",
+          "ops.accident_dt",
+          "ops.accident_type_l1",
+          "ops.gender",
+          "ops.age_group",
+          "ops.sales_division",
+          "ops.product_nm",
+          "ops.coverage_nm",
+          "ops.coverage_type",
+          "ops.final_payment_cd",
+          "ops.reduction_reason"
         ],
-        "measures": ["fact_payment.total_payment_amt"],
-        "filters": [{"member": "fact_accident.accident_no", "operator": "equals", "values": ["{{accident_no}}"]}]
+        "measures": ["ops.total_payment_amt"],
+        "filters": [{"member": "ops.accident_no", "operator": "equals", "values": ["{{accident_no}}"]}]
       }
     }
     ```
@@ -134,19 +138,19 @@
     {
       "query": {
         "dimensions": [
-          "fact_accident.accident_no",
-          "fact_accident.accident_dt",
-          "fact_accident.accident_type_l1",
-          "dim_customer.gender",
-          "dim_customer.age_group",
-          "fact_review.claim_center_nm",
-          "fact_treatment.treatment_pattern",
-          "fact_treatment.dx_analysis_l1",
-          "dim_diagnosis.diagnosis_nm",
-          "dim_diagnosis.diagnosis_type"
+          "ops.accident_no",
+          "ops.accident_dt",
+          "ops.accident_type_l1",
+          "ops.gender",
+          "ops.age_group",
+          "ops.claim_center_nm",
+          "ops.treatment_pattern",
+          "ops.dx_analysis_l1",
+          "ops.diagnosis_nm",
+          "ops.diagnosis_type"
         ],
-        "filters": [{"member": "fact_review.anomaly_label", "operator": "equals", "values": ["사기의심"]}],
-        "order": {"fact_accident.accident_dt": "desc"}
+        "filters": [{"member": "ops.anomaly_label", "operator": "equals", "values": ["사기의심"]}],
+        "order": {"ops.accident_dt": "desc"}
       }
     }
     ```
@@ -158,23 +162,23 @@
     {
       "query": {
         "dimensions": [
-          "fact_accident.accident_no",
-          "fact_accident.accident_dt",
-          "fact_accident.accident_type_l1",
-          "dim_customer.gender",
-          "dim_customer.age_group",
-          "fact_review.claim_center_nm",
-          "fact_review.processing_biz_days",
-          "fact_contract.sales_division",
-          "dim_coverage.coverage_nm",
-          "dim_coverage.coverage_type",
-          "dim_hospital.hospital_nm",
-          "dim_hospital.hospital_grade_cd",
-          "dim_diagnosis.diagnosis_nm",
-          "dim_diagnosis.diagnosis_type"
+          "ops.accident_no",
+          "ops.accident_dt",
+          "ops.accident_type_l1",
+          "ops.gender",
+          "ops.age_group",
+          "ops.claim_center_nm",
+          "ops.processing_biz_days",
+          "ops.sales_division",
+          "ops.coverage_nm",
+          "ops.coverage_type",
+          "ops.hospital_nm",
+          "ops.hospital_grade_cd",
+          "ops.diagnosis_nm",
+          "ops.diagnosis_type"
         ],
-        "filters": [{"member": "fact_review.lawsuit_yn", "operator": "equals", "values": ["Y"]}],
-        "order": {"fact_accident.accident_dt": "desc"}
+        "filters": [{"member": "ops.lawsuit_yn", "operator": "equals", "values": ["Y"]}],
+        "order": {"ops.accident_dt": "desc"}
       }
     }
     ```
@@ -192,10 +196,10 @@
     ```json
     {
       "query": {
-        "dimensions": ["fact_accident.accident_type_l1"],
-        "measures": ["fact_accident.loss_ratio"],
-        "timeDimensions": [{"dimension": "fact_accident.accident_dt", "granularity": "month", "dateRange": "last 6 months"}],
-        "order": {"fact_accident.accident_dt": "asc"}
+        "dimensions": ["ops.accident_type_l1"],
+        "measures": ["ops.loss_ratio"],
+        "timeDimensions": [{"dimension": "ops.accident_dt", "granularity": "month", "dateRange": "last 6 months"}],
+        "order": {"ops.accident_dt": "asc"}
       }
     }
     ```
@@ -206,9 +210,9 @@
     ```json
     {
       "query": {
-        "dimensions": ["fact_payment.final_coverage_nm"],
-        "measures": ["fact_payment.approval_rate", "fact_payment.count", "fact_payment.reduction_count"],
-        "order": {"fact_payment.approval_rate": "asc"},
+        "dimensions": ["ops.final_coverage_nm"],
+        "measures": ["ops.approval_rate", "ops.payment_count", "ops.reduction_count"],
+        "order": {"ops.approval_rate": "asc"},
         "limit": 5
       }
     }
@@ -220,9 +224,9 @@
     ```json
     {
       "query": {
-        "dimensions": ["fact_review.adjuster_id", "fact_review.claim_center_nm"],
-        "measures": ["fact_review.overpayment_rate", "fact_review.overpayment_count", "fact_review.count"],
-        "order": {"fact_review.overpayment_rate": "desc"},
+        "dimensions": ["ops.adjuster_id", "ops.claim_center_nm"],
+        "measures": ["ops.overpayment_rate", "ops.overpayment_count", "ops.inspect_count"],
+        "order": {"ops.overpayment_rate": "desc"},
         "limit": 5
       }
     }
@@ -234,10 +238,10 @@
     ```json
     {
       "query": {
-        "dimensions": ["fact_accident.customer_id", "fact_accident.claim_dt"],
-        "measures": ["fact_accident.count"],
-        "filters": [{"member": "fact_accident.count", "operator": "gt", "values": ["1"]}],
-        "order": {"fact_accident.count": "desc"}
+        "dimensions": ["ops.customer_id", "ops.claim_dt"],
+        "measures": ["ops.claim_count"],
+        "filters": [{"member": "ops.claim_count", "operator": "gt", "values": ["1"]}],
+        "order": {"ops.claim_count": "desc"}
       }
     }
     ```
@@ -248,9 +252,9 @@
     ```json
     {
       "query": {
-        "dimensions": ["fact_review.claim_center_nm"],
-        "measures": ["fact_review.anomaly_rate", "fact_accident.count", "fact_review.anomaly_count"],
-        "order": {"fact_accident.anomaly_rate": "desc"}
+        "dimensions": ["ops.claim_center_nm"],
+        "measures": ["ops.anomaly_rate", "ops.claim_count", "ops.anomaly_count"],
+        "order": {"ops.anomaly_rate": "desc"}
       }
     }
     ```
@@ -261,11 +265,11 @@
     ```json
     {
       "query": {
-        "dimensions": ["fact_review.claim_team_nm", "fact_review.claim_center_nm"],
-        "measures": ["fact_accident.count"],
-        "filters": [{"member": "fact_review.processing_biz_days", "operator": "gt", "values": ["5"]}],
-        "timeDimensions": [{"dimension": "fact_accident.accident_dt", "dateRange": "last month"}],
-        "order": {"fact_accident.count": "desc"}
+        "dimensions": ["ops.claim_team_nm", "ops.claim_center_nm"],
+        "measures": ["ops.claim_count"],
+        "filters": [{"member": "ops.processing_biz_days", "operator": "gt", "values": ["5"]}],
+        "timeDimensions": [{"dimension": "ops.accident_dt", "dateRange": "last month"}],
+        "order": {"ops.claim_count": "desc"}
       }
     }
     ```
@@ -276,9 +280,9 @@
     ```json
     {
       "query": {
-        "dimensions": ["fact_review.adjuster_id", "fact_review.claim_center_nm"],
-        "measures": ["fact_review.avg_processing_days", "fact_accident.count"],
-        "order": {"fact_review.avg_processing_days": "desc"}
+        "dimensions": ["ops.adjuster_id", "ops.claim_center_nm"],
+        "measures": ["ops.avg_processing_days", "ops.claim_count"],
+        "order": {"ops.avg_processing_days": "desc"}
       }
     }
     ```
@@ -290,9 +294,9 @@
     ~~{
       "query": {
         "measures": [
-          "fact_accident.review_reversal_count",
-          "fact_accident.review_reversal_rate",
-          "fact_review.review_count"
+          "ops.review_reversal_count",
+          "ops.review_reversal_rate",
+          "ops.review_count"
         ]
       }
     }~~
@@ -311,10 +315,10 @@
     ```json
     {
       "query": {
-        "dimensions": ["dim_coverage.coverage_nm", "dim_coverage.coverage_type"],
-        "measures": ["fact_accident.loss_ratio", "fact_accident.count"],
-        "filters": [{"member": "fact_accident.loss_ratio", "operator": "gt", "values": ["0.8"]}],
-        "order": {"fact_accident.loss_ratio": "desc"}
+        "dimensions": ["ops.coverage_nm", "ops.coverage_type"],
+        "measures": ["ops.loss_ratio", "ops.claim_count"],
+        "filters": [{"member": "ops.loss_ratio", "operator": "gt", "values": ["0.8"]}],
+        "order": {"ops.loss_ratio": "desc"}
       }
     }
     ```
@@ -325,9 +329,9 @@
     ```json
     {
       "query": {
-        "dimensions": ["fact_contract.sales_division", "dim_product.product_nm"],
-        "measures": ["fact_accident.loss_ratio", "fact_accident.count"],
-        "order": {"fact_accident.loss_ratio": "desc"}
+        "dimensions": ["ops.sales_division", "ops.product_nm"],
+        "measures": ["ops.loss_ratio", "ops.claim_count"],
+        "order": {"ops.loss_ratio": "desc"}
       }
     }
     ```
@@ -339,12 +343,12 @@
     {
       "query": {
         "dimensions": [
-          "dim_hospital.hospital_nm",
-          "dim_hospital.hospital_grade_cd",
-          "dim_diagnosis.diagnosis_type"
+          "ops.hospital_nm",
+          "ops.hospital_grade_cd",
+          "ops.diagnosis_type"
         ],
-        "measures": ["fact_review.fraud_suspicion_rate", "fact_accident.count"],
-        "order": {"fact_review.fraud_suspicion_rate": "desc"},
+        "measures": ["ops.fraud_suspicion_rate", "ops.claim_count"],
+        "order": {"ops.fraud_suspicion_rate": "desc"},
         "limit": 10
       }
     }
@@ -356,9 +360,9 @@
     ```json
     {
       "query": {
-        "dimensions": ["fact_review.claim_center_nm", "dim_coverage.coverage_nm"],
-        "measures": ["fact_review.review_rate", "fact_accident.count"],
-        "order": {"fact_review.review_rate": "desc"}
+        "dimensions": ["ops.claim_center_nm", "ops.coverage_nm"],
+        "measures": ["ops.review_rate", "ops.claim_count"],
+        "order": {"ops.review_rate": "desc"}
       }
     }
     ```
@@ -370,12 +374,12 @@
     {
       "query": {
         "dimensions": [
-          "dim_hospital.hospital_nm",
-          "dim_hospital.hospital_grade_cd",
-          "fact_treatment.dx_analysis_l1"
+          "ops.hospital_nm",
+          "ops.hospital_grade_cd",
+          "ops.dx_analysis_l1"
         ],
-        "measures": ["fact_treatment.noninsured_ratio", "fact_treatment.total_treat_amt_noninsured"],
-        "order": {"fact_treatment.noninsured_ratio": "desc"}
+        "measures": ["ops.noninsured_ratio", "ops.total_treat_amt_noninsured"],
+        "order": {"ops.noninsured_ratio": "desc"}
       }
     }
     ```

@@ -1,5 +1,6 @@
 cubes:
   - name: dim_diagnosis
+    public: false
     sql_table: oda.dim_diagnosis
     data_source: default
 

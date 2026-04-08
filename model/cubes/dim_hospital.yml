@@ -1,5 +1,6 @@
 cubes:
   - name: dim_hospital
+    public: false
     sql_table: oda.dim_hospital
     data_source: default
 
