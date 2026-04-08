@@ -186,26 +186,17 @@ views:
               감액지급(final_payment_cd = '감액지급') 건수.
               "감액된 건이 몇 건이야?", "감액지급 건수를 보여줘" 등의 질문에 사용.
 
-          - name: approval_rate
-            title: 청구인용율(%)
-            description: >
-              정상지급 건수 ÷ 전체 지급 건수 × 100. 단위: %.
-              "청구인용율이 얼마야?", "인용율이 낮은 담보 TOP5를 보여줘",
-              "어떤 담보가 잘 안 나와?" 등의 질문에 사용. 목표: 85~90%.
-
           - name: reduction_rate
             title: 감액율(%)
             description: >
               감액금액 ÷ 청구금액 × 100. 단위: %.
               "감액율이 얼마야?", "과잉청구 규모가 어느 정도야?" 등의 질문에 사용.
 
-          - name: payment_ratio
-            alias: claim_approval_rate
-            title: 청구인용율(%)
+          - name: payment_rate
+            title: 청구인용율(금액기준, %)
             description: >
-              지급결정금액 ÷ 청구금액 × 100. 단위: %.
-              금액 기준 인용율. approval_rate(건수 기준)와 다르다.
-              "금액 기준 인용율이 얼마야?" 등 금액 관점 인용율 질문에 사용.
+              지급결정금액 합계 ÷ 청구금액 합계 × 100. 단위: %.
+              "지급결정금액 기준 인용율이 얼마야?" 등 금액 관점 인용율 질문에 사용.
 
       # ── fact_review ───────────────────────────────────────────────────────
       - join_path: fact_accident.fact_review

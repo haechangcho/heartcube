@@ -103,12 +103,10 @@ cubes:
         type: avg
         description: 건당 평균 지급 결정 금액.
 
-      - name: payment_ratio
+      - name: payment_rate
         type: number
-        title: 지급률(%)
-        description: >
-          청구금액 대비 지급결정금액 비율.
-          100% 초과 시 데이터 이상 가능성.
+        title: 청구인용율(%)
+        description: "지급결정금액 / 청구금액"
         sql: "100.0 * {total_payment_amt} / NULLIF({total_claim_amt}, 0)"
         format: percent
 
@@ -123,14 +121,6 @@ cubes:
         title: 감액지급 건수
         filters:
           - sql: "{CUBE}.final_payment_cd = '감액지급'"
-
-
-      - name: approval_rate
-        type: number
-        title: 청구인용율(%)
-        description: "정상지급 건수 / 전체 청구 건수 × 100"
-        sql: "100.0 * {normal_payment_count} / NULLIF({count}, 0)"
-        format: percent
 
       - name: reduction_rate
         type: number
