@@ -108,8 +108,6 @@ cubes:
           지급결정금액 합계 ÷ 보험가입금액 합계 × 100.
         sql: "100.0 * {fact_payment.total_payment_amt} / NULLIF({fact_contract.total_insured_amt}, 0)"
         format: percent
-        meta:
-          kpi: true
           
       - name: traffic_count
         type: count
@@ -153,6 +151,15 @@ cubes:
         sql: "{fact_payment.total_payment_amt} / NULLIF({count}, 0)"
         format: currency
 
+      - name: claim_approval_rate
+        type: number
+        title: 청구인용율(%)
+        description: >
+          지급결정금액 합계 ÷ 청구금액 합계.
+          청구된 금액 중 실제 지급이 승인된 비율.
+        sql: "100.0 * {fact_payment.total_payment_amt} / NULLIF({fact_payment.total_claim_amt}, 0)"
+        format: percent
+
       - name: anomaly_rate
         type: number
         title: 이상징후 비율(%)
@@ -162,6 +169,42 @@ cubes:
         sql: "100.0 * {fact_review.anomaly_count} / NULLIF({count}, 0)"
         format: percent
 
+
+      - name: overpayment_rate
+        type: number
+        title: 과지급율(%)
+        description: "전체 사고 중 이상유형라벨이 과지급인 건의 비율."
+        sql: "100.0 * {fact_review.overpayment_count} / NULLIF({count}, 0)"
+        format: percent
+
+
+      - name: sla_compliance_rate
+        type: number
+        title: SLA준수율(%)
+        description: "청구 후 5영업일 이내 처리된 건의 비율."
+        sql: "100.0 * ({count} - {fact_review.sla_breach_count}) / NULLIF({count}, 0)"
+        format: percent
+
+      - name: avg_processing_days
+        type: number
+        title: 평균 처리기간(영업일)
+        description: "사고 접수부터 보상 완료까지 평균 영업일수. SLA 기준: 5일."
+        sql: "{fact_review.total_processing_days} / NULLIF({count}, 0)"
+        format: number
+
+      - name: noninsured_ratio
+        type: number
+        title: 비급여비중(%)
+        description: "총 치료비 대비 비급여 치료비 비율."
+        sql: "100.0 * {fact_treatment.total_treat_amt_noninsured} / NULLIF({fact_treatment.total_treat_amt_insured} + {fact_treatment.total_treat_amt_noninsured}, 0)"
+        format: percent
+
+      - name: fraud_suspicion_rate
+        type: number
+        title: 사기의심율(%)
+        description: "전체 사고 중 사기의심 건의 비율."
+        sql: "100.0 * {fact_review.fraud_suspect_count} / NULLIF({count}, 0)"
+        format: percent
 
       - name: review_reversal_count
         type: count
@@ -194,5 +237,33 @@ cubes:
         time_dimension: accident_dt
         granularity: day
         partition_granularity: month
+        refresh_key:
+          every: 1 hour
+      - name: monthly_loss_ratio_rollup
+        type: rollup
+        measures:
+          - fact_payment.total_payment_amt
+          - fact_contract.total_insured_amt
+          - fact_payment.total_claim_amt
+          - fact_review.overpayment_count
+          - count
+        time_dimension: payment_dt
+        granularity: month
+        partition_granularity: year
+        refresh_key:
+          every: 1 hour
+      - name: monthly_sla_rollup
+        type: rollup
+        measures:
+          - fact_review.sla_breach_count
+          - fact_review.total_processing_days
+          - fact_review.anomaly_count
+          - fact_review.fraud_suspect_count
+          - fact_treatment.total_treat_amt_noninsured
+          - fact_treatment.total_treat_amt_insured
+          - count
+        time_dimension: claim_dt
+        granularity: month
+        partition_granularity: year
         refresh_key:
           every: 1 hour

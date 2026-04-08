@@ -211,8 +211,8 @@
     {
       "query": {
         "dimensions": ["ops.final_coverage_nm"],
-        "measures": ["ops.approval_rate", "ops.payment_count", "ops.reduction_count"],
-        "order": {"ops.approval_rate": "asc"},
+        "measures": ["ops.claim_approval_rate", "ops.payment_count", "ops.reduction_count"],
+        "order": {"ops.claim_approval_rate": "asc"},
         "limit": 5
       }
     }
