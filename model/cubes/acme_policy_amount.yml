@@ -31,7 +31,9 @@ cubes:
         title: Total Policy Amount
 
       - name: premium_amount
-        sql: "CASE WHEN {acme_premium}.policy_amount_identifier IS NOT NULL THEN policy_amount ELSE 0 END"
+        sql: policy_amount
         type: sum
         title: Premium Amount
-        description: "Filter on acme_premium join to determine if row represents a premium."
+        description: "Sum of policy amounts that have a corresponding premium record."
+        filters:
+          - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_premium p WHERE p.policy_amount_identifier = {CUBE}.policy_amount_identifier)"
