@@ -1,7 +1,7 @@
 cubes:
   - name: acme_policy_amount
     public: false
-    sql_table: oda.acme_policy_amount
+    sql_table: oda_benchmark.acme_policy_amount
     description: "Amounts associated with insurance policies, including coverage and insured object details."
 
     joins:

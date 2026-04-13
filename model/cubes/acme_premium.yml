@@ -1,7 +1,7 @@
 cubes:
   - name: acme_premium
     public: false
-    sql_table: oda.acme_premium
+    sql_table: oda_benchmark.acme_premium
     description: "Table containing premium information."
 
     dimensions:

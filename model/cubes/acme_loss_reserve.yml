@@ -1,7 +1,7 @@
 cubes:
   - name: acme_loss_reserve
     public: false
-    sql_table: oda.acme_loss_reserve
+    sql_table: oda_benchmark.acme_loss_reserve
     description: "Table containing loss_reserve information."
 
     dimensions:

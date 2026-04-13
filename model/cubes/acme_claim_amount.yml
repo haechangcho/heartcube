@@ -1,7 +1,7 @@
 cubes:
   - name: acme_claim_amount
     public: false
-    sql_table: oda.acme_claim_amount
+    sql_table: oda_benchmark.acme_claim_amount
 
     joins:
       - name: acme_loss_payment
