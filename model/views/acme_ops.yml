@@ -30,8 +30,6 @@ views:
           - total_claim_amount
           - loss_payment_amount
           - loss_reserve_amount
-          - expense_payment_amount
-          - expense_reserve_amount
           - total_loss_amount
 
       # ── acme_policy ───────────────────────────────────────────────────────
@@ -53,4 +51,8 @@ views:
       - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_policy_amount
         includes:
           - total_policy_amount
-          - premium_amount
+
+      # ── acme_premium ──────────────────────────────────────────────────────
+      - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_policy_amount.acme_premium
+        includes:
+          - has_premium
