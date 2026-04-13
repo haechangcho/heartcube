@@ -1,7 +1,7 @@
 cubes:
   - name: acme_policy_coverage_detail
     public: false
-    sql_table: oda.acme_policy_coverage_detail
+    sql_table: oda_benchmark.acme_policy_coverage_detail
     description: "Coverage details of policies including effective dates, descriptions, and identifiers."
 
     joins:

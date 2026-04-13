@@ -1,7 +1,7 @@
 cubes:
   - name: acme_policy
     public: false
-    sql_table: oda.acme_policy
+    sql_table: oda_benchmark.acme_policy
     description: "Table containing policy data."
 
     joins:

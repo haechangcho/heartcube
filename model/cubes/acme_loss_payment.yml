@@ -1,7 +1,7 @@
 cubes:
   - name: acme_loss_payment
     public: false
-    sql_table: oda.acme_loss_payment
+    sql_table: oda_benchmark.acme_loss_payment
     description: "Table containing loss_payment information."
 
     dimensions:
