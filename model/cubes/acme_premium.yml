@@ -1,0 +1,12 @@
+cubes:
+  - name: acme_premium
+    public: false
+    sql_table: oda.acme_premium
+    title: ACME 보험료
+
+    dimensions:
+      - name: policy_amount_identifier
+        sql: policy_amount_identifier
+        type: number
+        primary_key: true
+        public: false

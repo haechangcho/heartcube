@@ -1,0 +1,27 @@
+cubes:
+  - name: acme_claim_coverage
+    public: false
+    sql_table: oda.acme_claim_coverage
+    title: ACME 청구담보
+
+    joins:
+      - name: acme_policy_coverage_detail
+        sql: "{acme_claim_coverage}.policy_coverage_detail_identifier = {acme_policy_coverage_detail}.policy_coverage_detail_identifier"
+        relationship: many_to_one
+
+    dimensions:
+      - name: claim_identifier
+        sql: claim_identifier
+        type: number
+        primary_key: true
+        public: false
+
+      - name: policy_coverage_detail_identifier
+        sql: policy_coverage_detail_identifier
+        type: number
+        public: false
+
+      - name: effective_date
+        sql: "CAST(effective_date AS DATE)"
+        type: time
+        title: 담보개시일
