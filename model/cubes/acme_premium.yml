@@ -2,7 +2,7 @@ cubes:
   - name: acme_premium
     public: false
     sql_table: oda.acme_premium
-    title: ACME 보험료
+    description: "Table containing premium information."
 
     dimensions:
       - name: policy_amount_identifier

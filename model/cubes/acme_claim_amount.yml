@@ -2,7 +2,6 @@ cubes:
   - name: acme_claim_amount
     public: false
     sql_table: oda.acme_claim_amount
-    title: ACME 청구금액
 
     joins:
       - name: acme_loss_payment
@@ -31,45 +30,42 @@ cubes:
       - name: amount_type_code
         sql: amount_type_code
         type: string
-        title: 금액유형코드
 
       - name: insurance_type_code
         sql: insurance_type_code
         type: string
-        title: 보험유형코드
 
       - name: event_date
         sql: "CAST(event_date AS DATE)"
         type: time
-        title: 발생일
 
     measures:
+      - name: total_claim_amount
+        sql: claim_amount
+        type: sum
+        title: Total Claim Amount
+
       - name: loss_payment_amount
         sql: "CASE WHEN {acme_loss_payment}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
         type: sum
-        title: 손해지급금액
+        title: Loss Payment Amount
 
       - name: loss_reserve_amount
         sql: "CASE WHEN {acme_loss_reserve}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
         type: sum
-        title: 손해준비금
+        title: Loss Reserve Amount
 
       - name: expense_payment_amount
         sql: "CASE WHEN {acme_expense_payment}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
         type: sum
-        title: 비용지급금액
+        title: Expense Payment Amount
 
       - name: expense_reserve_amount
         sql: "CASE WHEN {acme_expense_reserve}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
         type: sum
-        title: 비용준비금
+        title: Expense Reserve Amount
 
       - name: total_loss_amount
         sql: "{loss_payment_amount} + {loss_reserve_amount}"
         type: number
-        title: 총손해금액
-
-      - name: total_claim_amount
-        sql: claim_amount
-        type: sum
-        title: 총청구금액
+        title: Total Loss Amount

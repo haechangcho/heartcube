@@ -2,7 +2,7 @@ cubes:
   - name: acme_expense_payment
     public: false
     sql_table: oda.acme_expense_payment
-    title: ACME 비용지급
+    description: "Table containing expense_payment information."
 
     dimensions:
       - name: claim_amount_identifier
