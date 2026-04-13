@@ -6,34 +6,70 @@ Replicate the [dbt Semantic Layer LLM Benchmarking](https://github.com/dbt-labs/
 
 ---
 
-## 2. Reference Experiment (dbt SL)
+## 2. Reference Experiment (dbt SL) — Exact Methodology
 
-| Item | Detail |
-|---|---|
-| Dataset | ACME Insurance (13 tables) |
-| Questions | 11 English questions (subset of data.world benchmark) |
-| Query format | dbt SL SQL (`select * from {{ semantic_layer.query(...) }}`) |
-| Schema context | DDL text (`ACME_small.ddl`) |
-| Execution | dbt Cloud JDBC |
-| Model | GPT-4 |
-| Iterations | 5 |
-| Evaluation | Execution Accuracy (pass/fail) |
+The original experiment runs **two parallel tracks** and compares both against gold:
+
+| Track | Generator | Prompt context |
+|---|---|---|
+| **SL track** | GPT-4 → dbt SL SQL query | metrics + dimensions + entities (NAME, DESCRIPTION) from `/semantic_layer.*()` |
+| **SQL track** | GPT-4 → raw SQL query | full DDL text (`ACME_small.ddl`) |
+
+Both generated queries are executed against the same dbt Cloud JDBC endpoint and compared to the **gold result DataFrame** using `compare_query_results()`.
+
+### Evaluation metric (original)
+
+**Single binary metric: `is_result_equivalent` (True / False)**
+
+```python
+def compare_query_results(gold_df, comparison_df):
+    # 1. Match columns by type + sorted values (fuzzy column mapping)
+    # 2. Sort rows in both DataFrames
+    # 3. Return gold_df.equals(comparison_df)  ← exact match only
+```
+
+- No partial credit — only exact DataFrame match counts
+- No structural comparison (dimensions / measures / filters not checked)
+- No JSON parse rate (dbt SL syntax is SQL string, not JSON)
+- Repeated 5 iterations, result is pass rate per question across runs
+
+### Schema context (original)
+
+For the **SL track**: calls `/semantic_layer.metrics()`, `/semantic_layer.dimensions(metrics=[...])`, `/semantic_layer.entities(metrics=[...])` and passes the resulting DataFrames (NAME + DESCRIPTION columns) as strings into the prompt.
+
+For the **SQL track**: passes raw `ACME_small.ddl` text.
 
 ---
 
 ## 3. This Experiment (Cube)
 
-### 3-1. Key Differences
+### 3-1. Comparison Table
 
-| Item | dbt SL (reference) | Cube (this) |
-|---|---|---|
-| Semantic model | `omg_semantics/*.yaml` | `model/cubes/acme/*.yml` + `model/views/acme_ops.yml` |
-| Query format | SQL-like string | JSON (`{ "query": { "dimensions", "measures", "filters" } }`) |
-| Schema context | DDL text | Cube `/meta` API (names + descriptions) |
-| Execution | dbt Cloud JDBC | Cube REST API `/load` |
-| Model | GPT-4 | GPT-4o |
-| Iterations | 5 | 5 |
-| Evaluation | Execution Accuracy | Parse Rate · Exec Rate · Structural F1 · Result F1 · LLM-as-Judge |
+| Item | dbt SL (reference) | Cube (this) | Notes |
+|---|---|---|---|
+| Semantic model | `omg_semantics/*.yaml` | `model/cubes/acme/*.yml` + `acme_ops` view | ✅ aligned 1:1 |
+| Query format | SQL-like string | JSON object | ⚠️ different format — JSON parse step added |
+| Schema context | metrics + dimensions + entities (NAME + DESCRIPTION) via SL API | `acme_ops` view members (name + description) via `/meta` | ✅ equivalent intent |
+| Schema delivery | stringified DataFrames in prompt | formatted text block in prompt | ⚠️ minor difference |
+| Execution endpoint | dbt Cloud JDBC | Cube REST API `/load` | ⚠️ different |
+| Gold source | `.ttl` RDF ontology → SPARQL | `acme_questions.md` (manually authored) | ⚠️ different |
+| LLM model | GPT-4 | GPT-4o | ⚠️ different model |
+| Temperature | 0.3 | 0.3 | ✅ same |
+| Iterations | 5 | 5 | ✅ same |
+| Questions | 11 English (same set) | 11 English (same set) | ✅ same |
+| SQL comparison track | ✅ (parallel SQL track) | ❌ not included | ⚠️ not replicated |
+
+### 3-2. Evaluation Metrics Comparison
+
+| Metric | dbt SL (reference) | Cube (this) | Notes |
+|---|---|---|---|
+| **Execution accuracy** (`is_result_equivalent`) | ✅ exact DataFrame match | ✅ Soft Result F1 (partial credit) | ⚠️ original is binary; this is more lenient |
+| **JSON parse rate** | ❌ not applicable (SQL string) | ✅ added | new — required for JSON output |
+| **Execution success rate** | implicit (failed queries → False) | ✅ explicit column | ✅ equivalent |
+| **Structural accuracy** (dim/msr/filter) | ❌ not in original | ✅ added (F1) | new — enables failure diagnosis |
+| **LLM-as-Judge** | ❌ not in original | ✅ added for edge cases | new |
+
+**Key difference**: the original uses **strict exact match** (`DataFrame.equals()`). This experiment uses **Soft Result F1** (row-set intersection / union), which gives partial credit. To align with the original, use `result_f1 == 1.0` as the equivalent of `is_result_equivalent = True`.
 
 ### 3-2. Semantic Model Alignment
 
