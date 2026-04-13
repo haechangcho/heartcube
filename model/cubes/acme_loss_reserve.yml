@@ -10,3 +10,8 @@ cubes:
         type: number
         primary_key: true
         public: false
+
+      - name: has_loss_reserve
+        sql: "1"
+        type: string
+        description: "Filter on this to determine if row represents a loss reserve. Filter should evaluate to 'has_loss_reserve = 1'."

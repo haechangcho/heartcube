@@ -10,3 +10,8 @@ cubes:
         type: number
         primary_key: true
         public: false
+
+      - name: has_premium
+        sql: "1"
+        type: string
+        description: "Filter on this to determine if row represents a premium. Filter should evaluate to 'has_premium = 1'."
