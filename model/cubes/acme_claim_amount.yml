@@ -46,24 +46,32 @@ cubes:
         title: Total Claim Amount
 
       - name: loss_payment_amount
-        sql: "CASE WHEN {acme_loss_payment}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
+        sql: claim_amount
         type: sum
         title: Loss Payment Amount
+        filters:
+          - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_loss_payment lp WHERE lp.claim_amount_identifier = {CUBE}.claim_amount_identifier)"
 
       - name: loss_reserve_amount
-        sql: "CASE WHEN {acme_loss_reserve}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
+        sql: claim_amount
         type: sum
         title: Loss Reserve Amount
+        filters:
+          - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_loss_reserve lr WHERE lr.claim_amount_identifier = {CUBE}.claim_amount_identifier)"
 
       - name: expense_payment_amount
-        sql: "CASE WHEN {acme_expense_payment}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
+        sql: claim_amount
         type: sum
         title: Expense Payment Amount
+        filters:
+          - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_expense_payment ep WHERE ep.claim_amount_identifier = {CUBE}.claim_amount_identifier)"
 
       - name: expense_reserve_amount
-        sql: "CASE WHEN {acme_expense_reserve}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
+        sql: claim_amount
         type: sum
         title: Expense Reserve Amount
+        filters:
+          - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_expense_reserve er WHERE er.claim_amount_identifier = {CUBE}.claim_amount_identifier)"
 
       - name: total_loss_amount
         sql: "{loss_payment_amount} + {loss_reserve_amount}"
