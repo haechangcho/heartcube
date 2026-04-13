@@ -35,7 +35,7 @@ views:
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
-            description: "손해율. 손해보험가입금액 대비 지급결정금액 비율. 지급결정금액 합계 ÷ 보험가입금액 합계 × 100. 목표: 80% 이하. Driver: 사고율증가(accident_type별 건수추이)·평균지급액증가(coverage별 payment_amt)·심사기준편차(adjuster별 인용율). Lever: 고위험 담보 인수기준 강화·과지급 탐지 강화·심사자 배당 정책 조정."
+            description: "손해율. 손해보험가입금액 대비 지급결정금액 비율. 지급결정금액 합계 ÷ 보험가입금액 합계. 목표: 40% 이하. Driver: 사고율증가(accident_type별 건수추이)·평균지급액증가(coverage별 payment_amt)·심사기준편차(adjuster별 인용율). Lever: 고위험 담보 인수기준 강화·과지급 탐지 강화·심사자 배당 정책 조정."
           - name: claim_approval_rate
             meta:
               kpi: true
