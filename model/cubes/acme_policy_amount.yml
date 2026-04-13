@@ -29,4 +29,5 @@ cubes:
         sql: policy_amount
         type: sum
         title: Total Policy Amount
+        description: "The total amount associated with the policy."
 
