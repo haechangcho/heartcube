@@ -1,0 +1,12 @@
+cubes:
+  - name: acme_loss_payment
+    public: false
+    sql_table: oda.acme_loss_payment
+    title: ACME 손해지급
+
+    dimensions:
+      - name: claim_amount_identifier
+        sql: claim_amount_identifier
+        type: number
+        primary_key: true
+        public: false
