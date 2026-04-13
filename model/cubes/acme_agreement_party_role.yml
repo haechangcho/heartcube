@@ -1,0 +1,46 @@
+cubes:
+  - name: acme_agreement_party_role
+    public: false
+    sql_table: oda.acme_agreement_party_role
+    title: ACME 당사자역할
+
+    dimensions:
+      - name: agreement_identifier
+        sql: agreement_identifier
+        type: number
+        primary_key: true
+        public: false
+
+      - name: party_identifier
+        sql: party_identifier
+        type: number
+        title: 당사자ID
+        description: "party_role_code와 함께 사용. AG=에이전트ID, PH=계약자ID."
+
+      - name: party_role_code
+        sql: party_role_code
+        type: string
+        title: 역할코드
+        description: "AG=에이전트, PH=계약자(PolicyHolder)."
+
+      - name: effective_date
+        sql: "CAST(effective_date AS DATE)"
+        type: time
+        title: 역할개시일
+
+      - name: expiration_date
+        sql: "CAST(expiration_date AS DATE)"
+        type: time
+        title: 역할만료일
+
+    measures:
+      - name: count
+        type: count
+        title: 당사자건수
+
+      - name: policy_count_by_agent
+        sql: agreement_identifier
+        type: count_distinct
+        filters:
+          - sql: "{CUBE}.party_role_code = 'AG'"
+        title: 에이전트별증권수

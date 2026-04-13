@@ -1,0 +1,58 @@
+views:
+  - name: acme_ops
+    title: ACME 보험 통합 뷰
+    description: >
+      ACME Insurance 청구·증권·지급·당사자 데이터를 통합한 뷰.
+      단일 prefix(acme_ops.*)로 모든 멤버에 접근한다.
+
+    cubes:
+      # ── acme_claim (기준 큐브) ────────────────────────────────────────────
+      - join_path: acme_claim
+        includes:
+          - name: count
+            alias: claim_count
+            title: 청구건수
+          - company_claim_number
+          - claim_status_code
+          - claims_made_date
+          - claim_open_date
+          - claim_close_date
+          - avg_days_to_settle
+
+      # ── acme_catastrophe ──────────────────────────────────────────────────
+      - join_path: acme_claim.acme_catastrophe
+        includes:
+          - catastrophe_name
+          - catastrophe_type_code
+
+      # ── acme_claim_amount ─────────────────────────────────────────────────
+      - join_path: acme_claim.acme_claim_amount
+        includes:
+          - loss_payment_amount
+          - loss_reserve_amount
+          - expense_payment_amount
+          - expense_reserve_amount
+          - total_loss_amount
+          - total_claim_amount
+
+      # ── acme_policy ───────────────────────────────────────────────────────
+      - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy
+        includes:
+          - policy_number
+          - status_code
+          - name: count
+            alias: policy_count
+            title: 증권건수
+
+      # ── acme_agreement_party_role ─────────────────────────────────────────
+      - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_agreement_party_role
+        includes:
+          - party_identifier
+          - party_role_code
+          - policy_count_by_agent
+
+      # ── acme_policy_amount (premium_amount 포함) ──────────────────────────
+      - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_policy_amount
+        includes:
+          - premium_amount
+          - total_policy_amount
