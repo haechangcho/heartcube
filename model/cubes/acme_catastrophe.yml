@@ -13,10 +13,12 @@ cubes:
       - name: catastrophe_type_code
         sql: catastrophe_type_code
         type: string
+        description: "Type classification of the catastrophe event."
 
       - name: catastrophe_name
         sql: catastrophe_name
         type: string
+        description: "Name of the catastrophe event."
 
       - name: industry_catastrophe_code
         sql: industry_catastrophe_code
