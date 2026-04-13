@@ -2,7 +2,6 @@ cubes:
   - name: acme_catastrophe
     public: false
     sql_table: oda.acme_catastrophe
-    title: ACME 재해
 
     dimensions:
       - name: catastrophe_identifier
@@ -14,19 +13,15 @@ cubes:
       - name: catastrophe_type_code
         sql: catastrophe_type_code
         type: string
-        title: 재해유형코드
 
       - name: catastrophe_name
         sql: catastrophe_name
         type: string
-        title: 재해명
 
       - name: industry_catastrophe_code
         sql: industry_catastrophe_code
         type: string
-        title: 업계재해코드
 
       - name: company_catastrophe_code
         sql: company_catastrophe_code
         type: string
-        title: 사내재해코드

@@ -2,7 +2,7 @@ cubes:
   - name: acme_loss_reserve
     public: false
     sql_table: oda.acme_loss_reserve
-    title: ACME 손해준비금
+    description: "Table containing loss_reserve information."
 
     dimensions:
       - name: claim_amount_identifier

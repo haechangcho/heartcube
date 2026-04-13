@@ -2,7 +2,6 @@ cubes:
   - name: acme_claim
     public: false
     sql_table: oda.acme_claim
-    title: ACME 청구
 
     joins:
       - name: acme_catastrophe
@@ -27,54 +26,46 @@ cubes:
       - name: company_claim_number
         sql: company_claim_number
         type: string
-        title: 청구번호
 
       - name: company_subclaim_number
         sql: company_subclaim_number
         type: string
-        title: 부청구번호
 
       - name: claim_description
         sql: claim_description
         type: string
-        title: 청구설명
 
       - name: claim_status_code
         sql: claim_status_code
         type: string
-        title: 청구상태코드
 
       - name: claims_made_date
         sql: "CAST(claims_made_date AS DATE)"
         type: time
-        title: 청구접수일
 
       - name: claim_open_date
         sql: "CAST(claim_open_date AS DATE)"
         type: time
-        title: 청구개시일
 
       - name: claim_close_date
         sql: "CAST(claim_close_date AS DATE)"
         type: time
-        title: 청구종료일
 
       - name: claim_reopen_date
         sql: "CAST(claim_reopen_date AS DATE)"
         type: time
-        title: 청구재개일
 
       - name: claim_reported_date
         sql: "CAST(claim_reported_date AS DATE)"
         type: time
-        title: 청구신고일
 
     measures:
-      - name: count
+      - name: claims
+        sql: company_claim_number
         type: count
-        title: 청구건수
+        title: Claims
 
       - name: avg_days_to_settle
         sql: "EXTRACT(DAY FROM (claim_close_date - claim_open_date))"
         type: avg
-        title: 평균처리기간(일)
+        title: Avg Time to Settle Claim

@@ -2,7 +2,7 @@ cubes:
   - name: acme_loss_payment
     public: false
     sql_table: oda.acme_loss_payment
-    title: ACME 손해지급
+    description: "Table containing loss_payment information."
 
     dimensions:
       - name: claim_amount_identifier
