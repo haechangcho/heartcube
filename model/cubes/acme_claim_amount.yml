@@ -1,0 +1,75 @@
+cubes:
+  - name: acme_claim_amount
+    public: false
+    sql_table: oda.acme_claim_amount
+    title: ACME 청구금액
+
+    joins:
+      - name: acme_loss_payment
+        sql: "{acme_claim_amount}.claim_amount_identifier = {acme_loss_payment}.claim_amount_identifier"
+        relationship: one_to_one
+
+      - name: acme_loss_reserve
+        sql: "{acme_claim_amount}.claim_amount_identifier = {acme_loss_reserve}.claim_amount_identifier"
+        relationship: one_to_one
+
+      - name: acme_expense_payment
+        sql: "{acme_claim_amount}.claim_amount_identifier = {acme_expense_payment}.claim_amount_identifier"
+        relationship: one_to_one
+
+      - name: acme_expense_reserve
+        sql: "{acme_claim_amount}.claim_amount_identifier = {acme_expense_reserve}.claim_amount_identifier"
+        relationship: one_to_one
+
+    dimensions:
+      - name: claim_amount_identifier
+        sql: claim_amount_identifier
+        type: number
+        primary_key: true
+        public: false
+
+      - name: amount_type_code
+        sql: amount_type_code
+        type: string
+        title: 금액유형코드
+
+      - name: insurance_type_code
+        sql: insurance_type_code
+        type: string
+        title: 보험유형코드
+
+      - name: event_date
+        sql: "CAST(event_date AS DATE)"
+        type: time
+        title: 발생일
+
+    measures:
+      - name: loss_payment_amount
+        sql: "CASE WHEN {acme_loss_payment}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
+        type: sum
+        title: 손해지급금액
+
+      - name: loss_reserve_amount
+        sql: "CASE WHEN {acme_loss_reserve}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
+        type: sum
+        title: 손해준비금
+
+      - name: expense_payment_amount
+        sql: "CASE WHEN {acme_expense_payment}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
+        type: sum
+        title: 비용지급금액
+
+      - name: expense_reserve_amount
+        sql: "CASE WHEN {acme_expense_reserve}.claim_amount_identifier IS NOT NULL THEN claim_amount ELSE 0 END"
+        type: sum
+        title: 비용준비금
+
+      - name: total_loss_amount
+        sql: "{loss_payment_amount} + {loss_reserve_amount}"
+        type: number
+        title: 총손해금액
+
+      - name: total_claim_amount
+        sql: claim_amount
+        type: sum
+        title: 총청구금액

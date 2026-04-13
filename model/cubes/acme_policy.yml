@@ -1,0 +1,46 @@
+cubes:
+  - name: acme_policy
+    public: false
+    sql_table: oda.acme_policy
+    title: ACME 증권
+
+    joins:
+      - name: acme_agreement_party_role
+        sql: "{acme_policy}.policy_identifier = {acme_agreement_party_role}.agreement_identifier"
+        relationship: one_to_many
+
+      - name: acme_policy_amount
+        sql: "{acme_policy}.policy_identifier = {acme_policy_amount}.policy_identifier"
+        relationship: one_to_many
+
+    dimensions:
+      - name: policy_identifier
+        sql: policy_identifier
+        type: number
+        primary_key: true
+        public: false
+
+      - name: policy_number
+        sql: policy_number
+        type: string
+        title: 증권번호
+
+      - name: status_code
+        sql: status_code
+        type: string
+        title: 증권상태코드
+
+      - name: effective_date
+        sql: "CAST(effective_date AS DATE)"
+        type: time
+        title: 보험개시일
+
+      - name: expiration_date
+        sql: "CAST(expiration_date AS DATE)"
+        type: time
+        title: 보험만료일
+
+    measures:
+      - name: count
+        type: count
+        title: 증권건수
