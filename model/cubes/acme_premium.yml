@@ -14,4 +14,4 @@ cubes:
       - name: has_premium
         sql: "1"
         type: string
-        description: "Filter on this to determine if row represents a premium. Filter should evaluate to 'has_premium = 1'."
+        description: "Filter on this to determine if row represents a premium. Filter should evaluate to 'has_premium = 1' if a premium and not if not a premium"

@@ -2,7 +2,7 @@ cubes:
   - name: acme_policy_amount
     public: false
     sql_table: oda_benchmark.acme_policy_amount
-    description: "Amounts associated with insurance policies, including coverage and insured object details."
+    description: "A model representing the amounts associated with insurance policies, including details of the policy coverage and the insured object."
 
     joins:
       - name: acme_premium
@@ -30,4 +30,3 @@ cubes:
         type: sum
         title: Total Policy Amount
         description: "The total amount associated with the policy."
-

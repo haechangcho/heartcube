@@ -44,13 +44,11 @@ cubes:
         sql: claim_amount
         type: sum
         title: Total Claim Amount
-        description: "Total amount across all claim amount records."
 
       - name: loss_payment_amount
         sql: claim_amount
         type: sum
         title: Loss Payment Amount
-        description: "Sum of claim amounts that represent loss payments."
         filters:
           - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_loss_payment lp WHERE lp.claim_amount_identifier = {CUBE}.claim_amount_identifier)"
 
@@ -58,7 +56,6 @@ cubes:
         sql: claim_amount
         type: sum
         title: Loss Reserve Amount
-        description: "Sum of claim amounts that represent loss reserves."
         filters:
           - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_loss_reserve lr WHERE lr.claim_amount_identifier = {CUBE}.claim_amount_identifier)"
 
@@ -66,4 +63,4 @@ cubes:
         sql: "{loss_payment_amount} + {loss_reserve_amount}"
         type: number
         title: Total Loss Amount
-        description: "Sum of loss_payment_amount and loss_reserve_amount."
+        description: "Sum of loss_payment_amount and loss_reserve_amount"

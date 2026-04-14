@@ -26,7 +26,6 @@ cubes:
       - name: company_claim_number
         sql: company_claim_number
         type: string
-        description: "Unique claim identifier assigned by the company."
 
       - name: company_subclaim_number
         sql: company_subclaim_number
@@ -39,22 +38,18 @@ cubes:
       - name: claim_status_code
         sql: claim_status_code
         type: string
-        description: "Current status of the claim."
 
       - name: claims_made_date
         sql: "CAST(claims_made_date AS DATE)"
         type: time
-        description: "Date the claim was made."
 
       - name: claim_open_date
         sql: "CAST(claim_open_date AS DATE)"
         type: time
-        description: "Date the claim was opened."
 
       - name: claim_close_date
         sql: "CAST(claim_close_date AS DATE)"
         type: time
-        description: "Date the claim was closed."
 
       - name: claim_reopen_date
         sql: "CAST(claim_reopen_date AS DATE)"
@@ -69,10 +64,8 @@ cubes:
         sql: company_claim_number
         type: count
         title: Claims
-        description: "Total number of claims."
 
       - name: avg_days_to_settle
         sql: "EXTRACT(DAY FROM (claim_close_date - claim_open_date))"
         type: avg
         title: Avg Time to Settle Claim
-        description: "Average number of days from claim open to claim close."
