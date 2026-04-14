@@ -46,6 +46,7 @@ cubes:
         sql: sales_division
         type: string
         title: 영업채널구분
+        description: "모집 채널. 값: GA·방카·직판·TM 등."
 
       - name: sales_org_cd
         sql: sales_org_cd

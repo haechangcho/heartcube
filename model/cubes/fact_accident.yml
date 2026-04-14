@@ -37,6 +37,7 @@ cubes:
         sql: accident_no
         type: string
         title: 사고번호
+        description: 사고 건의 고유 식별자.
         primary_key: true
         public: false
 
@@ -74,16 +75,19 @@ cubes:
         sql: accident_type_l2
         type: string
         title: 사고유형(중)
+        description: 사고 중분류. accident_type_l1의 하위 분류.
 
       - name: accident_type_l3
         sql: accident_type_l3
         type: string
         title: 사고유형(소)
+        description: 사고 소분류. 가장 세분화된 유형.
 
       - name: customer_id
         sql: customer_id
         type: string
         title: 고객ID
+        description: 고객 식별자. 특정 고객 필터링 시 사용.
         public: false
 
       - name: accident_claim_gap_days

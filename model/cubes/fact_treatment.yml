@@ -62,6 +62,7 @@ cubes:
         sql: dx_analysis_l2
         type: string
         title: 진단분석(중)
+        description: 진단 중분류. dx_analysis_l1의 하위 분류.
 
       - name: dx_analysis_l3
         sql: dx_analysis_l3
