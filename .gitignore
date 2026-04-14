@@ -27,6 +27,7 @@ rust/cubesql/profile.json
 
 # acme benchmark
 acme_benchmark_pipeline.py
+acme_ddl_benchmark_pipeline.py
 acme_load_data.py
 acme_benchmark_results.csv
 cube_benchmark_results.csv
