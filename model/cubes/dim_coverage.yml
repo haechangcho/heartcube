@@ -50,6 +50,7 @@ cubes:
         sql: coverage_cat2
         type: string
         title: 담보분류(중)
+        description: 담보 중분류. coverage_cat1의 하위 분류.
 
       - name: coverage_cat3
         sql: coverage_cat3

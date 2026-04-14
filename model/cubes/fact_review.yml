@@ -40,16 +40,19 @@ cubes:
         sql: claim_center_nm
         type: string
         title: 보상센터명
+        description: 담당 보상센터명.
 
       - name: claim_team_nm
         sql: claim_team_nm
         type: string
         title: 보상팀명
+        description: 보상센터 내 담당 팀명.
 
       - name: adjuster_id
         sql: adjuster_id
         type: string
         title: 보상담당자사번
+        description: 심사 담당자 사번.
         public: false
 
       - name: anomaly_label
@@ -84,6 +87,7 @@ cubes:
       - name: count
         type: count
         title: 심사 건수
+        description: 심사 처리 전체 건수. 각종 비율 지표의 분모.
 
       - name: anomaly_count
         type: count
@@ -97,12 +101,14 @@ cubes:
       - name: fraud_suspect_count
         type: count
         title: 사기의심 건수
+        description: "이상유형라벨 = '사기의심' 건수."
         filters:
           - sql: "{CUBE}.anomaly_label = '사기의심'"
 
       - name: review_count
         type: count
         title: 재심 건수
+        description: "재심 청구 건수(review_yn = 'Y')."
         filters:
           - sql: "{CUBE}.review_yn = 'Y'"
 
@@ -135,6 +141,7 @@ cubes:
       - name: overpayment_count
         type: count
         title: 과지급 건수
+        description: "이상유형라벨 = '과지급' 건수."
         filters:
           - sql: "{CUBE}.anomaly_label = '과지급'"
 

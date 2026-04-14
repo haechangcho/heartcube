@@ -39,6 +39,7 @@ cubes:
         sql: payment_item_l1
         type: string
         title: 지급항목(대)
+        description: 지급 항목 대분류.
 
       - name: payment_item_l2
         sql: payment_item_l2
@@ -49,6 +50,7 @@ cubes:
         sql: final_coverage_nm
         type: string
         title: 최종담보명
+        description: 실제 지급 시 적용된 담보명. 계약상 담보명(coverage_nm)과 다를 수 있음.
 
       - name: reduction_reason
         sql: reduction_reason
@@ -66,6 +68,7 @@ cubes:
       - name: count
         type: count
         title: 지급 건수
+        description: 지급 처리된 건수.
 
       - name: total_claim_amt
         sql: claim_amt
@@ -119,6 +122,7 @@ cubes:
       - name: reduction_count
         type: count
         title: 감액지급 건수
+        description: "감액지급(final_payment_cd = '감액지급') 건수."
         filters:
           - sql: "{CUBE}.final_payment_cd = '감액지급'"
 

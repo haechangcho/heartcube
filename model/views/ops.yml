@@ -12,330 +12,255 @@ views:
         includes:
           - name: accident_no
             title: 사고번호
-            description: 사고 건의 고유 식별자.
 
           - name: accident_dt
             title: 사고일자
-            description: 사고 발생일. 기간 필터의 기본 기준 날짜.
 
           - name: claim_dt
             title: 청구일자
-            description: 고객이 보험금을 청구한 날짜. accident_dt와 다를 수 있음.
 
           - name: payment_dt
             title: 지급일자
-            description: 보험금이 최종 지급된 날짜.
 
           - name: accident_type_l1
             title: 사고유형(대)
-            description: "사고 대분류. 값: 교통·상해·질병."
 
           - name: accident_type_l2
             title: 사고유형(중)
-            description: 사고 중분류. accident_type_l1의 하위 분류.
 
           - name: accident_type_l3
             title: 사고유형(소)
-            description: 사고 소분류. 가장 세분화된 유형.
 
           - name: customer_id
             title: 고객ID
-            description: 고객 식별자. 특정 고객 필터링 시 사용.
 
           - name: accident_claim_gap_days
             title: 사고-청구 간격(일)
-            description: 사고 발생일부터 청구일까지 경과 일수. 클수록 지연 청구로 사기 의심.
 
           - name: count
             alias: claim_count
             title: 청구건수
-            description: 전체 사고·청구 건수.
 
           - name: claim_approval_rate
             title: 청구인용율(%)
-            description: "지급결정금액 합계 ÷ 청구금액 합계 × 100. 목표: 85~90%."
 
           - name: loss_ratio
             title: 손해율(%)
-            description: "지급결정금액 합계 ÷ 보험가입금액 합계 × 100. 목표: 80% 이하."
 
           - name: anomaly_rate
             title: 이상징후 비율(%)
-            description: "전체 청구 건 중 이상유형라벨이 '정상'이 아닌 건의 비율."
 
           - name: review_reversal_count
             title: 재심번복 건수
-            description: 재심 후 추가지급(초심 번복)으로 이어진 건수.
 
           - name: review_reversal_rate
             title: 재심번복율(%)
-            description: 재심 건 중 추가지급(번복)으로 이어진 비율.
 
           - name: high_prior_claim_count
             title: 상습청구건수(3회 이상)
-            description: 과거 청구 3회 이상 고객의 청구 건수.
 
       # ── fact_payment ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_payment
         includes:
           - name: final_coverage_nm
             title: 최종담보명
-            description: 실제 지급 시 적용된 담보명. 계약상 담보명(coverage_nm)과 다를 수 있음.
 
           - name: final_payment_cd
             title: 최종지급코드
-            description: "지급 결과 유형. 값: 정상지급·감액지급·일부지급."
 
           - name: payment_type
             title: 지급유형
-            description: "지급 종류. 값: 진단비·수술비·일당·손해실비·통원의료비·약제의료비·기타."
 
           - name: payment_item_l1
             title: 지급항목(대)
-            description: 지급 항목 대분류.
 
           - name: reduction_reason
             title: 감액사유
-            description: "청구금액이 감액된 이유. 값: 해당없음·과잉진료·중복청구·면책조항 등."
 
           - name: total_claim_amt
             title: 청구금액 합계
-            description: 고객이 청구한 금액 합계.
 
           - name: total_payment_amt
             title: 지급결정금액 합계
-            description: 최종 지급 결정된 금액 합계. 손해율·청구인용율의 분자.
 
           - name: total_reduction_amt
             title: 감액금액 합계
-            description: 청구금액 대비 감액된 금액 합계.
 
           - name: avg_payment_amt
             title: 평균지급금액
-            description: 건당 평균 지급결정금액.
 
           - name: count
             alias: payment_count
             title: 지급건수
-            description: 지급 처리된 건수.
 
           - name: reduction_count
             title: 감액지급 건수
-            description: "감액지급(final_payment_cd = '감액지급') 건수."
 
           - name: reduction_rate
             title: 감액율(%)
-            description: 감액금액 ÷ 청구금액 × 100.
 
           - name: payment_rate
             title: 청구인용율(금액기준, %)
-            description: 지급결정금액 합계 ÷ 청구금액 합계 × 100. claim_approval_rate와 동일 계산.
 
       # ── fact_review ───────────────────────────────────────────────────────
       - join_path: fact_accident.fact_review
         includes:
           - name: processing_biz_days
             title: 처리기간(영업일)
-            description: "사고 접수부터 보상 완료까지 영업일수. SLA 기준: 5일. 개별 건 조회·필터용. 집계 평균은 avg_processing_days 사용."
 
           - name: anomaly_label
             title: 이상유형라벨
-            description: "심사 이상 분류. 값: 정상·사기의심·과지급·과소지급·중복지급·착오지급. 이상 건 필터: anomaly_label != '정상'."
 
           - name: claim_center_nm
             title: 보상센터명
-            description: 담당 보상센터명.
 
           - name: claim_team_nm
             title: 보상팀명
-            description: 보상센터 내 담당 팀명.
 
           - name: adjuster_id
             title: 담당자사번
-            description: 심사 담당자 사번.
 
           - name: org_type
             title: 조직구분
-            description: "심사 조직 유형. 값: 보상부·CAS·간편심사 등."
 
           - name: review_yn
             title: 재심여부
-            description: "재심 청구 여부. 값: Y·N."
 
           - name: lawsuit_yn
             title: 소송여부
-            description: "소송 제기 여부. 값: Y·N."
 
           - name: sla_breached
             title: SLA초과여부
-            description: "처리기간 5영업일 초과 여부. 값: Y·N. processing_biz_days > 5와 동일."
 
           - name: count
             alias: inspect_count
             title: 심사건수
-            description: 심사 처리 전체 건수. 각종 비율 지표의 분모.
 
           - name: anomaly_count
             title: 이상징후 건수
-            description: "이상유형라벨이 '정상'이 아닌 건수. anomaly_rate의 분자."
 
           - name: fraud_suspect_count
             title: 사기의심 건수
-            description: "이상유형라벨 = '사기의심' 건수."
 
           - name: overpayment_count
             title: 과지급 건수
-            description: "이상유형라벨 = '과지급' 건수."
 
           - name: review_count
             title: 재심 건수
-            description: "재심 청구 건수(review_yn = 'Y')."
 
           - name: avg_processing_days
             title: 평균 처리기간(영업일)
-            description: "사고 접수부터 보상 완료까지 평균 영업일수. SLA 기준: 5일."
 
           - name: overpayment_rate
             title: 과지급율(%)
-            description: "전체 심사 건 중 과지급 건 비율. 목표: 2% 이하."
 
           - name: sla_compliance_rate
             title: SLA준수율(%)
-            description: "처리기간 5영업일 이내 건 비율. 목표: 95% 이상."
 
           - name: sla_breach_count
             title: SLA초과 건수
-            description: 처리기간 5영업일 초과 건수.
 
           - name: fraud_suspicion_rate
             title: 사기의심율(%)
-            description: "전체 심사 건 중 사기의심 건 비율. 목표: 1% 이하."
 
           - name: review_rate
             title: 재심율(%)
-            description: "전체 심사 건 중 재심 청구 건 비율. 목표: 3% 이하."
 
           - name: lawsuit_rate
             title: 소송율(%)
-            description: "전체 심사 건 중 소송 제기 건 비율. 목표: 1% 이하."
 
           - name: payment_delay_rate
             title: 지급지연율(%)
-            description: 처리기간 5영업일 초과 건 비율. SLA준수율의 역수.
 
           - name: duplicate_payment_rate
             title: 중복지급율(%)
-            description: 전체 심사 건 중 중복지급 탐지 건 비율.
 
           - name: error_payment_rate
             title: 착오지급율(%)
-            description: 전체 심사 건 중 착오지급 탐지 건 비율.
 
       # ── fact_contract ─────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract
         includes:
           - name: sales_division
             title: 영업채널구분
-            description: "모집 채널. 값: GA·방카·직판·TM 등."
 
           - name: sales_org_cd
             title: 영업조직코드
-            description: 영업 조직 코드. sales_division보다 세분화된 단위.
 
           - name: total_insured_amt
             title: 보험가입금액 합계
-            description: 계약된 보험가입금액 합계. 손해율(loss_ratio)의 분모.
 
       # ── fact_treatment ────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment
         includes:
           - name: dx_analysis_l1
             title: 진단분석(대)
-            description: "진단 대분류. 값: 외상·특정감염·암·심혈관·근골격 등."
 
           - name: dx_analysis_l2
             title: 진단분석(중)
-            description: 진단 중분류. dx_analysis_l1의 하위 분류.
 
           - name: treatment_pattern
             title: 치료패턴
-            description: "치료 방식. 값: 입원·통원·입원+통원."
 
           - name: inpatient_period_grp
             title: 입원기간그룹
-            description: "입원 기간 구간. 값: 통원·1-7일·7-15일·15-30일·30일초과."
 
           - name: noninsured_ratio
             title: 비급여 비율(%)
-            description: 총 치료비 대비 비급여 치료비 비율. 높을수록 과잉진료·허위청구 의심.
 
           - name: avg_inpatient_days
             title: 평균 입원일수
-            description: 건당 평균 입원일수.
 
           - name: total_treat_amt_noninsured
             title: 비급여 치료비 합계
-            description: 건강보험 비급여 치료비 합계.
 
           - name: total_treat_amt
             title: 총 치료비 합계
-            description: 급여 + 비급여 치료비 합계.
 
       # ── dim_customer ──────────────────────────────────────────────────────
       - join_path: fact_accident.dim_customer
         includes:
           - name: gender
             title: 성별
-            description: "고객 성별. 값: 남·여."
 
           - name: age_group
             title: 연령대
-            description: "고객 연령대. 값: 20대 이하·30대·40대·50대·60대 이상."
 
       # ── dim_coverage ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract.dim_coverage
         includes:
           - name: coverage_nm
             title: 담보명
-            description: 계약상 담보 명칭. 지급 시 적용 담보명은 final_coverage_nm 사용.
 
           - name: coverage_type
             title: 담보유형
-            description: "담보 보장 유형. 값: 암진단비·상해수술비·실손의료비·입원일당 등."
 
           - name: coverage_cat1
             title: 담보분류(대)
-            description: "담보 대분류. 값: 질병·상해 등."
 
           - name: coverage_cat2
             title: 담보분류(중)
-            description: 담보 중분류. coverage_cat1의 하위 분류.
 
       # ── dim_product ───────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract.dim_product
         includes:
           - name: product_nm
             title: 상품명
-            description: 보험 상품 명칭.
 
       # ── dim_hospital ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment.dim_hospital
         includes:
           - name: hospital_nm
             title: 병원명
-            description: 치료 의료기관 명칭.
 
           - name: hospital_grade_cd
             title: 병원등급코드
-            description: "의료기관 종별 등급. 값: 상급종합·종합·병원·의원·한방병원 등."
 
       # ── dim_diagnosis ─────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment.dim_diagnosis
         includes:
           - name: diagnosis_nm
             title: 진단명
-            description: 진단 정식 명칭(KCD 기반).
 
           - name: diagnosis_type
             title: 진단유형
-            description: "진단 대분류. 값: 암·외상·순환기질환·근골격질환·감염질환 등."
