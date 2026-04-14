@@ -24,5 +24,15 @@ rust/cubesql/profile.json
 .cubestore
 .env
 .vimspector.json
+
+# acme benchmark
+acme_benchmark_pipeline.py
+acme_load_data.py
+acme_benchmark_results.csv
+cube_benchmark_results.csv
+acme_data/
+venv/
+__pycache__/
+*.log
 .claude/settings.local.json
 gen

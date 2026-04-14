@@ -23,12 +23,10 @@ cubes:
       - name: policy_number
         sql: policy_number
         type: string
-        description: "The policy number."
 
       - name: status_code
         sql: status_code
         type: string
-        description: "Current status of the policy."
 
       - name: effective_date
         sql: "CAST(effective_date AS DATE)"
