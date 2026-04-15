@@ -96,7 +96,7 @@ cubes:
       - name: total_reduction_amt
         sql: reduction_amt
         type: sum
-        title: 감액 합계
+        title: 감액금액 합계
         format: currency
         description: 청구금액 대비 감액된 금액 합계.
 

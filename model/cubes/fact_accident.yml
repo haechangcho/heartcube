@@ -209,7 +209,7 @@ cubes:
 
       - name: noninsured_ratio
         type: number
-        title: 비급여비중(%)
+        title: 비급여 비율(%)
         description: "총 치료비 대비 비급여 치료비 비율."
         sql: "100.0 * {fact_treatment.total_treat_amt_noninsured} / NULLIF({fact_treatment.total_treat_amt_insured} + {fact_treatment.total_treat_amt_noninsured}, 0)"
         format: percent
@@ -236,7 +236,7 @@ cubes:
 
       - name: high_prior_claim_count
         type: count
-        title: 상습청구건수(3회이상)
+        title: 상습청구건수(3회 이상)
         description: "과거 청구 3회 이상 고객의 청구 건수. 상습 청구 탐지 Driver"
         sql: "CASE WHEN {CUBE}.prior_claim_cnt >= 3 THEN {CUBE}.accident_no END"
     pre_aggregations:

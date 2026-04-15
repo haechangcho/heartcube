@@ -10,94 +10,46 @@ views:
       # ── fact_accident (기준 큐브) ─────────────────────────────────────────
       - join_path: fact_accident
         includes:
-          - name: accident_no
-            title: 사고번호
-
-          - name: accident_dt
-            title: 사고일자
-
-          - name: claim_dt
-            title: 청구일자
-
-          - name: payment_dt
-            title: 지급일자
-
-          - name: accident_type_l1
-            title: 사고유형(대)
-
-          - name: accident_type_l2
-            title: 사고유형(중)
-
-          - name: accident_type_l3
-            title: 사고유형(소)
-
-          - name: customer_id
-            title: 고객ID
-
-          - name: accident_claim_gap_days
-            title: 사고-청구 간격(일)
+          - accident_no
+          - accident_dt
+          - claim_dt
+          - payment_dt
+          - accident_type_l1
+          - accident_type_l2
+          - accident_type_l3
+          - customer_id
+          - accident_claim_gap_days
 
           - name: count
             alias: claim_count
             title: 청구건수
 
-          - name: claim_approval_rate
-            title: 청구인용율(%)
-
-          - name: loss_ratio
-            title: 손해율(%)
-
-          - name: anomaly_rate
-            title: 이상징후 비율(%)
-
-          - name: review_reversal_count
-            title: 재심번복 건수
-
-          - name: review_reversal_rate
-            title: 재심번복율(%)
-
-          - name: high_prior_claim_count
-            title: 상습청구건수(3회 이상)
+          - claim_approval_rate
+          - loss_ratio
+          - anomaly_rate
+          - review_reversal_count
+          - review_reversal_rate
+          - high_prior_claim_count
 
       # ── fact_payment ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_payment
         includes:
-          - name: final_coverage_nm
-            title: 최종담보명
-
-          - name: final_payment_cd
-            title: 최종지급코드
-
-          - name: payment_type
-            title: 지급유형
-
-          - name: payment_item_l1
-            title: 지급항목(대)
-
-          - name: reduction_reason
-            title: 감액사유
-
-          - name: total_claim_amt
-            title: 청구금액 합계
-
-          - name: total_payment_amt
-            title: 지급결정금액 합계
-
-          - name: total_reduction_amt
-            title: 감액금액 합계
-
-          - name: avg_payment_amt
-            title: 평균지급금액
+          - final_coverage_nm
+          - final_payment_cd
+          - payment_type
+          - payment_item_l1
+          - reduction_reason
+          - total_claim_amt
+          - total_payment_amt
+          - total_reduction_amt
+          - avg_payment_amt
 
           - name: count
             alias: payment_count
             title: 지급건수
 
-          - name: reduction_count
-            title: 감액지급 건수
-
-          - name: reduction_rate
-            title: 감액율(%)
+          - reduction_count
+          - reduction_rate
 
           - name: payment_rate
             title: 청구인용율(금액기준, %)
@@ -105,162 +57,84 @@ views:
       # ── fact_review ───────────────────────────────────────────────────────
       - join_path: fact_accident.fact_review
         includes:
-          - name: processing_biz_days
-            title: 처리기간(영업일)
-
-          - name: anomaly_label
-            title: 이상유형라벨
-
-          - name: claim_center_nm
-            title: 보상센터명
-
-          - name: claim_team_nm
-            title: 보상팀명
+          - processing_biz_days
+          - anomaly_label
+          - claim_center_nm
+          - claim_team_nm
 
           - name: adjuster_id
             title: 담당자사번
 
-          - name: org_type
-            title: 조직구분
-
-          - name: review_yn
-            title: 재심여부
-
-          - name: lawsuit_yn
-            title: 소송여부
-
-          - name: sla_breached
-            title: SLA초과여부
+          - org_type
+          - review_yn
+          - lawsuit_yn
+          - sla_breached
 
           - name: count
             alias: inspect_count
             title: 심사건수
 
-          - name: anomaly_count
-            title: 이상징후 건수
-
-          - name: fraud_suspect_count
-            title: 사기의심 건수
-
-          - name: overpayment_count
-            title: 과지급 건수
-
-          - name: review_count
-            title: 재심 건수
-
-          - name: avg_processing_days
-            title: 평균 처리기간(영업일)
-
-          - name: overpayment_rate
-            title: 과지급율(%)
-
-          - name: sla_compliance_rate
-            title: SLA준수율(%)
-
-          - name: sla_breach_count
-            title: SLA초과 건수
-
-          - name: fraud_suspicion_rate
-            title: 사기의심율(%)
-
-          - name: review_rate
-            title: 재심율(%)
-
-          - name: lawsuit_rate
-            title: 소송율(%)
-
-          - name: payment_delay_rate
-            title: 지급지연율(%)
-
-          - name: duplicate_payment_rate
-            title: 중복지급율(%)
-
-          - name: error_payment_rate
-            title: 착오지급율(%)
+          - anomaly_count
+          - fraud_suspect_count
+          - overpayment_count
+          - review_count
+          - avg_processing_days
+          - overpayment_rate
+          - sla_compliance_rate
+          - sla_breach_count
+          - fraud_suspicion_rate
+          - review_rate
+          - lawsuit_rate
+          - payment_delay_rate
+          - duplicate_payment_rate
+          - error_payment_rate
 
       # ── fact_contract ─────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract
         includes:
-          - name: sales_division
-            title: 영업채널구분
-
-          - name: sales_org_cd
-            title: 영업조직코드
-
-          - name: total_insured_amt
-            title: 보험가입금액 합계
+          - sales_division
+          - sales_org_cd
+          - total_insured_amt
 
       # ── fact_treatment ────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment
         includes:
-          - name: dx_analysis_l1
-            title: 진단분석(대)
-
-          - name: dx_analysis_l2
-            title: 진단분석(중)
-
-          - name: treatment_pattern
-            title: 치료패턴
-
-          - name: inpatient_period_grp
-            title: 입원기간그룹
-
-          - name: noninsured_ratio
-            title: 비급여 비율(%)
-
-          - name: avg_inpatient_days
-            title: 평균 입원일수
-
-          - name: total_treat_amt_noninsured
-            title: 비급여 치료비 합계
-
-          - name: total_treat_amt
-            title: 총 치료비 합계
+          - dx_analysis_l1
+          - dx_analysis_l2
+          - treatment_pattern
+          - inpatient_period_grp
+          - noninsured_ratio
+          - avg_inpatient_days
+          - total_treat_amt_noninsured
+          - total_treat_amt
 
       # ── dim_customer ──────────────────────────────────────────────────────
       - join_path: fact_accident.dim_customer
         includes:
-          - name: gender
-            title: 성별
-
-          - name: age_group
-            title: 연령대
+          - gender
+          - age_group
 
       # ── dim_coverage ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract.dim_coverage
         includes:
-          - name: coverage_nm
-            title: 담보명
-
-          - name: coverage_type
-            title: 담보유형
-
-          - name: coverage_cat1
-            title: 담보분류(대)
-
-          - name: coverage_cat2
-            title: 담보분류(중)
+          - coverage_nm
+          - coverage_type
+          - coverage_cat1
+          - coverage_cat2
 
       # ── dim_product ───────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract.dim_product
         includes:
-          - name: product_nm
-            title: 상품명
+          - product_nm
 
       # ── dim_hospital ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment.dim_hospital
         includes:
-          - name: hospital_nm
-            title: 병원명
-
-          - name: hospital_grade_cd
-            title: 병원등급코드
+          - hospital_nm
+          - hospital_grade_cd
 
       # ── dim_diagnosis ─────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment.dim_diagnosis
         includes:
-          - name: diagnosis_nm
-            title: 진단명
-
-          - name: diagnosis_type
-            title: 진단유형
+          - diagnosis_nm
+          - diagnosis_type
