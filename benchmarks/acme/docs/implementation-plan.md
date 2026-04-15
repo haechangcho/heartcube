@@ -19,31 +19,53 @@ The target corpus is the full ACME 44-question benchmark from the baseline repos
 - Source ACME data: `ACME_Insurance/data/*.csv`
 - Source investigation TTL: `ACME_Insurance/investigation/acme-benchmark.ttl`
 
-The benchmark package keeps immutable snapshots of the source files under `benchmarks/acme/source/`.
+The benchmark package keeps immutable snapshots of the source files under `benchmarks/acme/schemas/source/`.
 
 ## Folder Layout
 
 ```text
 benchmarks/acme/
-  IMPLEMENTATION_PLAN.md
   README.md
 
-  source/
+  docs/
+    implementation-plan.md
+    planning-direction.md
+    article-outline.md
+
+  manifests/
+    question_manifest.yaml
+
+  schemas/source/
     benchmark_questions.md
     ACME_small.ddl
     acme-benchmark.ttl
-    question_manifest.yaml
 
-  questions/
+  schemas/postgres/
+    acme_schema_postgres.ddl
+
+  schemas/extensions/
+    party_person_extension.sql
+
+  data/source/
+    Party.csv
+    Person.csv
+
+  questions/core/
     cube_questions.md
     ddl_sql_questions.md
     excluded_questions.md
 
-  pipelines/
+  questions/extensions/
+    entity_retrieval_questions.md
+
+  src/acme_benchmark/
     common.py
     evaluator.py
-    cube_benchmark_pipeline.py
-    ddl_benchmark_pipeline.py
+
+  scripts/
+    cube_benchmark.py
+    ddl_benchmark.py
+    load_data.py
 
   results/
     .gitkeep
@@ -63,15 +85,15 @@ Questions are excluded only before benchmark execution and only for one of these
 - The question is a duplicate whose variants differ only by typo or whitespace.
 - The required business metric is not expressible without adding a new semantic definition not present in the source baseline.
 
-Excluded questions are recorded in `questions/excluded_questions.md` and marked in `source/question_manifest.yaml`.
+Excluded questions are recorded in `questions/core/excluded_questions.md` and marked in `manifests/question_manifest.yaml`.
 
 ## Required Implementation
 
 1. Create the benchmark package layout under `benchmarks/acme/`.
 2. Snapshot the source benchmark files from the baseline repository.
 3. Build a 44-question manifest with stable IDs, source index, category, inclusion flag, and question text.
-4. Move the current 11-question Cube/DDL files into `benchmarks/acme/questions/` as the initial editable benchmark files.
-5. Move the current ACME benchmark pipelines into `benchmarks/acme/pipelines/`.
+4. Move the current 11-question Cube/DDL files into `benchmarks/acme/questions/core/` as the initial editable benchmark files.
+5. Move the current ACME benchmark runners into `benchmarks/acme/scripts/`.
 6. Add shared benchmark utilities:
    - `common.py` for path resolution, environment loading, question parsing, CSV writing, and manifest loading
    - `evaluator.py` for shared result normalization and F1/exact-match scoring
@@ -106,8 +128,8 @@ No credentials or private IP defaults are stored in the benchmark code.
 From the repository root:
 
 ```bash
-python3 benchmarks/acme/pipelines/cube_benchmark_pipeline.py
-python3 benchmarks/acme/pipelines/ddl_benchmark_pipeline.py
+python3 benchmarks/acme/scripts/cube_benchmark.py
+python3 benchmarks/acme/scripts/ddl_benchmark.py
 ```
 
 Expected outputs:
@@ -123,16 +145,16 @@ Local static verification:
 
 ```bash
 python3 -m py_compile \
-  benchmarks/acme/pipelines/common.py \
-  benchmarks/acme/pipelines/evaluator.py \
-  benchmarks/acme/pipelines/cube_benchmark_pipeline.py \
-  benchmarks/acme/pipelines/ddl_benchmark_pipeline.py
+  benchmarks/acme/src/acme_benchmark/common.py \
+  benchmarks/acme/src/acme_benchmark/evaluator.py \
+  benchmarks/acme/scripts/cube_benchmark.py \
+  benchmarks/acme/scripts/ddl_benchmark.py
 ```
 
 Question parser verification:
 
 ```bash
-python3 benchmarks/acme/pipelines/common.py
+python3 benchmarks/acme/src/acme_benchmark/common.py
 ```
 
 Remote sync verification:

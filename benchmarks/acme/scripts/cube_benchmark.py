@@ -6,7 +6,9 @@ from __future__ import annotations
 import json
 import os
 import re
+import sys
 import time
+from pathlib import Path
 from typing import Any
 
 import pandas as pd
@@ -14,8 +16,10 @@ import requests
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from common import QUESTIONS_DIR, RESULTS_DIR, env_float, env_required, iterations, llm_model, parse_cube_questions
-from evaluator import cube_structural_accuracy, result_scores
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from acme_benchmark.common import QUESTIONS_DIR, RESULTS_DIR, env_float, env_required, iterations, llm_model, parse_cube_questions
+from acme_benchmark.evaluator import cube_structural_accuracy, result_scores
 
 
 load_dotenv(os.path.expanduser("~/heartcube/.env"))
