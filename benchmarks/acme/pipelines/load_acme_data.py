@@ -22,6 +22,7 @@ SCHEMA = os.environ.get("ACME_DB_SCHEMA", "oda_benchmark")
 DATA_DIR = Path(os.environ.get("ACME_DATA_DIR", str(BENCHMARK_DIR / "source" / "data"))).expanduser()
 TRUNCATE = os.environ.get("ACME_LOAD_TRUNCATE", "false").lower() == "true"
 SKIP_EXISTING = os.environ.get("ACME_LOAD_SKIP_EXISTING", "true").lower() == "true"
+CREATE_SCHEMA = os.environ.get("ACME_CREATE_SCHEMA", "false").lower() == "true"
 
 CSV_TABLE_MAP = {
     "Agreement_Party_Role.csv": "acme_agreement_party_role",
@@ -55,9 +56,11 @@ def load_csvs() -> None:
     print(f"data_dir={DATA_DIR}")
     print(f"truncate={TRUNCATE}")
     print(f"skip_existing={SKIP_EXISTING}")
+    print(f"create_schema={CREATE_SCHEMA}")
 
     with engine.begin() as conn:
-        conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}"))
+        if CREATE_SCHEMA:
+            conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}"))
         ensure_party_person_tables(conn)
         if TRUNCATE:
             tables = ", ".join(f"{SCHEMA}.{table}" for table in CSV_TABLE_MAP.values())
