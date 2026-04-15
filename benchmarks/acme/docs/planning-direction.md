@@ -29,7 +29,7 @@ models/omg_semantics/*.yaml
 The benchmark package snapshots source files under:
 
 ```text
-benchmarks/acme/source/
+benchmarks/acme/schemas/source/
 ```
 
 ## Benchmark Scope
@@ -201,7 +201,7 @@ Use role filters to distinguish:
 Add a separate extension file:
 
 ```text
-benchmarks/acme/questions/entity_retrieval_questions.md
+benchmarks/acme/questions/extensions/entity_retrieval_questions.md
 ```
 
 Candidate questions:

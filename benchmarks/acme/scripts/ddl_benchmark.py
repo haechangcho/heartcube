@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import os
 import re
+import sys
 import time
+from pathlib import Path
 from typing import Any
 
 import pandas as pd
@@ -14,8 +16,10 @@ import psycopg2.extras
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from common import QUESTIONS_DIR, RESULTS_DIR, SOURCE_DIR, env_required, iterations, llm_model, parse_sql_questions
-from evaluator import dataframe_to_rows, result_scores
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from acme_benchmark.common import POSTGRES_SCHEMA_DIR, QUESTIONS_DIR, RESULTS_DIR, env_required, iterations, llm_model, parse_sql_questions
+from acme_benchmark.evaluator import dataframe_to_rows, result_scores
 
 
 load_dotenv(os.path.expanduser("~/heartcube/.env"))
@@ -27,7 +31,7 @@ LLM_MODEL = llm_model()
 N_ITERATIONS = iterations()
 QUESTIONS_FILE = QUESTIONS_DIR / "ddl_sql_questions.md"
 RESULTS_CSV = RESULTS_DIR / "acme_ddl_results.csv"
-DDL_SCHEMA = (SOURCE_DIR / "acme_schema_postgres.ddl").read_text(encoding="utf-8").strip()
+DDL_SCHEMA = (POSTGRES_SCHEMA_DIR / "acme_schema_postgres.ddl").read_text(encoding="utf-8").strip()
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 

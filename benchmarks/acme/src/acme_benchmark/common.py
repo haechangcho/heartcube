@@ -11,13 +11,18 @@ from pathlib import Path
 from typing import Any
 
 
-PIPELINES_DIR = Path(__file__).resolve().parent
-BENCHMARK_DIR = PIPELINES_DIR.parent
+PACKAGE_DIR = Path(__file__).resolve().parent
+SRC_DIR = PACKAGE_DIR.parent
+BENCHMARK_DIR = SRC_DIR.parent
 REPO_ROOT = BENCHMARK_DIR.parent.parent
-SOURCE_DIR = BENCHMARK_DIR / "source"
-QUESTIONS_DIR = BENCHMARK_DIR / "questions"
+DATA_DIR = BENCHMARK_DIR / "data"
+MANIFESTS_DIR = BENCHMARK_DIR / "manifests"
+QUESTIONS_DIR = BENCHMARK_DIR / "questions" / "core"
 RESULTS_DIR = BENCHMARK_DIR / "results"
 REPORTS_DIR = BENCHMARK_DIR / "reports"
+SCHEMAS_DIR = BENCHMARK_DIR / "schemas"
+SOURCE_SCHEMA_DIR = SCHEMAS_DIR / "source"
+POSTGRES_SCHEMA_DIR = SCHEMAS_DIR / "postgres"
 
 
 def env_required(name: str) -> str:
@@ -125,7 +130,7 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 
 def load_manifest(path: Path | None = None) -> list[dict[str, Any]]:
-    manifest_path = path or SOURCE_DIR / "question_manifest.yaml"
+    manifest_path = path or MANIFESTS_DIR / "question_manifest.yaml"
     questions: list[dict[str, Any]] = []
     current: dict[str, Any] | None = None
     for raw_line in manifest_path.read_text(encoding="utf-8").splitlines():

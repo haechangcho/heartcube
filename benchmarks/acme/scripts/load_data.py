@@ -5,13 +5,16 @@ from __future__ import annotations
 
 import os
 import re
+import sys
 from pathlib import Path
 
 import pandas as pd
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
-from common import BENCHMARK_DIR, env_required
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from acme_benchmark.common import DATA_DIR as BENCHMARK_DATA_DIR, env_required
 
 
 load_dotenv(os.path.expanduser("~/heartcube/.env"))
@@ -19,7 +22,7 @@ load_dotenv()
 
 DB_URL = env_required("DATABASE_URL")
 SCHEMA = os.environ.get("ACME_DB_SCHEMA", "oda_benchmark")
-DATA_DIR = Path(os.environ.get("ACME_DATA_DIR", str(BENCHMARK_DIR / "source" / "data"))).expanduser()
+DATA_DIR = Path(os.environ.get("ACME_DATA_DIR", str(BENCHMARK_DATA_DIR / "source"))).expanduser()
 TRUNCATE = os.environ.get("ACME_LOAD_TRUNCATE", "false").lower() == "true"
 SKIP_EXISTING = os.environ.get("ACME_LOAD_SKIP_EXISTING", "true").lower() == "true"
 CREATE_SCHEMA = os.environ.get("ACME_CREATE_SCHEMA", "false").lower() == "true"
@@ -68,8 +71,10 @@ def load_csvs() -> None:
                 conn.execute(text(f"TRUNCATE {tables}"))
     except Exception as exc:
         raise SystemExit(
-            "Failed to prepare ACME tables. Apply acme_schema.ddl with a database user "
-            "that can create tables in the target schema, then rerun this loader."
+            "Failed to prepare ACME tables. Apply "
+            "benchmarks/acme/schemas/extensions/party_person_extension.sql "
+            "with a database user that can create tables in the target schema, "
+            "then rerun this loader."
         ) from exc
 
     success = 0
