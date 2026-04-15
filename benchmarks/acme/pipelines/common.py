@@ -58,6 +58,7 @@ def iterations() -> int:
 def parse_cube_questions(path: Path) -> list[dict[str, Any]]:
     text = path.read_text(encoding="utf-8")
     questions: list[dict[str, Any]] = []
+    manifest = manifest_by_question()
     cat_section = re.compile(
         r"^## (LQLS|LQHS|HQLS|HQHS)[^\n]*\n(.*?)(?=^## |\Z)",
         re.MULTILINE | re.DOTALL,
@@ -71,11 +72,14 @@ def parse_cube_questions(path: Path) -> list[dict[str, Any]]:
         for match in numbered_q.finditer(body):
             question = re.sub(r"\s+", " ", match.group(1)).strip()
             questions.append(
-                {
-                    "category": category,
-                    "question": question,
-                    "gold_query": json.loads(match.group(2)),
-                }
+                with_manifest(
+                    {
+                        "category": category,
+                        "question": question,
+                        "gold_query": json.loads(match.group(2)),
+                    },
+                    manifest,
+                )
             )
     return questions
 
@@ -83,6 +87,7 @@ def parse_cube_questions(path: Path) -> list[dict[str, Any]]:
 def parse_sql_questions(path: Path) -> list[dict[str, Any]]:
     text = path.read_text(encoding="utf-8")
     questions: list[dict[str, Any]] = []
+    manifest = manifest_by_question()
     cat_section = re.compile(
         r"^## (LQLS|LQHS|HQLS|HQHS)[^\n]*\n(.*?)(?=^## |\Z)",
         re.MULTILINE | re.DOTALL,
@@ -96,11 +101,14 @@ def parse_sql_questions(path: Path) -> list[dict[str, Any]]:
         for match in numbered_q.finditer(body):
             question = re.sub(r"\s+", " ", match.group(1)).strip()
             questions.append(
-                {
-                    "category": category,
-                    "question": question,
-                    "gold_sql": match.group(2).strip(),
-                }
+                with_manifest(
+                    {
+                        "category": category,
+                        "question": question,
+                        "gold_sql": match.group(2).strip(),
+                    },
+                    manifest,
+                )
             )
     return questions
 
@@ -136,6 +144,29 @@ def load_manifest(path: Path | None = None) -> list[dict[str, Any]]:
     return questions
 
 
+def manifest_by_question() -> dict[str, dict[str, Any]]:
+    return {normalize_question(row["question"]): row for row in load_manifest() if row.get("question")}
+
+
+def with_manifest(question: dict[str, Any], manifest: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    row = manifest.get(normalize_question(question["question"]), {})
+    if row:
+        question["id"] = row.get("id", "")
+        question["source_index"] = row.get("source_index", "")
+        question["answer_shape"] = row.get("answer_shape", "")
+        question["requires_entity_resolution"] = bool(row.get("requires_entity_resolution", False))
+    else:
+        question["id"] = ""
+        question["source_index"] = ""
+        question["answer_shape"] = ""
+        question["requires_entity_resolution"] = False
+    return question
+
+
+def normalize_question(value: str) -> str:
+    return re.sub(r"\s+", " ", value.strip()).lower()
+
+
 def _parse_manifest_value(value: str) -> Any:
     value = value.strip()
     if value == "true":
@@ -159,6 +190,8 @@ def print_manifest_summary() -> None:
         total = sum(1 for q in questions if q.get("category") == category)
         active = sum(1 for q in included if q.get("category") == category)
         print(f"{category}: {active}/{total}")
+    for shape in sorted({q.get("answer_shape", "") for q in included if q.get("answer_shape")}):
+        print(f"{shape}: {sum(1 for q in included if q.get('answer_shape') == shape)}")
 
 
 if __name__ == "__main__":

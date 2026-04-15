@@ -155,7 +155,11 @@ def main() -> None:
             records.append(
                 {
                     "iteration": iteration,
+                    "id": question.get("id", ""),
+                    "source_index": question.get("source_index", ""),
                     "category": category,
+                    "answer_shape": question.get("answer_shape", ""),
+                    "requires_entity_resolution": int(question.get("requires_entity_resolution", False)),
                     "question": question_text,
                     "sql_parse_ok": sql_parse_ok,
                     "exec_ok": exec_ok,

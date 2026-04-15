@@ -8,220 +8,308 @@ questions:
     source_index: 1
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return all the claims we have by claim number, open date and close date?"
   - id: Q02
     source_index: 2
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return all the policies we have by policy number, effective date and expiration date?"
   - id: Q03
     source_index: 3
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return all the policies and their policy holder by id"
   - id: Q04
     source_index: 4
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return all the policies and the agents that sold them by policy number and agent id"
   - id: Q05
     source_index: 5
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are all our policies that have a claim associated to them by policy and claim number?"
   - id: Q06
     source_index: 6
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are all the premiums that have been paid by policy holders?"
   - id: Q07
     source_index: 7
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What is the premium amount of all policies by policy number?"
   - id: Q08
     source_index: 8
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What is the premium amount of all policies by policy number, coverage effective date and coverage expiration date"
   - id: Q09
     source_index: 9
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are the loss payment amount of all claims by claim number?"
   - id: Q10
     source_index: 10
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are the loss reserve amount of all claims by claim number?"
   - id: Q11
     source_index: 11
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are the expense payment amount of all claims by claim number?"
   - id: Q12
     source_index: 12
     category: LQLS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are the expense reserve amount of all claims by claim number?"
   - id: Q13
     source_index: 13
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are the loss payment, loss reserve, expense payment, expense reserve amount by claim number?"
   - id: Q14
     source_index: 14
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are the loss payment, loss reserve, expense payment, expense reserve amount by claim number and corresponding policy number, policy holder and premium amount paid?"
   - id: Q15
     source_index: 15
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are the loss payment, loss reserve, expense payment, expense reserve amount by claim number and corresponding policy number, policy holder, premium amount paid and the agent who sold it?"
   - id: Q16
     source_index: 16
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "What are the loss payment, loss reserve, expense payment, expense reserve amount by claim number and corresponding policy number, policy holder, premium amount paid, the catastrophe it had, and the agent who sold it?"
   - id: Q17
     source_index: 17
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return policy holders and the claims they have made and the corresponding catastrophe"
   - id: Q18
     source_index: 18
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return agents and the policy they have sold that have had a claim and the corresponding catastrophe it had."
   - id: Q19
     source_index: 19
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return agents and the policies they have sold that have had a claim and the corresponding loss payment amount by agent id, policy number and claim number"
   - id: Q20
     source_index: 20
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return agents and the policy they have sold that have had a claim and the corresponding loss reserve amount by agent id, policy number and claim number"
   - id: Q21
     source_index: 21
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return agents and the policy they have sold that have had a claim and the corresponding expense payment amount by agent id, policy number and claim number"
   - id: Q22
     source_index: 22
     category: LQHS
     included: true
+    answer_shape: dimension_listing
+    requires_entity_resolution: false
     question: "Return agents and the policy they have sold that have had a claim and the corresponding expense reserve amount by agent id, policy number and claim number"
   - id: Q23
     source_index: 23
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "How many claims do we have?"
   - id: Q24
     source_index: 24
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "How many policies do we have?"
   - id: Q25
     source_index: 25
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "How many claims have been placed by policy number?"
   - id: Q26
     source_index: 26
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "How many policies have agents sold by agent id?"
   - id: Q27
     source_index: 27
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "How many policies does each policy holder have by policy holder id?"
   - id: Q28
     source_index: 28
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the total amount of premiums paid by policy number?"
   - id: Q29
     source_index: 29
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the total amount of premiums that a policy holder has paid?"
   - id: Q30
     source_index: 30
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the total amount of premiums that a policy holder has paid by policy number?"
   - id: Q31
     source_index: 31
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the total loss amounts, which is the sum of loss payment, loss reserve amount by claim number?"
   - id: Q32
     source_index: 32
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the average time to settle a claim by policy number?"
   - id: Q33
     source_index: 33
     category: HQLS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the average policy size which is the total amount of premium divided by the number of policies?"
   - id: Q34
     source_index: 34
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the total loss of each claim by claim number where total loss is the sum of loss payment, loss reserve, expense payment, expense reserve amount?"
   - id: Q35
     source_index: 35
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the average loss of each policy by policy number where loss is the sum of loss payment, loss reserve, expense payment, expense reserve amounts?"
   - id: Q36
     source_index: 36
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the total loss of each policy by policy number where total loss is the sum of loss payment, loss reserve, expense payment, expense reserve amounts?"
   - id: Q37
     source_index: 37
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What are the total loss, which is the sum of loss payment, loss reserve, expense payment, expense reserve amount by claim number and corresponding policy number, policy holder and premium amount paid?"
   - id: Q38
     source_index: 38
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What are the total loss, which is the sum of loss payment, loss reserve, expense payment, expense reserve amount by catastrophe and policy number?"
   - id: Q39
     source_index: 39
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What are the total loss, which is the sum of loss payment, loss reserve, expense payment, expense reserve amount by claim number, catastrophe and corresponding policy number?"
   - id: Q40
     source_index: 40
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the total loss of each policy that an agent has sold by agent id where total loss is the sum of loss payment, loss reserve, expense payment, expense reserve amounts?"
   - id: Q41
     source_index: 41
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the loss ratio of each policy and agent who sold it by policy number and agent id?"
   - id: Q42
     source_index: 42
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the average loss of each policy by policy number and number of claims where loss is the sum of loss payment, loss reserve, expense payment, expense reserve amounts?"
   - id: Q43
     source_index: 43
     category: HQHS
     included: true
+    answer_shape: aggregate
+    requires_entity_resolution: false
     question: "What is the loss ratio, number of claims, total loss by policy number and premium where total loss is the sum of loss payment, loss reserve, expense payment, expense reserve amount and loss ratio is total loss divided by premium?"
   - id: Q44
     source_index: 44
     category: HQHS
     included: false
+    answer_shape: aggregate
+    requires_entity_resolution: false
     reason: "Duplicate of Q42 in the source benchmark."
     question: "What is the average loss of each policy by policy number and number of claims where loss is the sum of loss payment, loss reserve, expense payment, expense reserve amounts?"

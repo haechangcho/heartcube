@@ -46,11 +46,15 @@ Implemented:
 - Average policy size gold fix for the seed HQLS question
 - Cube expense measures exposed for full-loss questions:
   `expense_payment_amount`, `expense_reserve_amount`, `total_full_loss_amount`
+- Answer-shape tags added to `question_manifest.yaml`
+- Party/Person DDL, loader support, Cube models, and `acme_ops` name dimensions added
+- Entity retrieval extension questions added under `questions/entity_retrieval_questions.md`
 
 Pending before final benchmark execution:
 
 - Expand `questions/cube_questions.md` from the 11-question seed to all 43 included questions
 - Expand `questions/ddl_sql_questions.md` from the 11-question seed to all 43 included questions
+- Preload Party/Person data in the remote benchmark database before running entity retrieval extension questions
 - Add remaining Cube model/view members required by policy-level loss ratio and average-loss HQHS questions
 - Pre-execute every Cube and SQL gold query
 - Run both tracks for the configured iteration count

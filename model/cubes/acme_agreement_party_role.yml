@@ -3,6 +3,11 @@ cubes:
     public: false
     sql_table: oda_benchmark.acme_agreement_party_role
 
+    joins:
+      - name: acme_party
+        sql: "{acme_agreement_party_role}.party_identifier = {acme_party}.party_identifier"
+        relationship: many_to_one
+
     dimensions:
       - name: agreement_identifier
         sql: agreement_identifier
