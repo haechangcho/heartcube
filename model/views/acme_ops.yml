@@ -50,6 +50,21 @@ views:
           - party_role_code
           - policy_count_by_agent
 
+      # ── acme_party / acme_person ─────────────────────────────────────────
+      - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_agreement_party_role.acme_party
+        includes:
+          - party_name
+          - party_type_code
+
+      - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_agreement_party_role.acme_party.acme_person
+        includes:
+          - name: full_legal_name
+            alias: party_full_legal_name
+          - name: first_name
+            alias: party_first_name
+          - name: last_name
+            alias: party_last_name
+
       # ── acme_policy_amount ────────────────────────────────────────────────
       - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_policy_amount
         includes:

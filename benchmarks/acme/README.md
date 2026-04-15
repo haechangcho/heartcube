@@ -40,3 +40,13 @@ python3 benchmarks/acme/pipelines/ddl_benchmark_pipeline.py
 ## Current Status
 
 The manifest tracks all 44 source questions. Q44 is excluded because it duplicates Q42, leaving a 43-question executable target. The migrated gold files currently contain the prior 11-question seed and are the next files to expand to the full executable target.
+
+The package also includes a row-level entity retrieval extension in `questions/entity_retrieval_questions.md`. That extension requires the Party/Person model additions and is not counted in the source 43-question denominator.
+
+To load source CSVs into PostgreSQL:
+
+```bash
+export DATABASE_URL=postgresql://...
+export ACME_DATA_DIR=/path/to/ACME_Insurance/data
+python3 benchmarks/acme/pipelines/load_acme_data.py
+```
