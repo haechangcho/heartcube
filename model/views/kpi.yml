@@ -13,115 +13,227 @@ views:
         includes:
           - name: count
             alias: claim_count
-            title: 청구건수
-            description: 전체 사고 접수 건수.
-          - name: accident_dt
-            description: 사고가 발생한 날짜. 시계열 분석의 기본 기준 날짜. 월별·분기별 트렌드 분석에 사용한다.
-          - name: claim_dt
-            description: 고객이 보험금을 청구한 날짜.
-          - name: payment_dt
-            description: 보험금이 최종 지급된 날짜.
-          - name: accident_type_l1
-            description: "사고의 대분류. 교통·상해·질병 3종으로 구성. 전체 사고 구성비 분석 시 첫 번째 필터 기준으로 사용."
-          - name: accident_type_l2
-            description: 사고유형 중분류.
-          - name: accident_type_l3
-            description: 사고유형 소분류.
-          - name: accident_claim_gap_days
-            description: 사고 발생일부터 청구일까지의 경과일수. 값이 클수록 지연 청구로 사기 의심 가능성이 높아진다.
+
+          - accident_dt
+          - claim_dt
+          - payment_dt
+          - accident_type_l1
+          - accident_type_l2
+          - accident_type_l3
+          - accident_claim_gap_days
+
           - name: loss_ratio
             meta:
-              kpi: true
+              kpi:
+                visible: true
+                target: "40% 이하"
+              driver:
+                - dimension: accident_type_l1
+                  measure: claim_count
+                - dimension: coverage_nm
+                  measure: avg_payment_amt
+                - dimension: adjuster_id
+                  measure: claim_approval_rate
+              lever:
+                - action: "고위험 담보 인수기준 강화"
+                - action: "과지급 탐지 강화"
+                - action: "심사자 배당 정책 조정"
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
-            description: "손해율. 손해보험가입금액 대비 지급결정금액 비율. 지급결정금액 합계 ÷ 보험가입금액 합계. 목표: 40% 이하. Driver: 사고율증가(accident_type별 건수추이)·평균지급액증가(coverage별 payment_amt)·심사기준편차(adjuster별 인용율). Lever: 고위험 담보 인수기준 강화·과지급 탐지 강화·심사자 배당 정책 조정."
+
           - name: claim_approval_rate
             meta:
-              kpi: true
+              kpi:
+                visible: true
+                target: "85~90%"
+              driver:
+                - dimension: coverage_nm
+                  measure: claim_approval_rate
+                - dimension: adjuster_id
+                  measure: claim_approval_rate
+                - dimension: hospital_nm
+                  measure: claim_approval_rate
+              lever:
+                - action: "coverage별 지급기준 명확화"
+                - action: "심사자 교육"
+                - action: "과잉청구 병원 관리"
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
-            description: "청구인용율. 지급결정금액 합계 ÷ 청구금액 합계 × 100. 목표: 85~90%. Driver: 담보별 인용율 편차(coverage_nm)·심사자별 편차(adjuster_id)·과잉청구 패턴(hospital_nm). Lever: coverage별 지급기준 명확화·심사자 교육·과잉청구 병원 관리."
+
           - name: overpayment_rate
             meta:
-              kpi: true
+              kpi:
+                visible: true
+                target: "2% 이하"
+              driver:
+                - dimension: adjuster_id
+                  measure: overpayment_rate
+                - dimension: claim_center_nm
+                  measure: overpayment_rate
+                - dimension: accident_type_l1
+                  measure: overpayment_rate
+              lever:
+                - action: "과지급 다발 심사자 재교육"
+                - action: "이중심사 도입"
+                - action: "환수 프로세스 강화"
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
-            description: "전체 사고 중 과지급 건 비율. 목표: 2% 이하. Driver: 과지급 집중 adjuster_id·claim_center_nm·accident_type_l1. Lever: 과지급 다발 심사자 재교육·이중심사 도입·환수 프로세스 강화."
+
           - name: sla_compliance_rate
             meta:
-              kpi: true
+              kpi:
+                visible: true
+                target: "95% 이상"
+              driver:
+                - dimension: adjuster_id
+                  measure: avg_processing_days
+                - dimension: claim_team_nm
+                  measure: avg_processing_days
+                - dimension: org_type
+                  measure: avg_processing_days
+                - dimension: accident_type_l1
+                  measure: avg_processing_days
+              lever:
+                - action: "간편심사 확대"
+                - action: "심사자 배당 정책 개선"
+                - action: "저준수 팀 인력 보강"
               pre_aggregation:
                 time_dimension: claim_dt
                 granularity: month
-            description: "SLA(5영업일) 이내 처리 건 비율. 목표: 95% 이상. Driver: adjuster_id·claim_team_nm별 처리기간 편차·org_type·accident_type_l1별 SLA 위반 분포. Lever: 간편심사 확대·심사자 배당 정책 개선·저준수 팀 인력 보강."
+
           - name: avg_processing_days
             meta:
-              kpi: true
+              kpi:
+                visible: true
+                target: "5일 이내"
+              driver:
+                - dimension: adjuster_id
+                  measure: avg_processing_days
+                - dimension: claim_team_nm
+                  measure: avg_processing_days
+                - dimension: org_type
+                  measure: avg_processing_days
+              lever:
+                - action: "처리지연 심사자 건수 재배분"
+                - action: "특정 사고유형 간편심사 전환"
               pre_aggregation:
                 time_dimension: claim_dt
                 granularity: month
-            description: "사고 접수부터 보상 완료까지 평균 영업일수. SLA 기준: 5일. Driver: adjuster_id·claim_team_nm별 처리기간 편차·org_type별 차이. Lever: 처리지연 심사자 건수 재배분·특정 사고유형 간편심사 전환."
+
           - name: anomaly_rate
             meta:
-              kpi: true
+              kpi:
+                visible: true
+              driver:
+                - dimension: anomaly_label
+                  measure: anomaly_rate
+                - dimension: claim_center_nm
+                  measure: anomaly_rate
+              lever:
+                - action: "고탐지율 센터 집중 감사"
+                - action: "이상유형별 심사 프로세스 강화"
               pre_aggregation:
                 time_dimension: claim_dt
                 granularity: month
-            description: "전체 사고 중 이상유형라벨이 '정상'이 아닌 건의 비율. 보험사기·과지급·착오지급 등 이상 건 탐지 종합 지표. Driver: anomaly_label 분포·claim_center_nm별 편차. Lever: 고탐지율 센터 집중 감사·이상유형별 심사 프로세스 강화."
+
           - name: fraud_suspicion_rate
             meta:
-              kpi: true
+              kpi:
+                visible: true
+                target: "1% 이하"
+              driver:
+                - dimension: hospital_nm
+                  measure: fraud_suspicion_rate
+                - dimension: treatment_pattern
+                  measure: fraud_suspicion_rate
+              lever:
+                - action: "SIU 배정"
+                - action: "지급 보류 처리"
+                - action: "의심 병원 집중심사"
               pre_aggregation:
                 time_dimension: claim_dt
                 granularity: month
-            description: "사기의심 탐지 건수 비율. 목표: 1% 이하. Driver: 상습청구 고객(prior_claim_cnt)·병원 집중 패턴(hospital_nm)·비정상 진료패턴(treatment_pattern). Lever: SIU 배정·지급 보류 처리·의심 병원 집중심사."
+
           - name: noninsured_ratio
             meta:
-              kpi: true
+              kpi:
+                visible: true
+              driver:
+                - dimension: hospital_nm
+                  measure: noninsured_ratio
+                - dimension: dx_analysis_l1
+                  measure: noninsured_ratio
+                - dimension: treatment_pattern
+                  measure: noninsured_ratio
+              lever:
+                - action: "비급여 과다 병원 집중심사"
+                - action: "현장 조사"
+                - action: "비급여 항목별 지급기준 강화"
               pre_aggregation:
                 time_dimension: claim_dt
                 granularity: month
-            description: "총 치료비 대비 비급여 치료비 비율. 비율이 높을수록 과잉진료·허위청구 의심 가능성이 높다. Driver: 비급여 집중 hospital_nm·dx_analysis_l1·treatment_pattern. Lever: 비급여 과다 병원 집중심사·현장 조사·비급여 항목별 지급기준 강화."
-          - name: review_reversal_count
-            description: "재심(review_yn=Y) 후 실제 지급액이 기준금액을 초과한 건수."
+
+          - review_reversal_count
+
           - name: review_reversal_rate
-            description: "재심 건 중 추가지급(번복)으로 이어진 비율. Driver: 번복 집중 adjuster_id·coverage_nm. Lever: 번복 다발 심사자 재교육·담보별 심사 가이드라인 보완."
+            meta:
+              kpi:
+                visible: false
+              driver:
+                - dimension: adjuster_id
+                  measure: review_reversal_count
+                - dimension: coverage_nm
+                  measure: review_reversal_count
+              lever:
+                - action: "번복 다발 심사자 재교육"
+                - action: "담보별 심사 가이드라인 보완"
+
           - name: high_prior_claim_count
-            description: "과거 청구 3회 이상 고객의 청구 건수. Driver: hospital_id·dx_analysis_l1 집중 패턴. Lever: 상습청구 고객 집중심사 지정·SIU 조사 의뢰."
+            meta:
+              kpi:
+                visible: false
+              driver:
+                - dimension: hospital_nm
+                  measure: high_prior_claim_count
+                - dimension: dx_analysis_l1
+                  measure: high_prior_claim_count
+              lever:
+                - action: "상습청구 고객 집중심사 지정"
+                - action: "SIU 조사 의뢰"
 
       # ── fact_payment ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_payment
         includes:
-          - name: total_payment_amt
-            description: 최종 지급이 결정된 금액의 합계. 손해율·청구인용율의 분자로 사용된다.
-          - name: total_claim_amt
-            description: 고객이 청구한 총 금액.
-          - name: total_reduction_amt
-            description: 청구금액 대비 감액된 금액 합계.
-          - name: avg_payment_amt
-            description: 건당 평균 지급 결정 금액.
-          - name: reduction_count
-            description: 감액지급 건수.
+          - total_payment_amt
+          - total_claim_amt
+          - total_reduction_amt
+          - avg_payment_amt
+          - reduction_count
           - name: reduction_rate
-            description: "감액금액 / 청구금액 × 100. 과잉청구 규모의 간접 지표. Driver: 감액율 높은 coverage_nm·reduction_reason 분포. Lever: 감액 집중 담보 지급기준 명확화."
+            meta:
+              kpi:
+                visible: false
+              driver:
+                - dimension: coverage_nm
+                  measure: reduction_rate
+                - dimension: reduction_reason
+                  measure: total_reduction_amt
+              lever:
+                - action: "감액 집중 담보 지급기준 명확화"
           - final_payment_cd
           - payment_type
           - payment_item_l1
-          - name: reduction_reason
-            description: "감액사유. 해당없음 / 과잉진료 / 중복청구 등."
+          - reduction_reason
 
       # ── fact_contract ─────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract
         includes:
-          - name: total_insured_amt
-            description: 계약된 보험가입금액의 합계. 손해율의 분모로 사용된다.
-          - name: sales_division
-            description: 영업채널구분.
-          - name: sales_org_cd
-            description: "영업 조직 코드. ORG001~ORG099 범위."
+          - total_insured_amt
+          - sales_division
+          - sales_org_cd
           - product_cd
           - coverage_cd
 
@@ -131,79 +243,118 @@ views:
           - claim_center_nm
           - claim_team_nm
           - adjuster_id
-          - name: org_type
-            description: "조직구분. 보상부 / CAS / 간편심사 등."
-          - name: anomaly_label
-            description: "보상 심사 결과 이상 여부 분류. 정상·사기의심·과지급·과소지급·중복지급·착오지급 6종."
-          - name: review_yn
-            description: "재심여부. Y = 재심 청구 발생."
-          - name: lawsuit_yn
-            description: "소송여부. Y = 소송 제기."
+          - org_type
+          - anomaly_label
+          - review_yn
+          - lawsuit_yn
+
           - name: payment_delay_rate
-            description: "처리기간 5영업일 초과 건수 비율. SLA준수율의 역수(1 - SLA준수율). Driver: 지연 집중 claim_center_nm·accident_type_l1. Lever: 자동화 대상 사고유형 선정·간편심사 확대."
+            meta:
+              kpi:
+                visible: false
+              driver:
+                - dimension: claim_center_nm
+                  measure: avg_processing_days
+                - dimension: accident_type_l1
+                  measure: avg_processing_days
+              lever:
+                - action: "자동화 대상 사고유형 선정"
+                - action: "간편심사 확대"
+
           - name: review_rate
-            description: "재심 청구 건수 비율. 목표: 3% 이하. Driver: 과소지급 집중 adjuster_id·재심 집중 coverage_nm. Lever: 심사기준 명확화·과소지급 심사자 모니터링·심사 결과 커뮤니케이션 강화."
+            meta:
+              kpi:
+                visible: false
+                target: "3% 이하"
+              driver:
+                - dimension: adjuster_id
+                  measure: review_rate
+                - dimension: coverage_nm
+                  measure: review_rate
+              lever:
+                - action: "심사기준 명확화"
+                - action: "과소지급 심사자 모니터링"
+                - action: "심사 결과 커뮤니케이션 강화"
+
           - name: lawsuit_rate
-            description: "소송 제기 건수 비율. 목표: 1% 이하. Driver: 소송 집중 coverage_nm·claim_center_nm·재심→소송 전환율. Lever: 소송 집중 담보 지급기준 재정비·분쟁 조기 해소 프로세스 강화."
+            meta:
+              kpi:
+                visible: false
+                target: "1% 이하"
+              driver:
+                - dimension: coverage_nm
+                  measure: lawsuit_rate
+                - dimension: claim_center_nm
+                  measure: lawsuit_rate
+                - dimension: review_yn
+                  measure: lawsuit_rate
+              lever:
+                - action: "소송 집중 담보 지급기준 재정비"
+                - action: "분쟁 조기 해소 프로세스 강화"
+
           - name: duplicate_payment_rate
-            description: "중복지급 탐지 건수 비율. Driver: 중복 발생 집중 adjuster_id·claim_center_nm. Lever: 중복지급 발생 단위 프로세스 점검·시스템 자동 중복 검증 강화."
+            meta:
+              kpi:
+                visible: false
+              driver:
+                - dimension: adjuster_id
+                  measure: duplicate_payment_rate
+                - dimension: claim_center_nm
+                  measure: duplicate_payment_rate
+              lever:
+                - action: "중복지급 발생 단위 프로세스 점검"
+                - action: "시스템 자동 중복 검증 강화"
+
           - name: error_payment_rate
-            description: "착오지급 탐지 건수 비율. Driver: 착오 집중 adjuster_id·coverage_nm. Lever: 면책조항 미적용 오류 심사자 교육·지급 계산 자동화 확대."
+            meta:
+              kpi:
+                visible: false
+              driver:
+                - dimension: adjuster_id
+                  measure: error_payment_rate
+                - dimension: coverage_nm
+                  measure: error_payment_rate
+              lever:
+                - action: "면책조항 미적용 오류 심사자 교육"
+                - action: "지급 계산 자동화 확대"
 
       # ── fact_treatment ────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment
         includes:
-          - name: dx_analysis_l1
-            description: "외상·특정감염·암·심혈관 등 진단 대분류."
-          - name: dx_analysis_l2
-            description: 진단 중분류.
-          - name: treatment_pattern
-            description: "입원·통원·입원+통원 복합 패턴 분류."
-          - name: inpatient_period_grp
-            description: "통원·1-7일·7-15일·15-30일·30일초과 등 그룹 분류."
-          - name: avg_inpatient_days
-            description: 사고 건당 평균 입원일수.
-          - name: total_treat_amt_noninsured
-            description: 건강보험 비급여 치료비 합계.
+          - dx_analysis_l1
+          - dx_analysis_l2
+          - treatment_pattern
+          - inpatient_period_grp
+          - avg_inpatient_days
+          - total_treat_amt_noninsured
 
       # ── dim_customer ──────────────────────────────────────────────────────
       - join_path: fact_accident.dim_customer
         includes:
-          - name: gender
-            description: 고객 성별.
-          - name: age_group
-            description: "생년월일 기반 연령대 구분."
+          - gender
+          - age_group
 
       # ── dim_coverage ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract.dim_coverage
         includes:
-          - name: coverage_nm
-            description: 담보의 정식 명칭.
-          - name: coverage_type
-            description: "담보의 보장 유형. 암진단비·상해수술비·실손의료비·입원일당 등으로 구성된다."
-          - name: coverage_cat1
-            description: "담보 대분류. 질병·상해 등."
-          - name: coverage_cat2
-            description: 담보 중분류.
+          - coverage_nm
+          - coverage_type
+          - coverage_cat1
+          - coverage_cat2
 
       # ── dim_product ───────────────────────────────────────────────────────
       - join_path: fact_accident.fact_contract.dim_product
         includes:
-          - name: product_nm
-            description: 보험 상품의 정식 명칭.
+          - product_nm
 
       # ── dim_hospital ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment.dim_hospital
         includes:
-          - name: hospital_nm
-            description: 의료기관 정식 명칭.
-          - name: hospital_grade_cd
-            description: "의료기관 종별 등급. 등급이 높을수록 치료비가 높은 경향이 있으며 과잉진료 탐지 시 참고 지표로 활용한다."
+          - hospital_nm
+          - hospital_grade_cd
 
       # ── dim_diagnosis ─────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment.dim_diagnosis
         includes:
-          - name: diagnosis_nm
-            description: 진단의 정식 명칭.
-          - name: diagnosis_type
-            description: "진단 대분류 유형. 암·외상·순환기질환·근골격질환·감염질환 등으로 구성된다."
+          - diagnosis_nm
+          - diagnosis_type
