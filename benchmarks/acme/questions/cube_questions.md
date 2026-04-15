@@ -1,6 +1,6 @@
 # ACME Insurance — Cube NL2SQL Benchmark Questions
 
-## HQLS — Simple Aggregations
+## HQLS — Complex Queries on Simple Schema
 
 1. How many claims do we have?
 ```json
@@ -32,8 +32,6 @@
 {"query": {"dimensions": ["acme_ops.policy_number"], "measures": ["acme_ops.avg_days_to_settle"], "order": {"acme_ops.avg_days_to_settle": "desc"}}}
 ```
 
-## HQHS — Complex Aggregations
-
 7. What is the total loss amounts, which is the sum of loss payment, loss reserve amount by claim number?
 ```json
 {"query": {"dimensions": ["acme_ops.company_claim_number"], "measures": ["acme_ops.total_loss_amount"], "order": {"acme_ops.total_loss_amount": "desc"}}}
@@ -56,5 +54,5 @@
 
 11. What is the average policy size which is the total amount of premium divided by the number of policies?
 ```json
-{"query": {"measures": ["acme_ops.total_policy_amount", "acme_ops.policy_count"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}]}}
+{"query": {"measures": ["acme_ops.avg_policy_size"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}]}}
 ```

@@ -59,8 +59,28 @@ cubes:
         filters:
           - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_loss_reserve lr WHERE lr.claim_amount_identifier = {CUBE}.claim_amount_identifier)"
 
+      - name: expense_payment_amount
+        sql: claim_amount
+        type: sum
+        title: Expense Payment Amount
+        filters:
+          - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_expense_payment ep WHERE ep.claim_amount_identifier = {CUBE}.claim_amount_identifier)"
+
+      - name: expense_reserve_amount
+        sql: claim_amount
+        type: sum
+        title: Expense Reserve Amount
+        filters:
+          - sql: "EXISTS (SELECT 1 FROM oda_benchmark.acme_expense_reserve er WHERE er.claim_amount_identifier = {CUBE}.claim_amount_identifier)"
+
       - name: total_loss_amount
         sql: "{loss_payment_amount} + {loss_reserve_amount}"
         type: number
         title: Total Loss Amount
         description: "Sum of loss_payment_amount and loss_reserve_amount"
+
+      - name: total_full_loss_amount
+        sql: "{loss_payment_amount} + {loss_reserve_amount} + {expense_payment_amount} + {expense_reserve_amount}"
+        type: number
+        title: Total Full Loss Amount
+        description: "Sum of loss payment, loss reserve, expense payment, and expense reserve amounts."

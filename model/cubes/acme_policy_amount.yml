@@ -30,3 +30,15 @@ cubes:
         type: sum
         title: Total Policy Amount
         description: "The total amount associated with the policy."
+
+      - name: policy_count_for_amounts
+        sql: policy_identifier
+        type: count_distinct
+        title: Policy Count for Amounts
+        public: false
+
+      - name: avg_policy_size
+        sql: "{total_policy_amount} / NULLIF({policy_count_for_amounts}, 0)"
+        type: number
+        title: Average Policy Size
+        description: "Total premium amount divided by the number of distinct policies."
