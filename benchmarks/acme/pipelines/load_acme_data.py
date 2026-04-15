@@ -58,13 +58,19 @@ def load_csvs() -> None:
     print(f"skip_existing={SKIP_EXISTING}")
     print(f"create_schema={CREATE_SCHEMA}")
 
-    with engine.begin() as conn:
-        if CREATE_SCHEMA:
-            conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}"))
-        ensure_party_person_tables(conn)
-        if TRUNCATE:
-            tables = ", ".join(f"{SCHEMA}.{table}" for table in CSV_TABLE_MAP.values())
-            conn.execute(text(f"TRUNCATE {tables}"))
+    try:
+        with engine.begin() as conn:
+            if CREATE_SCHEMA:
+                conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}"))
+            ensure_party_person_tables(conn)
+            if TRUNCATE:
+                tables = ", ".join(f"{SCHEMA}.{table}" for table in CSV_TABLE_MAP.values())
+                conn.execute(text(f"TRUNCATE {tables}"))
+    except Exception as exc:
+        raise SystemExit(
+            "Failed to prepare ACME tables. Apply acme_schema.ddl with a database user "
+            "that can create tables in the target schema, then rerun this loader."
+        ) from exc
 
     success = 0
     failed = 0
