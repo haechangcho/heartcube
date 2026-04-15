@@ -156,6 +156,7 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
 
   // NL query state
   const [nlSelectedCubes, setNLSelectedCubes] = useState<string[]>([]);
+  const [isNLBarOpen, setIsNLBarOpen] = useState(false);
 
   const toggleNLCube = useEvent((cubeName: string) => {
     setNLSelectedCubes((prev) =>
@@ -165,6 +166,10 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
 
   const clearNLCubes = useEvent(() => {
     setNLSelectedCubes([]);
+  });
+
+  const toggleNLBar = useEvent(() => {
+    setIsNLBarOpen((prev) => !prev);
   });
 
   const [query, setQueryInstance] = useState<Query>(defaultQuery || {});
@@ -1425,6 +1430,8 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
     nlSelectedCubes,
     toggleNLCube,
     clearNLCubes,
+    isNLBarOpen,
+    toggleNLBar,
     // @ts-ignore
     totalRows: resultSet?.totalRows(),
   };

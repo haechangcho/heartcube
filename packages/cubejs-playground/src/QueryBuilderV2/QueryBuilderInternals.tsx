@@ -43,7 +43,7 @@ const QueryBuilderPanel = tasty(Panel, {
 });
 
 const QueryBuilderInternals = memo(function QueryBuilderInternals() {
-  const { error, resultSet, queryHash, dateRanges } = useQueryBuilderContext();
+  const { error, resultSet, queryHash, dateRanges, isNLBarOpen } = useQueryBuilderContext();
   const [isChartExpanded, setIsChartExpanded] = useLocalStorage(
     'QueryBuilder:Chart:expanded',
     false
@@ -112,9 +112,10 @@ const QueryBuilderInternals = memo(function QueryBuilderInternals() {
           []
         )}
 
-        <NLQueryBar />
+        <Panel gridRows="min-content min-content min-content min-content min-content min-content min-content minmax(0, 1fr)">
+          {isNLBarOpen && <NLQueryBar />}
+          {isNLBarOpen && <Divider />}
 
-        <Panel gridRows="min-content min-content min-content min-content min-content minmax(0, 1fr)">
           {useMemo(
             () => (
               <>
