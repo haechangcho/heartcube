@@ -2,7 +2,7 @@
 
 Schema: `oda_benchmark` (PostgreSQL)
 
-## HQLS — Simple Aggregations
+## HQLS — Complex Queries on Simple Schema
 
 1. How many claims do we have?
 ```sql
@@ -57,8 +57,6 @@ GROUP BY p.policy_number
 ORDER BY avg_days_to_settle DESC
 ```
 
-## HQHS — Complex Aggregations
-
 7. What is the total loss amounts, which is the sum of loss payment, loss reserve amount by claim number?
 ```sql
 SELECT c.company_claim_number,
@@ -109,8 +107,7 @@ ORDER BY policy_count DESC
 
 11. What is the average policy size which is the total amount of premium divided by the number of policies?
 ```sql
-SELECT SUM(pa.policy_amount) AS total_policy_amount,
-       COUNT(DISTINCT pa.policy_identifier) AS number_of_policies
+SELECT SUM(pa.policy_amount) / NULLIF(COUNT(DISTINCT pa.policy_identifier), 0) AS avg_policy_size
 FROM oda_benchmark.acme_policy_amount pa
 JOIN oda_benchmark.acme_premium pr ON pa.policy_amount_identifier = pr.policy_amount_identifier
 ```
