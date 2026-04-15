@@ -46,6 +46,8 @@ The package also includes a row-level entity retrieval extension in `questions/e
 To load source CSVs into PostgreSQL:
 
 ```bash
+# First apply benchmarks/acme/source/party_person_extension.sql with a user
+# that can create tables in oda_benchmark.
 export DATABASE_URL=postgresql://...
 export ACME_DATA_DIR=/path/to/ACME_Insurance/data
 python3 benchmarks/acme/pipelines/load_acme_data.py
