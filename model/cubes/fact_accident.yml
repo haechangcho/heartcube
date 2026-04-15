@@ -90,6 +90,17 @@ cubes:
         description: 고객 식별자. 특정 고객 필터링 시 사용.
         public: false
 
+      - name: prior_claim_grp
+        sql: >
+          CASE
+            WHEN {CUBE}.prior_claim_cnt = 0 THEN '0회'
+            WHEN {CUBE}.prior_claim_cnt BETWEEN 1 AND 2 THEN '1-2회'
+            WHEN {CUBE}.prior_claim_cnt >= 3 THEN '3회 이상'
+          END
+        type: string
+        title: 이전청구횟수구간
+        description: 고객의 이전 청구 횟수 구간. 3회 이상은 상습청구 고객으로 분류.
+
       - name: accident_claim_gap_days
         sql: accident_claim_gap_days
         type: number

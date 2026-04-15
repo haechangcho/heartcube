@@ -21,6 +21,7 @@ views:
           - accident_type_l2
           - accident_type_l3
           - accident_claim_gap_days
+          - prior_claim_grp
 
           - name: loss_ratio
             meta:
@@ -145,6 +146,8 @@ views:
                 visible: true
                 target: "1% 이하"
               driver:
+                - dimension: prior_claim_grp
+                  measure: fraud_suspicion_rate
                 - dimension: hospital_nm
                   measure: fraud_suspicion_rate
                 - dimension: treatment_pattern
