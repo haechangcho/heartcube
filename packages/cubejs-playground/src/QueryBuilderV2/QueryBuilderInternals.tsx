@@ -15,6 +15,7 @@ import { QueryBuilderRest } from './QueryBuilderRest';
 import { QueryBuilderGraphQL } from './QueryBuilderGraphQL';
 import { QueryBuilderSidePanel } from './QueryBuilderSidePanel';
 import { QueryBuilderExtras } from './QueryBuilderExtras';
+import { NLQueryBar } from './components/NLQueryBar';
 
 // The minimum size of the area below the top edge of the chart
 // when we can show both results and the chart at the same time.
@@ -110,6 +111,8 @@ const QueryBuilderInternals = memo(function QueryBuilderInternals() {
           ),
           []
         )}
+
+        <NLQueryBar />
 
         <Panel gridRows="min-content min-content min-content min-content min-content minmax(0, 1fr)">
           {useMemo(

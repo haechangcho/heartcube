@@ -438,6 +438,32 @@ class ApiGateway {
     );
 
     app.post(
+      `${this.basePath}/v1/nl/query`,
+      userMiddlewares,
+      userAsyncHandler(async (req, res) => {
+        const requestStarted = new Date();
+        try {
+          await this.assertApiScope('meta', req.context?.securityContext);
+          const { naturalLanguage, cubeNames } = req.body;
+          if (!naturalLanguage || typeof naturalLanguage !== 'string') {
+            throw new UserError('naturalLanguage is required');
+          }
+          const compilerApi = await this.getCompilerApi(req.context);
+          const metaConfig = await compilerApi.metaConfig(req.context, { requestId: req.context.requestId });
+          let cubes = this.filterVisibleItemsInMeta(req.context, metaConfig).map((c: any) => c.config);
+          if (Array.isArray(cubeNames) && cubeNames.length > 0) {
+            cubes = cubes.filter((c: any) => cubeNames.includes(c.name));
+          }
+          const { generateNLQuery } = await import('./nl/llm');
+          const result = await generateNLQuery(cubes, naturalLanguage);
+          this.resToResultFn(res)(result);
+        } catch (e: any) {
+          this.handleError({ e, context: req.context, res: this.resToResultFn(res), requestStarted });
+        }
+      })
+    );
+
+    app.post(
       `${this.basePath}/v1/cubesql`,
       userMiddlewares,
       userAsyncHandler(async (req, res) => {
