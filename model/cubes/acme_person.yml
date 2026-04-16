@@ -33,7 +33,7 @@ cubes:
         type: string
 
       - name: birth_date
-        sql: "CAST(birth_date AS DATE)"
+        sql: "CAST({CUBE}.birth_date AS DATE)"
         type: time
 
       - name: gender_code

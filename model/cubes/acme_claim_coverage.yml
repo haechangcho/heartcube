@@ -21,5 +21,5 @@ cubes:
         public: false
 
       - name: effective_date
-        sql: "CAST(effective_date AS DATE)"
+        sql: "CAST({CUBE}.effective_date AS DATE)"
         type: time
