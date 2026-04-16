@@ -25,9 +25,9 @@ cubes:
         type: string
 
       - name: effective_date
-        sql: "CAST(effective_date AS DATE)"
+        sql: "CAST({CUBE}.effective_date AS DATE)"
         type: time
 
       - name: expiration_date
-        sql: "CAST(expiration_date AS DATE)"
+        sql: "CAST({CUBE}.expiration_date AS DATE)"
         type: time

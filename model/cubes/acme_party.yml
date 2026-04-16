@@ -26,9 +26,9 @@ cubes:
         type: string
 
       - name: begin_date
-        sql: "CAST(begin_date AS DATE)"
+        sql: "CAST({CUBE}.begin_date AS DATE)"
         type: time
 
       - name: end_date
-        sql: "CAST(end_date AS DATE)"
+        sql: "CAST({CUBE}.end_date AS DATE)"
         type: time
