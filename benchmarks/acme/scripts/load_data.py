@@ -176,10 +176,10 @@ def validate(engine) -> None:
         rows = conn.execute(
             text(
                 """
-                SELECT tablename, n_live_tup AS rows
+                SELECT relname AS tablename, n_live_tup AS rows
                 FROM pg_stat_user_tables
-                WHERE schemaname = :schema AND tablename LIKE 'acme_%'
-                ORDER BY tablename
+                WHERE schemaname = :schema AND relname LIKE 'acme_%'
+                ORDER BY relname
                 """
             ),
             {"schema": SCHEMA},
