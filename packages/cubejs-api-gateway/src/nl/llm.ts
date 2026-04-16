@@ -19,7 +19,7 @@ function buildSchemaContext(cubes: any[]): CubeSchema[] {
     title: cube.title,
     description: cube.description,
     measures: (cube.measures || [])
-      .filter((m: any) => m.isVisible !== false && m.public !== false)
+      .filter((m: any) => m.public !== false)
       .map((m: any) => ({
         name: m.name,
         title: m.title,
@@ -27,7 +27,7 @@ function buildSchemaContext(cubes: any[]): CubeSchema[] {
         description: m.description,
       })),
     dimensions: (cube.dimensions || [])
-      .filter((d: any) => d.isVisible !== false && d.public !== false)
+      .filter((d: any) => d.public !== false)
       .map((d: any) => ({
         name: d.name,
         title: d.title,
@@ -35,7 +35,7 @@ function buildSchemaContext(cubes: any[]): CubeSchema[] {
         description: d.description,
       })),
     segments: (cube.segments || [])
-      .filter((s: any) => s.isVisible !== false && s.public !== false)
+      .filter((s: any) => s.public !== false)
       .map((s: any) => ({
         name: s.name,
         title: s.title,
@@ -73,30 +73,31 @@ export async function generateNLQuery(
   cubes: any[],
   naturalLanguage: string
 ): Promise<NLQueryResult> {
-  const apiKey = process.env.CUBEJS_AI_API_KEY;
-  const model = process.env.CUBEJS_AI_MODEL || 'claude-sonnet-4-6';
+  const apiKey = process.env.OPENAI_API_KEY;
+  const model = process.env.CUBEJS_AI_MODEL || 'gpt-4o';
 
   if (!apiKey) {
     throw new Error(
-      'CUBEJS_AI_API_KEY is not set. Please configure it to use AI query generation.'
+      'OPENAI_API_KEY is not set. Please configure it to use AI query generation.'
     );
   }
 
   const schema = buildSchemaContext(cubes);
   const systemPrompt = buildSystemPrompt(schema);
 
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
       model,
       max_tokens: 2048,
-      system: systemPrompt,
-      messages: [{ role: 'user', content: naturalLanguage }],
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: naturalLanguage },
+      ],
     }),
   });
 
@@ -106,7 +107,7 @@ export async function generateNLQuery(
   }
 
   const data = (await response.json()) as any;
-  const rawText: string = data?.content?.[0]?.text ?? '';
+  const rawText: string = data?.choices?.[0]?.message?.content ?? '';
 
   // Parse JSON from LLM response
   let parsed: Record<string, any>;

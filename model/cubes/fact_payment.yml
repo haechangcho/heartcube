@@ -58,6 +58,11 @@ cubes:
         title: 감액사유
         description: 해당없음 / 과잉진료 / 중복청구 등
 
+      - name: claim_amt
+        sql: claim_amt
+        type: number
+        title: 청구금액
+        description: 건별 청구금액.
 
       - name: payment_amt
         sql: payment_amt

@@ -39,6 +39,8 @@ views:
           - payment_type
           - payment_item_l1
           - reduction_reason
+          - claim_amt
+          - payment_amt
           - total_claim_amt
           - total_payment_amt
           - total_reduction_amt
@@ -94,6 +96,7 @@ views:
         includes:
           - sales_division
           - sales_org_cd
+          - insured_amt
           - total_insured_amt
 
       # ── fact_treatment ────────────────────────────────────────────────────
