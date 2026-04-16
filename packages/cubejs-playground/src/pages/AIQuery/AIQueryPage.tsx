@@ -262,50 +262,54 @@ export function AIQueryPage() {
                     style={{ marginBottom: 16 }}
                   />
                 )}
-                <Space style={{ marginBottom: 8 }}>
-                  <Button
-                    icon={<CopyOutlined />}
-                    onClick={() => copyToClipboard(formattedQuery, 'Cube.js Query가 복사되었습니다')}
-                  >
-                    Cube.js Query 복사
-                  </Button>
-                  {result.sql && (
-                    <Button
-                      icon={<CopyOutlined />}
-                      onClick={() => copyToClipboard(result.sql || '', 'SQL이 복사되었습니다')}
-                    >
-                      SQL 복사
-                    </Button>
-                  )}
-                </Space>
                 <Text strong>Cube.js Query</Text>
-                <pre
-                  style={{
-                    background: '#f5f5f5',
-                    padding: 16,
-                    borderRadius: 4,
-                    overflow: 'auto',
-                    fontSize: 13,
-                    margin: '8px 0 16px',
-                  }}
-                >
-                  {formattedQuery}
-                </pre>
+                <div style={{ position: 'relative', margin: '8px 0 16px' }}>
+                  <Button
+                    aria-label="Cube.js Query 복사"
+                    icon={<CopyOutlined />}
+                    size="small"
+                    shape="circle"
+                    style={{ position: 'absolute', top: 8, right: 8, zIndex: 1 }}
+                    onClick={() => copyToClipboard(formattedQuery, 'Cube.js Query가 복사되었습니다')}
+                  />
+                  <pre
+                    style={{
+                      background: '#f5f5f5',
+                      padding: '40px 16px 16px',
+                      borderRadius: 4,
+                      overflow: 'auto',
+                      fontSize: 13,
+                      margin: 0,
+                    }}
+                  >
+                    {formattedQuery}
+                  </pre>
+                </div>
                 {result.sql && (
                   <>
                     <Text strong>컴파일된 SQL</Text>
-                    <pre
-                      style={{
-                        background: '#f5f5f5',
-                        padding: 16,
-                        borderRadius: 4,
-                        overflow: 'auto',
-                        fontSize: 13,
-                        margin: '8px 0 0',
-                      }}
-                    >
-                      {result.sql}
-                    </pre>
+                    <div style={{ position: 'relative', margin: '8px 0 0' }}>
+                      <Button
+                        aria-label="SQL 복사"
+                        icon={<CopyOutlined />}
+                        size="small"
+                        shape="circle"
+                        style={{ position: 'absolute', top: 8, right: 8, zIndex: 1 }}
+                        onClick={() => copyToClipboard(result.sql || '', 'SQL이 복사되었습니다')}
+                      />
+                      <pre
+                        style={{
+                          background: '#f5f5f5',
+                          padding: '40px 16px 16px',
+                          borderRadius: 4,
+                          overflow: 'auto',
+                          fontSize: 13,
+                          margin: 0,
+                        }}
+                      >
+                        {result.sql}
+                      </pre>
+                    </div>
                   </>
                 )}
               </Card>
