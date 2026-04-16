@@ -101,39 +101,53 @@ def load_csvs() -> None:
     validate(engine)
 
 
+def _table_exists(conn, table_name: str) -> bool:
+    return bool(
+        conn.execute(
+            text(
+                "SELECT EXISTS (SELECT 1 FROM information_schema.tables "
+                "WHERE table_schema = :schema AND table_name = :table)"
+            ),
+            {"schema": SCHEMA, "table": table_name},
+        ).scalar()
+    )
+
+
 def ensure_party_person_tables(conn) -> None:
-    conn.execute(
-        text(
-            f"""
-            CREATE TABLE IF NOT EXISTS {SCHEMA}.acme_party (
-              party_identifier bigint NOT NULL,
-              party_name character varying,
-              begin_date timestamp,
-              end_date timestamp,
-              party_type_code character varying
+    if not _table_exists(conn, "acme_party"):
+        conn.execute(
+            text(
+                f"""
+                CREATE TABLE IF NOT EXISTS {SCHEMA}.acme_party (
+                  party_identifier bigint NOT NULL,
+                  party_name character varying,
+                  begin_date timestamp,
+                  end_date timestamp,
+                  party_type_code character varying
+                )
+                """
             )
-            """
         )
-    )
-    conn.execute(
-        text(
-            f"""
-            CREATE TABLE IF NOT EXISTS {SCHEMA}.acme_person (
-              person_identifier bigint NOT NULL,
-              first_name character varying,
-              middle_name character varying,
-              last_name character varying,
-              full_legal_name character varying,
-              nickname character varying,
-              suffix_name character varying,
-              birth_date timestamp,
-              birth_place_name character varying,
-              gender_code character varying,
-              prefix_name character varying
+    if not _table_exists(conn, "acme_person"):
+        conn.execute(
+            text(
+                f"""
+                CREATE TABLE IF NOT EXISTS {SCHEMA}.acme_person (
+                  person_identifier bigint NOT NULL,
+                  first_name character varying,
+                  middle_name character varying,
+                  last_name character varying,
+                  full_legal_name character varying,
+                  nickname character varying,
+                  suffix_name character varying,
+                  birth_date timestamp,
+                  birth_place_name character varying,
+                  gender_code character varying,
+                  prefix_name character varying
+                )
+                """
             )
-            """
         )
-    )
 
 
 def table_has_rows(engine, table_name: str) -> bool:
