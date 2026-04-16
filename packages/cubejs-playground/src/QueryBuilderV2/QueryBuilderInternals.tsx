@@ -15,7 +15,6 @@ import { QueryBuilderRest } from './QueryBuilderRest';
 import { QueryBuilderGraphQL } from './QueryBuilderGraphQL';
 import { QueryBuilderSidePanel } from './QueryBuilderSidePanel';
 import { QueryBuilderExtras } from './QueryBuilderExtras';
-import { NLQueryBar } from './components/NLQueryBar';
 
 // The minimum size of the area below the top edge of the chart
 // when we can show both results and the chart at the same time.
@@ -43,7 +42,7 @@ const QueryBuilderPanel = tasty(Panel, {
 });
 
 const QueryBuilderInternals = memo(function QueryBuilderInternals() {
-  const { error, resultSet, queryHash, dateRanges, isNLBarOpen } = useQueryBuilderContext();
+  const { error, resultSet, queryHash, dateRanges } = useQueryBuilderContext();
   const [isChartExpanded, setIsChartExpanded] = useLocalStorage(
     'QueryBuilder:Chart:expanded',
     false
@@ -112,10 +111,7 @@ const QueryBuilderInternals = memo(function QueryBuilderInternals() {
           []
         )}
 
-        <Panel gridRows="min-content min-content min-content min-content min-content min-content min-content minmax(0, 1fr)">
-          {isNLBarOpen && <NLQueryBar />}
-          {isNLBarOpen && <Divider />}
-
+        <Panel gridRows="min-content min-content min-content min-content min-content minmax(0, 1fr)">
           {useMemo(
             () => (
               <>

@@ -11,6 +11,7 @@ import {
   IndexPage,
   CubeBiPage,
   FrontendIntegrationsPage,
+  AIQueryPage,
 } from './pages';
 import { SecurityContextProvider } from './components/SecurityContext/SecurityContextProvider';
 import { AppContextProvider } from './components/AppContext';
@@ -84,6 +85,7 @@ ReactDOM.render(
           path="/frontend-integrations"
           component={FrontendIntegrationsPage}
         />
+        <Route key="ask-ai" path="/ask-ai" component={AIQueryPage} />
       </App>
     </AppContextProvider>
   </Router>,

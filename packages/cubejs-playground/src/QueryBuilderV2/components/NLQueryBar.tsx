@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Button,
-  Checkbox,
   CloseIcon,
-  Flex,
   Panel,
   SearchInput,
   Space,
@@ -51,22 +49,8 @@ const CubePickerPanel = tasty(Panel, {
     shadow: '0 4px 16px #dark.12',
     width: '240px',
     maxHeight: '280px',
-    overflow: 'hidden',
     flow: 'column',
     gap: 0,
-  },
-});
-
-const CubePickerItem = tasty(Flex, {
-  styles: {
-    padding: '.5x 1x',
-    cursor: 'pointer',
-    placeItems: 'center start',
-    gap: '1x',
-    fill: {
-      '': '#white',
-      hovered: '#purple.08',
-    },
   },
 });
 
@@ -222,23 +206,40 @@ export function NLQueryBar() {
               </div>
               <div style={{ overflowY: 'auto', maxHeight: '220px' }}>
                 {filteredPickerCubes.length === 0 ? (
-                  <Text preset="c2" padding="1x" color="#dark-04">
+                  <div style={{ padding: '6px 8px', fontSize: '12px', color: '#888' }}>
                     No results
-                  </Text>
+                  </div>
                 ) : (
                   filteredPickerCubes.map((cube) => (
-                    <CubePickerItem
+                    <div
                       key={cube.name}
-                      onPress={() => toggleNLCube(cube.name)}
                       onClick={() => toggleNLCube(cube.name)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        padding: '5px 10px',
+                        cursor: 'pointer',
+                        fontSize: '13px',
+                        backgroundColor: 'transparent',
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLDivElement).style.backgroundColor =
+                          'rgba(124,77,255,0.08)';
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLDivElement).style.backgroundColor = 'transparent';
+                      }}
                     >
-                      <Checkbox
-                        isSelected={nlSelectedCubes.includes(cube.name)}
-                        onChange={() => toggleNLCube(cube.name)}
-                        aria-label={cube.title}
+                      <input
+                        type="checkbox"
+                        checked={nlSelectedCubes.includes(cube.name)}
+                        onChange={() => {}}
+                        onClick={(e) => e.stopPropagation()}
+                        style={{ pointerEvents: 'none', accentColor: '#7c4dff' }}
                       />
-                      <Text preset="c2">{cube.title}</Text>
-                    </CubePickerItem>
+                      <span>{cube.title}</span>
+                    </div>
                   ))
                 )}
               </div>

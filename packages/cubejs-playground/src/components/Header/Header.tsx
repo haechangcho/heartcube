@@ -1,6 +1,4 @@
-import {
-  MenuOutlined,
-} from '@ant-design/icons';
+import { MenuOutlined, RobotOutlined } from '@ant-design/icons';
 import { Dropdown, Layout, Menu } from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
@@ -53,6 +51,10 @@ export default function Header({ selectedKeys }: Props) {
 
           <StyledMenuItem key="/frontend-integrations">
             <Link to="/frontend-integrations">Frontend Integrations</Link>
+          </StyledMenuItem>
+
+          <StyledMenuItem key="/ask-ai">
+            <Link to="/ask-ai"><RobotOutlined style={{ marginRight: 6 }} />Ask AI</Link>
           </StyledMenuItem>
 
           <StyledMenuItem key="/hc-analytics">
