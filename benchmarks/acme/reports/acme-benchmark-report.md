@@ -2,9 +2,12 @@
 
 ## Status
 
-This report has been reset for the full ACME benchmark implementation under `benchmarks/acme/`.
+**Run completed: 2026-04-16**
 
-The previous 11-question subset results are no longer treated as the final benchmark. They were migrated only as seed gold files for the new package layout.
+- Model: gpt-4o
+- Iterations: 3
+- Questions: 43 (Q01–Q43, Q44 excluded as duplicate)
+- Tracks: Cube Semantic Layer vs Raw DDL SQL
 
 ## Source Baseline
 
@@ -50,12 +53,42 @@ Implemented:
 - Party/Person DDL, loader support, Cube models, and `acme_ops` name dimensions added
 - Entity retrieval extension questions added under `questions/extensions/entity_retrieval_questions.md`
 
-Pending before final benchmark execution:
+## Results
 
-- Preload Party/Person data in the remote benchmark database before running entity retrieval extension questions
-- Pre-execute every Cube and SQL gold query against the live database to validate correctness
-- Run both tracks for the configured iteration count
-- Replace this status report with measured results
+### Overall Funnel
+
+| Track | Parse Rate | Exec Rate | Exact Match | Result F1 |
+|---|---:|---:|---:|---:|
+| Cube SL | 100.0% | 99.2% | 83.7% | 83.7% |
+| Raw DDL SQL | 100.0% | 75.2% | 29.5% | 29.5% |
+
+### By Original Category
+
+| Category | Cube Exact | DDL Exact | Cube F1 | DDL F1 |
+|---|---:|---:|---:|---:|
+| LQLS | 83.3% | 33.3% | 83.3% | 33.3% |
+| LQHS | 70.0% | 10.0% | 70.0% | 10.0% |
+| HQLS | 90.9% | 51.5% | 90.9% | 51.5% |
+| HQHS | 90.0% | 20.0% | 90.0% | 20.0% |
+
+### By Answer Shape
+
+| Answer Shape | n | Cube Exact | DDL Exact | Cube F1 | DDL F1 |
+|---|---:|---:|---:|---:|---:|
+| aggregate | 63 | 90.5% | 36.5% | 90.5% | 36.5% |
+| dimension_listing | 66 | 77.3% | 22.7% | 77.3% | 22.7% |
+
+### Notes
+
+- Cube exec failure (1/129): LQHS Q05 — LLM omitted `company_claim_number` dimension, only selected `policy_number`, producing a mismatched result shape.
+- DDL exec failures (32/129): concentrated in LQHS (70% failure) and HQHS (37% failure). Primary causes: missing joins to discriminator tables (`acme_loss_payment`, `acme_expense_*`), wrong aggregation grouping for multi-role party queries.
+- Cube LQHS gap (70% vs 90%+ other categories): multi-role questions (Q15, Q16, Q18) where LLM omitted `party_role_code` as a dimension, producing fan-out rows that don't match the gold shape.
+- HQHS loss ratio (Q41): Cube query correctly returned both `total_full_loss_amount` and `total_policy_amount`; 1 iteration returned only one measure.
+
+## Pending
+
+- Run entity retrieval extension questions (ER-1 through ER-5) as a separate track after Party/Person data is confirmed joined
+- Increase iterations to 5 for final publication run
 
 Recently completed:
 
