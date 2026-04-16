@@ -52,13 +52,20 @@ Implemented:
 
 Pending before final benchmark execution:
 
-- Expand `questions/core/cube_questions.md` from the 11-question seed to all 43 included questions
-- Expand `questions/core/ddl_sql_questions.md` from the 11-question seed to all 43 included questions
 - Preload Party/Person data in the remote benchmark database before running entity retrieval extension questions
-- Add remaining Cube model/view members required by policy-level loss ratio and average-loss HQHS questions
-- Pre-execute every Cube and SQL gold query
+- Pre-execute every Cube and SQL gold query against the live database to validate correctness
 - Run both tracks for the configured iteration count
 - Replace this status report with measured results
+
+Recently completed:
+
+- Expanded `questions/core/cube_questions.md` from 11 HQLS seed to all 43 included questions (LQLS, LQHS, HQLS, HQHS)
+- Expanded `questions/core/ddl_sql_questions.md` from 11 HQLS seed to all 43 included questions
+- Added `avg_full_loss_amount` measure to `acme_claim` cube
+- Added `policy_effective_date`, `policy_expiration_date` to `acme_ops` view (from `acme_policy`)
+- Added `coverage_effective_date`, `coverage_expiration_date` to `acme_ops` view (from `acme_policy_coverage_detail`)
+- Added `avg_full_loss_amount` to `acme_ops` view (from `acme_claim`)
+- Saved source article snapshot: `docs/source-article-dbt-roundup.md`
 
 ## Execution
 

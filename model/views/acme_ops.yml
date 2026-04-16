@@ -17,6 +17,7 @@ views:
           - claim_open_date
           - claim_close_date
           - avg_days_to_settle
+          - avg_full_loss_amount
 
       # ── acme_catastrophe ──────────────────────────────────────────────────
       - join_path: acme_claim.acme_catastrophe
@@ -42,6 +43,18 @@ views:
           - status_code
           - name: number_of_policies
             alias: policy_count
+          - name: effective_date
+            alias: policy_effective_date
+          - name: expiration_date
+            alias: policy_expiration_date
+
+      # ── acme_policy_coverage_detail ───────────────────────────────────────
+      - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail
+        includes:
+          - name: effective_date
+            alias: coverage_effective_date
+          - name: expiration_date
+            alias: coverage_expiration_date
 
       # ── acme_agreement_party_role ─────────────────────────────────────────
       - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_agreement_party_role
