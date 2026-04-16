@@ -76,6 +76,12 @@ cubes:
           보험 가입 후 일정 기간 동안 보험금을 감액 지급하는 기간(일).
           0이면 감액 없음.
 
+      - name: insured_amt
+        sql: insured_amt
+        type: number
+        title: 보험가입금액
+        description: 건별 보험가입금액.
+
     measures:
       - name: count
         type: count
