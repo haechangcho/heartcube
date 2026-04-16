@@ -69,3 +69,9 @@ cubes:
         sql: "EXTRACT(DAY FROM (claim_close_date - claim_open_date))"
         type: avg
         title: Avg Time to Settle Claim
+
+      - name: avg_full_loss_amount
+        sql: "{acme_claim_amount.total_full_loss_amount} / NULLIF({claims}, 0)"
+        type: number
+        title: Avg Full Loss Amount per Claim
+        description: "Average full loss (loss payment + loss reserve + expense payment + expense reserve) per claim."

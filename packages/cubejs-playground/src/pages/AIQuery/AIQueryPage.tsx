@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Alert, Button, Card, Input, Select, Space, Typography } from 'antd';
+import { Alert, Button, Card, Input, Select, Space, Table, Typography } from 'antd';
 import { ArrowRightOutlined, CopyOutlined, RobotOutlined } from '@ant-design/icons';
 import sqlFormatter from 'sql-formatter';
 
@@ -23,6 +23,8 @@ type AIQueryResult = {
   explanation: string;
   sql?: string;
   sqlError?: string;
+  rows?: Record<string, any>[];
+  loadError?: string;
 };
 
 function extractSqlFromResponse(data: any): string | undefined {
@@ -38,6 +40,18 @@ function extractSqlFromResponse(data: any): string | undefined {
   }
 
   return undefined;
+}
+
+function formatCellValue(value: any): string {
+  if (value === null || value === undefined) {
+    return '';
+  }
+
+  if (typeof value === 'object') {
+    return JSON.stringify(value);
+  }
+
+  return String(value);
 }
 
 export function AIQueryPage() {
@@ -137,6 +151,29 @@ export function AIQueryPage() {
         nextResult.sqlError = sqlError.message;
       }
 
+      try {
+        const loadResponse = await fetch(`${apiUrl}/load`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${cubejsToken}`,
+          },
+          body: JSON.stringify({
+            query: data.query,
+          }),
+        });
+
+        const loadData = await loadResponse.json();
+
+        if (!loadResponse.ok) {
+          throw new Error(loadData?.error || loadData?.message || 'Failed to load data');
+        }
+
+        nextResult.rows = Array.isArray(loadData?.data) ? loadData.data : [];
+      } catch (loadError: any) {
+        nextResult.loadError = loadError.message;
+      }
+
       setResult(nextResult);
     } catch (e: any) {
       setError(e.message);
@@ -151,6 +188,16 @@ export function AIQueryPage() {
   };
 
   const formattedQuery = result ? JSON.stringify(result.query, null, 2) : '';
+  const resultRows = result?.rows ?? [];
+  const resultColumns = resultRows.length > 0
+    ? Array.from(new Set(resultRows.flatMap((row) => Object.keys(row)))).map((key) => ({
+      title: key,
+      dataIndex: key,
+      key,
+      ellipsis: true,
+      render: (value: any) => formatCellValue(value),
+    }))
+    : [];
 
   const cubeOptions = cubes.map((c) => ({
     label: `${c.title} (${c.type})`,
@@ -262,6 +309,15 @@ export function AIQueryPage() {
                     style={{ marginBottom: 16 }}
                   />
                 )}
+                {result.loadError && (
+                  <Alert
+                    type="error"
+                    message="데이터 조회 실패"
+                    description={result.loadError}
+                    showIcon
+                    style={{ marginBottom: 16 }}
+                  />
+                )}
                 <Text strong>Cube.js Query</Text>
                 <div style={{ position: 'relative', margin: '8px 0 16px' }}>
                   <Button
@@ -311,6 +367,25 @@ export function AIQueryPage() {
                       </pre>
                     </div>
                   </>
+                )}
+                {result.rows && (
+                  <div style={{ marginTop: 16 }}>
+                    <Text strong>조회 결과</Text>
+                    <Table
+                      size="small"
+                      style={{ marginTop: 8 }}
+                      columns={resultColumns}
+                      dataSource={resultRows.map((row, index) => ({ ...row, __rowKey: index }))}
+                      rowKey="__rowKey"
+                      scroll={{ x: 'max-content' }}
+                      pagination={{
+                        pageSize: 20,
+                        showSizeChanger: true,
+                        showTotal: (total) => `총 ${total}건`,
+                      }}
+                      locale={{ emptyText: '조회된 데이터가 없습니다' }}
+                    />
+                  </div>
                 )}
               </Card>
             )}
