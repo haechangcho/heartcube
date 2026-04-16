@@ -154,24 +154,6 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
   // UI state
   const [selectedCubeName, selectCubeName] = useState<string | null>(null);
 
-  // NL query state
-  const [nlSelectedCubes, setNLSelectedCubes] = useState<string[]>([]);
-  const [isNLBarOpen, setIsNLBarOpen] = useState(false);
-
-  const toggleNLCube = useEvent((cubeName: string) => {
-    setNLSelectedCubes((prev) =>
-      prev.includes(cubeName) ? prev.filter((n) => n !== cubeName) : [...prev, cubeName]
-    );
-  });
-
-  const clearNLCubes = useEvent(() => {
-    setNLSelectedCubes([]);
-  });
-
-  const toggleNLBar = useEvent(() => {
-    setIsNLBarOpen((prev) => !prev);
-  });
-
   const [query, setQueryInstance] = useState<Query>(defaultQuery || {});
   const [executedQuery, setExecutedQuery] = useState<Query | null>(null);
 
@@ -1426,12 +1408,6 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
     // ui
     selectedCube,
     selectCube: useEvent((name: string | null) => selectCubeName(name)),
-    // nl query
-    nlSelectedCubes,
-    toggleNLCube,
-    clearNLCubes,
-    isNLBarOpen,
-    toggleNLBar,
     // @ts-ignore
     totalRows: resultSet?.totalRows(),
   };

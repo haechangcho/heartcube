@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { SerializedResult } from '@cubejs-client/core';
 import { Button, Flex, Space, tasty, TooltipProvider } from '@cube-dev/ui-kit';
-import { PlayCircleOutlined, ReloadOutlined, RobotOutlined } from '@ant-design/icons';
+import { PlayCircleOutlined, ReloadOutlined } from '@ant-design/icons';
 
 import { QueryBuilderError } from './QueryBuilderError';
 import { useQueryBuilderContext } from './context';
@@ -40,8 +40,6 @@ export function QueryBuilderToolBar() {
     stopQuery,
     executedQuery,
     RequestStatusComponent,
-    isNLBarOpen,
-    toggleNLBar,
   } = useQueryBuilderContext();
 
   const {
@@ -69,17 +67,6 @@ export function QueryBuilderToolBar() {
     <Flex flow="column" padding="1x" gap="1x">
       <Space height="min-content" placeContent="space-between">
         <Space gap="1x">
-          <TooltipProvider title="Ask AI to generate a query">
-            <Button
-              qa="NLToggleButton"
-              size="small"
-              type={isNLBarOpen ? 'primary' : 'outline'}
-              icon={<RobotOutlined />}
-              onPress={toggleNLBar}
-            >
-              Ask AI
-            </Button>
-          </TooltipProvider>
           <TooltipProvider
             title={
               <>
