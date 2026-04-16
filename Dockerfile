@@ -113,6 +113,9 @@ COPY --from=builder /cubejs/yarn.lock     ./
 COPY --from=builder /cubejs/packages      ./packages
 COPY --from=builder /cubejs/rust          ./rust
 
+# DevServer serves this directory as the Playground static root.
+RUN cp -R packages/cubejs-server-core/playground/build/. packages/cubejs-server-core/playground/
+
 # Install production deps only (workspace symlinks use our built dist/ files)
 RUN yarn install --prod \
     && rm -rf /cubejs/node_modules/duckdb/src \
