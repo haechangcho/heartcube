@@ -205,7 +205,7 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
               isDirty: false,
             }));
             const errMsg = metaJson.error.replace(/Error: Compile errors:\nErrors:\n/, '').trim();
-            message.error({ content: errMsg, duration: 10 });
+            message.error(errMsg, 10);
             break;
           } else if (metaJson.cubes) {
             message.success('컴파일 성공');

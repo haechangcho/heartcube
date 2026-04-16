@@ -153,6 +153,7 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
 
   // UI state
   const [selectedCubeName, selectCubeName] = useState<string | null>(null);
+  const [nlSelectedCubes, setNLSelectedCubes] = useState<string[]>([]);
 
   const [query, setQueryInstance] = useState<Query>(defaultQuery || {});
   const [executedQuery, setExecutedQuery] = useState<Query | null>(null);
@@ -1408,6 +1409,13 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
     // ui
     selectedCube,
     selectCube: useEvent((name: string | null) => selectCubeName(name)),
+    nlSelectedCubes,
+    toggleNLCube: useEvent((name: string) => {
+      setNLSelectedCubes((selected) =>
+        selected.includes(name) ? selected.filter((cube) => cube !== name) : [...selected, name]
+      );
+    }),
+    clearNLCubes: useEvent(() => setNLSelectedCubes([])),
     // @ts-ignore
     totalRows: resultSet?.totalRows(),
   };
