@@ -271,13 +271,24 @@ cubes:
         type: rollup
         measures:
           - fact_review.sla_breach_count
-          - fact_review.total_processing_days
           - fact_review.anomaly_count
-          - fact_review.fraud_suspect_count
           - fact_treatment.total_treat_amt_noninsured
           - fact_treatment.total_treat_amt_insured
           - count
         time_dimension: claim_dt
+        granularity: month
+        partition_granularity: year
+        refresh_key:
+          every: 1 hour
+      - name: monthly_payment_kpi_rollup
+        type: rollup
+        measures:
+          - fact_review.total_processing_days
+          - fact_review.fraud_suspect_count
+          - review_reversal_count
+          - fact_review.review_count
+          - count
+        time_dimension: payment_dt
         granularity: month
         partition_granularity: year
         refresh_key:
