@@ -107,7 +107,6 @@ Output only PASS or FAIL."""
         response = client.chat.completions.create(
             model=LLM_MODEL,
             messages=[{"role": "user", "content": prompt}],
-            temperature=0,
             max_completion_tokens=10,
         )
         verdict = response.choices[0].message.content.strip().upper()
@@ -165,7 +164,6 @@ def generate_cube_query(schema_context: str, question: str) -> tuple[bool, dict[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": build_user_message(schema_context, question)},
             ],
-            temperature=0.3,
             max_completion_tokens=1024,
         )
         raw = response.choices[0].message.content.strip()

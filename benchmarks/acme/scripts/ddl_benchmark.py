@@ -95,7 +95,6 @@ def call_llm(question: str) -> str | None:
     try:
         response = client.chat.completions.create(
             model=LLM_MODEL,
-            temperature=0.3,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": f"{FEW_SHOT}\n\n## DDL Schema\n{DDL_SCHEMA}\n\nQ: {question}"},
