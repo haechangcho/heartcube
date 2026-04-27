@@ -19,7 +19,7 @@ from openai import OpenAI
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from acme_benchmark.common import POSTGRES_SCHEMA_DIR, QUESTIONS_DIR, RESULTS_DIR, env_required, iterations, llm_model, parse_sql_questions
-from acme_benchmark.evaluator import dataframe_to_rows, result_scores
+from acme_benchmark.evaluator import dataframe_to_rows, robust_result_scores
 
 
 load_dotenv(os.path.expanduser("~/heartcube/.env"))
@@ -30,7 +30,8 @@ OPENAI_API_KEY = env_required("OPENAI_API_KEY")
 LLM_MODEL = llm_model()
 N_ITERATIONS = iterations()
 QUESTIONS_FILE = QUESTIONS_DIR / "ddl_sql_questions.md"
-RESULTS_CSV = RESULTS_DIR / "acme_ddl_results.csv"
+_results_suffix = os.environ.get("ACME_RESULTS_SUFFIX", "").strip()
+RESULTS_CSV = RESULTS_DIR / (f"acme_ddl_results_{_results_suffix}.csv" if _results_suffix else "acme_ddl_results.csv")
 DDL_SCHEMA = (POSTGRES_SCHEMA_DIR / "acme_schema_postgres.ddl").read_text(encoding="utf-8").strip()
 
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -143,17 +144,24 @@ def main() -> None:
             gen_sql = call_llm(question_text)
             sql_parse_ok = 1 if gen_sql else 0
             exec_ok = 0
-            scores = {"result_f1": 0.0, "exact_match": 0.0}
+            scores = {
+                "result_f1": 0.0,
+                "exact_match": 0.0,
+                "subset_match": 0.0,
+                "column_f1": 0.0,
+                "cell_f1": 0.0,
+            }
 
             if gen_sql:
                 ok, result = execute_sql(gen_sql)
                 if ok and gold_df is not None:
                     exec_ok = 1
-                    scores = result_scores(dataframe_to_rows(gold_df), dataframe_to_rows(result))
+                    scores = robust_result_scores(dataframe_to_rows(gold_df), dataframe_to_rows(result))
 
             print(
                 f"  [{index:3d}/{total}] [{category}] "
-                f"exec={exec_ok} res={scores['result_f1']:.2f} | {question_text[:60]}"
+                f"exec={exec_ok} res={scores['result_f1']:.2f} "
+                f"subset={scores['subset_match']:.0f} col={scores['column_f1']:.2f} | {question_text[:60]}"
             )
 
             records.append(
@@ -170,6 +178,9 @@ def main() -> None:
                     "gold_exec_ok": 1 if gold_df is not None else 0,
                     "result_f1": round(scores["result_f1"], 4),
                     "exact_match": int(scores["exact_match"] == 1.0),
+                    "subset_match": int(scores["subset_match"] == 1.0),
+                    "column_f1": round(scores["column_f1"], 4),
+                    "cell_f1": round(scores["cell_f1"], 4),
                     "gen_sql": gen_sql or "",
                     "gold_sql": question["gold_sql"],
                 }
@@ -185,7 +196,9 @@ def main() -> None:
         return
 
     print("\n=== By category ===")
-    summary = df_results.groupby("category")[["sql_parse_ok", "exec_ok", "result_f1", "exact_match"]].mean().round(3)
+    summary = df_results.groupby("category")[
+        ["sql_parse_ok", "exec_ok", "result_f1", "exact_match", "subset_match", "column_f1", "cell_f1"]
+    ].mean().round(3)
     print(summary)
 
     print("\n=== Funnel (overall) ===")
@@ -193,6 +206,9 @@ def main() -> None:
     print(f"  SQL parse success: {df_results.sql_parse_ok.sum()}/{n} ({df_results.sql_parse_ok.mean() * 100:.1f}%)")
     print(f"  Exec success:      {df_results.exec_ok.sum()}/{n} ({df_results.exec_ok.mean() * 100:.1f}%)")
     print(f"  Exact match:       {df_results.exact_match.sum()}/{n} ({df_results.exact_match.mean() * 100:.1f}%)")
+    print(f"  Subset match:      {df_results.subset_match.sum()}/{n} ({df_results.subset_match.mean() * 100:.1f}%)")
+    print(f"  Column F1:         {df_results.column_f1.mean() * 100:.1f}%")
+    print(f"  Cell F1:           {df_results.cell_f1.mean() * 100:.1f}%")
 
 
 if __name__ == "__main__":
