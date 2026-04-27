@@ -108,7 +108,7 @@ Output only PASS or FAIL."""
             model=LLM_MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=0,
-            max_tokens=10,
+            max_completion_tokens=10,
         )
         verdict = response.choices[0].message.content.strip().upper()
         return 1 if "PASS" in verdict else 0
@@ -166,7 +166,7 @@ def generate_cube_query(schema_context: str, question: str) -> tuple[bool, dict[
                 {"role": "user", "content": build_user_message(schema_context, question)},
             ],
             temperature=0.3,
-            max_tokens=1024,
+            max_completion_tokens=1024,
         )
         raw = response.choices[0].message.content.strip()
         raw = re.sub(r"^```(?:json)?\s*|\s*```$", "", raw, flags=re.DOTALL).strip()
