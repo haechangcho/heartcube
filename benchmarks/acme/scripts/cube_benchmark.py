@@ -19,7 +19,7 @@ from openai import OpenAI
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from acme_benchmark.common import QUESTIONS_DIR, RESULTS_DIR, env_float, env_required, iterations, llm_model, parse_cube_questions
-from acme_benchmark.evaluator import cube_structural_accuracy, result_scores
+from acme_benchmark.evaluator import cube_structural_accuracy, robust_result_scores
 
 
 load_dotenv(os.path.expanduser("~/heartcube/.env"))
@@ -32,7 +32,8 @@ LLM_MODEL = llm_model()
 N_ITERATIONS = iterations()
 LLM_JUDGE_THRESHOLD = env_float("ACME_LLM_JUDGE_THRESHOLD", 0.9)
 QUESTIONS_FILE = QUESTIONS_DIR / "cube_questions.md"
-RESULTS_CSV = RESULTS_DIR / "acme_cube_results.csv"
+_results_suffix = os.environ.get("ACME_RESULTS_SUFFIX", "").strip()
+RESULTS_CSV = RESULTS_DIR / (f"acme_cube_results_{_results_suffix}.csv" if _results_suffix else "acme_cube_results.csv")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 HEADERS = {"Authorization": f"Bearer {CUBE_TOKEN}", "Content-Type": "application/json"}
@@ -139,16 +140,16 @@ Example 3) Show total loss amount (loss payment + loss reserve) by claim number 
 """
 
 
-def build_prompt(schema_context: str, question: str) -> str:
-    return f"""You are a Cube Semantic Layer expert.
+SYSTEM_PROMPT = """You are a Cube Semantic Layer expert.
 Convert the natural language question below into a Cube REST API JSON query using the schema provided.
 Output only the raw JSON object. Do not include explanation or markdown.
+Use the acme_ops prefix only."""
 
-{FEW_SHOT}
+
+def build_user_message(schema_context: str, question: str) -> str:
+    return f"""{FEW_SHOT}
 
 ## Available schema
-Use the acme_ops prefix only.
-
 {schema_context}
 
 ## Question
@@ -156,11 +157,14 @@ Use the acme_ops prefix only.
 """
 
 
-def generate_cube_query(prompt: str) -> tuple[bool, dict[str, Any]]:
+def generate_cube_query(schema_context: str, question: str) -> tuple[bool, dict[str, Any]]:
     try:
         response = client.chat.completions.create(
             model=LLM_MODEL,
-            messages=[{"role": "user", "content": prompt}],
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": build_user_message(schema_context, question)},
+            ],
             temperature=0.3,
             max_tokens=1024,
         )
@@ -197,9 +201,7 @@ def main() -> None:
         print(f"-- Iteration {iteration + 1}/{N_ITERATIONS} --")
         for question in questions:
             done += 1
-            prompt = build_prompt(schema_context, question["question"])
-
-            parse_ok, gen_query = generate_cube_query(prompt)
+            parse_ok, gen_query = generate_cube_query(schema_context, question["question"])
             gold_ok, gold_rows = execute_cube_query(question["gold_query"])
             exec_ok, gen_rows = (False, [])
             if parse_ok:
@@ -209,9 +211,15 @@ def main() -> None:
             if parse_ok:
                 dim_f1, measure_f1, filter_f1 = cube_structural_accuracy(question["gold_query"], gen_query)
 
-            scores = {"result_f1": 0.0, "exact_match": 0.0}
+            scores = {
+                "result_f1": 0.0,
+                "exact_match": 0.0,
+                "subset_match": 0.0,
+                "column_f1": 0.0,
+                "cell_f1": 0.0,
+            }
             if exec_ok and gold_ok:
-                scores = result_scores(gold_rows, gen_rows)
+                scores = robust_result_scores(gold_rows, gen_rows)
 
             judge = -1
             if exec_ok and gold_ok and 0 < scores["result_f1"] < LLM_JUDGE_THRESHOLD:
@@ -234,6 +242,9 @@ def main() -> None:
                     "filter_f1": round(filter_f1, 4),
                     "result_f1": round(scores["result_f1"], 4),
                     "exact_match": int(scores["exact_match"] == 1.0),
+                    "subset_match": int(scores["subset_match"] == 1.0),
+                    "column_f1": round(scores["column_f1"], 4),
+                    "cell_f1": round(scores["cell_f1"], 4),
                     "llm_judge": judge,
                     "gen_query": json.dumps(gen_query, ensure_ascii=False),
                     "gold_query": json.dumps(question["gold_query"], ensure_ascii=False),
@@ -243,7 +254,8 @@ def main() -> None:
             status = "ok" if exec_ok else ("parse-only" if parse_ok else "fail")
             print(
                 f"  [{done:3d}/{total}] [{question['category']}] {status} "
-                f"dim={dim_f1:.2f} msr={measure_f1:.2f} res={scores['result_f1']:.2f} | "
+                f"dim={dim_f1:.2f} msr={measure_f1:.2f} res={scores['result_f1']:.2f} "
+                f"subset={scores['subset_match']:.0f} col={scores['column_f1']:.2f} | "
                 f"{question['question'][:55]}"
             )
             time.sleep(0.5)
@@ -263,6 +275,9 @@ def main() -> None:
         exec_rate=("exec_ok", "mean"),
         result_f1=("result_f1", "mean"),
         exact_match=("exact_match", "mean"),
+        subset_match=("subset_match", "mean"),
+        column_f1=("column_f1", "mean"),
+        cell_f1=("cell_f1", "mean"),
     ).round(3)
     print(summary.to_string())
 
@@ -271,6 +286,9 @@ def main() -> None:
     print(f"  Parse success: {df['json_parse_ok'].sum():4d} / {total_n} ({df['json_parse_ok'].mean():.1%})")
     print(f"  Exec success:  {df['exec_ok'].sum():4d} / {total_n} ({df['exec_ok'].mean():.1%})")
     print(f"  Exact match:   {df['exact_match'].sum():4d} / {total_n} ({df['exact_match'].mean():.1%})")
+    print(f"  Subset match:  {df['subset_match'].sum():4d} / {total_n} ({df['subset_match'].mean():.1%})")
+    print(f"  Column F1:     {df['column_f1'].mean():.1%}")
+    print(f"  Cell F1:       {df['cell_f1'].mean():.1%}")
 
 
 if __name__ == "__main__":
