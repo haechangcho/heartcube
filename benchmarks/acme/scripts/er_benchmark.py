@@ -20,7 +20,7 @@ from openai import OpenAI
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from acme_benchmark.common import RESULTS_DIR, env_required, iterations, llm_model
-from acme_benchmark.evaluator import dataframe_to_rows, result_scores
+from acme_benchmark.evaluator import dataframe_to_rows, robust_result_scores
 
 load_dotenv(os.path.expanduser("~/heartcube/.env"))
 load_dotenv()
@@ -42,11 +42,12 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 # ── Parsers ──────────────────────────────────────────────────────────────────
 
 def parse_er_questions(path: Path) -> list[dict[str, Any]]:
-    """Parse ER extension questions — each has a json block AND a sql block."""
+    """Parse ER extension questions — each has a json block and a sql block."""
     text = path.read_text(encoding="utf-8")
     questions: list[dict[str, Any]] = []
     pattern = re.compile(
-        r"^\d+\.\s+(.+?)\n+```json\s*(\{.*?\})\s*```\s*```sql\s*(.*?)\s*```",
+        r"^\d+\.\s+([^\n]+)\n(?:(?!^\d+\.)(?!```json)[\s\S])*?"
+        r"```json\s*(\{[\s\S]*?\})\s*```\s*```sql\s*([\s\S]*?)\s*```",
         re.MULTILINE | re.DOTALL,
     )
     for m in pattern.finditer(text):
@@ -60,6 +61,16 @@ def parse_er_questions(path: Path) -> list[dict[str, Any]]:
             "gold_sql": m.group(3).strip(),
         })
     return questions
+
+
+def _zero_scores() -> dict[str, float]:
+    return {
+        "result_f1": 0.0,
+        "exact_match": 0.0,
+        "subset_match": 0.0,
+        "column_f1": 0.0,
+        "cell_f1": 0.0,
+    }
 
 
 # ── Cube helpers ─────────────────────────────────────────────────────────────
@@ -133,6 +144,11 @@ Output only the raw JSON object.
 DDL_SCHEMA_PATH = Path(__file__).resolve().parents[1] / "schemas" / "postgres" / "acme_schema_postgres.ddl"
 DDL_SCHEMA = DDL_SCHEMA_PATH.read_text(encoding="utf-8").strip()
 
+# No hints about acme_person or join paths — LLM must discover structure from DDL alone.
+SQL_SYSTEM = """You are a PostgreSQL expert.
+Convert the natural language question into a valid PostgreSQL SELECT query using the schema below.
+The schema prefix is oda_benchmark. Output only raw SQL."""
+
 
 def execute_sql(sql: str) -> tuple[bool, pd.DataFrame | str]:
     try:
@@ -148,13 +164,6 @@ def execute_sql(sql: str) -> tuple[bool, pd.DataFrame | str]:
         return True, pd.DataFrame(rows, columns=cols)
     except Exception as e:
         return False, str(e)[:120]
-
-
-SQL_SYSTEM = """You are a PostgreSQL expert.
-Convert the natural language question into a valid PostgreSQL SELECT query using the schema.
-The schema is oda_benchmark. Tables include acme_person (first_name, last_name, full_legal_name)
-and acme_party, joined via acme_agreement_party_role (party_identifier, party_role_code PH/AG).
-Output only raw SQL."""
 
 
 def generate_sql(question: str) -> str | None:
@@ -212,7 +221,9 @@ def main() -> None:
             cube_exec_ok, gen_cube_rows = (False, [])
             if parse_ok:
                 cube_exec_ok, gen_cube_rows = execute_cube(gen_cube)
-            cube_scores = result_scores(gold_cube_rows, gen_cube_rows) if (cube_exec_ok and gold_cube_ok) else {"result_f1": 0.0, "exact_match": 0.0}
+            cube_result = _zero_scores()
+            if cube_exec_ok and gold_cube_ok:
+                cube_result = robust_result_scores(gold_cube_rows, gen_cube_rows)
 
             # ── SQL track ──
             gold_sql_ok, gold_df = execute_sql(q["gold_sql"])
@@ -220,14 +231,20 @@ def main() -> None:
             sql_exec_ok, gen_df = (False, pd.DataFrame())
             if gen_sql:
                 sql_exec_ok, gen_df = execute_sql(gen_sql)
-            sql_scores = {"result_f1": 0.0, "exact_match": 0.0}
+            sql_result = _zero_scores()
             if sql_exec_ok and gold_sql_ok:
-                sql_scores = result_scores(dataframe_to_rows(gold_df), dataframe_to_rows(gen_df))
+                gold_rows_sql = dataframe_to_rows(gold_df)
+                gen_rows_sql = dataframe_to_rows(gen_df)
+                sql_result = robust_result_scores(gold_rows_sql, gen_rows_sql)
 
             print(
                 f"  [{idx:2d}/{total}] {qtext[:50]}"
-                f"\n         Cube: parse={int(parse_ok)} exec={int(cube_exec_ok)} f1={cube_scores['result_f1']:.2f}"
-                f"\n         SQL:  exec={int(sql_exec_ok)} f1={sql_scores['result_f1']:.2f}"
+                f"\n         Cube: parse={int(parse_ok)} exec={int(cube_exec_ok)}"
+                f" result_f1={cube_result['result_f1']:.2f} subset={cube_result['subset_match']:.0f}"
+                f" col={cube_result['column_f1']:.2f} cell={cube_result['cell_f1']:.2f}"
+                f"\n         SQL:  exec={int(sql_exec_ok)}"
+                f" result_f1={sql_result['result_f1']:.2f} subset={sql_result['subset_match']:.0f}"
+                f" col={sql_result['column_f1']:.2f} cell={sql_result['cell_f1']:.2f}"
             )
 
             records.append({
@@ -238,16 +255,22 @@ def main() -> None:
                 "cube_parse_ok": int(parse_ok),
                 "cube_exec_ok": int(cube_exec_ok),
                 "cube_gold_exec_ok": int(gold_cube_ok),
-                "cube_result_f1": round(cube_scores["result_f1"], 4),
-                "cube_exact_match": int(cube_scores["exact_match"] == 1.0),
+                "cube_result_f1": round(cube_result["result_f1"], 4),
+                "cube_exact_match": int(cube_result["exact_match"]),
+                "cube_subset_match": int(cube_result["subset_match"]),
+                "cube_column_f1": round(cube_result["column_f1"], 4),
+                "cube_cell_f1": round(cube_result["cell_f1"], 4),
                 "gen_cube_query": json.dumps(gen_cube, ensure_ascii=False),
                 "gold_cube_query": json.dumps(q["gold_cube_query"], ensure_ascii=False),
                 # SQL
                 "sql_parse_ok": int(bool(gen_sql)),
                 "sql_exec_ok": int(sql_exec_ok),
                 "sql_gold_exec_ok": int(gold_sql_ok),
-                "sql_result_f1": round(sql_scores["result_f1"], 4),
-                "sql_exact_match": int(sql_scores["exact_match"] == 1.0),
+                "sql_result_f1": round(sql_result["result_f1"], 4),
+                "sql_exact_match": int(sql_result["exact_match"]),
+                "sql_subset_match": int(sql_result["subset_match"]),
+                "sql_column_f1": round(sql_result["column_f1"], 4),
+                "sql_cell_f1": round(sql_result["cell_f1"], 4),
                 "gen_sql": gen_sql or "",
                 "gold_sql": q["gold_sql"],
             })
@@ -262,12 +285,19 @@ def main() -> None:
         return
 
     print("\n=== Entity Retrieval Summary ===")
-    print(f"  Cube  — parse: {df.cube_parse_ok.mean():.1%}  exec: {df.cube_exec_ok.mean():.1%}  exact: {df.cube_exact_match.mean():.1%}")
-    print(f"  SQL   — parse: {df.sql_parse_ok.mean():.1%}   exec: {df.sql_exec_ok.mean():.1%}  exact: {df.sql_exact_match.mean():.1%}")
+    print(f"  Cube — parse: {df.cube_parse_ok.mean():.1%}  exec: {df.cube_exec_ok.mean():.1%}"
+          f"  result_exact: {df.cube_exact_match.mean():.1%}  subset: {df.cube_subset_match.mean():.1%}")
+    print(f"  SQL  — parse: {df.sql_parse_ok.mean():.1%}   exec: {df.sql_exec_ok.mean():.1%}"
+          f"  result_exact: {df.sql_exact_match.mean():.1%}  subset: {df.sql_subset_match.mean():.1%}")
+    print()
+    print("=== Projection and Cell Scores ===")
+    print(f"  Cube — column_f1: {df.cube_column_f1.mean():.1%}  cell_f1: {df.cube_cell_f1.mean():.1%}")
+    print(f"  SQL  — column_f1: {df.sql_column_f1.mean():.1%}  cell_f1: {df.sql_cell_f1.mean():.1%}")
     print()
     for _, row in df[df.iteration == 1].iterrows():
-        print(f"  {row.question[:55]}")
-        print(f"    Cube exact={row.cube_exact_match}  SQL exact={row.sql_exact_match}")
+        print(f"  {row.question[:60]}")
+        print(f"    Cube subset={row.cube_subset_match} col={row.cube_column_f1:.2f}"
+              f"  SQL subset={row.sql_subset_match} col={row.sql_column_f1:.2f}")
 
 
 if __name__ == "__main__":

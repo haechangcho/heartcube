@@ -102,32 +102,3 @@ WHERE apr.party_role_code = 'AG'
   AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
 ORDER BY c.company_claim_number ASC
 ```
-
-5. List all claims filed by Peyton Manning.
-
-The source data does not contain Peyton Manning. The expected result for this extension question is an empty result set unless seed data is extended.
-
-```json
-{"query": {"dimensions": ["acme_ops.company_claim_number", "acme_ops.claim_open_date", "acme_ops.policy_number", "acme_ops.party_full_legal_name"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}, {"member": "acme_ops.party_full_legal_name", "operator": "equals", "values": ["Peyton Manning"]}], "order": {"acme_ops.company_claim_number": "asc"}}}
-```
-
-```sql
-SELECT c.company_claim_number,
-       c.claim_open_date,
-       p.policy_number,
-       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
-FROM oda_benchmark.acme_claim c
-JOIN oda_benchmark.acme_claim_coverage cc
-  ON c.claim_identifier = cc.claim_identifier
-JOIN oda_benchmark.acme_policy_coverage_detail pcd
-  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
-JOIN oda_benchmark.acme_policy p
-  ON pcd.policy_identifier = p.policy_identifier
-JOIN oda_benchmark.acme_agreement_party_role apr
-  ON p.policy_identifier = apr.agreement_identifier
-JOIN oda_benchmark.acme_person person
-  ON apr.party_identifier = person.person_identifier
-WHERE apr.party_role_code = 'PH'
-  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Peyton Manning'
-ORDER BY c.company_claim_number ASC
-```

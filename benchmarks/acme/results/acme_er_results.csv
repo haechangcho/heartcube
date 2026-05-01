@@ -1,0 +1,485 @@
+﻿iteration,question,requires_entity_resolution,cube_parse_ok,cube_exec_ok,cube_gold_exec_ok,cube_result_f1,cube_exact_match,cube_subset_match,cube_column_f1,cube_cell_f1,gen_cube_query,gold_cube_query,sql_parse_ok,sql_exec_ok,sql_gold_exec_ok,sql_result_f1,sql_exact_match,sql_subset_match,sql_column_f1,sql_cell_f1,gen_sql,gold_sql
+1,List all claims for policy holder id 1.,0,1,1,1,0.0,0,0,0.5714,0.5714,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number"", ""acme_ops.status_code""], ""filters"": [{""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_identifier""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.375,0.375,"SELECT ac.claim_identifier, ac.catastrophe_identifier, ac.claim_description, ac.claims_made_date, 
+       ac.company_claim_number, ac.company_subclaim_number, ac.claim_open_date, ac.claim_close_date, 
+       ac.claim_reopen_date, ac.claim_status_code, ac.claim_reported_date
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON apcd.policy_identifier = aapr.agreement_identifier
+WHERE aapr.party_identifier = 1 AND aapr.party_role_code = 'PH';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       apr.party_identifier
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+WHERE apr.party_role_code = 'PH'
+  AND apr.party_identifier = 1
+ORDER BY c.company_claim_number ASC"
+1,List all claims for policy holder named Mary Policy Holder.,0,1,1,1,0.0,0,0,0.6154,0.6154,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT ac.claim_identifier, ac.claim_description, ac.claims_made_date, ac.company_claim_number
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON apcd.policy_identifier = aapr.agreement_identifier
+JOIN oda_benchmark.acme_party ap ON aapr.party_identifier = ap.party_identifier
+WHERE ap.party_name = 'Mary Policy Holder' AND aapr.party_role_code = 'PH';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'PH'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Mary Policy Holder'
+ORDER BY c.company_claim_number ASC"
+1,List all policies sold by agent named Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.6667,0.6667,"{""query"": {""dimensions"": [""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}]}}","{""query"": {""dimensions"": [""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.policy_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT p.policy_number
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_party pa ON apr.party_identifier = pa.party_identifier
+WHERE apr.party_role_code = 'AG' 
+  AND pa.party_name = 'Bob Insurance Agent';","SELECT p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY p.policy_number ASC"
+1,List all claims connected to policies sold by Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.3636,0.3636,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT 
+    ac.claim_identifier, 
+    ac.claim_description, 
+    ac.claims_made_date, 
+    ac.company_claim_number, 
+    ac.claim_open_date, 
+    ac.claim_close_date, 
+    ac.claim_status_code
+FROM 
+    oda_benchmark.acme_claim ac
+JOIN 
+    oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN 
+    oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN 
+    oda_benchmark.acme_policy ap ON apcd.policy_identifier = ap.policy_identifier
+JOIN 
+    oda_benchmark.acme_agreement_party_role aapr ON ap.policy_identifier = aapr.agreement_identifier
+JOIN 
+    oda_benchmark.acme_party apy ON aapr.party_identifier = apy.party_identifier
+WHERE 
+    aapr.party_role_code = 'AG' 
+    AND apy.party_name = 'Bob Insurance Agent';","SELECT c.company_claim_number,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY c.company_claim_number ASC"
+2,List all claims for policy holder id 1.,0,1,1,1,0.0,0,0,0.5714,0.5714,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number"", ""acme_ops.status_code""], ""filters"": [{""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_identifier""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.375,0.375,"SELECT ac.claim_identifier, ac.catastrophe_identifier, ac.claim_description, ac.claims_made_date, 
+       ac.company_claim_number, ac.company_subclaim_number, ac.claim_open_date, ac.claim_close_date, 
+       ac.claim_reopen_date, ac.claim_status_code, ac.claim_reported_date
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON apcd.policy_identifier = aapr.agreement_identifier
+WHERE aapr.party_identifier = 1 AND aapr.party_role_code = 'PH';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       apr.party_identifier
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+WHERE apr.party_role_code = 'PH'
+  AND apr.party_identifier = 1
+ORDER BY c.company_claim_number ASC"
+2,List all claims for policy holder named Mary Policy Holder.,0,1,1,1,0.0,0,0,0.6154,0.6154,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT ac.claim_identifier, ac.claim_description, ac.claims_made_date, ac.company_claim_number, ac.company_subclaim_number, ac.claim_open_date, ac.claim_close_date, ac.claim_reopen_date, ac.claim_status_code, ac.claim_reported_date
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy ap ON apcd.policy_identifier = ap.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON ap.policy_identifier = aapr.agreement_identifier
+JOIN oda_benchmark.acme_party apy ON aapr.party_identifier = apy.party_identifier
+WHERE aapr.party_role_code = 'PH' AND apy.party_name = 'Mary Policy Holder';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'PH'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Mary Policy Holder'
+ORDER BY c.company_claim_number ASC"
+2,List all policies sold by agent named Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.6667,0.6667,"{""query"": {""dimensions"": [""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}]}}","{""query"": {""dimensions"": [""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.policy_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT p.policy_identifier, p.policy_number, p.effective_date, p.expiration_date, p.status_code
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_party pa ON apr.party_identifier = pa.party_identifier
+WHERE apr.party_role_code = 'AG' AND pa.party_name = 'Bob Insurance Agent';","SELECT p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY p.policy_number ASC"
+2,List all claims connected to policies sold by Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.3636,0.3636,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT ac.claim_identifier, ac.claim_description, ac.claims_made_date
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy ap ON apcd.policy_identifier = ap.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON ap.policy_identifier = aapr.agreement_identifier
+JOIN oda_benchmark.acme_party apy ON aapr.party_identifier = apy.party_identifier
+WHERE aapr.party_role_code = 'AG' AND apy.party_name = 'Bob Insurance Agent';","SELECT c.company_claim_number,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY c.company_claim_number ASC"
+3,List all claims for policy holder id 1.,0,1,1,1,0.0,0,0,0.6154,0.6154,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_identifier""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.3158,0.3158,"SELECT acme_claim.*
+FROM oda_benchmark.acme_claim
+JOIN oda_benchmark.acme_claim_coverage ON acme_claim.claim_identifier = acme_claim_coverage.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail ON acme_claim_coverage.policy_coverage_detail_identifier = acme_policy_coverage_detail.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_agreement_party_role ON acme_policy_coverage_detail.policy_identifier = acme_agreement_party_role.agreement_identifier
+WHERE acme_agreement_party_role.party_identifier = 1
+  AND acme_agreement_party_role.party_role_code = 'PH';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       apr.party_identifier
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+WHERE apr.party_role_code = 'PH'
+  AND apr.party_identifier = 1
+ORDER BY c.company_claim_number ASC"
+3,List all claims for policy holder named Mary Policy Holder.,0,1,1,1,0.0,0,0,0.6154,0.6154,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}], ""order"": {""acme_ops.claims_made_date"": ""asc""}}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT ac.claim_identifier, ac.claim_description, ac.claims_made_date, ac.company_claim_number, ac.claim_open_date, ac.claim_close_date, ac.claim_status_code
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy ap ON apcd.policy_identifier = ap.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON ap.policy_identifier = aapr.agreement_identifier
+JOIN oda_benchmark.acme_party apy ON aapr.party_identifier = apy.party_identifier
+WHERE aapr.party_role_code = 'PH' AND apy.party_name = 'Mary Policy Holder';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'PH'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Mary Policy Holder'
+ORDER BY c.company_claim_number ASC"
+3,List all policies sold by agent named Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.6667,0.6667,"{""query"": {""dimensions"": [""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}]}}","{""query"": {""dimensions"": [""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.policy_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT p.policy_number
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_party ap ON apr.party_identifier = ap.party_identifier
+WHERE apr.party_role_code = 'AG'
+  AND ap.party_name = 'Bob Insurance Agent';","SELECT p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY p.policy_number ASC"
+3,List all claims connected to policies sold by Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.3636,0.3636,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT ac.claim_identifier, ac.claim_description, ac.claims_made_date
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy ap ON apcd.policy_identifier = ap.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON ap.policy_identifier = aapr.agreement_identifier
+JOIN oda_benchmark.acme_party apy ON aapr.party_identifier = apy.party_identifier
+WHERE aapr.party_role_code = 'AG' AND apy.party_name = 'Bob Insurance Agent';","SELECT c.company_claim_number,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY c.company_claim_number ASC"
+4,List all claims for policy holder id 1.,0,1,1,1,0.0,0,0,0.6154,0.6154,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_identifier""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.375,0.375,"SELECT ac.claim_identifier, ac.catastrophe_identifier, ac.claim_description, ac.claims_made_date, 
+       ac.company_claim_number, ac.company_subclaim_number, ac.claim_open_date, ac.claim_close_date, 
+       ac.claim_reopen_date, ac.claim_status_code, ac.claim_reported_date
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON apcd.policy_identifier = aapr.agreement_identifier
+WHERE aapr.party_identifier = 1 AND aapr.party_role_code = 'PH';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       apr.party_identifier
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+WHERE apr.party_role_code = 'PH'
+  AND apr.party_identifier = 1
+ORDER BY c.company_claim_number ASC"
+4,List all claims for policy holder named Mary Policy Holder.,0,1,1,1,0.0,0,0,0.6154,0.6154,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT ac.claim_identifier, ac.claim_description, ac.claims_made_date, ac.company_claim_number, ac.claim_status_code
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy ap ON apcd.policy_identifier = ap.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON ap.policy_identifier = aapr.agreement_identifier
+JOIN oda_benchmark.acme_party apy ON aapr.party_identifier = apy.party_identifier
+WHERE apy.party_name = 'Mary Policy Holder' AND aapr.party_role_code = 'PH';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'PH'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Mary Policy Holder'
+ORDER BY c.company_claim_number ASC"
+4,List all policies sold by agent named Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.6667,0.6667,"{""query"": {""dimensions"": [""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}]}}","{""query"": {""dimensions"": [""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.policy_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT p.policy_number
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_party party ON apr.party_identifier = party.party_identifier
+WHERE apr.party_role_code = 'AG'
+  AND party.party_name = 'Bob Insurance Agent';","SELECT p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY p.policy_number ASC"
+4,List all claims connected to policies sold by Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.3636,0.3636,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT 
+    c.claim_identifier, 
+    c.claim_description, 
+    c.claims_made_date, 
+    c.company_claim_number, 
+    c.claim_open_date, 
+    c.claim_close_date, 
+    c.claim_status_code
+FROM 
+    oda_benchmark.acme_claim c
+JOIN 
+    oda_benchmark.acme_claim_coverage cc ON c.claim_identifier = cc.claim_identifier
+JOIN 
+    oda_benchmark.acme_policy_coverage_detail pcd ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN 
+    oda_benchmark.acme_policy p ON pcd.policy_identifier = p.policy_identifier
+JOIN 
+    oda_benchmark.acme_agreement_party_role apr ON p.policy_identifier = apr.agreement_identifier
+JOIN 
+    oda_benchmark.acme_party ap ON apr.party_identifier = ap.party_identifier
+WHERE 
+    apr.party_role_code = 'AG' 
+    AND ap.party_name = 'Bob Insurance Agent';","SELECT c.company_claim_number,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY c.company_claim_number ASC"
+5,List all claims for policy holder id 1.,0,1,1,1,0.0,0,0,0.6154,0.6154,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}], ""order"": {""acme_ops.claims_made_date"": ""asc""}}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_identifier""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_identifier"", ""operator"": ""equals"", ""values"": [""1""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.375,0.375,"SELECT ac.claim_identifier, ac.catastrophe_identifier, ac.claim_description, ac.claims_made_date, 
+       ac.company_claim_number, ac.company_subclaim_number, ac.claim_open_date, ac.claim_close_date, 
+       ac.claim_reopen_date, ac.claim_status_code, ac.claim_reported_date
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON apcd.policy_identifier = aapr.agreement_identifier
+WHERE aapr.party_identifier = 1 AND aapr.party_role_code = 'PH';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       apr.party_identifier
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+WHERE apr.party_role_code = 'PH'
+  AND apr.party_identifier = 1
+ORDER BY c.company_claim_number ASC"
+5,List all claims for policy holder named Mary Policy Holder.,0,1,1,1,0.0,0,0,0.6154,0.6154,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""PH""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Mary Policy Holder""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT ac.claim_identifier, ac.claim_description, ac.claims_made_date, ac.company_claim_number, ac.company_subclaim_number, ac.claim_open_date, ac.claim_close_date, ac.claim_reopen_date, ac.claim_status_code, ac.claim_reported_date
+FROM oda_benchmark.acme_claim ac
+JOIN oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_agreement_party_role aapr ON apcd.policy_identifier = aapr.agreement_identifier
+JOIN oda_benchmark.acme_party ap ON aapr.party_identifier = ap.party_identifier
+WHERE ap.party_name = 'Mary Policy Holder' AND aapr.party_role_code = 'PH';","SELECT c.company_claim_number,
+       c.claim_open_date,
+       c.claim_close_date,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'PH'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Mary Policy Holder'
+ORDER BY c.company_claim_number ASC"
+5,List all policies sold by agent named Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.6667,0.6667,"{""query"": {""dimensions"": [""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}]}}","{""query"": {""dimensions"": [""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.policy_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT p.policy_number
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_party ap ON apr.party_identifier = ap.party_identifier
+WHERE apr.party_role_code = 'AG'
+  AND ap.party_name = 'Bob Insurance Agent';","SELECT p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_policy p
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY p.policy_number ASC"
+5,List all claims connected to policies sold by Bob Insurance Agent.,0,1,1,1,0.0,0,0,0.3636,0.3636,"{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.claim_status_code"", ""acme_ops.claims_made_date"", ""acme_ops.claim_open_date"", ""acme_ops.claim_close_date"", ""acme_ops.catastrophe_name"", ""acme_ops.catastrophe_type_code"", ""acme_ops.policy_number""], ""filters"": [{""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}, {""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}]}}","{""query"": {""dimensions"": [""acme_ops.company_claim_number"", ""acme_ops.policy_number"", ""acme_ops.party_full_legal_name""], ""filters"": [{""member"": ""acme_ops.party_role_code"", ""operator"": ""equals"", ""values"": [""AG""]}, {""member"": ""acme_ops.party_full_legal_name"", ""operator"": ""equals"", ""values"": [""Bob Insurance Agent""]}], ""order"": {""acme_ops.company_claim_number"": ""asc""}}}",1,1,1,0.0,0,0,0.0,0.0,"SELECT 
+    ac.claim_identifier, 
+    ac.claim_description, 
+    ac.claims_made_date, 
+    ac.company_claim_number, 
+    ac.claim_status_code
+FROM 
+    oda_benchmark.acme_claim ac
+JOIN 
+    oda_benchmark.acme_claim_coverage acc ON ac.claim_identifier = acc.claim_identifier
+JOIN 
+    oda_benchmark.acme_policy_coverage_detail apcd ON acc.policy_coverage_detail_identifier = apcd.policy_coverage_detail_identifier
+JOIN 
+    oda_benchmark.acme_policy ap ON apcd.policy_identifier = ap.policy_identifier
+JOIN 
+    oda_benchmark.acme_agreement_party_role aapr ON ap.policy_identifier = aapr.agreement_identifier
+JOIN 
+    oda_benchmark.acme_party apy ON aapr.party_identifier = apy.party_identifier
+WHERE 
+    apy.party_name = 'Bob Insurance Agent' 
+    AND aapr.party_role_code = 'AG';","SELECT c.company_claim_number,
+       p.policy_number,
+       COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) AS party_full_legal_name
+FROM oda_benchmark.acme_claim c
+JOIN oda_benchmark.acme_claim_coverage cc
+  ON c.claim_identifier = cc.claim_identifier
+JOIN oda_benchmark.acme_policy_coverage_detail pcd
+  ON cc.policy_coverage_detail_identifier = pcd.policy_coverage_detail_identifier
+JOIN oda_benchmark.acme_policy p
+  ON pcd.policy_identifier = p.policy_identifier
+JOIN oda_benchmark.acme_agreement_party_role apr
+  ON p.policy_identifier = apr.agreement_identifier
+JOIN oda_benchmark.acme_person person
+  ON apr.party_identifier = person.person_identifier
+WHERE apr.party_role_code = 'AG'
+  AND COALESCE(NULLIF(person.full_legal_name, ''), TRIM(CONCAT_WS(' ', person.first_name, person.middle_name, person.last_name))) = 'Bob Insurance Agent'
+ORDER BY c.company_claim_number ASC"
