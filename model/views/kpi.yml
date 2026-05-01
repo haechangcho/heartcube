@@ -27,21 +27,29 @@ views:
             meta:
               kpi:
                 visible: true
-                target: "40% 이하"
+                target:
+                  value: 40
+                  unit: "%"
+                  bound: upper
               driver:
                 - measure: claim_count
                 - measure: avg_payment_amt
                 - measure: claim_approval_rate
               lever:
                 - context: [claim_count]
-                  measure: total_insured_amt
-                  action: "청구 집중 담보 가입금액 강화"
+                  analysis:
+                    type: drill_down
+                    by: [coverage_nm]
+                    measure: total_insured_amt
                 - context: [avg_payment_amt]
-                  measure: review_rate
-                  action: "고지급 건 재심 강화"
+                  analysis:
+                    type: drill_down
+                    by: [adjuster_id]
+                    measure: review_rate
                 - context: [claim_approval_rate]
-                  dimension: adjuster_id
-                  action: "인용율 높은 심사자 배당 정책 조정"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [claim_center_nm]
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
@@ -52,7 +60,10 @@ views:
             meta:
               kpi:
                 visible: true
-                target: "2% 이하"
+                target:
+                  value: 2
+                  unit: "%"
+                  bound: upper
               driver:
                 - dimension: hospital_grade_cd
                 - dimension: noninsured_item
@@ -60,14 +71,19 @@ views:
                 - measure: avg_processing_days
               lever:
                 - context: [noninsured_item]
-                  measure: total_insured_amt
-                  action: "비급여항목별 가입금액 기준 강화"
+                  analysis:
+                    type: drill_down
+                    by: [hospital_grade_cd]
+                    measure: review_rate
                 - context: [adjuster_id]
-                  dimension: adjuster_id
-                  action: "과지급 다발 심사자 재교육"
-                - context: [hospital_grade_cd, noninsured_item]
-                  measure: review_rate
-                  action: "고위험 병원·비급여 조합 재심 강화"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [claim_center_nm]
+                - context: [hospital_grade_cd]
+                  analysis:
+                    type: drill_down
+                    by: [hospital_grade_cd]
+                    measure: review_rate
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
@@ -78,21 +94,27 @@ views:
             meta:
               kpi:
                 visible: true
-                target: "5일 이내"
+                target:
+                  value: 5
+                  unit: "일"
+                  bound: upper
               driver:
                 - dimension: adjuster_id
                 - dimension: claim_team_nm
                 - dimension: org_type
               lever:
                 - context: [adjuster_id]
-                  measure: claim_count
-                  action: "처리 지연 심사자 담당 건수 재배분"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [claim_center_nm]
                 - context: [claim_team_nm]
-                  measure: claim_count
-                  action: "저효율 팀 담당 건수 재배분"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [claim_center_nm]
                 - context: [org_type]
-                  dimension: accident_type_l1
-                  action: "처리 지연 조직의 주요 사고유형 간편심사 전환"
+                  analysis:
+                    type: drill_down
+                    by: [accident_type_l1]
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
@@ -106,11 +128,13 @@ views:
                 - dimension: claim_center_nm
               lever:
                 - context: [anomaly_label]
-                  measure: claim_count
-                  action: "이상유형별 건수 집중 심사 프로세스 강화"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [org_type]
                 - context: [claim_center_nm]
-                  measure: claim_count
-                  action: "고탐지율 센터 집중 감사"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [org_type]
               pre_aggregation:
                 time_dimension: claim_dt
                 granularity: month
@@ -119,21 +143,28 @@ views:
             meta:
               kpi:
                 visible: true
-                target: "1% 이하"
+                target:
+                  value: 1
+                  unit: "%"
+                  bound: upper
               driver:
                 - dimension: prior_claim_grp
                 - dimension: hospital_nm
                 - dimension: treatment_pattern
               lever:
                 - context: [prior_claim_grp]
-                  dimension: adjuster_id
-                  action: "상습청구 고객 SIU 배정"
+                  analysis:
+                    type: drill_down
+                    by: [hospital_nm]
+                    measure: claim_count
                 - context: [hospital_nm]
-                  measure: claim_count
-                  action: "의심 병원 집중심사 및 지급 보류"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [hospital_grade_cd]
                 - context: [treatment_pattern]
-                  dimension: hospital_nm
-                  action: "이상 치료패턴 다발 병원 집중심사"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [hospital_grade_cd]
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
@@ -148,14 +179,18 @@ views:
                 - dimension: treatment_pattern
               lever:
                 - context: [hospital_nm]
-                  measure: total_treat_amt_noninsured
-                  action: "비급여 과다 병원 집중심사 및 현장 조사"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [hospital_grade_cd]
                 - context: [dx_analysis_l1]
-                  dimension: hospital_nm
-                  action: "비급여 다발 진단 병원 지급기준 강화"
+                  analysis:
+                    type: drill_down
+                    by: [dx_analysis_l2]
                 - context: [treatment_pattern]
-                  measure: total_treat_amt_noninsured
-                  action: "이상 치료패턴 비급여 항목 지급기준 강화"
+                  analysis:
+                    type: drill_down
+                    by: [treatment_pattern]
+                    measure: total_treat_amt_noninsured
               pre_aggregation:
                 time_dimension: claim_dt
                 granularity: month
@@ -171,25 +206,19 @@ views:
                 - dimension: coverage_nm
               lever:
                 - context: [adjuster_id]
-                  measure: review_reversal_count
-                  action: "번복 다발 심사자 재교육"
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [claim_center_nm]
                 - context: [coverage_nm]
-                  measure: total_insured_amt
-                  action: "번복 집중 담보 심사 가이드라인 보완"
+                  analysis:
+                    type: drill_down
+                    by: [coverage_nm]
+                    measure: total_insured_amt
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
 
-          - name: high_prior_claim_count
-            meta:
-              kpi:
-                visible: false
-              driver:
-                - dimension: hospital_nm
-                - dimension: dx_analysis_l1
-              lever:
-                - action: "상습청구 고객 집중심사 지정"
-                - action: "SIU 조사 의뢰"
+          - high_prior_claim_count
 
       # ── fact_payment ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_payment
@@ -199,17 +228,7 @@ views:
           - total_reduction_amt
           - avg_payment_amt
           - reduction_count
-          - name: reduction_rate
-            meta:
-              kpi:
-                visible: false
-              driver:
-                - dimension: coverage_nm
-                  measure: reduction_rate
-                - dimension: reduction_reason
-                  measure: total_reduction_amt
-              lever:
-                - action: "감액 집중 담보 지급기준 명확화"
+          - reduction_rate
           - final_payment_cd
           - payment_type
           - payment_item_l1
@@ -235,65 +254,11 @@ views:
           - review_yn
           - lawsuit_yn
 
-          - name: payment_delay_rate
-            meta:
-              kpi:
-                visible: false
-              driver:
-                - dimension: claim_center_nm
-                - dimension: accident_type_l1
-                - measure: avg_processing_days
-              lever:
-                - action: "자동화 대상 사고유형 선정"
-                - action: "간편심사 확대"
-
-          - name: review_rate
-            meta:
-              kpi:
-                visible: false
-                target: "3% 이하"
-              driver:
-                - dimension: adjuster_id
-                - dimension: coverage_nm
-              lever:
-                - action: "심사기준 명확화"
-                - action: "과소지급 심사자 모니터링"
-                - action: "심사 결과 커뮤니케이션 강화"
-
-          - name: lawsuit_rate
-            meta:
-              kpi:
-                visible: false
-                target: "1% 이하"
-              driver:
-                - dimension: coverage_nm
-                - dimension: claim_center_nm
-                - dimension: review_yn
-              lever:
-                - action: "소송 집중 담보 지급기준 재정비"
-                - action: "분쟁 조기 해소 프로세스 강화"
-
-          - name: duplicate_payment_rate
-            meta:
-              kpi:
-                visible: false
-              driver:
-                - dimension: adjuster_id
-                - dimension: claim_center_nm
-              lever:
-                - action: "중복지급 발생 단위 프로세스 점검"
-                - action: "시스템 자동 중복 검증 강화"
-
-          - name: error_payment_rate
-            meta:
-              kpi:
-                visible: false
-              driver:
-                - dimension: adjuster_id
-                - dimension: coverage_nm
-              lever:
-                - action: "면책조항 미적용 오류 심사자 교육"
-                - action: "지급 계산 자동화 확대"
+          - payment_delay_rate
+          - review_rate
+          - lawsuit_rate
+          - duplicate_payment_rate
+          - error_payment_rate
 
       # ── fact_treatment ────────────────────────────────────────────────────
       - join_path: fact_accident.fact_treatment
