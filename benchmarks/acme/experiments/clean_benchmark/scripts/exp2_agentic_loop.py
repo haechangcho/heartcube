@@ -41,7 +41,13 @@ LLM_MODEL = llm_model()
 N_ITERATIONS = iterations()
 MAX_RETRIES = env_int("ACME_MAX_RETRIES", 3)
 
-TARGET_CATEGORIES = {"LQLS", "LQHS"}
+# Questions that failed in Exp 1 (exact_match < 100%)
+TARGET_IDS = {
+    "LQLS_06",
+    "LQHS_02", "LQHS_03", "LQHS_04", "LQHS_05", "LQHS_06",
+    "HQLS_09",
+    "HQHS_04", "HQHS_08",
+}
 QUESTIONS_FILE = EXPERIMENT_DIR / "questions" / "cube_questions_v1.md"
 RESULTS_CSV = EXPERIMENT_DIR / "results" / "exp2_agentic_loop.csv"
 HEADERS = {"Authorization": f"Bearer {CUBE_TOKEN}", "Content-Type": "application/json"}
@@ -212,11 +218,11 @@ def parse_questions(path: Path) -> list[dict[str, Any]]:
 
 
 def main() -> None:
-    print("=== Experiment 2: Agentic Loop ===")
+    print("=== Experiment 2: Agentic Loop (Failing Questions Only) ===")
     print(f"Schema: V1 (party_identifier / party_role_code)")
     print(f"Gold:   V1 questions file")
     print(f"Loop:   Agentic retry (max {MAX_RETRIES} retries on exec error)")
-    print(f"Scope:  {sorted(TARGET_CATEGORIES)}")
+    print(f"Targets: {sorted(TARGET_IDS)}")
     print(f"Model:  {LLM_MODEL}, Iterations: {N_ITERATIONS}\n")
 
     cubes = fetch_meta()
@@ -230,11 +236,14 @@ def main() -> None:
         print("WARNING: party_identifier not found. Exp1/2 require OLD schema (acme_ops_v1.yml).")
 
     all_questions = parse_questions(QUESTIONS_FILE)
-    questions = [q for q in all_questions if q["category"] in TARGET_CATEGORIES]
-    print(f"Questions: {len(questions)} ({', '.join(sorted(TARGET_CATEGORIES))})")
+    questions = [q for q in all_questions if q["id"] in TARGET_IDS]
+    print(f"Questions: {len(questions)} (Exp1 failures only)")
 
     total = len(questions) * N_ITERATIONS
-    print(f"Total runs: {total}\n")
+    print(f"Total runs: {total}")
+    for q in questions:
+        print(f"  {q['id']} [{q['category']}]: {q['question'][:60]}")
+    print()
 
     records: list[dict[str, Any]] = []
     done = 0
