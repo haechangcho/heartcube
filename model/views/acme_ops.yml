@@ -59,8 +59,6 @@ views:
       # ── acme_agreement_party_role ─────────────────────────────────────────
       - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_agreement_party_role
         includes:
-          - party_identifier
-          - party_role_code
           - policy_count_by_agent
 
       # ── acme_party / acme_person ─────────────────────────────────────────
