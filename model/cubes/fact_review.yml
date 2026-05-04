@@ -119,13 +119,13 @@ cubes:
           - sql: "{CUBE}.lawsuit_yn = 'Y'"
 
       - name: avg_processing_days
-        sql: processing_biz_days
+        sql: processing_biz_days::numeric
         type: avg
         title: 평균 처리기간(영업일)
         description: "사고 접수부터 보상 완료까지 평균 영업일수. SLA 기준: 5일"
 
       - name: total_processing_days
-        sql: processing_biz_days
+        sql: processing_biz_days::numeric
         type: sum
         title: 처리기간 합계(영업일)
         description: "평균 처리기간 계산을 위한 처리기간 합산값. avg_processing_days의 분자로 사용."

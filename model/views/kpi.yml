@@ -61,7 +61,7 @@ views:
               kpi:
                 visible: true
                 target:
-                  value: 2
+                  value: 4
                   unit: "%"
                   bound: upper
               driver:
@@ -139,35 +139,7 @@ views:
                 time_dimension: claim_dt
                 granularity: month
 
-          - name: fraud_suspicion_rate
-            meta:
-              kpi:
-                visible: true
-                target:
-                  value: 1
-                  unit: "%"
-                  bound: upper
-              driver:
-                - dimension: prior_claim_grp
-                - dimension: hospital_nm
-                - dimension: treatment_pattern
-              lever:
-                - context: [prior_claim_grp]
-                  analysis:
-                    type: drill_down
-                    by: [hospital_nm]
-                    measure: claim_count
-                - context: [hospital_nm]
-                  analysis:
-                    type: peer_comparison
-                    peer_group: [hospital_grade_cd]
-                - context: [treatment_pattern]
-                  analysis:
-                    type: peer_comparison
-                    peer_group: [hospital_grade_cd]
-              pre_aggregation:
-                time_dimension: payment_dt
-                granularity: month
+          - fraud_suspicion_rate
 
           - name: noninsured_ratio
             meta:
