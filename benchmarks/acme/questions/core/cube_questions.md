@@ -14,12 +14,12 @@
 
 3. Return all the policies and their policy holder by id
 ```json
-{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.party_identifier"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}], "order": {"acme_ops.policy_number": "asc"}}}
+{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.policyholder_id"], "order": {"acme_ops.policy_number": "asc"}}}
 ```
 
 4. Return all the policies and the agents that sold them by policy number and agent id
 ```json
-{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.party_identifier"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}], "order": {"acme_ops.policy_number": "asc"}}}
+{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.agent_id"], "order": {"acme_ops.policy_number": "asc"}}}
 ```
 
 5. What are all our policies that have a claim associated to them by policy and claim number?
@@ -29,7 +29,7 @@
 
 6. What are all the premiums that have been paid by policy holders?
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier"], "measures": ["acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}, {"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.total_policy_amount": "desc"}}}
+{"query": {"dimensions": ["acme_ops.policyholder_id"], "measures": ["acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.total_policy_amount": "desc"}}}
 ```
 
 7. What is the premium amount of all policies by policy number?
@@ -73,7 +73,7 @@
 
 2. What are the loss payment, loss reserve, expense payment, expense reserve amount by claim number and corresponding policy number, policy holder and premium amount paid?
 ```json
-{"query": {"dimensions": ["acme_ops.company_claim_number", "acme_ops.policy_number", "acme_ops.party_identifier"], "measures": ["acme_ops.loss_payment_amount", "acme_ops.loss_reserve_amount", "acme_ops.expense_payment_amount", "acme_ops.expense_reserve_amount", "acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}, {"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.company_claim_number": "asc"}}}
+{"query": {"dimensions": ["acme_ops.company_claim_number", "acme_ops.policy_number", "acme_ops.policyholder_id"], "measures": ["acme_ops.loss_payment_amount", "acme_ops.loss_reserve_amount", "acme_ops.expense_payment_amount", "acme_ops.expense_reserve_amount", "acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.company_claim_number": "asc"}}}
 ```
 
 3. What are the loss payment, loss reserve, expense payment, expense reserve amount by claim number and corresponding policy number, policy holder, premium amount paid and the agent who sold it?
@@ -88,32 +88,32 @@
 
 5. Return policy holders and the claims they have made and the corresponding catastrophe
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier", "acme_ops.company_claim_number", "acme_ops.catastrophe_name"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}], "order": {"acme_ops.party_identifier": "asc"}}}
+{"query": {"dimensions": ["acme_ops.policyholder_id", "acme_ops.company_claim_number", "acme_ops.catastrophe_name"], "order": {"acme_ops.policyholder_id": "asc"}}}
 ```
 
 6. Return agents and the policy they have sold that have had a claim and the corresponding catastrophe it had.
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier", "acme_ops.policy_number", "acme_ops.catastrophe_name"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}], "order": {"acme_ops.party_identifier": "asc"}}}
+{"query": {"dimensions": ["acme_ops.agent_id", "acme_ops.policy_number", "acme_ops.catastrophe_name"], "order": {"acme_ops.agent_id": "asc"}}}
 ```
 
 7. Return agents and the policies they have sold that have had a claim and the corresponding loss payment amount by agent id, policy number and claim number
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier", "acme_ops.policy_number", "acme_ops.company_claim_number"], "measures": ["acme_ops.loss_payment_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}], "order": {"acme_ops.party_identifier": "asc"}}}
+{"query": {"dimensions": ["acme_ops.agent_id", "acme_ops.policy_number", "acme_ops.company_claim_number"], "measures": ["acme_ops.loss_payment_amount"], "order": {"acme_ops.agent_id": "asc"}}}
 ```
 
 8. Return agents and the policy they have sold that have had a claim and the corresponding loss reserve amount by agent id, policy number and claim number
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier", "acme_ops.policy_number", "acme_ops.company_claim_number"], "measures": ["acme_ops.loss_reserve_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}], "order": {"acme_ops.party_identifier": "asc"}}}
+{"query": {"dimensions": ["acme_ops.agent_id", "acme_ops.policy_number", "acme_ops.company_claim_number"], "measures": ["acme_ops.loss_reserve_amount"], "order": {"acme_ops.agent_id": "asc"}}}
 ```
 
 9. Return agents and the policy they have sold that have had a claim and the corresponding expense payment amount by agent id, policy number and claim number
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier", "acme_ops.policy_number", "acme_ops.company_claim_number"], "measures": ["acme_ops.expense_payment_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}], "order": {"acme_ops.party_identifier": "asc"}}}
+{"query": {"dimensions": ["acme_ops.agent_id", "acme_ops.policy_number", "acme_ops.company_claim_number"], "measures": ["acme_ops.expense_payment_amount"], "order": {"acme_ops.agent_id": "asc"}}}
 ```
 
 10. Return agents and the policy they have sold that have had a claim and the corresponding expense reserve amount by agent id, policy number and claim number
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier", "acme_ops.policy_number", "acme_ops.company_claim_number"], "measures": ["acme_ops.expense_reserve_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}], "order": {"acme_ops.party_identifier": "asc"}}}
+{"query": {"dimensions": ["acme_ops.agent_id", "acme_ops.policy_number", "acme_ops.company_claim_number"], "measures": ["acme_ops.expense_reserve_amount"], "order": {"acme_ops.agent_id": "asc"}}}
 ```
 
 ---
@@ -137,7 +137,7 @@
 
 4. How many policies have agents sold by agent id?
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier"], "measures": ["acme_ops.policy_count_by_agent"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}], "order": {"acme_ops.policy_count_by_agent": "desc"}}}
+{"query": {"dimensions": ["acme_ops.agent_id"], "measures": ["acme_ops.policy_count_by_agent"], "order": {"acme_ops.policy_count_by_agent": "desc"}}}
 ```
 
 5. What is the total amount of premiums paid by policy number?
@@ -157,17 +157,17 @@
 
 8. What is the total amount of premiums that a policy holder has paid?
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier"], "measures": ["acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}, {"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}], "order": {"acme_ops.total_policy_amount": "desc"}}}
+{"query": {"dimensions": ["acme_ops.policyholder_id"], "measures": ["acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.total_policy_amount": "desc"}}}
 ```
 
 9. What is the total amount of premiums that a policy holder has paid by policy number?
 ```json
-{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.party_identifier"], "measures": ["acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}, {"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}], "order": {"acme_ops.total_policy_amount": "desc"}}}
+{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.policyholder_id"], "measures": ["acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.total_policy_amount": "desc"}}}
 ```
 
 10. How many policies does each policy holder have by policy holder id?
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier"], "measures": ["acme_ops.policy_count"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}], "order": {"acme_ops.policy_count": "desc"}}}
+{"query": {"dimensions": ["acme_ops.policyholder_id"], "measures": ["acme_ops.policy_count"], "order": {"acme_ops.policy_count": "desc"}}}
 ```
 
 11. What is the average policy size which is the total amount of premium divided by the number of policies?
@@ -196,7 +196,7 @@
 
 4. What are the total loss, which is the sum of loss payment, loss reserve, expense payment, expense reserve amount by claim number and corresponding policy number, policy holder and premium amount paid?
 ```json
-{"query": {"dimensions": ["acme_ops.company_claim_number", "acme_ops.policy_number", "acme_ops.party_identifier"], "measures": ["acme_ops.total_full_loss_amount", "acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}, {"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.company_claim_number": "asc"}}}
+{"query": {"dimensions": ["acme_ops.company_claim_number", "acme_ops.policy_number", "acme_ops.policyholder_id"], "measures": ["acme_ops.total_full_loss_amount", "acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.company_claim_number": "asc"}}}
 ```
 
 5. What are the total loss, which is the sum of loss payment, loss reserve, expense payment, expense reserve amount by catastrophe and policy number?
@@ -211,12 +211,12 @@
 
 7. What is the total loss of each policy that an agent has sold by agent id where total loss is the sum of loss payment, loss reserve, expense payment, expense reserve amounts?
 ```json
-{"query": {"dimensions": ["acme_ops.party_identifier", "acme_ops.policy_number"], "measures": ["acme_ops.total_full_loss_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}], "order": {"acme_ops.party_identifier": "asc"}}}
+{"query": {"dimensions": ["acme_ops.agent_id", "acme_ops.policy_number"], "measures": ["acme_ops.total_full_loss_amount"], "order": {"acme_ops.agent_id": "asc"}}}
 ```
 
 8. What is the loss ratio of each policy and agent who sold it by policy number and agent id?
 ```json
-{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.party_identifier"], "measures": ["acme_ops.total_full_loss_amount", "acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}, {"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.policy_number": "asc"}}}
+{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.agent_id"], "measures": ["acme_ops.total_full_loss_amount", "acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.policy_number": "asc"}}}
 ```
 
 9. What is the average loss of each policy by policy number and number of claims where loss is the sum of loss payment, loss reserve, expense payment, expense reserve amounts?

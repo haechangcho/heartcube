@@ -140,8 +140,8 @@ Cube REST API accepts queries in this JSON format:
 Example 1) Show number of claims by policy number in descending order
 {"query": {"dimensions": ["acme_ops.policy_number"], "measures": ["acme_ops.claim_count"], "order": {"acme_ops.claim_count": "desc"}}}
 
-Example 2) Show total premium paid by policyholder in descending order
-{"query": {"dimensions": ["acme_ops.party_identifier"], "measures": ["acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.party_role_code", "operator": "equals", "values": ["PH"]}], "order": {"acme_ops.total_policy_amount": "desc"}}}
+Example 2) Show total premium paid by each policyholder in descending order
+{"query": {"dimensions": ["acme_ops.policyholder_id"], "measures": ["acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.total_policy_amount": "desc"}}}
 
 Example 3) Show total loss amount (loss payment + loss reserve) by claim number in descending order
 {"query": {"dimensions": ["acme_ops.company_claim_number"], "measures": ["acme_ops.total_loss_amount"], "order": {"acme_ops.total_loss_amount": "desc"}}}
