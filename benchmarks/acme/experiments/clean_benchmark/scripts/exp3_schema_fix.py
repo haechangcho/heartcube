@@ -46,7 +46,12 @@ LLM_MODEL = llm_model()
 N_ITERATIONS = iterations()
 MAX_RETRIES = env_int("ACME_MAX_RETRIES", 3)
 
-TARGET_CATEGORIES = {"LQLS", "LQHS"}
+# Questions still failing after Exp 2 (agentic loop didn't help — semantic failures)
+TARGET_IDS = {
+    "LQLS_06",
+    "LQHS_02", "LQHS_03", "LQHS_04", "LQHS_05", "LQHS_06",
+    "HQHS_04", "HQHS_08",
+}
 QUESTIONS_FILE = EXPERIMENT_DIR / "questions" / "cube_questions_v2.md"
 RESULTS_CSV = EXPERIMENT_DIR / "results" / "exp3_schema_fix.csv"
 HEADERS = {"Authorization": f"Bearer {CUBE_TOKEN}", "Content-Type": "application/json"}
@@ -217,11 +222,11 @@ def parse_questions(path: Path) -> list[dict[str, Any]]:
 
 
 def main() -> None:
-    print("=== Experiment 3: Agentic Loop + Schema Fix ===")
+    print("=== Experiment 3: Schema Fix (Exp2 Failing Questions) ===")
     print(f"Schema: V2 (policyholder_id / agent_id; party_identifier removed)")
     print(f"Gold:   V2 questions file")
     print(f"Loop:   Agentic retry (max {MAX_RETRIES} retries on exec error)")
-    print(f"Scope:  {sorted(TARGET_CATEGORIES)}")
+    print(f"Targets: {sorted(TARGET_IDS)}")
     print(f"Model:  {LLM_MODEL}, Iterations: {N_ITERATIONS}\n")
 
     cubes = fetch_meta()
@@ -236,8 +241,11 @@ def main() -> None:
         print("Apply acme_ops.yml (v2) and restart Cube before running.\n")
 
     all_questions = parse_questions(QUESTIONS_FILE)
-    questions = [q for q in all_questions if q["category"] in TARGET_CATEGORIES]
-    print(f"Questions: {len(questions)} ({', '.join(sorted(TARGET_CATEGORIES))})")
+    questions = [q for q in all_questions if q["id"] in TARGET_IDS]
+    print(f"Questions: {len(questions)} (Exp2 failures only)")
+    for q in questions:
+        print(f"  {q['id']} [{q['category']}]: {q['question'][:60]}")
+    print()
 
     total = len(questions) * N_ITERATIONS
     print(f"Total runs: {total}\n")
