@@ -143,7 +143,7 @@ include 항목 순회
 # sync_view_descriptions.py
 import yaml, requests
 
-META_URL = "http://172.20.0.3:4000/cubejs-api/v1/meta"
+META_URL = "http://<cube-host>:4000/cubejs-api/v1/meta"
 VIEW_PATH = "model/views/acme_ops.yml"
 TOKEN = os.environ.get("CUBE_TOKEN")
 

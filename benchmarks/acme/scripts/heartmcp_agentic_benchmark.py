@@ -36,7 +36,7 @@ os.environ.setdefault("CUBE_SCHEMA_MODE", "acme")
 # heartcube .env의 CUBE_BASE_URL → heartmcp가 쓰는 CUBE_API_URL로 매핑
 _cube_base = os.environ.get("CUBE_BASE_URL", "")
 if _cube_base and not os.environ.get("CUBE_API_URL"):
-    # CUBE_BASE_URL = http://172.20.0.3:4000/cubejs-api/v1 → strip /cubejs-api/v1
+    # CUBE_BASE_URL = http://<cube-host>:4000/cubejs-api/v1 → strip /cubejs-api/v1
     os.environ["CUBE_API_URL"] = _cube_base.replace("/cubejs-api/v1", "")
 if not os.environ.get("CUBE_API_TOKEN"):
     os.environ["CUBE_API_TOKEN"] = os.environ.get("CUBE_TOKEN", "")

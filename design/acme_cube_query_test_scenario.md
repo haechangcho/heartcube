@@ -248,7 +248,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # Cube .env 기준 접속 정보 (abiuser)
-DB_URL   = "postgresql://abiuser:#tbvjtpt@20.0.1.10:5432/sampledb"
+DB_URL   = "postgresql://abiuser:<db_password>@<db_host>:5432/sampledb"
 SCHEMA   = "oda"
 DATA_DIR = "/home/ubuntu/heartcube/acme_data"
 
@@ -300,7 +300,7 @@ ssh dev_mcp "cd ~/heartcube && source venv/bin/activate && python3 acme_load_dat
 ### 3-5. 적재 검증
 
 ```bash
-ssh dev_mcp "PGPASSWORD='#tbvjtpt' psql -h 20.0.1.10 -U abiuser -d sampledb -c \"
+ssh dev_mcp "PGPASSWORD='<db_password>' psql -h <db_host> -U abiuser -d sampledb -c \"
   SELECT tablename, n_live_tup AS rows
   FROM pg_stat_user_tables
   WHERE schemaname = 'oda' AND tablename LIKE 'acme_%'

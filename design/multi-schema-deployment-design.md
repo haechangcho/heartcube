@@ -146,11 +146,11 @@ networks:
 ```bash
 # .env.acme
 CUBEJS_DB_TYPE=postgres
-CUBEJS_DB_HOST=20.0.1.10
+CUBEJS_DB_HOST=<db_host>
 CUBEJS_DB_PORT=5432
 CUBEJS_DB_NAME=sampledb
 CUBEJS_DB_USER=abiuser
-CUBEJS_DB_PASS=#tbvjtpt
+CUBEJS_DB_PASS=<db_password>
 
 # ODA와 다른 값
 CUBE_MODEL_PATH=model_acme               # acme 모델 경로
