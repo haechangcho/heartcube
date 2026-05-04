@@ -84,3 +84,9 @@ cubes:
         type: number
         title: Total Full Loss Amount
         description: "Sum of loss payment, loss reserve, expense payment, and expense reserve amounts."
+
+      - name: loss_ratio
+        sql: "{total_full_loss_amount} / NULLIF({total_policy_amount}, 0)"
+        type: number
+        title: Loss Ratio
+        description: "Loss ratio: total full loss amount divided by total policy premium amount."

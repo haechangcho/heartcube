@@ -216,7 +216,7 @@
 
 8. What is the loss ratio of each policy and agent who sold it by policy number and agent id?
 ```json
-{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.agent_id"], "measures": ["acme_ops.total_full_loss_amount", "acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.policy_number": "asc"}}}
+{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.agent_id"], "measures": ["acme_ops.loss_ratio"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.policy_number": "asc"}}}
 ```
 
 9. What is the average loss of each policy by policy number and number of claims where loss is the sum of loss payment, loss reserve, expense payment, expense reserve amounts?

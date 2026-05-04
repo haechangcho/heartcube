@@ -35,6 +35,7 @@ views:
           - expense_reserve_amount
           - total_loss_amount
           - total_full_loss_amount
+          - loss_ratio
 
       # ── acme_policy ───────────────────────────────────────────────────────
       - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy
