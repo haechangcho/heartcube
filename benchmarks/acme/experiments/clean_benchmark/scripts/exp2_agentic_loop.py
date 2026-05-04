@@ -26,7 +26,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 EXPERIMENT_DIR = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(EXPERIMENT_DIR.parents[2] / "src"))
+sys.path.insert(0, str(EXPERIMENT_DIR.parents[1] / "src"))
 
 from acme_benchmark.common import env_int, env_required, iterations, llm_model
 from acme_benchmark.evaluator import cube_structural_accuracy, robust_result_scores
