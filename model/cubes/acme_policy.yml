@@ -13,6 +13,10 @@ cubes:
         sql: "{acme_policy}.policy_identifier = {acme_policy_amount}.policy_identifier"
         relationship: one_to_many
 
+      - name: acme_policy_parties
+        sql: "{acme_policy}.policy_identifier = {acme_policy_parties}.policy_identifier"
+        relationship: one_to_one
+
     dimensions:
       - name: policy_identifier
         sql: policy_identifier

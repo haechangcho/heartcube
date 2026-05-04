@@ -88,3 +88,9 @@ views:
       - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_policy_amount.acme_premium
         includes:
           - has_premium
+
+      # ── acme_policy_parties ───────────────────────────────────────────────
+      - join_path: acme_claim.acme_claim_coverage.acme_policy_coverage_detail.acme_policy.acme_policy_parties
+        includes:
+          - policyholder_id
+          - agent_id
