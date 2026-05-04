@@ -45,7 +45,7 @@ N_ITERATIONS = iterations()
 MAX_RETRIES = env_int("ACME_MAX_RETRIES", 3)
 
 EXPERIMENT = os.environ.get("EXPERIMENT", "few_shot").strip()
-VALID_EXPERIMENTS = {"few_shot", "schema_fix", "gold_fix", "few_shot_gold_fix"}
+VALID_EXPERIMENTS = {"few_shot", "schema_fix"}
 if EXPERIMENT not in VALID_EXPERIMENTS:
     raise SystemExit(f"EXPERIMENT must be one of {VALID_EXPERIMENTS}, got: {EXPERIMENT}")
 
@@ -59,32 +59,12 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 # ── Target question IDs per experiment ────────────────────────────────────────
 
 EXPERIMENT_TARGETS: dict[str, set[str]] = {
-    "few_shot":          {"Q01", "Q05"},
-    "schema_fix":        {"Q15", "Q16"},
-    "gold_fix":          {"Q18"},
-    "few_shot_gold_fix": {"Q01", "Q05", "Q18"},
+    "few_shot":  {"Q01", "Q05", "Q18"},
+    "schema_fix": {"Q15", "Q16"},
 }
 TARGET_IDS = EXPERIMENT_TARGETS[EXPERIMENT]
 
-# ── Gold query overrides (gold_fix / few_shot_gold_fix) ───────────────────────
-# Q18: remove company_claim_number — "had a claim" is an existence condition,
-# not an output requirement. The model consistently omits it; the original gold
-# was over-specified.
-GOLD_OVERRIDES: dict[str, dict] = {
-    "Q18": {
-        "query": {
-            "dimensions": [
-                "acme_ops.party_identifier",
-                "acme_ops.policy_number",
-                "acme_ops.catastrophe_name",
-            ],
-            "filters": [
-                {"member": "acme_ops.party_role_code", "operator": "equals", "values": ["AG"]}
-            ],
-            "order": {"acme_ops.party_identifier": "asc"},
-        }
-    }
-}
+GOLD_OVERRIDES: dict[str, dict] = {}
 
 # ── Cube helpers ──────────────────────────────────────────────────────────────
 
@@ -125,7 +105,7 @@ def execute_cube(query: dict[str, Any]) -> tuple[bool, list[dict[str, Any]], str
 
 # ── Prompt helpers ────────────────────────────────────────────────────────────
 
-FEW_SHOT_BASE = """
+FEW_SHOT = """
 Cube REST API accepts queries in this JSON format:
 {
   "query": {
@@ -137,32 +117,22 @@ Cube REST API accepts queries in this JSON format:
   }
 }
 
-Example 1) Show number of claims by policy number in descending order
+Example 1) How many claims have been placed by policy number?
 {"query": {"dimensions": ["acme_ops.policy_number"], "measures": ["acme_ops.claim_count"], "order": {"acme_ops.claim_count": "desc"}}}
 
-Example 2) Show total premium paid by each policyholder in descending order
+Example 2) Return all claims and their associated catastrophe name
+- Listing questions use dimensions only — do NOT add measures
+- Cube handles JOINs automatically; do NOT add claim_count or existence filters
+{"query": {"dimensions": ["acme_ops.company_claim_number", "acme_ops.catastrophe_name"]}}
+
+Example 3) Show total premium paid by each policyholder in descending order
 {"query": {"dimensions": ["acme_ops.policyholder_id"], "measures": ["acme_ops.total_policy_amount"], "filters": [{"member": "acme_ops.has_premium", "operator": "equals", "values": ["1"]}], "order": {"acme_ops.total_policy_amount": "desc"}}}
-
-Example 3) Show total loss amount (loss payment + loss reserve) by claim number in descending order
-{"query": {"dimensions": ["acme_ops.company_claim_number"], "measures": ["acme_ops.total_loss_amount"], "order": {"acme_ops.total_loss_amount": "desc"}}}
-"""
-
-FEW_SHOT_EXTRA = """
-Example 4) Return all claims by claim number, open date, and close date
-- "Return all X" listing questions use dimensions only — do NOT add measures
-{"query": {"dimensions": ["acme_ops.company_claim_number", "acme_ops.claim_open_date", "acme_ops.claim_close_date"]}}
-
-Example 5) Return policies that have a claim, by policy number and claim number
-- "have a claim" means include company_claim_number as a dimension
-- Cube performs an INNER JOIN, so only rows with a claim are returned automatically
-- Do NOT add claim_count measure or claim_count > 0 filter
-{"query": {"dimensions": ["acme_ops.policy_number", "acme_ops.company_claim_number"]}}
 """
 
 def build_few_shot() -> str:
-    if EXPERIMENT in {"few_shot", "few_shot_gold_fix"}:
-        return FEW_SHOT_BASE + FEW_SHOT_EXTRA
-    return FEW_SHOT_BASE
+    if EXPERIMENT == "few_shot":
+        return FEW_SHOT
+    return FEW_SHOT
 
 
 SYSTEM_PROMPT = """You are a Cube Semantic Layer expert.
