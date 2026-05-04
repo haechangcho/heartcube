@@ -162,28 +162,32 @@ report.md 작성 후 PR 또는 merge.
 - [x] `exp1_single_shot.py` 작성
 - [x] `exp2_agentic_loop.py` 작성
 - [x] `exp3_schema_fix.py` 작성
-- [ ] V1 schema를 acme_ops.yml에 적용 + 커밋 + push
-- [ ] 서버에서 V1 schema pull + Cube restart 확인
+- [x] V1 schema를 acme_ops.yml에 적용 + 커밋 + push
+- [x] 서버에서 V1 schema pull + Cube restart 확인
 
 ### Exp 1: Single-shot baseline
-- [ ] 실행 중
-- [ ] 완료: results/exp1_single_shot.csv 생성됨
-- [ ] 결과 확인 (LQLS/LQHS/HQLS/HQHS 각 정확도)
+- [x] 완료: results/exp1_single_shot.csv 생성됨
+- [x] 결과: LQLS 91.7% / LQHS 68.0% / HQLS 96.4% / HQHS 88.0%
+- 실패 9개: LQLS_06, LQHS_02/03/04/05/06, HQLS_09, HQHS_04/08
 
-### Exp 2: Agentic loop
-- [ ] 실행 중
-- [ ] 완료: results/exp2_agentic_loop.csv 생성됨
-- [ ] 결과 확인
+### Exp 2: Agentic loop (Exp1 실패 질문 9개 대상)
+- [x] 완료: results/exp2_agentic_loop.csv 생성됨
+- [x] 결과: HQLS_09 100% 해결. 나머지 8개 여전히 실패
+- 핵심 발견: 모든 실패가 att=1 (retry 미발동) → 실행 성공하지만 결과 틀림
+- 아직 실패: LQLS_06, LQHS_02/03/04/05/06, HQHS_04/08
 
-### Exp 3: Schema fix
-- [ ] V2 schema 적용 + Cube restart
-- [ ] 실행 중
-- [ ] 완료: results/exp3_schema_fix.csv 생성됨
-- [ ] 결과 확인
+### Exp 3: Schema fix (Exp2 실패 질문 8개 대상)
+- [x] V2 schema 적용 + Cube restart 완료
+- [x] 완료: results/exp3_schema_fix.csv 생성됨
+- [x] 결과 확인
+  - LQHS_03: 0%→100% ✓  LQHS_04: 0%→100% ✓
+  - LQHS_02: 80%→100% ✓  LQHS_05: 80%→100% ✓
+  - HQHS_04: 80%→100% ✓  LQLS_06: 0%→40%
+  - LQHS_06: 60%→60%     HQHS_08: 0%→0%
 
 ### 최종
-- [ ] 결과 로컬 복사 + 커밋
-- [ ] report.md 작성
+- [x] 결과 로컬 복사 + 커밋
+- [x] report.md 작성
 - [ ] PR 생성
 
 ---
