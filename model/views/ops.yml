@@ -27,6 +27,7 @@ views:
           - claim_approval_rate
           - loss_ratio
           - anomaly_rate
+          - overpayment_amt
           - review_reversal_count
           - review_reversal_rate
           - high_prior_claim_count

@@ -40,12 +40,12 @@ views:
                   analysis:
                     type: drill_down
                     by: [coverage_nm]
-                    measure: total_insured_amt
+                    measure: [total_insured_amt]
                 - context: [avg_payment_amt]
                   analysis:
                     type: drill_down
                     by: [adjuster_id]
-                    measure: review_rate
+                    measure: [review_rate]
                 - context: [claim_approval_rate]
                   analysis:
                     type: peer_comparison
@@ -73,8 +73,8 @@ views:
                 - context: [noninsured_item]
                   analysis:
                     type: drill_down
-                    by: [hospital_grade_cd]
-                    measure: review_rate
+                    by: [dx_analysis_l1]
+                    measure: [overpayment_amt, review_rate, overpayment_rate]
                 - context: [adjuster_id]
                   analysis:
                     type: peer_comparison
@@ -83,7 +83,7 @@ views:
                   analysis:
                     type: drill_down
                     by: [hospital_grade_cd]
-                    measure: review_rate
+                    measure: [overpayment_amt, review_rate, overpayment_rate]
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
@@ -162,7 +162,7 @@ views:
                   analysis:
                     type: drill_down
                     by: [treatment_pattern]
-                    measure: total_treat_amt_noninsured
+                    measure: [total_treat_amt_noninsured]
               pre_aggregation:
                 time_dimension: claim_dt
                 granularity: month
@@ -185,12 +185,36 @@ views:
                   analysis:
                     type: drill_down
                     by: [coverage_nm]
-                    measure: total_insured_amt
+                    measure: [total_insured_amt]
               pre_aggregation:
                 time_dimension: payment_dt
                 granularity: month
 
           - high_prior_claim_count
+
+          - name: overpayment_amt
+            meta:
+              kpi:
+                visible: true
+                unit: "만원"
+                bound: upper
+              driver:
+                - measure: overpayment_count
+                - dimension: anomaly_label
+                - dimension: claim_center_nm
+              lever:
+                - context: [anomaly_label]
+                  analysis:
+                    type: peer_comparison
+                    peer_group: [claim_center_nm]
+                - context: [claim_center_nm]
+                  analysis:
+                    type: drill_down
+                    by: [adjuster_id]
+                    measure: [overpayment_count]
+              pre_aggregation:
+                time_dimension: payment_dt
+                granularity: month
 
       # ── fact_payment ──────────────────────────────────────────────────────
       - join_path: fact_accident.fact_payment

@@ -234,6 +234,12 @@ cubes:
         sql: "100.0 * {review_reversal_count} / NULLIF({fact_review.review_count}, 0)"
         format: percent
 
+      - name: overpayment_amt
+        type: number
+        title: 과지급액(만원)
+        description: "이상유형이 과지급인 건의 (지급결정금액-기준금액) 합계. 단위: 만원."
+        sql: "SUM(CASE WHEN {fact_review.anomaly_label} = '과지급' THEN {fact_payment.payment_amt} - {fact_review.baseline_amt} END) / 10000"
+
       - name: high_prior_claim_count
         type: count
         title: 상습청구건수(3회 이상)
