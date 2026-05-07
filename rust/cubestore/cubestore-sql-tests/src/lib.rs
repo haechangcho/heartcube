@@ -1,6 +1,5 @@
 #![feature(test)]
 
-pub use crate::benches::cubestore_benches;
 pub use crate::tests::{to_rows, TestFn};
 extern crate test;
 use async_trait::async_trait;
@@ -14,7 +13,6 @@ use test::TestFn::DynTestFn;
 use test::{ShouldPanic, TestDesc, TestDescAndFn, TestName, TestType};
 use tests::sql_tests;
 
-mod benches;
 pub mod files;
 #[cfg(not(target_os = "windows"))]
 pub mod multiproc;

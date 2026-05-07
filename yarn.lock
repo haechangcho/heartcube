@@ -10646,14 +10646,6 @@ before-after-hook@^2.2.0:
   resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-2.2.2.tgz#a6e8ca41028d90ee2c24222f201c90956091613e"
   integrity sha512-3pZEU3NT5BFUo/AD5ERPWOgQOCZITni6iavr5AUw5AUwQjMlI0kzu5btnyD39AF0gUEsDPwJT+oY1ORBJijPjQ==
 
-benchmark@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/benchmark/-/benchmark-2.1.4.tgz#09f3de31c916425d498cc2ee565a0ebf3c2a5629"
-  integrity sha512-l9MlfN4M1K/H2fbhfMy3B7vJd6AGKJVQn2h6Sg/Yx+KckoUA7ewS5Vv6TjSq18ooE1kS9hhAlQRH3AkXIh/aOQ==
-  dependencies:
-    lodash "^4.17.4"
-    platform "^1.3.3"
-
 best-effort-json-parser@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/best-effort-json-parser/-/best-effort-json-parser-1.1.2.tgz#869272c9de76fc7d336c4d9e3a8bbcdee3edda04"
@@ -16921,18 +16913,6 @@ javascript-stringify@^2.0.1:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/javascript-stringify/-/javascript-stringify-2.1.0.tgz#27c76539be14d8bd128219a2d731b09337904e79"
   integrity sha512-JVAfqNPTvNq3sB/VHQJAFxN/sPgKnsKrCwyRt15zwNCdrMMJDdcEOdubuy+DuJYYdm0ox1J4uzEuYKkN+9yhVg==
-
-jest-bench@^29:
-  version "29.7.1"
-  resolved "https://registry.yarnpkg.com/jest-bench/-/jest-bench-29.7.1.tgz#2fd94552d9c8f4a6df8351785b067cc052ec2b19"
-  integrity sha512-eFjQa+KVThwqY+Ecs9jeD+CdTUlDrJUAAFLy+DlWW5H1crnG1F4ad5Dk8K+kV6nB2aGCdFcusKBdgtx1SXYiHQ==
-  dependencies:
-    "@jest/globals" "^29.7.0"
-    "@jest/reporters" "^29.7.0"
-    benchmark "^2.1.4"
-    chalk "^4.1.0"
-    lodash "^4.17.20"
-    ndjson "^2.0.0"
 
 jest-changed-files@^29.7.0:
   version "29.7.0"

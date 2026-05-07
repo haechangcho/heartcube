@@ -396,20 +396,6 @@ impl RocksCacheStore {
         self.store.add_listener(listener).await;
     }
 
-    pub fn prepare_bench_cachestore(
-        test_name: &str,
-        config: Config,
-    ) -> (Arc<LocalDirRemoteFs>, Arc<Self>) {
-        let store_path = env::current_dir()
-            .unwrap()
-            .join("db-tmp")
-            .join("benchmarks")
-            .join(format!("{}", test_name));
-        let _ = std::fs::remove_dir_all(store_path.clone());
-
-        Self::prepare_test_cachestore_impl(test_name, store_path, config)
-    }
-
     pub fn prepare_test_cachestore(
         test_name: &str,
         config: Config,
