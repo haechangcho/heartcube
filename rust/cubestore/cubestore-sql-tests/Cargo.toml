@@ -56,9 +56,4 @@ tempfile = "3.2.0"
 tar = "0.4.38"
 
 [dev-dependencies]
-criterion = { version = "0.5.1", features = ["async_tokio", "html_reports"] }
 cuberockstore = { path = "../cuberockstore" }
-
-[[bench]]
-name = "in_process"
-harness = false

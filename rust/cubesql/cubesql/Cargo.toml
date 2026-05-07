@@ -70,21 +70,12 @@ tokio-postgres = { version = "0.7.7", features = [
 ] }
 rust_decimal = { version = "1.23", features = ["db-tokio-postgres"] }
 pg_interval = "0.4.1"
-criterion = { version = "0.4.0", features = ["html_reports"] }
 # Only for local debugging
 #console-subscriber = "0.3.0"
 
 [[test]]
 name = "e2e"
 path = "e2e/main.rs"
-harness = false
-
-[[bench]]
-name = "benchmarks"
-harness = false
-
-[[bench]]
-name = "large_model"
 harness = false
 
 # Code in cubesql workspace is not ready for full-blown clippy
