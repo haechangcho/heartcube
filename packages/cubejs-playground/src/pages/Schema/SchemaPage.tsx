@@ -46,6 +46,8 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
   static contextType = AppContext;
   context!: React.ContextType<typeof AppContext>;
 
+  private editingContentRef: string = '';
+
   constructor(props) {
     super(props);
     this.state = {
@@ -59,7 +61,6 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       shown: false,
       // editor
       selectedFile: null,
-      editingContent: null,
       isDirty: false,
       saving: false,
       // modals
@@ -154,18 +155,21 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
         okType: 'danger',
         onOk: () => {
           const file = files.find((f) => f.fileName === fileName);
-          this.setState({ selectedFile: fileName, editingContent: file?.content ?? '', isDirty: false });
+          this.editingContentRef = file?.content ?? '';
+          this.setState({ selectedFile: fileName, isDirty: false });
         },
       });
     } else {
       const file = files.find((f) => f.fileName === fileName);
-      this.setState({ selectedFile: fileName, editingContent: file?.content ?? '', isDirty: false });
+      this.editingContentRef = file?.content ?? '';
+      this.setState({ selectedFile: fileName, isDirty: false });
     }
   }
 
   async saveFile() {
-    const { selectedFile, editingContent, files } = this.state;
+    const { selectedFile, files } = this.state;
     if (!selectedFile) return;
+    const editingContent = this.editingContentRef;
     const prevContent = files.find((f) => f.fileName === selectedFile)?.content ?? '';
     this.setState({ saving: true });
     try {
@@ -196,12 +200,12 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ fileName: selectedFile, content: prevContent }),
             });
+            this.editingContentRef = prevContent;
             this.setState((prev) => ({
               ...prev,
               files: prev.files.map((f) =>
                 f.fileName === selectedFile ? { ...f, content: prevContent } : f
               ),
-              editingContent: prevContent,
               isDirty: false,
             }));
             const errMsg = metaJson.error.replace(/Error: Compile errors:\nErrors:\n/, '').trim();
@@ -363,7 +367,6 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       checkedKeys,
       selectedKeys,
       activeTab,
-      editingContent,
       isDirty,
       saving,
       newFileModal,
@@ -497,11 +500,17 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
               </div>
               <div style={{ flex: 1, overflow: 'hidden' }}>
                 <Editor
+                  key={selectedFile}
                   height="100%"
                   language={getLanguage(selectedFile)}
-                  value={editingContent ?? ''}
+                  defaultValue={this.editingContentRef}
                   theme="vs-dark"
-                  onChange={(value) => this.setState({ editingContent: value ?? '', isDirty: true })}
+                  onChange={(value) => {
+                    this.editingContentRef = value ?? '';
+                    if (!this.state.isDirty) {
+                      this.setState({ isDirty: true });
+                    }
+                  }}
                   options={{
                     minimap: { enabled: false },
                     fontSize: 13,
