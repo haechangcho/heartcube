@@ -12,6 +12,7 @@ services:
       - .env
     environment:
       - NODE_ENV=production
+      - CUBEJS_DEV_MODE=false
     volumes:
       - .:/cubejs/conf
     restart: unless-stopped
