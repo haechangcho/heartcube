@@ -73,10 +73,6 @@ export class DevServer {
     this.cubejsServer.event('Dev Server Start');
     const serveStatic = require('serve-static');
 
-    app.get('/', (req, res) => {
-      res.redirect(302, '/playground/');
-    });
-
     const catchErrors = (handler) => async (req, res, next) => {
       try {
         await handler(req, res, next);
