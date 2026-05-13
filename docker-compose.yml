@@ -13,6 +13,7 @@ services:
     environment:
       - NODE_ENV=production
       - CUBEJS_DEV_MODE=false
+      - CUBEJS_CACHE_AND_QUEUE_DRIVER=memory
     volumes:
       - .:/cubejs/conf
     restart: unless-stopped
