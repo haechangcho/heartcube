@@ -63,12 +63,14 @@ cubes:
         type: number
         title: 청구금액
         description: 건별 청구금액.
+        mask: -1
 
       - name: payment_amt
         sql: payment_amt
         type: number
         title: 지급결정금액
         description: "건별 지급결정금액 (재심번복 판단용)"
+        mask: -1
     measures:
       - name: count
         type: count

@@ -1,0 +1,176 @@
+views:
+  - name: claims_access_test
+    title: 보험 청구 접근제어 테스트
+    description: >
+      Admin · Regional Manager · Analyst · Guest · Audit 그룹별 Access Control 정책
+      검증용 뷰. cube.py의 context_to_groups 함수로 JWT의 groups 필드를 정책 그룹으로
+      매핑한 후 member-level, row-level, data-masking 동작을 검증한다.
+
+    cubes:
+      # ── fact_accident (기준 큐브) ───────────────────────────────────────────
+      - join_path: fact_accident
+        includes:
+          - accident_dt
+          - accident_type_l1
+          - accident_type_l2
+          - accident_claim_gap_days
+
+          - name: count
+            alias: claim_count
+            title: 청구건수
+
+      # ── fact_payment ────────────────────────────────────────────────────────
+      # claim_amt, payment_amt: mask: -1 정의됨 → analyst에게 -1 반환
+      - join_path: fact_accident.fact_payment
+        includes:
+          - claim_amt
+          - payment_amt
+          - total_claim_amt
+          - total_payment_amt
+          - final_payment_cd
+          - payment_type
+
+      # ── fact_review ─────────────────────────────────────────────────────────
+      # adjuster_id: mask.sql 정의됨 → analyst에게 '***XXX' 반환
+      - join_path: fact_accident.fact_review
+        includes:
+          - name: adjuster_id
+            title: 담당자사번
+          - claim_center_nm
+          - anomaly_label
+          - processing_biz_days
+          - sla_breached
+
+      # ── fact_contract ───────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_contract
+        includes:
+          - sales_division
+          - insured_amt
+          - total_insured_amt
+
+      # ── dim_customer ────────────────────────────────────────────────────────
+      - join_path: fact_accident.dim_customer
+        includes:
+          - gender
+          - age_group
+
+      # ── dim_coverage ────────────────────────────────────────────────────────
+      - join_path: fact_accident.fact_contract.dim_coverage
+        includes:
+          - coverage_nm
+          - coverage_type
+
+    access_policy:
+      # ════════════════════════════════════════════════════════════════════════
+      # 1. admin: 전체 멤버 접근, 행 필터 없음
+      #    JWT: { "groups": ["admin"] }
+      #    예상 결과: 모든 컬럼 실제값, 전체 행
+      # ════════════════════════════════════════════════════════════════════════
+      - group: admin
+        member_level:
+          includes: "*"
+
+      # ════════════════════════════════════════════════════════════════════════
+      # 2. regional_manager: 전체 컬럼, 자신의 보상센터 행만 조회
+      #    JWT: { "groups": ["regional_manager"], "claim_center": "서울본부" }
+      #    예상 결과: claim_center_nm = '서울본부' 행만 반환
+      # ════════════════════════════════════════════════════════════════════════
+      - group: regional_manager
+        member_level:
+          includes: "*"
+        row_level:
+          filters:
+            - member: claim_center_nm
+              operator: equals
+              values: [ "{ securityContext.claim_center }" ]
+
+      # ════════════════════════════════════════════════════════════════════════
+      # 3. analyst: 비민감 컬럼 실제값, 민감 컬럼은 마스킹
+      #    JWT: { "groups": ["analyst"] }
+      #    예상 결과:
+      #      - adjuster_id → '***XXX' (mask.sql)
+      #      - payment_amt → -1      (mask: -1)
+      #      - claim_amt   → -1      (mask: -1)
+      #      - 나머지 컬럼 → 실제값, 전체 행
+      # ════════════════════════════════════════════════════════════════════════
+      - group: analyst
+        member_level:
+          includes:
+            - accident_dt
+            - accident_type_l1
+            - accident_type_l2
+            - accident_claim_gap_days
+            - claim_count
+            - total_claim_amt
+            - total_payment_amt
+            - final_payment_cd
+            - payment_type
+            - claim_center_nm
+            - anomaly_label
+            - processing_biz_days
+            - sla_breached
+            - sales_division
+            - insured_amt
+            - total_insured_amt
+            - gender
+            - age_group
+            - coverage_nm
+            - coverage_type
+        member_masking:
+          includes:
+            - adjuster_id
+            - payment_amt
+            - claim_amt
+
+      # ════════════════════════════════════════════════════════════════════════
+      # 4. guest: 통계성 공개 컬럼만 접근, 개인·금융 정보 없음
+      #    JWT: { "groups": ["guest"] }
+      #    예상 결과: 5개 멤버만 조회 가능, 나머지 요청 시 에러
+      # ════════════════════════════════════════════════════════════════════════
+      - group: guest
+        member_level:
+          includes:
+            - accident_dt
+            - accident_type_l1
+            - claim_count
+            - coverage_nm
+            - coverage_type
+
+      # ════════════════════════════════════════════════════════════════════════
+      # 5. audit: 이상징후 행만 조회 + 심사 관련 컬럼
+      #    JWT: { "groups": ["audit"] }
+      #    예상 결과: anomaly_label != '정상' 행만 반환
+      # ════════════════════════════════════════════════════════════════════════
+      - group: audit
+        member_level:
+          includes:
+            - accident_dt
+            - accident_type_l1
+            - claim_count
+            - claim_center_nm
+            - anomaly_label
+            - processing_biz_days
+            - total_claim_amt
+            - total_payment_amt
+        row_level:
+          filters:
+            - member: anomaly_label
+              operator: notEquals
+              values: [ "정상" ]
+
+      # ════════════════════════════════════════════════════════════════════════
+      # 6. groups 배열: sales / operations 두 팀에 동일 정책 적용 예시
+      #    JWT: { "groups": ["sales"] }  또는  { "groups": ["operations"] }
+      #    예상 결과: 영업·계약 관련 컬럼만 접근, 전체 행
+      # ════════════════════════════════════════════════════════════════════════
+      - groups: [sales, operations]
+        member_level:
+          includes:
+            - accident_dt
+            - accident_type_l1
+            - claim_count
+            - sales_division
+            - insured_amt
+            - total_insured_amt
+            - coverage_nm
+            - coverage_type

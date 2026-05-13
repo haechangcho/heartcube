@@ -54,6 +54,8 @@ cubes:
         title: 보상담당자사번
         description: 심사 담당자 사번.
         public: false
+        mask:
+          sql: "CONCAT('***', RIGHT({CUBE}.adjuster_id, 3))"
 
       - name: anomaly_label
         sql: anomaly_label
