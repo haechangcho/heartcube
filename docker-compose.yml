@@ -10,10 +10,6 @@ services:
       - "15432:15432"
     env_file:
       - .env
-    environment:
-      - NODE_ENV=production
-      - CUBEJS_DEV_MODE=false
-      - CUBEJS_CACHE_AND_QUEUE_DRIVER=memory
     volumes:
       - .:/cubejs/conf
     restart: unless-stopped

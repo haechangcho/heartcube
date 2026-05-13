@@ -1,12 +1,60 @@
 """Cube Core OSS configuration.
 
-JWT API auth is handled by Cube's built-in JWT verification.
+JWT API auth is enforced through Python `check_auth`.
 `context_to_groups` maps authenticated JWT claims to access-policy groups.
 """
 
-from typing import List
+from typing import Any, Dict, List, Optional
+
+import jwt
+import os
 
 from cube import config
+
+
+def _normalize_token(token: Optional[str]) -> str:
+    if not token:
+        raise Exception('Authorization header is required')
+
+    normalized = token.strip()
+    if normalized.lower().startswith('bearer '):
+        normalized = normalized[7:].strip()
+
+    if not normalized:
+        raise Exception('Authorization header is required')
+
+    return normalized
+
+
+def _load_api_secret() -> str:
+    secret = os.getenv('CUBEJS_API_SECRET')
+    if not secret:
+        raise Exception('CUBEJS_API_SECRET is not configured')
+    return secret
+
+
+@config('check_auth')
+def check_auth(ctx: Dict[str, Any], token: str) -> Dict[str, Any]:
+    del ctx
+
+    payload = jwt.decode(
+        _normalize_token(token),
+        _load_api_secret(),
+        algorithms=['HS256'],
+    )
+
+    groups = payload.get('groups')
+    if not isinstance(groups, list) or not groups:
+        raise Exception('JWT is missing groups')
+
+    if not all(isinstance(group, str) and group.strip() for group in groups):
+        raise Exception('JWT groups must be a non-empty list of strings')
+
+    sub = payload.get('sub')
+    if not isinstance(sub, str) or not sub.strip():
+        raise Exception('JWT is missing sub')
+
+    return {'security_context': payload}
 
 
 @config('context_to_groups')
