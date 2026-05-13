@@ -21,6 +21,6 @@ def context_to_groups(ctx: dict) -> list:
 
     groups 필드가 없거나 비어있으면 'guest'로 fallback합니다.
     """
-    security_context = ctx.get('securityContext', {})
-    groups = security_context.get('groups', [])
+    security_context = ctx.get('securityContext') or {}
+    groups = security_context.get('groups') or []
     return groups if groups else ['guest']
