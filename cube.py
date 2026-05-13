@@ -4,10 +4,13 @@ JWT API auth is enforced through Python `check_auth`.
 `context_to_groups` maps authenticated JWT claims to access-policy groups.
 """
 
-from typing import Any, Dict, List, Optional
-
-import jwt
+import base64
+import hashlib
+import hmac
+import json
 import os
+import time
+from typing import Any, Dict, List, Optional
 
 from cube import config
 
@@ -33,15 +36,60 @@ def _load_api_secret() -> str:
     return secret
 
 
-@config('check_auth')
-def check_auth(ctx: Dict[str, Any], token: str) -> Dict[str, Any]:
-    del ctx
+def _base64url_decode(value: str) -> bytes:
+    padding = '=' * (-len(value) % 4)
+    return base64.urlsafe_b64decode(value + padding)
 
-    payload = jwt.decode(
-        _normalize_token(token),
-        _load_api_secret(),
-        algorithms=['HS256'],
-    )
+
+def _decode_json_segment(segment: str, label: str) -> Dict[str, Any]:
+    try:
+        decoded = _base64url_decode(segment).decode('utf-8')
+        payload = json.loads(decoded)
+    except Exception as exc:  # pragma: no cover - defensive guard
+        raise Exception(f'Invalid JWT {label}') from exc
+
+    if not isinstance(payload, dict):
+        raise Exception(f'Invalid JWT {label}')
+
+    return payload
+
+
+def _verify_hs256_jwt(token: str, secret: str) -> Dict[str, Any]:
+    parts = token.split('.')
+    if len(parts) != 3:
+        raise Exception('Invalid JWT format')
+
+    header = _decode_json_segment(parts[0], 'header')
+    payload = _decode_json_segment(parts[1], 'payload')
+
+    if header.get('alg') != 'HS256':
+        raise Exception('Unsupported JWT algorithm')
+
+    signing_input = f'{parts[0]}.{parts[1]}'.encode('ascii')
+    expected_signature = hmac.new(
+        secret.encode('utf-8'),
+        signing_input,
+        hashlib.sha256,
+    ).digest()
+
+    try:
+        provided_signature = _base64url_decode(parts[2])
+    except Exception as exc:  # pragma: no cover - defensive guard
+        raise Exception('Invalid JWT signature') from exc
+
+    if not hmac.compare_digest(expected_signature, provided_signature):
+        raise Exception('Invalid JWT signature')
+
+    exp = payload.get('exp')
+    if not isinstance(exp, (int, float)):
+        raise Exception('JWT is missing exp')
+
+    if int(time.time()) >= int(exp):
+        raise Exception('JWT has expired')
+
+    sub = payload.get('sub')
+    if not isinstance(sub, str) or not sub.strip():
+        raise Exception('JWT is missing sub')
 
     groups = payload.get('groups')
     if not isinstance(groups, list) or not groups:
@@ -50,10 +98,14 @@ def check_auth(ctx: Dict[str, Any], token: str) -> Dict[str, Any]:
     if not all(isinstance(group, str) and group.strip() for group in groups):
         raise Exception('JWT groups must be a non-empty list of strings')
 
-    sub = payload.get('sub')
-    if not isinstance(sub, str) or not sub.strip():
-        raise Exception('JWT is missing sub')
+    return payload
 
+
+@config('check_auth')
+def check_auth(ctx: Dict[str, Any], token: str) -> Dict[str, Any]:
+    del ctx
+
+    payload = _verify_hs256_jwt(_normalize_token(token), _load_api_secret())
     return {'security_context': payload}
 
 
