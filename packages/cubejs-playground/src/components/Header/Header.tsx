@@ -1,19 +1,47 @@
 import { LogoutOutlined, MenuOutlined, RobotOutlined } from '@ant-design/icons';
-import { Dropdown, Layout, Menu } from 'antd';
+import { Dropdown, Menu } from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useAppContext } from '../../hooks';
-import { StyledMenu, StyledMenuButton, StyledMenuItem } from './Menu';
+import { StyledMenu, StyledMenuItem } from './Menu';
 
-const StyledHeader = styled(Layout.Header)`
+const HeaderDropdown = Dropdown as any;
+
+const StyledHeader = styled.div`
   && {
     background-color: var(--dark-02-color);
     color: white;
-    padding: 0 16px;
+    padding: 0 132px 0 16px;
     line-height: 44px;
     height: 48px;
+    position: relative;
+
+    .logout-button {
+      position: absolute;
+      top: 8px;
+      right: 16px;
+      z-index: 10;
+      height: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      padding: 0 10px;
+      font-size: 14px;
+      line-height: 30px;
+    }
+
+    .logout-button:hover {
+      border-color: white;
+      color: white;
+    }
   }
 `;
 
@@ -75,21 +103,20 @@ export default function Header({ selectedKeys }: Props) {
       )}
 
       {isDesktopOrLaptop && (
-        <StyledMenuButton
-          as="button"
+        <button
+          className="logout-button"
           type="button"
           title={userLabel}
           onClick={logout}
-          noMargin
         >
           <LogoutOutlined />
           <span>Logout</span>
-        </StyledMenuButton>
+        </button>
       )}
 
       {isMobileOrTable && (
         <div style={{ float: 'right' }}>
-          <Dropdown
+          <HeaderDropdown
             overlay={
               <Menu>
                 <Menu.Item key="/build">
@@ -107,7 +134,7 @@ export default function Header({ selectedKeys }: Props) {
             }
           >
             <MenuOutlined />
-          </Dropdown>
+          </HeaderDropdown>
         </div>
       )}
     </StyledHeader>
