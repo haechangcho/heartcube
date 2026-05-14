@@ -179,6 +179,13 @@ function defaultWebLoginUsers(): Record<string, WebLoginUser> {
         groups: ['analyst'],
       },
     },
+    audit: {
+      password: process.env.CUBEJS_WEB_AUDIT_PASSWORD || 'audit',
+      securityContext: {
+        sub: 'audit_01',
+        groups: ['audit'],
+      },
+    },
     manager_seoul: {
       password: process.env.CUBEJS_WEB_MANAGER_SEOUL_PASSWORD || 'manager_seoul',
       securityContext: {
