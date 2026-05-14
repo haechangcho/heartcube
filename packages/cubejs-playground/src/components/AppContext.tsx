@@ -10,6 +10,10 @@ import { useAppContext } from '../hooks';
 export type PlaygroundContext = {
   anonymousId: string;
   cubejsToken: string;
+  securityContext?: {
+    sub: string;
+    groups: string[];
+  };
   basePath: string;
   isDocker: boolean;
   dbType: string | null;

@@ -226,90 +226,139 @@ function renderLoginPage(error?: string): string {
   <title>Heartcube Login</title>
   <style>
     :root {
-      color: #16201b;
-      background: #f6f2e9;
-      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --dark-02-color: #14171f;
+      --surface: #ffffff;
+      --border: #d9d9d9;
+      --primary: #1890ff;
+      --primary-hover: #40a9ff;
+      --text: rgba(0, 0, 0, 0.85);
+      --muted: rgba(0, 0, 0, 0.45);
+      color: var(--text);
+      background: #f0f2f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
     body {
       min-height: 100vh;
       margin: 0;
+      background: linear-gradient(180deg, #f7f9fc 0%, #eef1f7 100%);
+    }
+    header {
+      height: 48px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      background: var(--dark-02-color);
+      box-sizing: border-box;
+    }
+    header img {
+      height: 28px;
+      margin-right: 28px;
+    }
+    header span {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 48px;
+    }
+    .page {
+      min-height: calc(100vh - 48px);
       display: grid;
       place-items: center;
-      background:
-        radial-gradient(circle at top left, rgba(89, 132, 96, 0.28), transparent 32rem),
-        linear-gradient(135deg, #f6f2e9 0%, #dfe8d7 100%);
+      padding: 32px 16px;
+      box-sizing: border-box;
     }
     main {
-      width: min(28rem, calc(100vw - 2rem));
-      padding: 2.5rem;
-      border: 1px solid rgba(22, 32, 27, 0.16);
-      border-radius: 1.5rem;
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: 0 24px 70px rgba(31, 47, 37, 0.18);
-      backdrop-filter: blur(16px);
+      width: min(380px, 100%);
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--surface);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
     }
     h1 {
-      margin: 0 0 0.5rem;
-      font-size: 2rem;
-      letter-spacing: -0.04em;
+      margin: 0 0 8px;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
     p {
-      margin: 0 0 1.75rem;
-      color: rgba(22, 32, 27, 0.68);
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 14px;
     }
     label {
       display: block;
-      margin: 1rem 0 0.4rem;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      margin: 16px 0 8px;
+      font-size: 14px;
+      font-weight: 500;
     }
     input {
       box-sizing: border-box;
       width: 100%;
-      padding: 0.9rem 1rem;
-      border: 1px solid rgba(22, 32, 27, 0.18);
-      border-radius: 0.9rem;
-      background: rgba(255, 255, 255, 0.82);
-      color: #16201b;
+      height: 40px;
+      padding: 4px 11px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: #fff;
+      color: var(--text);
       font: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+      outline: 0;
     }
     button {
       width: 100%;
-      margin-top: 1.4rem;
-      padding: 0.95rem 1rem;
-      border: 0;
-      border-radius: 999px;
-      background: #1f412f;
-      color: #fffaf0;
+      height: 40px;
+      margin-top: 24px;
+      padding: 4px 15px;
+      border: 1px solid var(--primary);
+      border-radius: 2px;
+      background: var(--primary);
+      color: #fff;
       cursor: pointer;
       font: inherit;
-      font-weight: 700;
+      line-height: 1.5715;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    button:hover {
+      border-color: var(--primary-hover);
+      background: var(--primary-hover);
     }
     .error {
       display: ${safeError ? 'block' : 'none'};
-      margin-bottom: 1rem;
-      padding: 0.8rem 0.9rem;
-      border-radius: 0.8rem;
-      background: rgba(170, 52, 38, 0.12);
-      color: #8a251b;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border: 1px solid #ffccc7;
+      border-radius: 2px;
+      background: #fff2f0;
+      color: #cf1322;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Heartcube</h1>
-    <p>Sign in to open the Cube Playground.</p>
-    <div id="error" class="error">${safeError}</div>
-    <form id="login-form">
-      <label for="username">ID</label>
-      <input id="username" name="username" autocomplete="username" autofocus required />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" autocomplete="current-password" required />
-      <button type="submit">Sign in</button>
-    </form>
-  </main>
+  <header>
+    <img src="./cube-core-logo-adapted_for_dark_bg.svg" alt="Cube" />
+    <span>Heartcube Playground</span>
+  </header>
+  <div class="page">
+    <main>
+      <h1>Sign in</h1>
+      <p>Use a test account to open the Cube Playground.</p>
+      <div id="error" class="error">${safeError}</div>
+      <form id="login-form">
+        <label for="username">ID</label>
+        <input id="username" name="username" autocomplete="username" autofocus required />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required />
+        <button type="submit">Sign in</button>
+      </form>
+    </main>
+  </div>
   <script>
     const form = document.getElementById('login-form');
     const error = document.getElementById('error');

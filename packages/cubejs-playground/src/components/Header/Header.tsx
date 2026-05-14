@@ -1,9 +1,10 @@
-import { MenuOutlined, RobotOutlined } from '@ant-design/icons';
+import { LogoutOutlined, MenuOutlined, RobotOutlined } from '@ant-design/icons';
 import { Dropdown, Layout, Menu } from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { useAppContext } from '../../hooks';
 import { StyledMenu, StyledMenuButton, StyledMenuItem } from './Menu';
 
 const StyledHeader = styled(Layout.Header)`
@@ -21,6 +22,7 @@ type Props = {
 };
 
 export default function Header({ selectedKeys }: Props) {
+  const { playgroundContext } = useAppContext();
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 992px)',
   });
@@ -28,6 +30,15 @@ export default function Header({ selectedKeys }: Props) {
   const isMobileOrTable = useMediaQuery({
     query: '(max-width: 991px)',
   });
+
+  const userLabel = playgroundContext?.securityContext
+    ? `${playgroundContext.securityContext.sub} / ${playgroundContext.securityContext.groups.join(',')}`
+    : 'Logout';
+
+  async function logout() {
+    await fetch('/logout', { method: 'POST' }).catch(() => null);
+    window.location.assign('/login');
+  }
 
   return (
     <StyledHeader>
@@ -63,6 +74,19 @@ export default function Header({ selectedKeys }: Props) {
         </StyledMenu>
       )}
 
+      {isDesktopOrLaptop && (
+        <StyledMenuButton
+          as="button"
+          type="button"
+          title={userLabel}
+          onClick={logout}
+          noMargin
+        >
+          <LogoutOutlined />
+          <span>Logout</span>
+        </StyledMenuButton>
+      )}
+
       {isMobileOrTable && (
         <div style={{ float: 'right' }}>
           <Dropdown
@@ -74,6 +98,10 @@ export default function Header({ selectedKeys }: Props) {
 
                 <Menu.Item key="/schema">
                   <Link to="/schema">Data Model</Link>
+                </Menu.Item>
+
+                <Menu.Item key="/logout" onClick={logout}>
+                  Logout
                 </Menu.Item>
               </Menu>
             }

@@ -59,7 +59,9 @@ export const StyledMenuButton = styled.a<TStyledMenuButtonProps>`
     border-radius: 4px;
     display: flex;
     align-items: center;
+    background: transparent;
     color: white;
+    cursor: pointer;
     transition: all 0.25s ease;
     padding: 0 10px;
 
