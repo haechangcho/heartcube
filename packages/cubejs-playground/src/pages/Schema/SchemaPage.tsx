@@ -189,8 +189,9 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       for (let i = 0; i < 5; i++) {
         await new Promise((r) => setTimeout(r, 1500));
         try {
+          const token = this.context?.playgroundContext?.cubejsToken || this.context?.token;
           const metaRes = await fetch('/cubejs-api/v1/meta', {
-            headers: { Authorization: '' },
+            headers: token ? { Authorization: `Bearer ${token}` } : {},
           });
           const metaJson = await metaRes.json();
           if (metaJson.error) {

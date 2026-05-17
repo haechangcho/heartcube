@@ -1,18 +1,47 @@
-import { MenuOutlined, RobotOutlined } from '@ant-design/icons';
-import { Dropdown, Layout, Menu } from 'antd';
+import { LogoutOutlined, MenuOutlined, RobotOutlined } from '@ant-design/icons';
+import { Dropdown, Menu } from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { StyledMenu, StyledMenuButton, StyledMenuItem } from './Menu';
+import { useAppContext } from '../../hooks';
+import { StyledMenu, StyledMenuItem } from './Menu';
 
-const StyledHeader = styled(Layout.Header)`
+const HeaderDropdown = Dropdown as any;
+
+const StyledHeader = styled.div`
   && {
     background-color: var(--dark-02-color);
     color: white;
-    padding: 0 16px;
+    padding: 0 132px 0 16px;
     line-height: 44px;
     height: 48px;
+    position: relative;
+
+    .logout-button {
+      position: absolute;
+      top: 8px;
+      right: 16px;
+      z-index: 10;
+      height: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      padding: 0 10px;
+      font-size: 14px;
+      line-height: 30px;
+    }
+
+    .logout-button:hover {
+      border-color: white;
+      color: white;
+    }
   }
 `;
 
@@ -21,6 +50,7 @@ type Props = {
 };
 
 export default function Header({ selectedKeys }: Props) {
+  const { playgroundContext } = useAppContext();
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 992px)',
   });
@@ -28,6 +58,15 @@ export default function Header({ selectedKeys }: Props) {
   const isMobileOrTable = useMediaQuery({
     query: '(max-width: 991px)',
   });
+
+  const userLabel = playgroundContext?.securityContext
+    ? `${playgroundContext.securityContext.sub} / ${playgroundContext.securityContext.groups.join(',')}`
+    : 'Logout';
+
+  async function logout() {
+    await fetch('/logout', { method: 'POST' }).catch(() => null);
+    window.location.assign('/login');
+  }
 
   return (
     <StyledHeader>
@@ -63,9 +102,21 @@ export default function Header({ selectedKeys }: Props) {
         </StyledMenu>
       )}
 
+      {isDesktopOrLaptop && (
+        <button
+          className="logout-button"
+          type="button"
+          title={userLabel}
+          onClick={logout}
+        >
+          <LogoutOutlined />
+          <span>Logout</span>
+        </button>
+      )}
+
       {isMobileOrTable && (
         <div style={{ float: 'right' }}>
-          <Dropdown
+          <HeaderDropdown
             overlay={
               <Menu>
                 <Menu.Item key="/build">
@@ -75,11 +126,15 @@ export default function Header({ selectedKeys }: Props) {
                 <Menu.Item key="/schema">
                   <Link to="/schema">Data Model</Link>
                 </Menu.Item>
+
+                <Menu.Item key="/logout" onClick={logout}>
+                  Logout
+                </Menu.Item>
               </Menu>
             }
           >
             <MenuOutlined />
-          </Dropdown>
+          </HeaderDropdown>
         </div>
       )}
     </StyledHeader>

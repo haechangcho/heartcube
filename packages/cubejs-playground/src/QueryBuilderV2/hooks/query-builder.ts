@@ -124,7 +124,7 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
     defaultPivotConfig,
     tracking,
     queryValidator,
-    displayPrivateItems = true,
+    displayPrivateItems = false,
     memberViewType = 'name',
     onQueryChange,
   } = props;
@@ -336,8 +336,8 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
           return;
         }
 
-        const visibilityFilter = (item: { public?: boolean }) => {
-          return !displayPrivateItems ? item.public : true;
+        const visibilityFilter = (item: { public?: boolean; isVisible?: boolean }) => {
+          return displayPrivateItems ? true : item.public !== false && item.isVisible !== false;
         };
 
         setIsMetaLoading(false);
@@ -348,7 +348,21 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
           segments: {},
         };
 
-        newMeta.meta.cubes.filter(visibilityFilter).forEach((cube) => {
+        const visibleCubes = newMeta.meta.cubes
+          .filter(visibilityFilter)
+          .map((cube) => ({
+            ...cube,
+            measures: cube.measures.filter(visibilityFilter),
+            dimensions: cube.dimensions.filter(visibilityFilter),
+            segments: cube.segments.filter(visibilityFilter),
+          }))
+          .filter((cube) => (
+            cube.measures.length > 0 ||
+            cube.dimensions.length > 0 ||
+            cube.segments.length > 0
+          ));
+
+        visibleCubes.forEach((cube) => {
           cube.dimensions.filter(visibilityFilter).forEach((dimension) => {
             memberData.dimensions[dimension.name] = dimension;
           });
@@ -365,20 +379,14 @@ export function useQueryBuilder(props: UseQueryBuilderProps) {
         setMembers(memberData);
 
         setCubes(
-          newMeta.meta.cubes
-            .filter(visibilityFilter)
-            .map((cube) => {
-              return {
-                ...cube,
-                measures: cube.measures.filter(visibilityFilter),
-                dimensions: cube.dimensions.filter(visibilityFilter),
-                segments: cube.segments.filter(visibilityFilter),
-              };
-            })
+          visibleCubes
             .sort((a, b) => a.name.localeCompare(b.name)) as Cube[]
         );
 
-        setMeta(newMeta);
+        setMeta(new Meta({
+          ...newMeta.meta,
+          cubes: visibleCubes,
+        }));
       })
       .catch((error) => {
         if (currentRequest !== metaLoadingRef.current) {

@@ -64,6 +64,10 @@ class App extends Component<PropsWithChildren<RouteComponentProps>, AppState> {
     });
 
     const res = await fetch('playground/context');
+    if (res.status === 401) {
+      window.location.assign('/login');
+      return;
+    }
     const context = await res.json();
 
     setTelemetry(context.telemetry);
