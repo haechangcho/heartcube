@@ -92,6 +92,10 @@ export default function Header({ selectedKeys }: Props) {
             <Link to="/frontend-integrations">Frontend Integrations</Link>
           </StyledMenuItem>
 
+          <StyledMenuItem key="/connection">
+            <Link to="/connection">Connections</Link>
+          </StyledMenuItem>
+
           <StyledMenuItem key="/ask-ai">
             <Link to="/ask-ai"><RobotOutlined style={{ marginRight: 6 }} />Ask AI</Link>
           </StyledMenuItem>
@@ -125,6 +129,10 @@ export default function Header({ selectedKeys }: Props) {
 
                 <Menu.Item key="/schema">
                   <Link to="/schema">Data Model</Link>
+                </Menu.Item>
+
+                <Menu.Item key="/connection">
+                  <Link to="/connection">Connections</Link>
                 </Menu.Item>
 
                 <Menu.Item key="/logout" onClick={logout}>
