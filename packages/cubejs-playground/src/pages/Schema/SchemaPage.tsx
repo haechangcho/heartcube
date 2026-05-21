@@ -6,6 +6,7 @@ import {
   EditOutlined,
   SaveOutlined,
   MoreOutlined,
+  CheckCircleOutlined,
 } from '@ant-design/icons';
 import Editor from '@monaco-editor/react';
 import { RouterProps } from 'react-router-dom';
@@ -69,6 +70,12 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       renameModal: false,
       renameTarget: null,
       renameNewName: '',
+      // generate preview modal
+      generatePreviewModal: false,
+      previewNewFiles: [] as string[],
+      previewExistingFiles: [] as string[],
+      pendingGenerateFormat: null as SchemaFormat | null,
+      previewLoading: false,
     };
   }
 
@@ -116,8 +123,34 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
 
   async generateSchema(format: SchemaFormat = SchemaFormat.js) {
     const { checkedKeys, tablesSchema } = this.state;
+    const tables = checkedKeys.filter((k) => !!schemasMap[k]).map((e) => schemasMap[e]);
+    this.setState({ previewLoading: true, pendingGenerateFormat: format });
+    try {
+      const res = await playgroundFetch('playground/schema-file-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ format, tables, tablesSchema }),
+      });
+      if (res.ok) {
+        const { new: newFiles, existing: existingFiles } = await res.json();
+        this.setState({
+          generatePreviewModal: true,
+          previewNewFiles: newFiles,
+          previewExistingFiles: existingFiles,
+        });
+      } else {
+        playgroundAction('Generate Schema Status Fail', { error: await res.text() });
+      }
+    } finally {
+      this.setState({ previewLoading: false });
+    }
+  }
+
+  async performGenerate() {
+    const { checkedKeys, tablesSchema, pendingGenerateFormat: format } = this.state;
     const { history } = this.props;
     const options = { format };
+    this.setState({ generatePreviewModal: false });
     playgroundAction('Generate Schema', options);
     const res = await playgroundFetch('playground/generate-schema', {
       method: 'POST',
@@ -374,6 +407,11 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       newFileName,
       renameModal,
       renameNewName,
+      files,
+      generatePreviewModal,
+      previewNewFiles,
+      previewExistingFiles,
+      previewLoading,
     } = this.state;
 
     const { playgroundContext } = this.context;
@@ -382,21 +420,62 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
       : [];
     const isYamlFormatSupported: boolean = (Number(major) > 0) || (!minor || Number(minor) >= 31);
 
-    const renderTreeNodes = (data) =>
+    const cubeFileBasenames = new Set(
+      (files || [])
+        .filter((f) => f.fileName.startsWith('cubes/'))
+        .map((f) => f.fileName.replace('cubes/', '').replace(/\.(yml|yaml|js)$/, '').toLowerCase())
+    );
+
+    const toSnakeCaseSimple = (str: string) =>
+      str
+        .replace(/([A-Z]{2,})(?=[A-Z][a-z]|\d|\b)/g, '$1_')
+        .replace(/([a-z\d])([A-Z])/g, '$1_$2')
+        .replace(/[^a-zA-Z0-9]+/g, '_')
+        .replace(/^_|_$/g, '')
+        .toLowerCase();
+
+    const renderTreeNodes = (data, modeledKeys: Set<string>) =>
       data.map((item) => {
         if (item.treeData) {
           return (
             // @ts-ignore
             <TreeNode title={item.title} key={item.key} dataRef={item}>
-              {renderTreeNodes(item.treeData)}
+              {renderTreeNodes(item.treeData, modeledKeys)}
             </TreeNode>
           );
         }
-        return <TreeNode {...item} />;
+        const isModeled = modeledKeys.has(item.key);
+        const title = isModeled ? (
+          <span>
+            {item.title}
+            <CheckCircleOutlined style={{ marginLeft: 5, color: '#52c41a', fontSize: 11 }} />
+          </span>
+        ) : item.title;
+        return <TreeNode {...item} title={title} />;
       });
 
-    const renderTree = () =>
-      Object.keys(tablesSchema || {}).length > 0 ? (
+    const renderTree = () => {
+      if (Object.keys(tablesSchema || {}).length === 0) {
+        return (
+          <Alert
+            message="Empty DB Schema"
+            description="Please check connection settings"
+            type="warning"
+          />
+        );
+      }
+
+      const treeData = schemaToTreeData(tablesSchema || {});
+      const modeledKeys = new Set(
+        Object.entries(schemasMap as Record<string, [string, string]>)
+          .filter(([, [, tableName]]) => {
+            const snaked = toSnakeCaseSimple(tableName);
+            return cubeFileBasenames.has(snaked) || cubeFileBasenames.has(tableName.toLowerCase());
+          })
+          .map(([key]) => key)
+      );
+
+      return (
         <Tree
           checkable
           onExpand={this.onExpand.bind(this)}
@@ -407,15 +486,10 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
           onSelect={this.onSelect.bind(this)}
           selectedKeys={selectedKeys}
         >
-          {renderTreeNodes(schemaToTreeData(tablesSchema || {}))}
+          {renderTreeNodes(treeData, modeledKeys)}
         </Tree>
-      ) : (
-        <Alert
-          message="Empty DB Schema"
-          description="Please check connection settings"
-          type="warning"
-        />
       );
+    };
 
     const renderTreeOrError = () =>
       schemaLoadingError ? (
@@ -438,7 +512,7 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
             tabBarExtraContent={
               <ButtonDropdown
                 show={this.state.shown}
-                disabled={!checkedKeys.length}
+                disabled={!checkedKeys.length || previewLoading}
                 type="primary"
                 data-testid="chart-type-btn"
                 overlay={
@@ -460,7 +534,7 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
                 onOverlayClose={() => this.setState({ shown: false })}
                 onItemClick={() => this.setState({ shown: false })}
               >
-                Generate Data Model
+                {previewLoading ? 'Checking...' : 'Generate Data Model'}
               </ButtonDropdown>
             }
           >
@@ -562,6 +636,48 @@ export class SchemaPage extends Component<SchemaPageProps, any> {
             onPressEnter={() => this.renameFile()}
             autoFocus
           />
+        </Modal>
+
+        {/* Generate Preview Modal */}
+        <Modal
+          title="Generate Data Model — Preview"
+          visible={generatePreviewModal}
+          okText={previewExistingFiles.length > 0 ? 'Backup & Overwrite' : 'Generate'}
+          okButtonProps={{ danger: previewExistingFiles.length > 0 }}
+          onOk={() => this.performGenerate()}
+          onCancel={() => this.setState({ generatePreviewModal: false })}
+          width={480}
+        >
+          {previewNewFiles.length > 0 && (
+            <div style={{ marginBottom: previewExistingFiles.length > 0 ? 16 : 0 }}>
+              <div style={{ fontWeight: 600, marginBottom: 6, color: '#52c41a' }}>
+                ✅ New files ({previewNewFiles.length})
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 20 }}>
+                {previewNewFiles.map((f) => (
+                  <li key={f} style={{ fontFamily: 'monospace', fontSize: 13 }}>{f}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {previewExistingFiles.length > 0 && (
+            <div>
+              <div style={{ fontWeight: 600, marginBottom: 6, color: '#faad14' }}>
+                ⚠️ Files to overwrite ({previewExistingFiles.length})
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 20 }}>
+                {previewExistingFiles.map((f) => (
+                  <li key={f} style={{ fontFamily: 'monospace', fontSize: 13 }}>{f}</li>
+                ))}
+              </ul>
+              <div style={{ marginTop: 12, padding: '8px 12px', background: '#fffbe6', borderRadius: 4, fontSize: 12, color: '#8c6d00' }}>
+                기존 파일은 <code>.backup/</code> 디렉토리에 자동 백업됩니다.
+              </div>
+            </div>
+          )}
+          {previewNewFiles.length === 0 && previewExistingFiles.length === 0 && (
+            <div style={{ color: '#8c8c8c' }}>생성할 파일이 없습니다.</div>
+          )}
         </Modal>
 
         <AppContextConsumer

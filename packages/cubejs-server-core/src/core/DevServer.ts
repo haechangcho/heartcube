@@ -682,6 +682,42 @@ export class DevServer {
       });
     }));
 
+    app.post('/playground/schema-file-status', catchErrors(async (req, res) => {
+      if (!requireWebAdmin(req, res)) return;
+
+      if (!req.body?.tables) throw new Error('tables is required');
+      if (!Object.values(SchemaFormat).includes(req.body.format)) {
+        throw new Error(`Unknown schema format. Must be one of ${Object.values(SchemaFormat)}`);
+      }
+
+      const dataSource = req.body.dataSource || 'default';
+      const driver = await this.cubejsServer.getDriver({
+        dataSource,
+        authInfo: null,
+        securityContext: null,
+        requestId: getRequestIdFromRequest(req),
+      });
+      const tablesSchema = req.body.tablesSchema || (await driver.tablesSchema());
+
+      const scaffoldingTemplate = new ScaffoldingTemplate(tablesSchema, driver, {
+        format: req.body.format,
+        snakeCase: true,
+      });
+      const files = scaffoldingTemplate.generateFilesByTableNames(req.body.tables, { dataSource });
+
+      const newFiles: string[] = [];
+      const existingFiles: string[] = [];
+
+      for (const file of files) {
+        const filePath = path.join(options.schemaPath, 'cubes', file.fileName);
+        // eslint-disable-next-line no-await-in-loop
+        const exists = await fs.pathExists(filePath);
+        (exists ? existingFiles : newFiles).push(file.fileName);
+      }
+
+      res.json({ new: newFiles, existing: existingFiles });
+    }));
+
     app.post('/playground/generate-schema', catchErrors(async (req, res) => {
       if (!requireWebAdmin(req, res)) {
         return;
@@ -715,38 +751,22 @@ export class DevServer {
       });
       const files = scaffoldingTemplate.generateFilesByTableNames(req.body.tables, { dataSource });
 
-      await fs.emptyDir(path.join(options.schemaPath, 'cubes'));
-      await fs.emptyDir(path.join(options.schemaPath, 'views'));
+      await fs.ensureDir(path.join(options.schemaPath, 'cubes'));
 
-      await fs.writeFile(path.join(options.schemaPath, 'views', 'example_view.yml'), `# In Cube, views are used to expose slices of your data graph and act as data marts.
-# You can control which measures and dimensions are exposed to BIs or data apps,
-# as well as the direction of joins between the exposed cubes.
-# You can learn more about views in documentation here - https://cube.dev/docs/schema/reference/view
+      // Backup files that will be overwritten
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const backupCubesDir = path.join(options.schemaPath, '.backup', timestamp, 'cubes');
+      for (const file of files) {
+        const srcPath = path.join(options.schemaPath, 'cubes', file.fileName);
+        // eslint-disable-next-line no-await-in-loop
+        if (await fs.pathExists(srcPath)) {
+          // eslint-disable-next-line no-await-in-loop
+          await fs.ensureDir(backupCubesDir);
+          // eslint-disable-next-line no-await-in-loop
+          await fs.copy(srcPath, path.join(backupCubesDir, file.fileName));
+        }
+      }
 
-
-# The following example shows a view defined on top of orders and customers cubes.
-# Both orders and customers cubes are exposed using the "includes" parameter to
-# control which measures and dimensions are exposed.
-# Prefixes can also be applied when exposing measures or dimensions.
-# In this case, the customers' city dimension is prefixed with the cube name,
-# resulting in "customers_city" when querying the view.
-
-# views:
-#   - name: example_view
-#
-#     cubes:
-#       - join_path: orders
-#         includes:
-#           - status
-#           - created_date
-#
-#           - total_amount
-#           - count
-#
-#       - join_path: orders.customers
-#         prefix: true
-#         includes:
-#           - city`);
       await Promise.all(files.map(file => fs.writeFile(path.join(options.schemaPath, 'cubes', file.fileName), file.content)));
 
       res.json({ files });
