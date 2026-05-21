@@ -119,7 +119,7 @@ export default function Header({ selectedKeys }: Props) {
       )}
 
       {isMobileOrTable && (
-        <div style={{ float: 'right' }}>
+        <div style={{ position: 'absolute', right: 16, top: 0, height: '100%', display: 'flex', alignItems: 'center' }}>
           <HeaderDropdown
             overlay={
               <Menu>
