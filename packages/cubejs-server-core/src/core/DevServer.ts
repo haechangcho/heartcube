@@ -413,7 +413,7 @@ export class DevServer {
     const webLoginEnabled = process.env.CUBEJS_WEB_LOGIN_ENABLED !== 'false';
     const webLoginUsers = webLoginEnabled ? loadWebLoginUsers() : {};
     const webSessionTtlSeconds = Number(process.env.CUBEJS_WEB_SESSION_TTL_SECONDS || 8 * 60 * 60);
-    const webSessionSecret = process.env.CUBEJS_WEB_SESSION_SECRET || options.apiSecret || 'secret';
+    const webSessionSecret = options.apiSecret || 'secret';
     const isSecureCookie = process.env.CUBEJS_WEB_SECURE_COOKIE === 'true';
 
     const playgroundSecurityContext: WebSecurityContext = {
