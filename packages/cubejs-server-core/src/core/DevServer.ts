@@ -205,8 +205,7 @@ function defaultWebLoginUsers(): Record<string, WebLoginUser> {
 }
 
 function loadWebLoginUsers(): Record<string, WebLoginUser> {
-  const rawUsers = process.env.CUBEJS_WEB_LOGIN_USERS;
-  const users = (rawUsers ? JSON.parse(rawUsers) : defaultWebLoginUsers()) as Record<string, WebLoginUser>;
+  const users = defaultWebLoginUsers();
 
   Object.entries(users).forEach(([username, user]) => {
     if (
@@ -215,7 +214,7 @@ function loadWebLoginUsers(): Record<string, WebLoginUser> {
       !user.password ||
       !isValidSecurityContext(user.securityContext)
     ) {
-      throw new Error(`Invalid CUBEJS_WEB_LOGIN_USERS entry for "${username}"`);
+      throw new Error(`Invalid web login user entry for "${username}"`);
     }
   });
 
