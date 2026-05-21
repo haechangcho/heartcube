@@ -88,9 +88,9 @@ export default function Header({ selectedKeys }: Props) {
             <Link to="/schema">Data Model</Link>
           </StyledMenuItem>
 
-          <StyledMenuItem key="/frontend-integrations">
+          {/* <StyledMenuItem key="/frontend-integrations">
             <Link to="/frontend-integrations">Frontend Integrations</Link>
-          </StyledMenuItem>
+          </StyledMenuItem> */}
 
           <StyledMenuItem key="/connection">
             <Link to="/connection">Connections</Link>
